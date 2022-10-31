@@ -16,8 +16,8 @@ scripts/pers_*
 *.gpkg-shm
 #data/raw_input
 #docs/Elk.tex
-docs/Skeena2021.html
-Skeena2021.html
+docs/Bulkley2022.html
+Bulkley2022.html
 *~$*
 *.sqlite
 #hold
