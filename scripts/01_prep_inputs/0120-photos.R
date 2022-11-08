@@ -5,139 +5,115 @@
 ## back up original photos ont he d drive
 ##resize teh photos in our main file
 ##convert our pngs to jpg
-##make a composite image of all the most relevant culvert shots for easy display in leaflet yo
 ##get rid of the AAE files from the iphone.
 
-##back up your photos onto the D drive.
+# Resize and Convert Photos ---------------------------------
 
-##create a folder to copy the photos to
+# We are going to start with the originals and put them in our
+# scripts folder resized and renamed - on mac type pwd in terminal to see current directory
+# create a function to convert a directory full of photos to resized JPGs somewhere else.
+photo_resize_convert_batch <- function(filename,
+                                 name_repo,
+                                 dir_stub_target,
+                                 dir_stub_from,
+                                 dir_project){
 
+  dir.create(
+    paste0(dir_stub_target,
+                    '/Projects/repo/',
+                    name_repo)
+  )
 
-##get the name of the folder we are in
-bname <- basename(dirname(dirname(getwd())))
-name_script_project <- 'fish_passage_skeena_2021_reporting'
+  dir.create(
+    paste0(dir_stub_target,
+           '/Projects/repo/',
+           name_repo,
+           '/data')
+  )
+  dir.create(
+    paste0(dir_stub_target,
+           '/Projects/repo/',
+           name_repo,
+           '/data',
+           '/photos')
+  )
 
-##input the name of the file we want to copy.  We should get a list of files next time and then purrr::map the procedure
-filename = "al"
+  dir_target <- paste0(dir_stub_target,
+                       '/Projects/repo/',
+                       name_repo,
+                       '/data/photos/',
+                       filename)
 
+  dir.create(dir_target)
 
-#############################################Not Run#############################
-# this is the workflow for next time but for now we are not messing with it
-##this is a bit different from before. We are going to start with the backed up originals and put them in our
-# scripts folder resized and renamed
-targetdir = paste0("C:/Users/allan/OneDrive/New_Graph/Current/",
-                   bname,
-                   '/scripts/',
-                   name_script_project,
-                   '/data/photos/', filename)
-dir.create(targetdir)
+  ##path to the photos
+  path <- paste0(dir_stub_from,
+                 '/Projects/current/',
+                 dir_project,
+                 '/data/photos/',
+                 filename,
+                 '/originals/')
 
+  filestoconvert <- list.files(path = path,
+                               full.names = T)
 
-##path to the photos
-path <- paste0("D:/New_Graph/backups/photos/", bname, "/", filename)
-
-filestocopy <- list.files(path = path,
-                          full.names = T)
-
-#copy over the photos in the al folder -- this is done already
-file.copy(from=filestocopy, to=targetdir,
-          overwrite = F, recursive = FALSE,
-          copy.mode = TRUE)
-
-###########################################NOT RUN TO HERE END###############################################################
-
-# backup kyle---------------------------------------------
-##input the name of the file we want to copy.  We should get a list of files next time and then purrr::map the procedure
-filename = "kyle"
-
-##here we back everything up to the D drive
-targetdir = paste0("D:/New_Graph/backups/photos/", bname, "/")
-dir.create(targetdir)
-
-targetdir = paste0("D:/New_Graph/backups/photos/", bname, "/", filename)
-dir.create(targetdir)
-
-##path to the photos
-path <- paste0("C:/Users/allan/OneDrive/New_Graph/Current/", bname, '/data/photos/', filename)
-
-filestocopy <- list.files(path = path,
-                          full.names = T)
-
-
-file.copy(from=filestocopy, to=targetdir,
-          overwrite = F, recursive = FALSE,
-          copy.mode = TRUE)
-
-##this scales everything and converts everything to jpg - we had problems with sizes being slightly too large last year
-##so we will do manually this year with powertools type thing (image resizer for windows)
-# img_resize_convert <- function(img){
-#   image <- image_read(img)
-#   image_scaled <- image_scale(image,"1440x1080!")
-# image_write(image_scaled, path = paste0(path, '/', tools::file_path_sans_ext(basename(img)), '.JPG'), format = 'jpg')
-# }
-
-# backup dallas----------------------------------------------------
-##input the name of the file we want to copy.  We should get a list of files next time and then purrr::map the procedure
-filename = "dallas"
-
-##here we back everything up to the D drive
-targetdir = paste0("D:/New_Graph/backups/photos/", bname, "/")
-dir.create(targetdir)
-
-targetdir = paste0("D:/New_Graph/backups/photos/", bname, "/", filename)
-dir.create(targetdir)
-
-##path to the photos
-path <- paste0("C:/Users/allan/OneDrive/New_Graph/Current/", bname, '/data/photos/', filename)
-
-filestocopy <- list.files(path = path,
-                          full.names = T)
-
-
-file.copy(from=filestocopy, to=targetdir,
-          overwrite = F, recursive = FALSE,
-          copy.mode = TRUE)
-
-
-
-
-# convert al------------------------------------------------------------
-## we  want to convert our png to jpeg in case we want them for something
-img_resize_convert <- function(img){
-  image <- image_read(img)
-  image_scaled <- image_scale(image,"1440x1080!")
-  image_write(image_scaled, path = paste0(path, '/', tools::file_path_sans_ext(basename(img)), '.JPG'), format = 'jpg')
+  filestoconvert %>%
+    purrr::map(fpr::fpr_photo_resize_convert,
+               path = dir_target,
+               size = "1296 x 972!")
 }
 
-##input the name of the file we want to copy.  We should get a list of files next time and then purrr::map the procedure
-filename = "al"
-##path to the photos
-path <- paste0("C:/Users/allan/OneDrive/New_Graph/Current/", bname, '/data/photos/', filename)
-filestocopy <- list.files(path = path,
-                          full.names = T)
-filestoconvert <- grep('.PNG', filestocopy, value=TRUE)
-filestoconvert %>%
-  purrr::map(img_resize_convert)
-############ remove the png files that are now converted to jpg
-##identify all the png files in the folder
-filesremove <- grep('.PNG', filestocopy, value=TRUE)
-file.remove(filesremove)
+## Bulkley -------------------------------
+# this is the only thing that changes from project to project and place to place for this workflow
+name_repo <-  'fish_passage_bulkley_2022_reporting'
+dir_stub_from <-  '/Users/airvine'
+dir_project = '2022-059-cwf-bulkley'
+dir_stub_target = '/Users/airvine/Projects/OneDrive'
 
-# convert kyle-------------------------------------------------------------------
-##input the name of the file we want to copy.  We should get a list of files next time and then purrr::map the procedure
-filename = "kyle"
-##path to the photos
-path <- paste0("C:/Users/allan/OneDrive/New_Graph/Current/", bname, '/data/photos/', filename)
-filestocopy <- list.files(path = path,
-                          full.names = T)
-filestoconvert <- grep('.PNG', filestocopy, value=TRUE)
-filestoconvert %>%
-  purrr::map(img_resize_convert)
-############ remove the png files that are now converted to jpg
-##identify all the png files in the folder
-filesremove <- grep('.PNG', filestocopy, value=TRUE)
-file.remove(filesremove)
+# make a list of the directories you want to copy over
+dir_l <- list.dirs(
+  paste0(
+    dir_stub_from,
+    '/Projects/current/',
+    dir_project,
+    '/data/photos/'
+  ),
+  full.names = F, recursive = F)
 
+# apply the function
+dir_l %>%
+  purrr::map(resize_convert_batch,
+             dir_project =  dir_project,
+             name_repo =  name_repo)
+
+
+## Elk--------------------------------
+# this is the only thing that changes from project to project for this workflow
+name_repo <-  'fish_passage_elk_2022_reporting'
+dir_project = '2022-056-nupqu-elk-cwf'
+
+# make a list of the directories you want to copy over and apply the function
+list.dirs(
+  paste0(
+    dir_stub_from,
+    '/Projects/current/',
+    dir_project,
+    '/data/photos/'
+  ),
+  full.names = F, recursive = F) %>%
+  purrr::map(resize_convert_batch,
+             dir_project =  dir_project,
+             name_repo =  name_repo)
+
+# grab the files from mergin and move to project using linux cmd
+# mv -v ~/Projects/gis/mergin/bcfishpass_elkr_20220904/photos/* ~/Projects/current/2022-056-nupqu-elk-cwf/data/photos/mergin/originals
+# mv -v ~/Projects/gis/mergin/bcfishpass_skeena_20220823-v225/photos/* ~/Projects/current/2022-049-sern-skeena-fish-passage/data/photos/mergin/
+
+
+# #copy over the photos in the al folder -- this is done already
+# file.copy(from=filestocopy, to=targetdir,
+#           overwrite = F, recursive = FALSE,
+#           copy.mode = TRUE)
 
 
 # make folders ------------------------------------------------------------
