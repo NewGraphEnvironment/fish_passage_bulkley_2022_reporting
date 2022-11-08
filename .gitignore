@@ -24,4 +24,5 @@ Bulkley2022.html
 *.Kmz
 *.kml
 data/photos/**/*.pdf
+!data/photos/admin/*
 
