@@ -82,8 +82,10 @@ dir_l <- list.dirs(
 
 # apply the function
 dir_l %>%
-  purrr::map(resize_convert_batch,
+  purrr::map(photo_resize_convert_batch,
              dir_project =  dir_project,
+             dir_stub_target = dir_stub_target,
+             dir_stub_from = dir_stub_from,
              name_repo =  name_repo)
 
 
@@ -93,16 +95,42 @@ name_repo <-  'fish_passage_elk_2022_reporting'
 dir_project = '2022-056-nupqu-elk-cwf'
 
 # make a list of the directories you want to copy over and apply the function
-list.dirs(
+dir_l <- list.dirs(
   paste0(
     dir_stub_from,
     '/Projects/current/',
     dir_project,
     '/data/photos/'
   ),
-  full.names = F, recursive = F) %>%
-  purrr::map(resize_convert_batch,
+  full.names = F, recursive = F)
+
+dir_l %>%
+  purrr::map(photo_resize_convert_batch,
              dir_project =  dir_project,
+             dir_stub_target = dir_stub_target,
+             dir_stub_from = dir_stub_from,
+             name_repo =  name_repo)
+
+## skeena--------------------------------
+# this is the only thing that changes from project to project for this workflow
+name_repo <-  'fish_passage_skeena_2022_reporting'
+dir_project = '2022-049-sern-skeena-fish-passage'
+
+# make a list of the directories you want to copy over and apply the function
+dir_l <- list.dirs(
+  paste0(
+    dir_stub_from,
+    '/Projects/current/',
+    dir_project,
+    '/data/photos/'
+  ),
+  full.names = F, recursive = F)
+
+dir_l %>%
+  purrr::map(photo_resize_convert_batch,
+             dir_project =  dir_project,
+             dir_stub_target = dir_stub_target,
+             dir_stub_from = dir_stub_from,
              name_repo =  name_repo)
 
 # grab the files from mergin and move to project using linux cmd
@@ -110,21 +138,10 @@ list.dirs(
 # mv -v ~/Projects/gis/mergin/bcfishpass_skeena_20220823-v225/photos/* ~/Projects/current/2022-049-sern-skeena-fish-passage/data/photos/mergin/
 
 
-# #copy over the photos in the al folder -- this is done already
-# file.copy(from=filestocopy, to=targetdir,
-#           overwrite = F, recursive = FALSE,
-#           copy.mode = TRUE)
-
-
 # make folders ------------------------------------------------------------
 
-##get the names of your pscis files
-workbooks <-  list.files(path = 'data', pattern = "pscis", all.files = F) %>%
-  grep(pattern = '~', invert = T, value = T)
-
-
-pscis_all <- workbooks %>%
-  map_df(fpr_import_pscis)
+pscis_all <- fpr::fpr_import_pscis_all() %>%
+  bind_rows()
 
 ##create the data folder
 dir.create(paste0(getwd(), '/data'))
@@ -136,12 +153,12 @@ dir.create(paste0(getwd(), '/data/photos'))
 folderstocreate <- pscis_all %>%
   filter(!is.na(my_crossing_reference)) %>%
   distinct(my_crossing_reference) %>%
-  pull(my_crossing_reference) %>%
+  dplyr::pull(my_crossing_reference) %>%
   as.character()
 
 
 folderstocreate %>%
-  purrr::map(fpr_photo_folders)
+  purrr::map(fpr::fpr_photo_folders)
 
 ##do the same for our pscis crossings
 folderstocreate <- pscis_all %>%
