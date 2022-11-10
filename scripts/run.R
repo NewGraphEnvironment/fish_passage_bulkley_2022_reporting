@@ -1,4 +1,4 @@
-preview_chapter('0100-intro.Rmd')
+bookdown::preview_chapter('0100-intro.Rmd')
 
 
 #################################################################################################
@@ -35,11 +35,11 @@ rmarkdown::render_site(output_format = 'bookdown::gitbook',
 
 
 # define the _bookfile_name from _bookdown.yml
-filename_html <- 'Template'
+filename_html <- 'Bulkley2022'
 
 {
 
-  file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+  # file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
 
   ##   then make our printable pdf
   rmarkdown::render_site(output_format = 'pagedown::html_paged',
