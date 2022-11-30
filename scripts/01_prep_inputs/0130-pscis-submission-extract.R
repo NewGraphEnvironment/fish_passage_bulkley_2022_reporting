@@ -93,8 +93,11 @@ file.copy(from = 'data/pscis_phase1.xlsm',
 
 ## going to make a few notes here about the submission process
 ## we need to work in microsoft edge and put sites in "Internet Explorer mode pages" and set exceptions for uploading to soft and esf
+
+# Make exceptions for these sites in setting to use "Internet Explorer mode pages"
 ## https://www.env.gov.bc.ca/csd/imb/soft/soft.shtml
 ## https://logon7.gov.bc.ca/clp-cgi/capBceid/logon.cgi?flags=1111:1,8&TARGET=$SM$https%3a%2f%2fapps%2enrs%2egov%2ebc%2eca%2fext%2fesf%2fsubmissionWelcome%2edo
+## https://apps.nrs.gov.bc.ca/ext/esf/submissionWelcome.do?
 
 
 # fill in soft url here
