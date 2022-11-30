@@ -89,7 +89,7 @@ file.copy(from = 'data/pscis_phase1.xlsm',
 # !!!!!!!READ!!!!!!! here I record the command to move everything into the repo via command line on linux.  Suggest moving to your repo using command line on windows (google copy all files and directories on command line with windows or something) as well because then it is easy to repeat when things change.
 # not quite sure how best to deal with sharing the photos yet and might end up being easiest to just work in onedrive and copy things over via command line into the repo (hope not though)
 # Mateo - write down the command to copy over with command line below the linux version
-# mv  -v ~/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_bulkley_2022_reporting/data/* ~/Projects/repo/fish_passage_bulkley_2022_reporting/data/photos/
+# cp -R ~/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_bulkley_2022_reporting/data/* ~/Projects/repo/fish_passage_bulkley_2022_reporting/data/photos/
 
 ## going to make a few notes here about the submission process
 ## we need to work in microsoft edge and put sites in "Internet Explorer mode pages" and set exceptions for uploading to soft and esf
