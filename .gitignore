@@ -19,7 +19,6 @@ scripts/pers_*
 docs/Bulkley2022.html
 Bulkley2022.html
 *~$*
-*.sqlite
 #hold
 *.Kmz
 *.kml
