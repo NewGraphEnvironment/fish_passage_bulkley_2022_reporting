@@ -3,24 +3,17 @@
 
 source('scripts/packages.R')
 # source('R/functions.R')
-source('scripts/private_info.R')
+# source('scripts/private_info.R')
 
-# conn <- DBI::dbConnect(
-#   RPostgres::Postgres(),
-#   dbname = dbname_wsl,
-#   host = host_wsl,
-#   port = port_wsl,
-#   user = user_wsl,
-#   password = password_wsl
-# )
+# thinking we better use the remote database since my local version is outdated and not willing to risk a week of time to rebuild (might be fine in a day but never really know till we climb in)
 
 conn <- DBI::dbConnect(
   RPostgres::Postgres(),
-  dbname = dbname,
-  host = host,
-  port = port,
-  user = user,
-  password = password
+  dbname = Sys.getenv('PG_DB_BCBARRIERS'),
+  host = Sys.getenv('PG_HOST_BCBARRIERS'),
+  port = Sys.getenv('PG_PORT_BCBARRIERS'),
+  user = Sys.getenv('PG_USER_BCBARRIERS'),
+  password = Sys.getenv('PG_PASS_BCBARRIERS')
 )
 
 #
@@ -99,8 +92,8 @@ CROSS JOIN LATERAL
 
 ##get all the data and save it as an sqlite database as a snapshot of what is happening.  we can always hopefully update it
 query <- "SELECT *
-   FROM ali.crossings_20220404
-   WHERE watershed_group_code IN ('BULK', 'MORR')"
+   FROM bcfishpass.crossings
+   WHERE watershed_group_code IN ('BULK')"
 
 
 ##import and grab the coordinates - this is already done
@@ -114,7 +107,7 @@ bcfishpass<- st_read(conn, query =  query) %>%
   # dplyr::distinct(.keep_all = T) #needed to do this because there are duplicated outputs
 
 
-
+# import the column comments
 query <- "select col_description((table_schema||'.'||table_name)::regclass::oid, ordinal_position) as column_comment,
 * from information_schema.columns
 WHERE table_schema = 'bcfishpass'
@@ -147,15 +140,15 @@ my_pscis_modelledcrossings_streams_xref <- dat_joined %>%
 
 ##this is how we update our local db.
 ##my time format format(Sys.time(), "%Y%m%d-%H%M%S")
-# mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
+mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
 ##archive the last version for now
-bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
+# bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
 # rws_drop_table("bcfishpass_archive", conn = conn) ##if it exists get rid of it - might be able to just change exists to T in next line
-rws_write(bcfishpass_archive, exists = F, delete = TRUE,
-          conn = conn, x_name = paste0("bcfishpass_archive_", format(Sys.time(), "%Y-%m-%d-%H%M")))
-rws_drop_table("bcfishpass", conn = conn) ##now drop the table so you can replace it
+# rws_write(bcfishpass_archive, exists = F, delete = TRUE,
+#           conn = conn, x_name = paste0("bcfishpass_archive_", format(Sys.time(), "%Y-%m-%d-%H%M")))
+# rws_drop_table("bcfishpass", conn = conn) ##now drop the table so you can replace it
 rws_write(bcfishpass, exists = F, delete = TRUE,
           conn = conn, x_name = "bcfishpass")
 # write in the xref
@@ -169,9 +162,6 @@ rws_write(my_pscis_modelledcrossings_streams_xref, exists = F, delete = TRUE,
 rws_drop_table("bcfishpass_column_comments", conn = conn) ##now drop the table so you can replace it
 rws_write(bcfishpass_column_comments, exists = F, delete = TRUE,
           conn = conn, x_name = "bcfishpass_column_comments")
-# rws_drop_table("my_pscis_modelledcrossings_streams_xref", conn = conn)
-# rws_write(my_pscis_modelledcrossings_streams_xref, exists = FALSE, delete = TRUE,
-#           conn = conn, x_name = "my_pscis_modelledcrossings_streams_xref")
 rws_list_tables(conn)
 rws_disconnect(conn)
 
@@ -197,25 +187,25 @@ test <- bcfishpass %>%
   filter(stream_crossing_id %in% (match_this %>% pull(pscis_crossing_id)))
 
 
-##!!!!!i believe this checks to make sure someone hasn't manually assigned our newly matched crossings....
-## not sure why it would though so probalby not necessary - old script
-##need to learn to move from the other fork for now rename and grab from there
-file.copy(from = "C:/scripts/bcfishpass/data/pscis_modelledcrossings_streams_xref.csv",
-            to = "C:/scripts/pscis_modelledcrossings_streams_xref.csv",
-          overwrite = T)
+# ##!!!!!i believe this checks to make sure someone hasn't manually assigned our newly matched crossings....
+# ## not sure why it would though so probalby not necessary - old script
+# ##need to learn to move from the other fork for now rename and grab from there
+# file.copy(from = "C:/scripts/bcfishpass/data/pscis_modelledcrossings_streams_xref.csv",
+#             to = "C:/scripts/pscis_modelledcrossings_streams_xref.csv",
+#           overwrite = T)
+# #
+# # ##get the crossing data from bcfishpass
+# pscis_modelledcrossings_streams_xref <- readr::read_csv("C:/scripts/pscis_modelledcrossings_streams_xref.csv")
 #
-# ##get the crossing data from bcfishpass
-pscis_modelledcrossings_streams_xref <- readr::read_csv("C:/scripts/pscis_modelledcrossings_streams_xref.csv")
-
-
-##check to make sure your match_this crossings aren't already assigned somehow
-pscis_modelledcrossings_streams_xref %>%
-  filter(stream_crossing_id %in% (match_this %>% pull(pscis_crossing_id)))
+#
+# ##check to make sure your match_this crossings aren't already assigned somehow
+# pscis_modelledcrossings_streams_xref %>%
+#   filter(stream_crossing_id %in% (match_this %>% pull(pscis_crossing_id)))
 
 ##nope - all good
 
 ##grab the bcfishpass spawning and rearing table and put in the database so it can be used to populate the methods and tie to the references table
-urlfile="https://github.com/smnorris/bcfishpass/raw/main/parameters/parameters_newgraph/param_habitat.csv"
+urlfile="https://raw.githubusercontent.com/smnorris/bcfishpass/main/parameters/parameters_newgraph/habitat.csv"
 
 bcfishpass_spawn_rear_model <- read_csv(url(urlfile))
 
