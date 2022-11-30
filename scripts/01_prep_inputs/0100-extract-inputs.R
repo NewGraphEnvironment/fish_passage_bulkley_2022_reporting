@@ -328,9 +328,19 @@ dat_joined3 <- left_join(
 
 
 
+# look at any sites more than 100m away from their match
+#  the reason there is more than one hit is because we
+more_100 <- dat_joined3 %>%
+  filter(distance > 100) %>%
+  select(aggregated_crossings_id, modelled_crossing_id, distance, source) %>%
+  distinct(aggregated_crossings_id, distance, .keep_all = T)
+
+
 ##make a dat to make it easier to see so we can summarize the road info we might want to use
 dat_joined4 <- dat_joined3 %>%
-  mutate(admin_area_abbreviation = case_when(
+  mutate(
+    # turning this off since we don't have road_class
+    admin_area_abbreviation = case_when(
     is.na(admin_area_abbreviation) & (road_class %ilike% 'arterial' | road_class %ilike% 'local') ~ 'MoTi',
     T ~ admin_area_abbreviation),
     admin_area_abbreviation = replace_na(admin_area_abbreviation, ''),
