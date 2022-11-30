@@ -30,35 +30,49 @@ dat <- pscis_all %>%
 
 
 ##get the utm info from the database
+#  connect to the database - this can be the remote database by changing the calls
 conn <- DBI::dbConnect(
   RPostgres::Postgres(),
-  dbname = dbname_wsl,
-  host = host_wsl,
-  port = port_wsl,
-  user = user_wsl,
-  password = password_wsl
+  dbname = Sys.getenv('PG_DB'),
+  host = Sys.getenv('PG_HOST'),
+  port = 5432,
+  user = Sys.getenv('PG_USER'),
+  password = Sys.getenv('PG_PASS')
 )
 #
 # ##listthe schemas in the database
-# dbGetQuery(conn,
-#            "SELECT schema_name
-#            FROM information_schema.schemata")
+dbGetQuery(conn,
+           "SELECT schema_name
+           FROM information_schema.schemata")
 # #
 # #
 # # # ##list tables in a schema
 dbGetQuery(conn,
            "SELECT table_name
            FROM information_schema.tables
-           WHERE table_schema='bcfishpass'")
-# # # # #
-# # # # # ##list column names in a table
+           WHERE table_schema='whse_basemapping'")
+
+##list column names in a table
 dbGetQuery(conn,
            "SELECT column_name,data_type
            FROM information_schema.columns
-           WHERE table_name='streams'")
+           WHERE table_name='gba_railway_structure_lines_sp'")
 
+# list distinct params from a column in a table
+dbGetQuery(conn,
+           "SELECT DISTINCT modelled_crossing_type_source FROM bcfishpass.modelled_stream_crossings")
 
-
+# find-tables-with-specific-column-name
+dbGetQuery(conn,
+           "select t.table_schema,
+           t.table_name
+           from information_schema.tables t
+           inner join information_schema.columns c on c.table_name = t.table_name
+           and c.table_schema = t.table_schema
+           where c.column_name = 'file_type_description'
+           and t.table_schema not in ('information_schema', 'pg_catalog')
+           and t.table_type = 'BASE TABLE'
+           order by t.table_schema;")
 
 # UTMs Phase 1--------------------------------------------------------------------
 
@@ -92,8 +106,12 @@ id_joined <- left_join(
          utm_northing = case_when(!is.na(northing) ~ northing,
          T ~ utm_northing_derived)
   ) %>%
+  # see which sites are far from their modelled locations
+  mutate(utm_east_diff = abs(utm_easting) - abs(utm_easting_derived),
+         utm_north_diff = abs(utm_northing) - abs(utm_northing_derived)) %>%
   select(-utm_easting_derived, -utm_northing_derived)
 
+# by inspecting the sites that are more than say 30m or so off we can QA for mistakes.
 
 
 
@@ -121,9 +139,12 @@ id_joined2 <- left_join(
                                  T ~ utm_easting_derived),
          utm_northing = case_when(!is.na(utm_northing) ~ utm_northing,
                                   T ~ utm_northing_derived)
-  )%>%
+  ) %>%
+  # see which sites are far from their pscis locations
+  mutate(utm_east_diff = abs(utm_easting) - abs(utm_easting_derived),
+         utm_north_diff = abs(utm_northing) - abs(utm_northing_derived)) %>%
   select(-utm_easting_derived, -utm_northing_derived)
-
+# by inspecting the sites that are more than say 30m or so off we can QA for mistakes.
 
 ##burn------------------------------------------------------------
 ##now export csvs for each of the sources
@@ -152,30 +173,30 @@ pscis_all_sf <- dat
 ##get the road info from the database
 conn <- DBI::dbConnect(
   RPostgres::Postgres(),
-  dbname = dbname,
-  host = host,
-  port = port,
-  user = user,
-  password = password
+  dbname = Sys.getenv('PG_DB'),
+  host = Sys.getenv('PG_HOST'),
+  port = 5432,
+  user = Sys.getenv('PG_USER'),
+  password = Sys.getenv('PG_PASS')
 )
 #
 # ##listthe schemas in the database
-# dbGetQuery(conn,
-#            "SELECT schema_name
-#            FROM information_schema.schemata")
+dbGetQuery(conn,
+           "SELECT schema_name
+           FROM information_schema.schemata")
 # #
 # #
 # # # ##list tables in a schema
 dbGetQuery(conn,
            "SELECT table_name
            FROM information_schema.tables
-           WHERE table_schema='bcfishpass'")
+           WHERE table_schema='whse_basemapping'")
 # # # # #
 # # # # # ##list column names in a table
 dbGetQuery(conn,
            "SELECT column_name,data_type
            FROM information_schema.columns
-           WHERE table_name='modelled_crossings_closed_bottom'")
+           WHERE table_name='transport_line_type_code'")
 
 dbGetQuery(conn,
            "SELECT column_name,data_type
@@ -188,7 +209,11 @@ dbGetQuery(conn,
 # add a unique id - we could just use the reference number
 pscis_all_sf$misc_point_id <- seq.int(nrow(pscis_all_sf))
 
-# dbSendQuery(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", "test_hack",";"))
+
+# I'm going to create the ali schema locally so this looks the same on the remote db
+# dbSendQuery(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", "ali",";"))
+
+
 # load to database
 sf::st_write(obj = pscis_all_sf, dsn = conn, Id(schema= "ali", table = "misc"))
 
@@ -208,7 +233,7 @@ FROM
   ali.misc AS a
 CROSS JOIN LATERAL
   (SELECT *
-   FROM fish_passage.modelled_crossings_closed_bottom
+   FROM bcfishpass.crossings
    ORDER BY
      a.geometry <-> geom
    LIMIT 1) AS b")
@@ -225,22 +250,22 @@ dat_joined <- left_join(
   mutate(downstream_route_measure = as.integer(downstream_route_measure))
 
 
-dbDisconnect(conn = conn)
-
-
-##we also need to know if the culverts are within a municipality so we should check
-##get the road info from our database
-conn <- DBI::dbConnect(
-  RPostgres::Postgres(),
-  dbname = dbname_wsl,
-  host = host_wsl,
-  port = port_wsl,
-  user = user_wsl,
-  password = password_wsl
-)
+# dbDisconnect(conn = conn)
+#
+#
+# ##we also need to know if the culverts are within a municipality so we should check
+# ##get the road info from our database
+# conn <- DBI::dbConnect(
+#   RPostgres::Postgres(),
+#   dbname = dbname_wsl,
+#   host = host_wsl,
+#   port = port_wsl,
+#   user = user_wsl,
+#   password = password_wsl
+# )
 
 # load to database
-sf::st_write(obj = pscis_all_sf, dsn = conn, Id(schema= "working", table = "misc"))
+sf::st_write(obj = pscis_all_sf, dsn = conn, Id(schema= "ali", table = "misc"))
 
 dat_info <- dbGetQuery(conn,
                        "
@@ -268,20 +293,19 @@ dat_joined2 <- left_join(
 rm(dat_info, dat_joined, res)
 #
 
-##this no longer works because we were using the fish_passage.modelled_crossings_closed_bottom and now we don't have the rd info
 ##make a tibble of the client names so you can summarize in the report
 ##we do not need to repeat this step but this is how we make a dat to paste into a kable in rmarkdown then paste tibble as a rstudio addin so we can
 ##populate the client_name_abb...
 
 ##we already did this but can do it again I guess.  you cut and paste the result into kable then back
 ##into here using addin for datapasta
-# tab_rd_tenure_xref <- unique(dat_joined2$client_name) %>%
-#   as_tibble() %>%
-#   purrr::set_names(nm = 'client_name') %>%
-#   mutate(client_name_abb = NA)
+tab_rd_tenure_xref <- unique(dat_joined2$ften_client_name) %>%
+  as_tibble() %>%
+  purrr::set_names(nm = 'ften_client_name') %>%
+  mutate(client_name_abb = NA)
 
 tab_rd_tenure_xref <- tibble::tribble(
-                                           ~client_name, ~client_name_abb,
+                                      ~ften_client_name, ~client_name_abb,
                                                      NA,               NA,
                         "DISTRICT MANAGER NADINA (DND)",       "FLNR DND",
                         "CANADIAN FOREST PRODUCTS LTD.",         "Canfor",
@@ -295,8 +319,14 @@ tab_rd_tenure_xref <- tibble::tribble(
 dat_joined3 <- left_join(
   dat_joined2,
   tab_rd_tenure_xref,
-  by = 'client_name'
+  by = 'ften_client_name'
 )
+
+
+# see https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/issues/16 for this section.  putting aside for now
+# we need to get the road class from the DRA layer whse_basemapping.transport_line_type_code
+
+
 
 ##make a dat to make it easier to see so we can summarize the road info we might want to use
 dat_joined4 <- dat_joined3 %>%
@@ -534,11 +564,13 @@ dbGetQuery(conn,
            "SELECT table_name
            FROM information_schema.tables
            WHERE table_schema='bcfishpass'")
+
 ##list column names in a table
 dbGetQuery(conn,
            "SELECT column_name,data_type
            FROM information_schema.columns
-           WHERE table_name='crossings'") #modelled_stream_crossings #modelled_crossings_closed_bottom
+           WHERE table_name='modelled_stream_crossings'") #modelled_stream_crossings #modelled_crossings_closed_bottom
+
 
 
 # add a unique id - we could just use the reference number
