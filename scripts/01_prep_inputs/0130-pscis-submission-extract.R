@@ -101,8 +101,10 @@ file.copy(from = 'data/pscis_phase1.xlsm',
 
 
 # fill in soft url here
-
+# https://www.env.gov.bc.ca/perl/soft/dl.pl/20221205085122-07-gp-0c42307d-42fc-46d0-823e-219f0426?simple=y
 
 
 ##fill in where to check on your submission here (copy and paste url once file uploads)
-
+# https://apps.nrs.gov.bc.ca/ext/esf/submissionSearch.do?action=clear
+# user reference: MW
+# submission id: 2210702
