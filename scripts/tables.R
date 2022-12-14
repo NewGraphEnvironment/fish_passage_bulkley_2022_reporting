@@ -38,8 +38,12 @@ pscis_all_prep <- pscis_list %>%
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
 bcfishpass_phase2 <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
-  filter(stream_crossing_id %in% (pscis_phase2 %>% pull(pscis_crossing_id)))
-bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
+  filter(stream_crossing_id %in%
+           (pscis_phase2 %>%
+              pull(pscis_crossing_id))) %>%
+  # HHHHHHHHHAAAAAAAAAAACCCCCCCCCCCCCCCCCCCKKKKKKKKKKKKKKK for now we will get rid of NAs
+  filter(!is.na(stream_crossing_id))
+  bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
   mutate(ch_co_sk_network_km = round(ch_co_sk_network_km,2))
 # bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass_archive_2022-03-02-1403", conn = conn)
 bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column_comments", conn = conn)
@@ -47,44 +51,48 @@ bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column
 #   mutate(downstream_route_measure = as.integer(downstream_route_measure))
 # pscis_historic_phase1 <- readwritesqlite::rws_read_table("pscis_historic_phase1", conn = conn)
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
-tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
-rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
+# tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
+# rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
 xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn)
 
-wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
-  mutate(aspect = as.character(aspect)) %>%
+# you won't be able to run this till you make the watersheds yo
+# wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
+#   mutate(aspect = as.character(aspect))
   # issues with particular sites and the aws tiles
-  mutate(elev_min = case_when(
-    stream_crossing_id == 123770 ~ 375,
-    T ~ elev_min),
-    aspect = case_when(
-      stream_crossing_id == 124420 ~ 'NNE',
-      T ~ aspect)
-  )
+  # mutate(elev_min = case_when(
+  #   stream_crossing_id == 123770 ~ 375,
+  #   T ~ elev_min),
+  #   aspect = case_when(
+  #     stream_crossing_id == 124420 ~ 'NNE',
+  #     T ~ aspect)
+  # )
 
-photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
+# won't be able to do this till you load the photo metadata
+# photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
 # fiss_sum <- readwritesqlite::rws_read_table("fiss_sum", conn = conn)
 rws_disconnect(conn)
 
 
-# this doesn't work till our data loads to pscis
+# HACK !!!!!!!!!!!!!!!!!!!!this doesn't work till our data loads to pscis so
+pscis_all <- pscis_all_prep
 
-# pscis_all <- pscis_all_prep
-pscis_all <- left_join(
-  pscis_all_prep,
-  xref_pscis_my_crossing_modelled,
-  by = c('my_crossing_reference' = 'external_crossing_reference')
-) %>%
-  mutate(pscis_crossing_id = case_when(
-    is.na(pscis_crossing_id) ~ as.numeric(stream_crossing_id),
-    T ~ pscis_crossing_id
-  )) %>%
-  # mutate(amalgamated_crossing_id = case_when(
-  #   !is.na(my_crossing_reference) ~ my_crossing_reference,
-  #   T ~ pscis_crossing_id
-  # )) %>%
-  # select(-stream_crossing_id) %>%
-  arrange(pscis_crossing_id)
+# UNHACK - unhash until next UNHACK
+# pscis_all <- left_join(
+#   pscis_all_prep,
+#   xref_pscis_my_crossing_modelled,
+#   by = c('my_crossing_reference' = 'external_crossing_reference')
+# ) %>%
+#   mutate(pscis_crossing_id = case_when(
+#     is.na(pscis_crossing_id) ~ as.numeric(stream_crossing_id),
+#     T ~ pscis_crossing_id
+#   )) %>%
+#   # mutate(amalgamated_crossing_id = case_when(
+#   #   !is.na(my_crossing_reference) ~ my_crossing_reference,
+#   #   T ~ pscis_crossing_id
+#   # )) %>%
+#   # select(-stream_crossing_id) %>%
+#   arrange(pscis_crossing_id)
+# UNHACK to here unhash
 
 
 pscis_all_sf <- pscis_all %>%
@@ -93,11 +101,7 @@ pscis_all_sf <- pscis_all %>%
                crs = 26909, remove = F) %>% ##don't forget to put it in the right crs buds
   sf::st_transform(crs = 3005) ##convert to match the bcfishpass format
 
-# add the elevations for our pscis crossing locations
-# pscis_all_sf <- poisspatial::ps_elevation_google(pscis_all_sf,
-#                                                  key = google_api_key,
-#                                                  Z = 'elev') %>%
-#   mutate(elev = round(elev, 0))
+
 # looks like the api maxes out at 220 queries and we have 223.  As a work around lets make a function then split by source
 fpr_get_elev <- function(dat){
   poisspatial::ps_elevation_google(dat,
@@ -125,42 +129,42 @@ pscis_all_sf <- pscis_all_sf %>%
 
 
 ####-----------report table--------------------
-tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
-  mutate(cost_m_1000s_bridge = cost_m_1000s_bridge * 10) %>%
-  rename(
-    Class = my_road_class,
-    Surface = my_road_surface,
-    `Class Multiplier` = road_class_mult,
-    `Surface Multiplier` = road_surface_mult,
-    `Bridge $K/10m` = cost_m_1000s_bridge,
-    `Streambed Simulation $K` = cost_embed_cv
-  ) %>%
-  filter(!is.na(Class)) %>%
-  mutate(Class = stringr::str_to_title(Class),
-         Surface = stringr::str_to_title(Surface)
-  )
-
-
-
-pscis_rd <- left_join(
-  rd_class_surface,
-  xref_pscis_my_crossing_modelled,
-  by = c('my_crossing_reference' = 'external_crossing_reference')
-) %>%
-  mutate(stream_crossing_id = as.numeric(stream_crossing_id)) %>% #should be able to remove this after we have the data in?
-  mutate(pscis_crossing_id = case_when(!is.na(stream_crossing_id) ~ stream_crossing_id,
-                                       T ~ pscis_crossing_id)) %>%
-  select(-stream_crossing_id)
-  # filter(distance < 100)
-
-
-
-
+#  HACK hashout for now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! becasue some columns are now missing from bcfishpass.crossings
+# tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
+#   mutate(cost_m_1000s_bridge = cost_m_1000s_bridge * 10) %>%
+#   rename(
+#     Class = my_road_class,
+#     Surface = my_road_surface,
+#     `Class Multiplier` = road_class_mult,
+#     `Surface Multiplier` = road_surface_mult,
+#     `Bridge $K/10m` = cost_m_1000s_bridge,
+#     `Streambed Simulation $K` = cost_embed_cv
+#   ) %>%
+#   filter(!is.na(Class)) %>%
+#   mutate(Class = stringr::str_to_title(Class),
+#          Surface = stringr::str_to_title(Surface)
+#   )
+#
+# pscis_rd <- left_join(
+#   rd_class_surface,
+#   xref_pscis_my_crossing_modelled,
+#   by = c('my_crossing_reference' = 'external_crossing_reference')
+# ) %>%
+#   mutate(stream_crossing_id = as.numeric(stream_crossing_id)) %>% #should be able to remove this after we have the data in?
+#   mutate(pscis_crossing_id = case_when(!is.na(stream_crossing_id) ~ stream_crossing_id,
+#                                        T ~ pscis_crossing_id)) %>%
+#   select(-stream_crossing_id)
+#   # filter(distance < 100)
+#  HACK bottom hashout for now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
 
-#------------------make the tables for the methods----------
+
+
+
+
+#------------------make the tables for the methods---------- this should be added to fpr data-raw
 tab_habvalue <- tibble::tibble(`Habitat Value` = c('High', 'Medium', 'Low'),
                                 `Fish Habitat Criteria` = c(
                                   'The presence of high value spawning or rearing habitat (e.g., locations with abundance of suitably sized gravels, deep pools, undercut banks, or stable debris) which are critical to the fish population.',
