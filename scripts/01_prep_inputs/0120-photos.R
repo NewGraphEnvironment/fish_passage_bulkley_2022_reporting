@@ -374,10 +374,10 @@ do_these_bud <- fpr::fpr_photo_qa()[
 
 # here is the test for missing individual photos
 test <- fpr::fpr_photo_qa() %>%
-  bind_rows()
+  bind_rows() %>%
   dplyr::filter(if_any(everything(), is.na))
 
-
+test
 
 # build photo amalgamation for each site ------------------------------------------------
 pscis_all <- fpr::fpr_import_pscis_all() %>%
