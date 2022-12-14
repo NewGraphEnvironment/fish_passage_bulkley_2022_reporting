@@ -17,16 +17,17 @@ conn <- DBI::dbConnect(
 )
 
 #
-# ##listthe schemas in the database
-# dbGetQuery(conn,
-#            "SELECT schema_name
-#            FROM information_schema.schemata")
+##listthe schemas in the database
+dbGetQuery(conn,
+           "SELECT schema_name
+           FROM information_schema.schemata")
+
 # #
 # # # ##list tables in a schema
 dbGetQuery(conn,
            "SELECT table_name
            FROM information_schema.tables
-           WHERE table_schema='bcfishpass'") %>%
+           WHERE table_schema='bcfishpass'")
   filter(table_name %ilike% 'prec')
 # # # # # #
 # # # # # # ##list column names in a table
