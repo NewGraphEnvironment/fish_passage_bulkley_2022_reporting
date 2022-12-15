@@ -24,7 +24,7 @@ my_site2 <- 195944
 
 `r fpr::fpr_appendix_title()`
 
-## Site Location {.unnumbered}
+## Site Location {-}
 
 PSCIS crossing `r as.character(my_site)` is located on the Upper Bulkley
 River approximately 22.5km east of Topley, BC. PSCIS crossing
@@ -38,7 +38,7 @@ Transportation and Infrastructure.
 
 <br>
 
-## Background {.unnumbered}
+## Background {-}
 
 At crossing `r as.character(my_site)`, the Upper Bulkey River is a
 `r fpr::fpr_my_bcfishpass() %>% english::ordinal()` order stream with a
@@ -47,7 +47,7 @@ watershed area upstream of the crossing of approximately
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to `r fpr::fpr_my_wshd(col = 'elev_site')`m at the
 crossing (Table \@ref(tab:tab-wshd-195943)). Upstream of crossing
 `r as.character(my_site)`, `r fpr::fpr_my_fish_sp()` have previously
-been recorded upstream [@moe2020KnownBC; @norris2020bcfishobs].
+been recorded upstream [@moe2020KnownBC; @norris2020bcfishobs]. 
 
 <br>
 
@@ -164,7 +164,15 @@ fpr::fpr_table_cv_summary_memo(site = my_site2, site_photo_id = my_site2)
 
 ```
 
-## Stream Characteristics Upstream {.unnumbered}
+
+```{r tab-culvert-1805507, eval = T}
+fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = 1805507, site_photo_id = 1805507, col_filter = my_crossing_reference)
+
+```
+
+
+
+## Stream Characteristics Upstream of `r as.character(my_site)` and Downstream of `r as.character(my_site2)` {-}
 
 `r fpr_my_survey_dist(loc = 'us')`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195943-03) - \\@ref(fig:photo-195943-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d02))."))`
@@ -198,7 +206,7 @@ rearing and spawning.
 
 <br>
 
-
+## Stream Characteristics Upstream of `r as.character(my_site2)` {-}
 
 ## Structure Remediation and Cost Estimate {-}
 
