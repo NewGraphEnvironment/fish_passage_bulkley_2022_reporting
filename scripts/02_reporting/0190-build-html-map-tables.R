@@ -4,6 +4,7 @@ source('scripts/packages.R')
 
 
 unlink('docs/sum/bcfp', recursive = T) #erase the file and start over every time
+dir.create('docs/sum')
 dir.create('docs/sum/bcfp')
 
 
@@ -14,8 +15,6 @@ bcfishpass %>%
   filter(stream_crossing_id %in% (pscis_all %>% pull(pscis_crossing_id))) %>%
   pull(stream_crossing_id) %>%
   purrr::map(fpr::fpr_table_bcfp_html)
-
-
 
 unlink('docs/sum/cv', recursive = T) #erase the file and start over every time
 dir.create('docs/sum/cv')
