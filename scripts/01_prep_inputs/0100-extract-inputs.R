@@ -850,7 +850,7 @@ hab_loc <- habitat_confirmations %>%
 
 ##add the species code
 hab_fish_codes <- habitat_confirmations %>%
-  purrr::pluck("species_by_group") %>% ##changed from specie_by_common_name because BB burbot was wrong!!
+  purrr::pluck("species_by_common_name") %>% ##changed from species_by_group but BB burbot was wrong!!
   select(-step)
 
 hab_fish_indiv_prep2 <- left_join(
