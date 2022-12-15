@@ -5,6 +5,7 @@
 
 # add project specific variables ------------------------------------------
 filename_html <- 'Skeena2021'
+repo_name <- 'fish_passage_bulkley_2022_reporting'
 maps_location <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/'
 maps_location_zip <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/bulkley_2022-05-02.zip'
 
@@ -43,7 +44,7 @@ bcfishpass_phase2 <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) 
               pull(pscis_crossing_id))) %>%
   # HHHHHHHHHAAAAAAAAAAACCCCCCCCCCCCCCCCCCCKKKKKKKKKKKKKKK for now we will get rid of NAs
   filter(!is.na(stream_crossing_id))
-  bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
+bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
   mutate(ch_co_sk_network_km = round(ch_co_sk_network_km,2))
 # bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass_archive_2022-03-02-1403", conn = conn)
 bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column_comments", conn = conn)
@@ -54,10 +55,8 @@ bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn
 # tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
 # rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
 xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn)
-
-# you won't be able to run this till you make the watersheds yo
-# wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
-#   mutate(aspect = as.character(aspect))
+wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
+  mutate(aspect = as.character(aspect))
   # issues with particular sites and the aws tiles
   # mutate(elev_min = case_when(
   #   stream_crossing_id == 123770 ~ 375,
@@ -345,17 +344,26 @@ phase1_priorities <- pscis_all %>%
 
 
 ##turn spreadsheet into list of data frames
+#  HACK !!!!we don't yet have pscis_crossing_id s
 pscis_phase1_for_tables <- pscis_all %>%
   filter(source %ilike% 'phase1') %>%
-  arrange(pscis_crossing_id)
+  # HACK
+  arrange(site_id)
+# UNHACK below
+  # arrange(pscis_crossing_id)
 
 
 pscis_split <- pscis_phase1_for_tables  %>% #pscis_phase1_reassessments
   # sf::st_drop_geometry() %>%
   # mutate_if(is.numeric, as.character) %>% ##added this to try to get the outlet drop to not disapear
   # tibble::rownames_to_column() %>%
-  dplyr::group_split(pscis_crossing_id) %>%
-  purrr::set_names(pscis_phase1_for_tables$pscis_crossing_id)
+  # HACK
+  dplyr::group_split(site_id) %>%
+  # UNHACK below
+  # dplyr::group_split(pscis_crossing_id) %>%
+  # HACK
+  purrr::set_names(pscis_phase1_for_tables$site_id)
+  # purrr::set_names(pscis_phase1_for_tables$pscis_crossing_id)
 
 ##make result summary tables for each of the crossings
 tab_summary <- pscis_split %>%
@@ -371,12 +379,21 @@ tab_photo_url <- list.files(path = paste0(getwd(), '/data/photos/'), full.names 
   mutate(value = as.integer(value)) %>%  ##need this to sort
   dplyr::arrange(value)  %>%
   mutate(photo = paste0('![](data/photos/', value, '/crossing_all.JPG)')) %>%
-  filter(value %in% pscis_phase1_for_tables$my_crossing_reference)  %>% ##we don't want all the photos - just the phase 1 photos for this use case!!!
-  left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>% ##we need to add the pscis id so that we can sort the same
-  arrange(stream_crossing_id) %>%
+  filter(value %in% pscis_phase1_for_tables$my_crossing_reference) %>% ##we don't want all the photos - just the phase 1 photos for this use case!!!
+  #  HACK but might not need to change back?
+  left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'site_id')) %>%   ##we need to add the pscis id so that we can sort the same
+  # left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>% ##we need to add the pscis id so that we can sort the same
+  # HACK
+  arrange(value) %>%
+  # arrange(stream_crossing_id) %>%
+  # HACk
+  mutate(site_id = value) %>%
   select(-value) %>%
-  # pull(photo)
-  dplyr::group_split(stream_crossing_id)
+  # HACK
+  dplyr::group_split(site_id)
+  # dplyr::group_split(stream_crossing_id)
+
+
   # purrr::set_names(nm = . %>% bind_rows() %>% arrange(value) %>% pull(stream_crossing_id)) %>%
   # bind_rows()
   # arrange(stream_crossing_id) %>%
@@ -479,7 +496,8 @@ hab_fish_collect_map_prep2 <- left_join(
 
 ##add the species code
 hab_fish_codes <- habitat_confirmations %>%
-  purrr::pluck("species_by_group") %>% ##changed from specie_by_common_name because BB burbot was wrong!!
+  # HACK changed from species_by_group because not importing right but BB burbot will be wrong!!
+  purrr::pluck("species_by_common_name") %>%
   select(-step)
 
 # this is the table to burn to geojson for mapping
@@ -492,10 +510,10 @@ hab_fish_collect_map_prep3 <- left_join(
 
   select(hab_fish_codes, common_name, species_code),
   by = c('species' = 'common_name')
-) %>%
+)
   # this time we ditch the nfc because we don't want it to look like sites are non-fish bearing.  Its a multipass thing
   # WATCH THIS IN THE FUTURE
-  filter(species_code != 'NFC')
+  # filter(species_code != 'NFC')
 
 # need to make an array for mapping the hab_fish_collect files
 # this gives a list column vs an array.  prob easier to use postgres and postgis to make the array
@@ -507,7 +525,7 @@ hab_fish_collect <- left_join(
   hab_fish_collect_map_prep3 %>%
     select(-species, -reference_number, -utm_zone:-utm_northing) %>%
     pivot_wider(names_from = 'site_id', values_from = "species_code") %>%
-    pivot_longer(cols = `197912ds`:`123770us`) %>%
+    pivot_longer(cols = `58067ds`:`58067us`) %>%
     rename(site_id = name,
            species_code = value),
 
@@ -518,7 +536,7 @@ hab_fish_collect <- left_join(
          species_code = stringr::str_replace_all(species_code, ',', ''))
 
 
-rm(hab_fish_collect_map_prep, hab_fish_collect_map_prep2)
+rm(hab_fish_collect_map_prep, hab_fish_collect_map_prep2, test)
 
 hab_fish_collect_prep1 <- habitat_confirmations %>%
   purrr::pluck("step_2_fish_coll_data") %>%
@@ -787,18 +805,18 @@ rm(
 
 
 
-# hab_fish_dens <- hab_fish_indiv %>%
-#   filter(sampling_method == 'electrofishing') %>% ##added this since we now have mt data as well!!
-#   mutate(area = round(ef_length_m * ef_width_m),0) %>%
-#   group_by(local_name, method_number, haul_number_pass_number, ef_length_m, ef_width_m, ef_seconds, area, species_code, life_stage) %>%
-#   summarise(fish_total = length(life_stage)) %>%
-#   ungroup() %>%
-#   mutate(density_100m2 = round(fish_total/area * 100, 1)) %>%
-#   tidyr::separate(local_name, into = c('site', 'location', 'ef'), remove = F) %>%
-#   mutate(site_id = paste0(site, location),
-#          location = case_when(location == 'us' ~ 'Upstream',
-#                               T ~ 'Downstream'),
-#          life_stage = factor(life_stage, levels = c('fry', 'parr', 'juvenile', 'adult')))
+hab_fish_dens <- hab_fish_indiv %>%
+  filter(sampling_method == 'electrofishing') %>% ##added this since we now have mt data as well!!
+  mutate(area = round(ef_length_m * ef_width_m),0) %>%
+  group_by(local_name, method_number, haul_number_pass_number, ef_length_m, ef_width_m, ef_seconds, area, species_code, life_stage) %>%
+  summarise(fish_total = length(life_stage)) %>%
+  ungroup() %>%
+  mutate(density_100m2 = round(fish_total/area * 100, 1)) %>%
+  tidyr::separate(local_name, into = c('site', 'location', 'ef'), remove = F) %>%
+  mutate(site_id = paste0(site, location),
+         location = case_when(location == 'us' ~ 'Upstream',
+                              T ~ 'Downstream'),
+         life_stage = factor(life_stage, levels = c('fry', 'parr', 'juvenile', 'adult')))
 
 # priorities phase 2--------------------------------------------------------------
 #load priorities
@@ -806,9 +824,7 @@ habitat_confirmations_priorities <- readr::read_csv(
   file = "./data/habitat_confirmations_priorities.csv",
   #this is not necessary but we will leave.
   locale = readr::locale(encoding = "UTF-8")) %>%
-  filter(!alias_local_name %like% 'ef' &
-           ##ditch the ef sites and the toboggan site that is passable
-           !alias_local_name %like% '198042') %>% ##ditch the ef sites and the toboggan site that is passable
+  filter(!alias_local_name %like% 'ef') %>%
   # tidyr::separate(local_name, into = c('site', 'location'), remove = F) %>%
   mutate(upstream_habitat_length_km = round(upstream_habitat_length_m/1000,1)) %>%
   rename(local_name = alias_local_name) #did this to stay consistent for later
@@ -863,7 +879,7 @@ bcfishpass_names_updated <- left_join(
 # ## join the new with the old so you can kable(xref_bcfishpass_names_prep) then run in Rmd chunk and copy paste tribble yo
 # xref_bcfishpass_names_prep <- left_join(
 #   bcfishpass_names_updated,
-#   xref_bcfishpass_names_old, #, -column_comment
+#   xref_bcfishpass_names_old %>% select(-column_comment),
 #   by = c('bcfishpass')
 # ) %>%
 #     mutate(report = stringr::str_replace_all(bcfishpass, '_', ' ') %>%
@@ -882,6 +898,7 @@ bcfishpass_names_updated <- left_join(
 #              stringr::str_replace_all('Betweenbarriers', 'Between Barriers') %>%
 #              stringr::str_replace_all('Belowupstrbarriers', 'Below Barriers')) %>%
 #   select(bcfishpass, report, id_join, id_side, column_comment)
+
 
 xref_bcfishpass_names <- tibble::tribble(
                                                                          ~bcfishpass,                                                 ~report, ~id_join, ~id_side,                                                                                                                                                                                                                                          ~column_comment,
@@ -1030,25 +1047,25 @@ xref_bcfishpass_names <- tibble::tribble(
                                              "pk_belowupstrbarriers_slopeclass22_km",                   "Pk Below Barriers Slopeclass22 (km)",       NA,       NA,                                                                                             "Chinook/Coho/Sockeye salmon model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 15-22%",
                                              "pk_belowupstrbarriers_slopeclass30_km",                   "Pk Below Barriers Slopeclass30 (km)",       NA,       NA,                                                                                             "Chinook/Coho/Sockeye salmon model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 22-30%",
                                                                    "access_model_st",                                       "Access Model St",       NA,       NA,                                                                                                                                                                                                          "Modelled accessibility to Steelhead (20% max)",
-                                                                     "st_network_km",                                       "ST Network (km)",       10L,       1L,                                                                                                                                                               "Steelhead model, total length of stream network potentially accessible upstream of point",
+                                                                     "st_network_km",                                       "ST Network (km)",      10L,       1L,                                                                                                                                                               "Steelhead model, total length of stream network potentially accessible upstream of point",
                                                                       "st_stream_km",                                        "ST Stream (km)",       NA,       NA,                                                                                                        "Steelhead model, total length of streams and rivers potentially accessible upstream of point (does not include network connectors in lakes etc)",
-                                                               "st_lakereservoir_ha",                                "ST Lake Reservoir (ha)",       20L,       1L,                                                                                                                                                              "Steelhead model, total area lakes and reservoirs potentially accessible upstream of point",
-                                                                     "st_wetland_ha",                                       "ST Wetland (ha)",       30L,       1L,                                                                                                                                                                          "Steelhead model, total area wetlands potentially accessible upstream of point",
-                                                    "st_slopeclass03_waterbodies_km",                      "ST Slopeclass03 Waterbodies (km)",       40L,       1L,                                                                                                                                 "Steelhead model, length of stream connectors (in waterbodies) potentially accessible upstream of point with slope 0-3%",
-                                                                "st_slopeclass03_km",                                  "ST Slopeclass03 (km)",       50L,       1L,                                                                                                                                                             "Steelhead model, length of stream potentially accessible upstream of point with slope 0-3%",
-                                                                "st_slopeclass05_km",                                  "ST Slopeclass05 (km)",       60L,       1L,                                                                                                                                                             "Steelhead model, length of stream potentially accessible upstream of point with slope 3-5%",
-                                                                "st_slopeclass08_km",                                  "ST Slopeclass08 (km)",       70L,       1L,                                                                                                                                                             "Steelhead model, length of stream potentially accessible upstream of point with slope 5-8%",
+                                                               "st_lakereservoir_ha",                                "ST Lake Reservoir (ha)",      20L,       1L,                                                                                                                                                              "Steelhead model, total area lakes and reservoirs potentially accessible upstream of point",
+                                                                     "st_wetland_ha",                                       "ST Wetland (ha)",      30L,       1L,                                                                                                                                                                          "Steelhead model, total area wetlands potentially accessible upstream of point",
+                                                    "st_slopeclass03_waterbodies_km",                      "ST Slopeclass03 Waterbodies (km)",      40L,       1L,                                                                                                                                 "Steelhead model, length of stream connectors (in waterbodies) potentially accessible upstream of point with slope 0-3%",
+                                                                "st_slopeclass03_km",                                  "ST Slopeclass03 (km)",      50L,       1L,                                                                                                                                                             "Steelhead model, length of stream potentially accessible upstream of point with slope 0-3%",
+                                                                "st_slopeclass05_km",                                  "ST Slopeclass05 (km)",      60L,       1L,                                                                                                                                                             "Steelhead model, length of stream potentially accessible upstream of point with slope 3-5%",
+                                                                "st_slopeclass08_km",                                  "ST Slopeclass08 (km)",      70L,       1L,                                                                                                                                                             "Steelhead model, length of stream potentially accessible upstream of point with slope 5-8%",
                                                                 "st_slopeclass15_km",                                  "ST Slopeclass15 (km)",       NA,       NA,                                                                                                                                                            "Steelhead model, length of stream potentially accessible upstream of point with slope 8-15%",
                                                                 "st_slopeclass22_km",                                  "ST Slopeclass22 (km)",       NA,       NA,                                                                                                                                                           "Steelhead model, length of stream potentially accessible upstream of point with slope 15-22%",
                                                                 "st_slopeclass30_km",                                  "ST Slopeclass30 (km)",       NA,       NA,                                                                                                                                                           "Steelhead model, length of stream potentially accessible upstream of point with slope 22-30%",
-                                                  "st_belowupstrbarriers_network_km",                        "ST Below Barriers Network (km)",       10L,       2L,                                                                                                                    "Steelhead model, total length of stream network potentially accessible upstream of point and below any additional upstream barriers",
+                                                  "st_belowupstrbarriers_network_km",                        "ST Below Barriers Network (km)",      10L,       2L,                                                                                                                    "Steelhead model, total length of stream network potentially accessible upstream of point and below any additional upstream barriers",
                                                    "st_belowupstrbarriers_stream_km",                         "ST Below Barriers Stream (km)",       NA,       NA,                                                             "Steelhead model, total length of streams and rivers potentially accessible upstream of point and below any additional upstream barriers (does not include network connectors in lakes etc)",
-                                            "st_belowupstrbarriers_lakereservoir_ha",                 "ST Below Barriers Lake Reservoir (ha)",       20L,       2L,                                                                                                                   "Steelhead model, total area lakes and reservoirs potentially accessible upstream of point and below any additional upstream barriers",
-                                                  "st_belowupstrbarriers_wetland_ha",                        "ST Below Barriers Wetland (ha)",       30L,       2L,                                                                                                                               "Steelhead model, total area wetlands potentially accessible upstream of point and below any additional upstream barriers",
-                                 "st_belowupstrbarriers_slopeclass03_waterbodies_km",       "ST Below Barriers Slopeclass03 Waterbodies (km)",       40L,       2L,                                                                                     "Steelhead model, length of stream connectors (in waterbodies) potentially accessible upstream of point and below any additional upstream barriers, with slope 0-3%",
-                                             "st_belowupstrbarriers_slopeclass03_km",                   "ST Below Barriers Slopeclass03 (km)",       50L,       2L,                                                                                                                 "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 0-3%",
-                                             "st_belowupstrbarriers_slopeclass05_km",                   "ST Below Barriers Slopeclass05 (km)",       60L,       2L,                                                                                                                 "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 3-5%",
-                                             "st_belowupstrbarriers_slopeclass08_km",                   "ST Below Barriers Slopeclass08 (km)",       70L,       2L,                                                                                                                 "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 5-8%",
+                                            "st_belowupstrbarriers_lakereservoir_ha",                 "ST Below Barriers Lake Reservoir (ha)",      20L,       2L,                                                                                                                   "Steelhead model, total area lakes and reservoirs potentially accessible upstream of point and below any additional upstream barriers",
+                                                  "st_belowupstrbarriers_wetland_ha",                        "ST Below Barriers Wetland (ha)",      30L,       2L,                                                                                                                               "Steelhead model, total area wetlands potentially accessible upstream of point and below any additional upstream barriers",
+                                 "st_belowupstrbarriers_slopeclass03_waterbodies_km",       "ST Below Barriers Slopeclass03 Waterbodies (km)",      40L,       2L,                                                                                     "Steelhead model, length of stream connectors (in waterbodies) potentially accessible upstream of point and below any additional upstream barriers, with slope 0-3%",
+                                             "st_belowupstrbarriers_slopeclass03_km",                   "ST Below Barriers Slopeclass03 (km)",      50L,       2L,                                                                                                                 "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 0-3%",
+                                             "st_belowupstrbarriers_slopeclass05_km",                   "ST Below Barriers Slopeclass05 (km)",      60L,       2L,                                                                                                                 "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 3-5%",
+                                             "st_belowupstrbarriers_slopeclass08_km",                   "ST Below Barriers Slopeclass08 (km)",      70L,       2L,                                                                                                                 "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 5-8%",
                                              "st_belowupstrbarriers_slopeclass15_km",                   "ST Below Barriers Slopeclass15 (km)",       NA,       NA,                                                                                                                "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 8-15%",
                                              "st_belowupstrbarriers_slopeclass22_km",                   "ST Below Barriers Slopeclass22 (km)",       NA,       NA,                                                                                                               "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 15-22%",
                                              "st_belowupstrbarriers_slopeclass30_km",                   "ST Below Barriers Slopeclass30 (km)",       NA,       NA,                                                                                                               "Steelhead model, length of stream potentially accessible upstream of point and below any additional upstream barriers, with slope 22-30%",
@@ -1091,10 +1108,10 @@ xref_bcfishpass_names <- tibble::tribble(
                                                  "sk_spawning_belowupstrbarriers_km",                       "SK Spawning Below Barriers (km)",     150L,       2L,                                                                                                                          "Length of stream upstream of point and below any additional upstream barriers, modelled as potential Sockeye spawning habitat",
                                                   "sk_rearing_belowupstrbarriers_km",                        "SK Rearing Below Barriers (km)",     160L,       2L,                                                                                                                           "Length of stream upstream of point and below any additional upstream barriers, modelled as potential Sockeye rearing habitat",
                                                   "sk_rearing_belowupstrbarriers_ha",                        "SK Rearing Below Barriers (ha)",     165L,       2L,                                                                                                                              "Area of lakes upstream of point and below any additional upstream barriers, modelled as potential Sockeye rearing habitat",
-                                                                    "st_spawning_km",                                      "ST Spawning (km)",     80L,       1L,                                                                                                                                                                    "Length of stream upstream of point modelled as potential Steelhead spawning habitat",
-                                                                     "st_rearing_km",                                       "ST Rearing (km)",     90L,       1L,                                                                                                                                                                     "Length of stream upstream of point modelled as potential Steelhead rearing habitat",
-                                                 "st_spawning_belowupstrbarriers_km",                       "ST Spawning Below Barriers (km)",     80L,       2L,                                                                                                                        "Length of stream upstream of point and below any additional upstream barriers, modelled as potential Steelhead spawning habitat",
-                                                  "st_rearing_belowupstrbarriers_km",                        "ST Rearing Below Barriers (km)",     90L,       2L,                                                                                                                         "Length of stream upstream of point and below any additional upstream barriers, modelled as potential Steelhead rearing habitat",
+                                                                    "st_spawning_km",                                      "ST Spawning (km)",      80L,       1L,                                                                                                                                                                    "Length of stream upstream of point modelled as potential Steelhead spawning habitat",
+                                                                     "st_rearing_km",                                       "ST Rearing (km)",      90L,       1L,                                                                                                                                                                     "Length of stream upstream of point modelled as potential Steelhead rearing habitat",
+                                                 "st_spawning_belowupstrbarriers_km",                       "ST Spawning Below Barriers (km)",      80L,       2L,                                                                                                                        "Length of stream upstream of point and below any additional upstream barriers, modelled as potential Steelhead spawning habitat",
+                                                  "st_rearing_belowupstrbarriers_km",                        "ST Rearing Below Barriers (km)",      90L,       2L,                                                                                                                         "Length of stream upstream of point and below any additional upstream barriers, modelled as potential Steelhead rearing habitat",
                                                                    "wct_spawning_km",                                     "WCT Spawning (km)",       NA,       NA,                                                                                                                                                          "Length of stream upstream of point modelled as potential Westslope Cutthroat spawning habitat",
                                                                     "wct_rearing_km",                                      "WCT Rearing (km)",       NA,       NA,                                                                                                                                                           "Length of stream upstream of point modelled as potential Westslope Cutthroat rearing habitat",
                                                 "wct_spawning_belowupstrbarriers_km",                      "WCT Spawning Below Barriers (km)",       NA,       NA,                                                                                                              "Length of stream upstream of point and below any additional upstream barriers, modelled as potential Westslope Cutthroat spawning habitat",
@@ -1111,6 +1128,7 @@ xref_bcfishpass_names <- tibble::tribble(
                                             "wct_spawningrearing_betweenbarriers_km",            "WCT Spawning Rearing Between Barriers (km)",       NA,       NA,                                                                                                                     "Westslope Cutthroat Trout model, total length of spawning and rearing habitat between crossing and all in-stream adjacent barriers",
                                                    "all_spawningrearing_per_barrier",                      "All Spawning Rearing Per Barrier",       NA,       NA, "If the given barrier and all barriers downstream were remediated, the amount of connected spawning/rearing habitat that would be added, per barrier. (ie the sum of all_spawningrearing_belowupstrbarriers_km for all barriers, divided by n barriers)"
                            )
+
 
 
 
@@ -1193,55 +1211,42 @@ tab_hab_summary <- left_join(
 
 ## phase1 --------------------
 #make the cost estimates
-tab_cost_est_prep <- left_join(
-  pscis_rd %>%
-    arrange(aggregated_crossings_id) %>%
-    # Corya is messed up for some reason
-    mutate(my_road_class = case_when(pscis_crossing_id == 197960 ~ 'rail',
-                                     T ~ my_road_class),
-           my_road_surface = case_when(pscis_crossing_id == 197960 ~ 'rail',
-                                       T ~ my_road_surface)),
-  select(tab_cost_rd_mult, my_road_class, my_road_surface, cost_m_1000s_bridge, cost_embed_cv),
-  by = c('my_road_class','my_road_surface')
-) %>%
-  # station was entered wrong the first time so is messed in pscis_rd
-  mutate(recommended_diameter_or_span_meters = case_when(
-    pscis_crossing_id == 124420 ~ 30,
-    T ~ recommended_diameter_or_span_meters
-  ),
-  crossing_fix = case_when(
-    pscis_crossing_id == 197960 ~ 'Replace with New Open Bottom Structure',
-    T ~ crossing_fix
-  ))
+# HACK !!!!!!!!!!!!!!!!!!!!!!! turned off all cost estimate data for now
+# tab_cost_est_prep <- left_join(
+#   pscis_rd %>%
+#     arrange(aggregated_crossings_id) %>%
+#   select(tab_cost_rd_mult, my_road_class, my_road_surface, cost_m_1000s_bridge, cost_embed_cv),
+#   by = c('my_road_class','my_road_surface')
+# )
 
 
 
-tab_cost_est_prep2 <- left_join(
-  tab_cost_est_prep,
-  select(xref_structure_fix, crossing_fix, crossing_fix_code),
-  by = c('crossing_fix')
-) %>%
-  mutate(cost_est_1000s = case_when(
-    crossing_fix_code == 'SS-CBS' ~ cost_embed_cv,
-    crossing_fix_code == 'OBS' ~ cost_m_1000s_bridge * recommended_diameter_or_span_meters)
-  ) %>%
-  mutate(cost_est_1000s = round(cost_est_1000s, 0))
+# tab_cost_est_prep2 <- left_join(
+#   tab_cost_est_prep,
+#   select(xref_structure_fix, crossing_fix, crossing_fix_code),
+#   by = c('crossing_fix')
+# ) %>%
+#   mutate(cost_est_1000s = case_when(
+#     crossing_fix_code == 'SS-CBS' ~ cost_embed_cv,
+#     crossing_fix_code == 'OBS' ~ cost_m_1000s_bridge * recommended_diameter_or_span_meters)
+#   ) %>%
+#   mutate(cost_est_1000s = round(cost_est_1000s, 0))
 
 
 
 ##add in the model data.  This is a good reason for the data to be input first so that we can use the net distance!!
-tab_cost_est_prep3 <- left_join(
-  tab_cost_est_prep2,
-  bcfishpass %>%
-    select(stream_crossing_id,
-           st_network_km,
-           st_belowupstrbarriers_network_km),
-  by = c('pscis_crossing_id' = 'stream_crossing_id')
-) %>%
-  mutate(cost_net = round(st_belowupstrbarriers_network_km * 1000/cost_est_1000s, 1),
-         cost_gross = round(st_network_km * 1000/cost_est_1000s, 1),
-         cost_area_net = round((st_belowupstrbarriers_network_km * 1000 * downstream_channel_width_meters * 0.5)/cost_est_1000s, 1), ##this is a triangle area!
-         cost_area_gross = round((st_network_km * 1000 * downstream_channel_width_meters * 0.5)/cost_est_1000s, 1)) ##this is a triangle area!
+# tab_cost_est_prep3 <- left_join(
+#   tab_cost_est_prep2,
+#   bcfishpass %>%
+#     select(stream_crossing_id,
+#            st_network_km,
+#            st_belowupstrbarriers_network_km),
+#   by = c('pscis_crossing_id' = 'stream_crossing_id')
+# ) %>%
+#   mutate(cost_net = round(st_belowupstrbarriers_network_km * 1000/cost_est_1000s, 1),
+#          cost_gross = round(st_network_km * 1000/cost_est_1000s, 1),
+#          cost_area_net = round((st_belowupstrbarriers_network_km * 1000 * downstream_channel_width_meters * 0.5)/cost_est_1000s, 1), ##this is a triangle area!
+#          cost_area_gross = round((st_network_km * 1000 * downstream_channel_width_meters * 0.5)/cost_est_1000s, 1)) ##this is a triangle area!
 
 
 # # ##add the xref stream_crossing_id
@@ -1256,41 +1261,41 @@ tab_cost_est_prep3 <- left_join(
 #   ))
 
 ##add the priority info
-tab_cost_est_phase1_prep <- left_join(
-  phase1_priorities %>% select(aggregated_crossings_id,
-         priority_phase1),
-  tab_cost_est_prep3, #not sure why this isn't prep4...
-  by = 'aggregated_crossings_id'
-) %>%
-  arrange(aggregated_crossings_id) %>%
-  select(pscis_crossing_id, my_crossing_reference, my_crossing_reference, stream_name, road_name,
-         barrier_result, habitat_value, downstream_channel_width_meters,
-         priority_phase1,
-         crossing_fix_code, cost_est_1000s, st_network_km,
-         cost_gross, cost_area_gross, source) %>%
-  filter(barrier_result != 'Unknown' & barrier_result != 'Passable')
+# tab_cost_est_phase1_prep <- left_join(
+#   phase1_priorities %>% select(aggregated_crossings_id,
+#          priority_phase1),
+#   tab_cost_est_prep3, #not sure why this isn't prep4...
+#   by = 'aggregated_crossings_id'
+# ) %>%
+#   arrange(aggregated_crossings_id) %>%
+#   select(pscis_crossing_id, my_crossing_reference, my_crossing_reference, stream_name, road_name,
+#          barrier_result, habitat_value, downstream_channel_width_meters,
+#          priority_phase1,
+#          crossing_fix_code, cost_est_1000s, st_network_km,
+#          cost_gross, cost_area_gross, source) %>%
+#   filter(barrier_result != 'Unknown' & barrier_result != 'Passable')
 
 # too_far_away <- tab_cost_est %>% filter(distance > 100) %>% ##after review all crossing match!!!!! Baren rail is the hwy but that is fine. added source, distance, crossing_id above
 #   filter(source %like% 'phase2')
 
-tab_cost_est_phase1 <- tab_cost_est_phase1_prep %>%
-  rename(
-    `PSCIS ID` = pscis_crossing_id,
-    `External ID` = my_crossing_reference,
-    Priority = priority_phase1,
-    Stream = stream_name,
-    Road = road_name,
-    Result = barrier_result,
-    `Habitat value` = habitat_value,
-    `Stream Width (m)` = downstream_channel_width_meters,
-    Fix = crossing_fix_code,
-    `Cost Est ( $K)` =  cost_est_1000s,
-    `Habitat Upstream (km)` = st_network_km,
-    `Cost Benefit (m / $K)` = cost_gross,
-    `Cost Benefit (m2 / $K)` = cost_area_gross) %>%
-  filter(!is.na(Priority)) %>%
-  filter(!source %like% 'phase2') %>%
-  select(-source)
+# tab_cost_est_phase1 <- tab_cost_est_phase1_prep %>%
+#   rename(
+#     `PSCIS ID` = pscis_crossing_id,
+#     `External ID` = my_crossing_reference,
+#     Priority = priority_phase1,
+#     Stream = stream_name,
+#     Road = road_name,
+#     Result = barrier_result,
+#     `Habitat value` = habitat_value,
+#     `Stream Width (m)` = downstream_channel_width_meters,
+#     Fix = crossing_fix_code,
+#     `Cost Est ( $K)` =  cost_est_1000s,
+#     `Habitat Upstream (km)` = st_network_km,
+#     `Cost Benefit (m / $K)` = cost_gross,
+#     `Cost Benefit (m2 / $K)` = cost_area_gross) %>%
+#   filter(!is.na(Priority)) %>%
+#   filter(!source %like% 'phase2') %>%
+#   select(-source)
 
 #
 # tab_cost_est_phase1 <- tab_cost_est_phase1_prep %>%
@@ -1298,59 +1303,59 @@ tab_cost_est_phase1 <- tab_cost_est_phase1_prep %>%
 #   select(-source)
 
 ## phase2 --------------------
-tab_cost_est_prep4 <- left_join(
-  tab_cost_est_prep3,
-  select(
-    filter(habitat_confirmations_priorities, location == 'us'),
-    site, upstream_habitat_length_m),
-  by = c('pscis_crossing_id' = 'site')
-)
+# tab_cost_est_prep4 <- left_join(
+#   tab_cost_est_prep3,
+#   select(
+#     filter(habitat_confirmations_priorities, location == 'us'),
+#     site, upstream_habitat_length_m),
+#   by = c('pscis_crossing_id' = 'site')
+# )
 
 # tab_cost_est_prep4 %>% filter(stream_name %ilike% 'parker')
 
 
-tab_cost_est_prep5 <- left_join(
-  tab_cost_est_prep4,
-  select(hab_site %>% filter(
-    !alias_local_name %like% 'ds' &
-      !alias_local_name %like% 'ef' &
-    !alias_local_name %like% '\\d$'),
-    site,
-    avg_channel_width_m),
-  by = c('pscis_crossing_id' = 'site')
-) %>%
-  ##intervention for Robert Hatch to reflect the bridge removal.
-  mutate(cost_est_1000s = case_when(pscis_crossing_id == 197912 ~ 30, T ~ cost_est_1000s)) %>%
-  mutate(cost_net = round(upstream_habitat_length_m/cost_est_1000s, 1),
-         cost_area_net = round((upstream_habitat_length_m * avg_channel_width_m)/cost_est_1000s, 1)) #downstream_channel_width_meters
+# tab_cost_est_prep5 <- left_join(
+#   tab_cost_est_prep4,
+#   select(hab_site %>% filter(
+#     !alias_local_name %like% 'ds' &
+#       !alias_local_name %like% 'ef' &
+#     !alias_local_name %like% '\\d$'),
+#     site,
+#     avg_channel_width_m),
+#   by = c('pscis_crossing_id' = 'site')
+# ) %>%
+#   ##intervention for Robert Hatch to reflect the bridge removal.
+#   mutate(cost_est_1000s = case_when(pscis_crossing_id == 197912 ~ 30, T ~ cost_est_1000s)) %>%
+#   mutate(cost_net = round(upstream_habitat_length_m/cost_est_1000s, 1),
+#          cost_area_net = round((upstream_habitat_length_m * avg_channel_width_m)/cost_est_1000s, 1)) #downstream_channel_width_meters
 
 
 ##add the priority info
-tab_cost_est_phase2 <- tab_cost_est_prep5 %>%
-  filter(source %like% 'phase2') %>%
-  select(pscis_crossing_id, stream_name, road_name, barrier_result, habitat_value, avg_channel_width_m,
-         crossing_fix_code, cost_est_1000s, upstream_habitat_length_m,
-         cost_net, cost_area_net, source) %>%
-  mutate(upstream_habitat_length_m = round(upstream_habitat_length_m,0))
-  ##we have a hickup in the dry creek estimate.  Lets just fix it here
-  # mutate(cost_est_1000s = case_when(pscis_crossing_id == 62182 ~ 7200,
-  #                                   T ~ cost_est_1000s))
-
-tab_cost_est_phase2_report <- tab_cost_est_phase2 %>%
-  dplyr::arrange(pscis_crossing_id) %>%
-  # filter(source %like% 'phase2') %>%
-  rename(`PSCIS ID` = pscis_crossing_id,
-         Stream = stream_name,
-         Road = road_name,
-         Result = barrier_result,
-         `Habitat value` = habitat_value,
-         `Stream Width (m)` = avg_channel_width_m,
-         Fix = crossing_fix_code,
-         `Cost Est (in $K)` =  cost_est_1000s,
-         `Habitat Upstream (m)` = upstream_habitat_length_m,
-         `Cost Benefit (m / $K)` = cost_net,
-         `Cost Benefit (m2 / $K)` = cost_area_net) %>%
-  select(-source)
+# tab_cost_est_phase2 <- tab_cost_est_prep5 %>%
+#   filter(source %like% 'phase2') %>%
+#   select(pscis_crossing_id, stream_name, road_name, barrier_result, habitat_value, avg_channel_width_m,
+#          crossing_fix_code, cost_est_1000s, upstream_habitat_length_m,
+#          cost_net, cost_area_net, source) %>%
+#   mutate(upstream_habitat_length_m = round(upstream_habitat_length_m,0))
+#   ##we have a hickup in the dry creek estimate.  Lets just fix it here
+#   # mutate(cost_est_1000s = case_when(pscis_crossing_id == 62182 ~ 7200,
+#   #                                   T ~ cost_est_1000s))
+#
+# tab_cost_est_phase2_report <- tab_cost_est_phase2 %>%
+#   dplyr::arrange(pscis_crossing_id) %>%
+#   # filter(source %like% 'phase2') %>%
+#   rename(`PSCIS ID` = pscis_crossing_id,
+#          Stream = stream_name,
+#          Road = road_name,
+#          Result = barrier_result,
+#          `Habitat value` = habitat_value,
+#          `Stream Width (m)` = avg_channel_width_m,
+#          Fix = crossing_fix_code,
+#          `Cost Est (in $K)` =  cost_est_1000s,
+#          `Habitat Upstream (m)` = upstream_habitat_length_m,
+#          `Cost Benefit (m / $K)` = cost_net,
+#          `Cost Benefit (m2 / $K)` = cost_area_net) %>%
+#   select(-source)
 
 
 rm(tab_cost_est_prep, tab_cost_est_prep2,
@@ -1373,27 +1378,28 @@ hab_loc_prep <- left_join(
 #need to populate the coordinates before this will work
 ###please note that the photos are only in those files ecause they are referenced in other parts
 #of the document
-tab_hab_map <- left_join(
-  tab_cost_est_phase2 %>% filter(source %like% 'phase2'),
-  hab_loc_prep %>% select(site, priority, utm_easting, utm_northing, comments),
-  by = c('pscis_crossing_id' = 'site')
-)  %>%
-  sf::st_as_sf(coords = c("utm_easting", "utm_northing"),
-               crs = 26909, remove = F) %>%
-  sf::st_transform(crs = 4326) %>%
-  ##changed this to docs .html from fig .png
-  # mutate(data_link = paste0('<a href =',
-  #                           'https://github.com/NewGraphEnvironment/fish_passage_bulkley_2020_reporting/tree/master/docs/sum/', pscis_crossing_id,
-  #                           '.html', '>', 'data link', '</a>')) %>%
-  mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) %>%
-  # mutate(photo_link = paste0('<a href =', 'data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
-  #                            'target="_blank">Culvert Photos</a>')) %>%
-  mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) %>%
-  # mutate(photo_link = paste0('<a href =',
-  #                            'https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/tree/master/data/photos/', pscis_crossing_id,
-  #                            '/crossing_all.JPG', '>', 'photo link', '</a>')) %>%
-  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/master/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
-                             'target="_blank">Culvert Photos</a>'))
+# HACK - uss a cost estimate table so turned off
+# tab_hab_map <- left_join(
+#   tab_cost_est_phase2 %>% filter(source %like% 'phase2'),
+#   hab_loc_prep %>% select(site, priority, utm_easting, utm_northing, comments),
+#   by = c('pscis_crossing_id' = 'site')
+# )  %>%
+#   sf::st_as_sf(coords = c("utm_easting", "utm_northing"),
+#                crs = 26909, remove = F) %>%
+#   sf::st_transform(crs = 4326) %>%
+#   ##changed this to docs .html from fig .png
+#   # mutate(data_link = paste0('<a href =',
+#   #                           'https://github.com/NewGraphEnvironment/fish_passage_bulkley_2020_reporting/tree/master/docs/sum/', pscis_crossing_id,
+#   #                           '.html', '>', 'data link', '</a>')) %>%
+#   mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) %>%
+#   # mutate(photo_link = paste0('<a href =', 'data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
+#   #                            'target="_blank">Culvert Photos</a>')) %>%
+#   mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) %>%
+#   # mutate(photo_link = paste0('<a href =',
+#   #                            'https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/tree/master/data/photos/', pscis_crossing_id,
+#   #                            '/crossing_all.JPG', '>', 'photo link', '</a>')) %>%
+#   mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/master/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
+#                              'target="_blank">Culvert Photos</a>'))
 
 
 #--------------need to review if this is necessary
@@ -1402,34 +1408,30 @@ tab_map_prep <- left_join(
     sf::st_as_sf(coords = c("easting", "northing"),
                  crs = 26909, remove = F) %>% ##don't forget to put it in the right crs buds
     sf::st_transform(crs = 4326), ##convert to match the bcfishpass format,
-  phase1_priorities %>% select(-utm_zone:utm_northing, -my_crossing_reference, priority_phase1, -habitat_value, -barrier_result), # %>% st_drop_geometry()
-  by = 'pscis_crossing_id'
+
+  phase1_priorities %>%
+    select(-utm_zone:utm_northing,
+           -my_crossing_reference,
+           # HACK added 1 line below
+           -pscis_crossing_id,
+           priority_phase1,
+           -habitat_value,
+           -barrier_result),
+  # HACK
+  by = 'aggregated_crossings_id'
+  # by = 'pscis_crossing_id'
 )
 
 
 tab_map <- tab_map_prep %>%
-  # mutate(pscis_crossing_id = as.character(pscis_crossing_id),
-  #        my_crossing_reference = as.character(my_crossing_reference)) %>%
-  # mutate(ID = case_when(
-  #   !is.na(pscis_crossing_id) ~ pscis_crossing_id,
-  #   T ~ paste0('*', my_crossing_reference
-  #   ))) %>%
-  # sf::st_as_sf(coords = c("utm_easting", "utm_northing"),
-  #              crs = 26911, remove = F) %>%
-  # sf::st_transform(crs = 4326) %>%
   mutate(priority_phase1 = case_when(priority_phase1 == 'mod' ~ 'moderate',
                                      T ~ priority_phase1)) %>%
   mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) %>%
-  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/master/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
+  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/', repo_name, '/master/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
                              'target="_blank">Culvert Photos</a>')) %>%
   mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) %>%
   dplyr::distinct(site_id, .keep_all = T) #just for now
-# mutate(data_link = paste0('<a href =',
-#                           'https://github.com/NewGraphEnvironment/fish_passage_bulkley_2020_reporting/tree/master/fig/sum/', pscis_crossing_id,
-#                           '.png', '>', 'data link', '</a>')) %>%
-# dplyr::mutate(photo_link = paste0('<a href =',
-#                                   'https://github.com/NewGraphEnvironment/fish_passage_bulkley_2020_reporting/tree/master/data/photos/', amalgamated_crossing_id,
-#                                   '/crossing_all.JPG', '>', 'photo link', '</a>'))
+
 
 
 
