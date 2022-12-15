@@ -2,10 +2,13 @@
 # source('R/packages.R')
 
 
+# define your project repo name
+repo_name <- 'fish_passage_bulkley_2022_reporting'
+
 photo_metadata <- exifr::read_exif('data/photos',recursive=T)  %>%
   janitor::clean_names() %>%
   select(file_name, source_file, gps_latitude, gps_longitude) %>%
-  mutate(url  = paste0('https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/raw/master/',
+  mutate(url  = paste0('https://github.com/NewGraphEnvironment/', repo_name, '/raw/master/',
                        source_file)) %>%
   # base = tools::file_path_sans_ext(filename)) %>%
   filter(
@@ -15,9 +18,6 @@ photo_metadata <- exifr::read_exif('data/photos',recursive=T)  %>%
       # for some reason some of kyle's photos have no coords so need to filter them out
       !is.na(gps_longitude)
   )
-
-# 'https://newgraphenvironment.github.io/fish_passage_elk_2021_reporting/fish_passage_elk_2021_reporting/'
-
 
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
