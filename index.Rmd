@@ -3,10 +3,10 @@ title: "Bulkley Watershed Fish Passage Restoration Planning 2022"
 author: |
  |
  | Prepared for
+ | Canadian Wildlife Federation
  | Habitat Conservation Trust Foundation - CAT23-6-288
  | BC Fish Passage Remediation Program
  | Ministry of Transportation and Infrastructure
- | Canadian Wildlife Federation
  |
  |
  | Prepared by
@@ -73,7 +73,7 @@ font_set <- 9
 
 ```{r}
 source('scripts/packages.R')
-
+source('scripts/tables.R')
 ```
 
 
