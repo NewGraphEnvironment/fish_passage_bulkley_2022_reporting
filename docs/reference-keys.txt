@@ -14,12 +14,9 @@ tab:tab-culvert-195943
 tab:tab-culvert-195944
 tab:tab-culvert-1805507
 tab:tab-habitat-summary-195943
-fig:photo-195943-01
-fig:photo-195943-02
-fig:photo-195943-03
-fig:photo-195943-04
-fig:photo-195943-05
-fig:photo-195943-06
+fig:photo-195943-d01
+fig:photo-195943-d02
+fig:photo-195943-d03
 intro
 background
 wetsuweten

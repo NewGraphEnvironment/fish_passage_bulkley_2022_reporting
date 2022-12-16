@@ -1,4 +1,4 @@
-bookdown::preview_chapter('0100-intro.Rmd')
+bookdown::preview_chapter('0800-appendix-195943-stock.Rmd')
 
 
 #################################################################################################
