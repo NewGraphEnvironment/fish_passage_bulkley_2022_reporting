@@ -114,9 +114,9 @@ wshds <- fpr::fpr_sp_wshd_stats(dat = wshds) %>%
 
 
 # ##add to the geopackage - nned to mak
-wshds %>%
-  sf::st_write(paste0("./data/fishpass_mapping/", 'fishpass_mapping', ".gpkg"), 'hab_wshds',
-               delete_layer = T, append = F) ##might want to f the append....
+#wshds %>%
+#  sf::st_write(paste0("./data/fishpass_mapping/", 'fishpass_mapping', ".gpkg"), 'hab_wshds',
+#               delete_layer = T, append = F) ##might want to f the append....
 
 
 #burn to kml as well so we can see elevations
