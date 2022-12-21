@@ -26,7 +26,7 @@ my_site2 <- 197657
 PSCIS crossing `r as.character(my_site)` is located on
 `r fpr::fpr_my_pscis_info()` approximately 10km west of Topley, BC.
 PSCIS crossing `r as.character(my_site)` is located on
-`r fpr_my_pscis_info(col_pull = road_name)`, approximately 500m upstream
+`r fpr_my_pscis_info(col_pull = road_name)`, `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream
 from the confluence with the Bulkley River. Crossing 197653 is the
 responsibility of the Ministry of Transportation and Infrastructure.
 
@@ -40,9 +40,9 @@ watershed area upstream of the crossing of approximately
 `r fpr::fpr_my_wshd()`km^2^. The elevation of the watershed ranges from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 `r fpr::fpr_my_wshd(col = 'elev_site')`m at the crossing (Table
-\@ref(tab:tab-wshd-197653)). Upstream of crossing
-`r as.character(my_site)`, `r fpr::fpr_my_fish_sp()` have previously
-been recorded upstream [@moe2020KnownBC; @norris2020bcfishobs].
+\@ref(tab:tab-wshd-197653)). Downstream of crossing
+`r as.character(my_site)`, `r fpr::fpr_my_fish_sp(col_pull = observedspp_dnstr)` have previously
+been recorded [@moe2020KnownBC; @norris2020bcfishobs].
 
 <br>
 
@@ -56,14 +56,14 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 <br>
 
 PSCIS stream crossing `r as.character(my_site)` was ranked as a high
-priority for follow up by Canadian Wildlife Federation because of
+priority for follow up by the Canadian Wildlife Federation because of
 significant amounts of habitat modelled upstream of the crossing. A
 total of `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha
 of lake and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of
 wetland is modelled upstream and a summary of habitat modelling outputs
 is presented in Table \@ref(tab:tab-culvert-bcfp-197653). A map of the
 watershed is provided in map attachment
-[`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](%60r%20fpr::fpr_my_mapsheet()%60).
+[`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`).
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
@@ -81,15 +81,11 @@ At the time of the survey, PSCIS crossing `r as.character(my_site)` was
 non-backwatered and ranked as a
 `r fpr::fpr_my_pscis_info(col_pull = barrier_result)` to upstream fish
 passage according to the provincial protocol [@moe2011Fieldassessment]
-(Table \@ref(tab:tab-culvert-197653)). Water temperature was
+(Table \@ref(tab:tab-culvert-197653)). The outlet has large chunks of bedrock used for rip rap. There was no
+water at the time of survey. Water temperature was
 `r fpr::fpr_my_habitat_info(col_pull = 'temperature_c')`$^\circ$C, pH
 was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` and conductivity was
 `r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm.
-
-<br>
-
-The outlet has large chunks of bedrock used for rip rap. There was no
-water at the time of survey.
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
@@ -118,7 +114,7 @@ channelized but it was completely dewatered at the time of survey. There
 is bedrock just downstream of the outlet on both banks. The habitat was
 rated as `r fpr::fpr_my_priority_info(loc = 'ds')` value for salmonid
 rearing and spawning due to limited complexity resulting from adjacent
-agricultural activities.
+residential properties.
 
 <br>
 
@@ -139,7 +135,7 @@ fpr::fpr_table_cv_summary_memo(dat = pscis_reassessments, site = my_site2, site_
 `r fpr_my_survey_dist(loc = 'us')`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-197653-03) - \\@ref(fig:photo-197653-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-197653-d02))."))`
 `r fpr_my_habitat_paragraph(loc = 'us')` The survey started at a ford located on private land \~325m upstream of crossing 197653. The first \~350m of channel
-upstream of the ford was dewatered at the time of survey. The habitat quality improves significantly once the water starts. Gravels present for resident and andronous salmonids. Infrequent deep pools for rearing and overwintering for salmonids. The
+upstream of the ford was dewatered at the time of survey. The habitat quality improves significantly once the water starts. There are gravels present for resident and andronous salmonids. Infrequent deep pools for rearing and overwintering for salmonids. The
 habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value as
 an important migration corridor containing suitable spawning habitat and
 having moderate rearing potential.
@@ -164,11 +160,11 @@ habitat modelled upstream of crossing `r as.character(my_site)` rated as
 value for salmonid rearing and spawning. Crossing
 `r as.character(my_site)` was ranked as a
 `r fpr::fpr_my_priority_info(col_pull = priority)` priority for
-proceeding to design for replacement. The Perow Creek channel near crossing 197653 flows immediately adjacent to a number of private residences. Due to this developed land, surrounding Watershed health upstream and downstream of Perow Loop Rd is directly impacted. There are obvious signs of riparian degradation, channelization, and concrete riprap armouring. Should
-structure replacement proceed follow up monitoring is recommended to
+proceeding to design for replacement. The Perow Creek channel near crossing 197653 flows immediately adjacent to a number of private residences. Due to this developed land, surrounding watershed health upstream and downstream of Perow Loop Rd is directly impacted. There are obvious signs of riparian degradation, channelization, and concrete riprap armouring. Should
+structure replacement proceed, follow up monitoring is recommended to
 assess passability and utilization of the crossing by downstream fish
 populations including coho who have been recorded in the upper Bulkley
-River within 100m downstream of crossing `r as.character(my_site)`.
+River within 400m downstream of crossing `r as.character(my_site)`.
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
