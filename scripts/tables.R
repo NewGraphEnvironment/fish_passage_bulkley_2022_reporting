@@ -4,7 +4,7 @@
 
 
 # add project specific variables ------------------------------------------
-filename_html <- 'Skeena2021'
+filename_html <- 'Bulkley2022'
 repo_name <- 'fish_passage_bulkley_2022_reporting'
 maps_location <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/'
 maps_location_zip <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/bulkley_2022-05-02.zip'
@@ -48,8 +48,7 @@ bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
   mutate(ch_co_sk_network_km = round(ch_co_sk_network_km,2))
 # bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass_archive_2022-03-02-1403", conn = conn)
 bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column_comments", conn = conn)
-# bcfishpass_archived <- readwritesqlite::rws_read_table("bcfishpass_morr_bulk_archive", conn = conn) %>%
-#   mutate(downstream_route_measure = as.integer(downstream_route_measure))
+
 # pscis_historic_phase1 <- readwritesqlite::rws_read_table("pscis_historic_phase1", conn = conn)
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
 # tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
@@ -76,21 +75,21 @@ rws_disconnect(conn)
 pscis_all <- pscis_all_prep
 
 # UNHACK - unhash until next UNHACK
-# pscis_all <- left_join(
-#   pscis_all_prep,
-#   xref_pscis_my_crossing_modelled,
-#   by = c('my_crossing_reference' = 'external_crossing_reference')
-# ) %>%
-#   mutate(pscis_crossing_id = case_when(
-#     is.na(pscis_crossing_id) ~ as.numeric(stream_crossing_id),
-#     T ~ pscis_crossing_id
-#   )) %>%
-#   # mutate(amalgamated_crossing_id = case_when(
-#   #   !is.na(my_crossing_reference) ~ my_crossing_reference,
-#   #   T ~ pscis_crossing_id
-#   # )) %>%
-#   # select(-stream_crossing_id) %>%
-#   arrange(pscis_crossing_id)
+pscis_all <- left_join(
+  pscis_all_prep,
+  xref_pscis_my_crossing_modelled,
+  by = c('my_crossing_reference' = 'external_crossing_reference')
+) %>%
+  mutate(pscis_crossing_id = case_when(
+    is.na(pscis_crossing_id) ~ as.numeric(stream_crossing_id),
+    T ~ pscis_crossing_id
+  )) %>%
+  # mutate(amalgamated_crossing_id = case_when(
+  #   !is.na(my_crossing_reference) ~ my_crossing_reference,
+  #   T ~ pscis_crossing_id
+  # )) %>%
+  # select(-stream_crossing_id) %>%
+  arrange(pscis_crossing_id)
 # UNHACK to here unhash
 
 
@@ -348,9 +347,9 @@ phase1_priorities <- pscis_all %>%
 pscis_phase1_for_tables <- pscis_all %>%
   filter(source %ilike% 'phase1') %>%
   # HACK
-  arrange(site_id)
+  # arrange(site_id)
 # UNHACK below
-  # arrange(pscis_crossing_id)
+  arrange(pscis_crossing_id)
 
 
 pscis_split <- pscis_phase1_for_tables  %>% #pscis_phase1_reassessments
@@ -358,12 +357,13 @@ pscis_split <- pscis_phase1_for_tables  %>% #pscis_phase1_reassessments
   # mutate_if(is.numeric, as.character) %>% ##added this to try to get the outlet drop to not disapear
   # tibble::rownames_to_column() %>%
   # HACK
-  dplyr::group_split(site_id) %>%
+  # dplyr::group_split(site_id) %>%
   # UNHACK below
-  # dplyr::group_split(pscis_crossing_id) %>%
+  dplyr::group_split(pscis_crossing_id) %>%
   # HACK
-  purrr::set_names(pscis_phase1_for_tables$site_id)
-  # purrr::set_names(pscis_phase1_for_tables$pscis_crossing_id)
+  # purrr::set_names(pscis_phase1_for_tables$site_id)
+# UNHACK below
+  purrr::set_names(pscis_phase1_for_tables$pscis_crossing_id)
 
 ##make result summary tables for each of the crossings
 tab_summary <- pscis_split %>%
@@ -381,17 +381,17 @@ tab_photo_url <- list.files(path = paste0(getwd(), '/data/photos/'), full.names 
   mutate(photo = paste0('![](data/photos/', value, '/crossing_all.JPG)')) %>%
   filter(value %in% pscis_phase1_for_tables$my_crossing_reference) %>% ##we don't want all the photos - just the phase 1 photos for this use case!!!
   #  HACK but might not need to change back?
-  left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'site_id')) %>%   ##we need to add the pscis id so that we can sort the same
-  # left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>% ##we need to add the pscis id so that we can sort the same
+  # left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'site_id')) %>%   ##we need to add the pscis id so that we can sort the same
+  left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>% ##we need to add the pscis id so that we can sort the same
   # HACK
-  arrange(value) %>%
-  # arrange(stream_crossing_id) %>%
+  # arrange(value) %>%
+  arrange(stream_crossing_id) %>%
   # HACk
-  mutate(site_id = value) %>%
+  # mutate(site_id = value) %>%
   select(-value) %>%
   # HACK
-  dplyr::group_split(site_id)
-  # dplyr::group_split(stream_crossing_id)
+  # dplyr::group_split(site_id)
+  dplyr::group_split(stream_crossing_id)
 
 
   # purrr::set_names(nm = . %>% bind_rows() %>% arrange(value) %>% pull(stream_crossing_id)) %>%
@@ -437,7 +437,7 @@ tabs_phase1_pdf <- mapply(
 # tabs_phase1_pdf <- mapply(fpr_print_tab_summary_all_pdf, tab_sum = tab_summary, comments = tab_summary_comments, photos = tab_photo_url)
 
 ####-------------- habitat and fish data------------------
-habitat_confirmations <- fpr_import_hab_con(col_filter_na = T)
+habitat_confirmations <- fpr_import_hab_con(col_filter_na = T, row_empty_remove = T)
 
 hab_site_prep <-  habitat_confirmations %>%
   purrr::pluck("step_4_stream_site_data") %>%
@@ -1413,13 +1413,13 @@ tab_map_prep <- left_join(
     select(-utm_zone:utm_northing,
            -my_crossing_reference,
            # HACK added 1 line below
-           -pscis_crossing_id,
+           # -pscis_crossing_id,
            priority_phase1,
            -habitat_value,
            -barrier_result),
   # HACK
-  by = 'aggregated_crossings_id'
-  # by = 'pscis_crossing_id'
+  # by = 'aggregated_crossings_id'
+  by = 'pscis_crossing_id'
 )
 
 
