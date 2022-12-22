@@ -125,7 +125,6 @@ dbDisconnect(conn = conn)
 
 
 ##join the modelled road data to our pscis submission info
-
 dat_joined <- left_join(
   dat %>% select(-aggregated_crossings_id),
   dat_info %>% select(-utm_zone),
@@ -133,10 +132,25 @@ dat_joined <- left_join(
   by = "misc_point_id"
 )
 
-##lets simiplify dat_joined to have a look up
+##DEPRECATED - lets simiplify dat_joined to have a look up -
 my_pscis_modelledcrossings_streams_xref <- dat_joined %>%
   select(aggregated_crossings_id, pscis_crossing_id, stream_crossing_id, modelled_crossing_id, site_id, source, distance) %>%
   st_drop_geometry()
+
+# xref my_crossings pscis --------------------------------------------
+get_this <- bcdata::bcdc_tidy_resources('pscis-assessments') %>%
+  filter(bcdata_available == T)  %>%
+  pull(package_id)
+
+dat <- bcdata::bcdc_get_data(get_this)
+
+## xref_pscis_my_crossing_modelled ----------------
+xref_pscis_my_crossing_modelled <- dat %>%
+  purrr::set_names(nm = tolower(names(.))) %>%
+  dplyr::filter(funding_project_number == "bulkley_2022_Phase1") %>% ##funding_project_number == "Bulkley_6-288_Reassessments"
+  select(external_crossing_reference, stream_crossing_id) %>%
+  dplyr::mutate(external_crossing_reference = as.numeric(external_crossing_reference)) %>%
+  sf::st_drop_geometry()
 
 
 ##this is how we update our local db.
@@ -145,16 +159,16 @@ mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
 ##archive the last version for now
-# bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
-# rws_drop_table("bcfishpass_archive", conn = conn) ##if it exists get rid of it - might be able to just change exists to T in next line
-# rws_write(bcfishpass_archive, exists = F, delete = TRUE,
-#           conn = conn, x_name = paste0("bcfishpass_archive_", format(Sys.time(), "%Y-%m-%d-%H%M")))
-# rws_drop_table("bcfishpass", conn = conn) ##now drop the table so you can replace it
+bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
+rws_drop_table("bcfishpass_archive", conn = conn) ##if it exists get rid of it - might be able to just change exists to T in next line
+rws_write(bcfishpass_archive, exists = F, delete = TRUE,
+          conn = conn, x_name = paste0("bcfishpass_archive_", format(Sys.time(), "%Y-%m-%d-%H%M")))
+rws_drop_table("bcfishpass", conn = conn) ##now drop the table so you can replace it
 rws_write(bcfishpass, exists = F, delete = TRUE,
           conn = conn, x_name = "bcfishpass")
 # write in the xref
 rws_drop_table("xref_pscis_my_crossing_modelled", conn = conn) ##now drop the table so you can replace it
-rws_write(my_pscis_modelledcrossings_streams_xref, exists = F, delete = TRUE,
+rws_write(xref_pscis_my_crossing_modelled, exists = F, delete = TRUE,
           conn = conn, x_name = "xref_pscis_my_crossing_modelled")
 # add the comments
 # bcfishpass_column_comments_archive <- readwritesqlite::rws_read_table("bcfishpass_column_comments", conn = conn)
