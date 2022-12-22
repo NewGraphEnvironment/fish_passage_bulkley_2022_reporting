@@ -15,7 +15,6 @@ scripts/pers_*
 *.gpkg-wal
 *.gpkg-shm
 #data/raw_input
-#docs/Elk.tex
 docs/Bulkley2022.html
 Bulkley2022.html
 *~$*
@@ -24,4 +23,5 @@ Bulkley2022.html
 *.kml
 data/photos/**/*.pdf
 !data/photos/admin/*
+docs/*.pdf
 
