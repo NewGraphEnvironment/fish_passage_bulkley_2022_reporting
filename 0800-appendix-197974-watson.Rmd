@@ -162,7 +162,7 @@ areas surveyed rated as
 value for rearing and spawning. Crossing
 `r as.character(my_site)` was ranked as a
 `r fpr::fpr_my_priority_info(col_pull = priority)` priority for
-proceeding to design for replacement.  As the culvert under the highway can be considered a complete barrier to all species and life stages of fish at all flows, it would be necessary to replace it for anadromous fish to populate the watershed upstream of the highway.  For this reason, the highway crossing should be replaced first, before pursueing remedial works at the crossing upstream on Montgomery Road. 
+proceeding to design for replacement.  Capture of coho upstream of the highway in 2000 is an indication that the watershed has provided habitat for anadromous species in the past. Although the culvert under the highway appears to be a complete barrier to all species and life stages of fish at all flows, fish sampling in this area would help confirm that anadromous fish are no longer able to ascend the culvert.  This seems likely so it would be necessary to replace the highway crossing for anadromous fish to populate the watershed upstream.  Subsequently the highway crossing should be replaced first, before pursueing remedial works at the culvert located 2.5km upstream on Montgomery Road. 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
