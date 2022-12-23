@@ -28,7 +28,7 @@ my_site2 <- 195944
 
 PSCIS crossing `r as.character(my_site)` is located on the Upper Bulkley
 River approximately 22.5km east of Topley, BC. PSCIS crossing
-`r as.character(my_site)` is located on
+The site is located on
 `r fpr_my_pscis_info(col_pull = road_name)`, approximately 2.5km
 upstream from Bulkley Lake. Although Taman Creek flows into this stream
 approximately 750m upstream of the highway, the stream at the highway is
