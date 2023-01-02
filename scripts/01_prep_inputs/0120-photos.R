@@ -66,9 +66,9 @@ photo_resize_convert_batch <- function(filename,
 ## Bulkley -------------------------------
 # this is the only thing that changes from project to project and place to place for this workflow
 name_repo <-  'fish_passage_bulkley_2022_reporting'
-dir_stub_from <-  '/Users/airvine'
+# dir_stub_from <-  '/Users/airvine'
 dir_project = '2022-059-cwf-bulkley'
-dir_stub_target = '/Users/airvine/Projects/OneDrive'
+# dir_stub_target = '/Users/airvine/Projects/OneDrive'
 
 # make a list of the directories you want to copy over
 dir_l <- list.dirs(
@@ -88,6 +88,22 @@ dir_l %>%
              dir_stub_from = dir_stub_from,
              name_repo =  name_repo)
 
+# convert Dallas' photos
+
+##destination folder
+dir_stub_target = '/Users/matwi/OneDrive/Projects/repo/fish_passage_bulkley_2022_reporting/photos_before_sort/Dallas'
+
+##path to the photos
+path <- '/Users/matwi/Projects/current/2022-059-cwf-bulkley/data/photos/Dallas_Photos'
+
+filestoconvert <- list.files(path = path,
+                             full.names = T)
+
+filestoconvert %>%
+  purrr::map(fpr::fpr_photo_resize_convert,
+             path = dir_stub_target,
+             size = "1296 x 972!"
+             )
 
 ## Elk--------------------------------
 # this is the only thing that changes from project to project for this workflow
