@@ -1,0 +1,277 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r setup-198116, eval = F}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+source('scripts/packages.R')
+source('scripts/tables.R')
+
+```
+
+```{r  load-data-198116}
+my_site <- 198116
+my_site2 <- 2022091001
+my_site3 <- 2022091003
+
+```
+
+`r fpr::fpr_appendix_title()`
+
+## Site Location {.unnumbered}
+
+PSCIS crossing `r as.character(my_site)` is located on
+`r fpr::fpr_my_pscis_info()`, in the town of New Hazelton, BC. PSCIS
+crossing `r as.character(my_site)` is located on
+`r fpr_my_pscis_info(col_pull = road_name)`. Waterfall Creek does not
+have accurate modelling data in the `bcfishpass` database. Any modelling
+included in this appendix was estimated using data collected in the
+field and GIS data. Crossing `r as.character(my_site)` is located
+approximately 4km upstream from the confluence with Station Creek.
+Crossing `r as.character(my_site)` is the responsibility of the Ministry
+of Transportation and Infrastructure.
+
+<br>
+
+## Background {.unnumbered}
+
+At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
+first order stream. Upstream of crossing `r as.character(my_site)`, cutthroat trout and dolly varden have previously been recorded
+[@moe2020KnownBC; @norris2020bcfishobs].
+
+<br>
+
+Waterfall Creek is a primary tributary of the Station/Waterfall Creek
+system. It's located in the community of New Hazelton and is thus
+heavily impacted by urban and industrial development. A restoration
+project was carried out along Waterfall Creek in 2001 by Nortec
+Consulting. To help improve riparian vegetation, 300-400 seedlings were
+planted within 5 m of the creek. General stream enhancement work
+including the construction of walkways and bridges was also conducted
+[@nortecconsulting2000]. In 1990, the Chicago Creek Community
+Environmental Enhancement Society (CCES) developed a rehabilitation
+project that aimed to reintroduce coho salmon to Waterfall Creek using
+transplanted stocks from Toboggan Creek, near Smithers. After the
+transplant license ended, the project had to rely on salmon returning to
+the stream for brood stock to maintain population levels
+[@houlden_donas2002ChicagoCreek]. Irvine (2021) conducted an assessment
+on two crossings located on tributaries to Waterfall Creek.
+
+<br>
+
+Habitat assessments were conducted on a tributary to Waterfall Creek by
+@irvine2022BulkleyRiver in 2021. Located upstream of PSCIS Crossing
+198116, this tributary flows through New Hazelton and crosses the
+highway. The highway crossing and a crossing further downstream were
+assessed and both were deemed to be barriers at the time of survey,
+according to provincial protocols. A detailed background and habitat
+assessment can be found in the 2021 report
+[here](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/station-creek---124420-124421-124422---appendix.html).
+
+<br>
+
+A map of the watershed is provided in map attachment
+[`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`). 
+
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
+
+<br>
+
+## Stream Characteristics at Crossing {.unnumbered}
+
+At the time of the survey, PSCIS crossing `r as.character(my_site)` was
+un-embedded, non-backwatered and ranked as a
+`r fpr::fpr_my_pscis_info(col_pull = barrier_result) %>% stringr::str_to_lower()`
+to upstream fish passage according to the provincial protocol
+[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-198116)). Water
+temperature was
+`r fpr::fpr_my_habitat_info(col_pull = 'temperature_c')`$^\circ$C, pH
+was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` and conductivity was
+`r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm.
+
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
+
+<br>
+
+```{r tab-culvert-198116, eval = T}
+fpr::fpr_table_cv_summary_memo()
+
+```
+
+```{r eval=F}
+##this is useful to get some comments for the report
+hab_site %>% filter(site == my_site & location == 'us') %>% pull(comments)
+fpr::fpr_my_priority_info()
+
+```
+
+## Stream Characteristics Downstream {.unnumbered}
+
+`r fpr_my_survey_dist(loc = 'ds')` to the confluence with the Bulkley
+River
+`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198116-01) - \\@ref(fig:photo-198116-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198116-d01))."))`
+`r fpr_my_habitat_paragraph(loc = 'ds')` There is a culvert
+approximately 100m upstream of PSCIS crossing 198116 that was also
+assessed. At the time of survey, this crossing was un-embedded,
+non-backwatered, and ranked as a barrier to upstream fish passage (Table
+\@ref(tab:tab-culvert-2022091003)).The stream flows through the town of
+New Hazelton. There was low flow at the time of survey and the stream
+contained a lot of waste and debris. There was a lot of cover from
+vegetation. The stream hits the railway and is drained into a tributary
+that flows west until it joins Station Creek. The habitat was rated as
+`r fpr::fpr_my_priority_info(loc = 'ds')` value for salmonid rearing and
+spawning.
+
+<br>
+
+```{r tab-culvert-2022091003, eval = T}
+fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site3, site_photo_id = my_site3, col_filter = my_crossing_reference)
+
+```
+
+## Stream Characteristics Upstream {.unnumbered}
+
+`r fpr_my_survey_dist(loc = 'us')`
+`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198116-03) - \\@ref(fig:photo-198116-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198116-d02))."))`
+`r fpr_my_habitat_paragraph(loc = 'us')` There was a culvert
+approximately 400m upstream of PSCIS crossing 198116 that was also
+assessed. At the time of survey, this crossing was un-embedded,
+non-backwatered, and ranked as a barrier to upstream fish passage (Table
+\@ref(tab:tab-culvert-2022091001)). The habitat quality was excellent.
+The stream flow was moderate and there were fish spotted all the way up
+to the waterfall where the survey ended. There was an active minnow trap
+found with many fish inside. There was plenty of cover from vegetation
+and undercut banks. The habitat was rated as
+`r fpr::fpr_my_priority_info(loc = 'us')` value as an important
+migration corridor containing suitable spawning habitat and having
+moderate rearing potential.
+
+<br>
+
+```{r tab-culvert-2022091001, eval = T}
+fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site2, site_photo_id = my_site2, col_filter = my_crossing_reference)
+
+```
+
+<br>
+
+## Structure Remediation and Cost Estimate {.unnumbered}
+
+<br>
+
+## Conclusion {.unnumbered}
+
+There was 1.2km of
+habitat modelled upstream of crossing `r as.character(my_site)` with
+areas surveyed rated as
+`r fpr::fpr_my_priority_info(sit = my_site, loc = 'us', col_pull = hab_value)`
+value for salmonid rearing and spawning. There is a large impassable waterfall at the end of survey that blocks fish passage for all life stages. Crossing
+`r as.character(my_site)` was ranked as a
+`r fpr::fpr_my_priority_info(col_pull = priority)` priority for
+proceeding to design for replacement.
+
+The Waterfall Creek system is located directly in the community of New Hazelton. The stream is therefore significantly influenced by industrial and urban growth. There is a long history of community restoration and rehabilitation projects within the community. This crossing is an excellent candidate and should be replaced with an open bottom structure.       
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+
+<br>
+
+```{r tab-habitat-summary-198116}
+tab_hab_summary %>% 
+  filter(Site  == my_site) %>% 
+  # select(-Site) %>% 
+  fpr::fpr_kable(caption_text = paste0('Summary of habitat details for PSCIS crossing ', my_site, '.'),
+                 scroll = F) 
+
+```
+
+<br>
+
+```{r photo-198116-01-prep, eval=T}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_d1_')
+
+my_caption1 = paste0('Typical habitat downstream of PSCIS crossing ', my_site, '.')
+
+
+```
+
+```{r photo-198116-01, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo1))
+```
+
+<br>
+
+```{r photo-198116-02-prep}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_d2_')
+
+my_caption2 = paste0('Typical habitat downstream of PSCIS crossing ', my_site, '.')
+```
+
+```{r photo-198116-02, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo2))
+
+```
+
+<br>
+
+```{r photo-198116-d01, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+```{r photo-198116-03-prep}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u1_')
+
+my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+```
+
+```{r photo-198116-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo1))
+```
+
+<br>
+
+```{r photo-198116-04-prep}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u2_')
+
+my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+
+```
+
+```{r photo-198116-04, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo2))
+```
+
+```{r photo-198116-d02, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+<br>
+
+```{r photo-198116-05-prep}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u3_')
+
+my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+```
+
+```{r photo-198116-05, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo1))
+```
+
+```{r photo-198116-d03, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+knitr::include_graphics(my_photo1)
+```
