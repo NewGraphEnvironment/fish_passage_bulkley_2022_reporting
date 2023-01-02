@@ -23,7 +23,7 @@ my_site <- 57793
 
 ## Site Location {-}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 30km north west of Houston, BC. PSCIS crossing `r as.character(my_site)` is located on `r fpr_my_pscis_info(col_pull = road_name)`.  Crossing `r as.character(my_site)` was located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream from the confluence with the Bulkley River. Crossing `r as.character(my_site)` is the responsibility of the Ministry of Transportation and Infrastructure.
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 30km north west of Houston, BC. The site is located on `r fpr_my_pscis_info(col_pull = road_name)`.  Crossing `r as.character(my_site)` was located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream from the confluence with the Bulkley River. Crossing `r as.character(my_site)` is the responsibility of the Ministry of Transportation and Infrastructure.
 
 
 <br>
@@ -47,11 +47,11 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 
 <br>
 
-Toboggan Lake is `r fpr::fpr_my_bcfishpass(site = my_site, col_pull = total_lakereservoir_ha)`ha in size and modelling indicates an additional `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland upstream of the highway.  Significantly sized lakes within watersheds can throttle high freshet and storm flows often resulting in increased stability downstream and conditions conducive to egg incubation and juvenile rearing. 
+Vallee Lake is `r fpr::fpr_my_bcfishpass(site = my_site, col_pull = total_lakereservoir_ha)`ha in size and modelling indicates an additional `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland upstream of the highway.  Large lakes within watersheds can control high freshet and storm flows, increasing stability downstream and creating favourable circumstances for egg incubation and juvenile rearing. 
 
 <br>
 
-PSCIS stream crossing `r as.character(my_site)` was ranked as a high priority for follow up by @wilson_rabnett2007FishPassage, @irvine2018AnalysisPriority, @irvine2021BulkleyRiver and @mazany-wright_etal2021BulkleyRiver because of significant amounts of habitat modelled as upstream of the crossing.  A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-culvert-bcfp-57793). A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`).  
+PSCIS stream crossing `r as.character(my_site)` was ranked as a high priority for follow up by the Canadian Wildlife Federation because of significant amounts of habitat modeled upstream of the crossing, all the way up to the highway. A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-culvert-bcfp-57793). A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`).  
 
 
 
@@ -67,7 +67,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossing {-}
 
-At the time of the survey, PSCIS crossing `r as.character(my_site)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) %>% stringr::str_to_lower()` barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-57793)). Water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C, pH was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'p_h')` and conductivity was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')`uS/cm. 
+At the time of the survey, PSCIS crossing `r as.character(my_site)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) %>% stringr::str_to_lower()` barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-57793)). There was low flow through the culvert at the time of survey, but a deep outlet pool. Water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C, pH was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'p_h')` and conductivity was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')`uS/cm. 
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 <br>
@@ -89,7 +89,7 @@ fpr::fpr_my_priority_info()
 
 `r fpr_my_survey_dist(loc = 'ds')` to the confluence with the Bulkley River
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-57793-01) - \\@ref(fig:photo-57793-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-57793-d01))."))`
-`r fpr_my_habitat_paragraph(loc = 'ds')` There are undercut banks throughout providing good cover for fish. In addition, there is abundant riparian vegetation providing cover and controlling temperature. Some gravels present suitable for spawning. Functional large woody debris is present throughout the stream.The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds')` value for salmonid rearing and spawning. 
+`r fpr_my_habitat_paragraph(loc = 'ds')` There were undercut banks and abundant riparian vegetation throughout providing good cover for fish. Some gravels were present that could be suitable for spawning. Functional large woody debris was present throughout the stream.The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds')` value for salmonid rearing and spawning. 
 
 
 
@@ -97,8 +97,8 @@ fpr::fpr_my_priority_info()
 
 
 <!-- `r fpr_my_survey_dist(loc = 'us')` -->
-<!-- `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-57793-03) - \\@ref(fig:photo-57793-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-57793-d02))."))` -->
-<!-- `r fpr_my_habitat_paragraph(loc = 'ds')` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value as an important migration corridor containing suitable spawning habitat and having moderate rearing potential. -->
+`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-57793-03) - \\@ref(fig:photo-57793-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-57793-d02))."))`
+`r fpr_my_habitat_paragraph(loc = 'us')` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value as an important migration corridor containing suitable spawning habitat and having moderate rearing potential.
 
 
 ## Structure Remediation and Cost Estimate {-}
@@ -217,4 +217,26 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 ```{r photo-57793-d03, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
 
 knitr::include_graphics(my_photo1)
+```
+
+<br>
+
+```{r photo-57793-06-prep}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u4_')
+
+my_caption2 = paste0('Habitat upstream of PSCIS crossing ', my_site, '.')
+
+```
+
+```{r photo-57793-06, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo2))
+```
+
+```{r photo-57793-d04, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
 ```

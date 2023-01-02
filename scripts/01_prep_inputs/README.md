@@ -17,7 +17,7 @@ It may be a bit confusing to follow but we try to document it just the same.  Ta
   *  Build directories of folders related to each site based on PSCIS input spreadsheet site ids.
   *  Do an initial drop of photos into the generated site folders based on dates, times and surveyor.
   *  QA renamed photos to determine that all 5 photos (upstream, downstream, inlet, outlet, barrel) required for PSCIS as well as a road photo are present.
-  *  Generate an amalgamated photo for each site containing all 6 of the previously mentioned photos.
+  *  Generate an amalgamated photo for each site containing all 6 of the previously mentioned photos. If there is no road over the crossing then use picture from nearest road with site card in corner.
   *  Generate a csv file that contains the locations and names of all photos after they are sorted and renamed to facilitate reproducability.
   *  Find the PSCIS reference ID for crossings that underwent Phase 1 assessments within the same program and cross-reference to Phase 2 data.
   *  Grab the modeling outputs for our watershed group of interest from postgres built from bcfishpass and burn to a local sqlite to provide reproducible snapshot in time. Things change alot as modelling is based on certain data and assumptions.  Also, grab the bcfishpass [spawning and rearing parameters](https://github.com/smnorris/bcfishpass/tree/main/02_model) table and put in the database so it can be used to populate the methods and tie to the references table.
