@@ -23,8 +23,7 @@ my_site3 <- 1805507
 
 ## Site Location {-}
 
-PSCIS crossing `r as.character(my_site)` is located on the Upper Bulkley
-River approximately 12km north west of Houston, BC. The site is located on
+PSCIS crossing `r as.character(my_site)` is located approximately 12km north west of Houston, BC. The site is located on
 `r fpr_my_pscis_info(col_pull = road_name)`, approximately `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream from the confluence with the Bulkley River. PSCIS crossing `r as.character(my_site2)` is located on Highway 16, approximately 850m upstream of crossing 195943. Both crossings are the responsibility of the Ministry of
 Transportation and Infrastructure.
 
@@ -50,7 +49,7 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 
 <br>
 
-Dogwood Environmental Consulting reports that they are working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture, and BC Cattleman’s Association. Dogwood is working with grazing lease holders and farmers to identify agricultural areas in need of enhancement. Stock Creek is included in one of these target areas, due to its clear signs of cattle use and grazing, leading to significant impacts on stream habitat. Plans to mitigate these impacts and prevent cattle from accessing stream banks are ongoing. The project study area is located upstream of the assessed Highway 16 crossing (pers. comm Jenn Atkins, 2022). 
+At the time of reporting, Dogwood Environmental Consulting (Dogwood) were working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture, and BC Cattleman’s Association. Dogwood worked with grazing lease holders and farmers to identify agricultural areas in need of enhancement. Stock Creek was included in one of these target areas, due to its clear signs of cattle use and grazing, leading to significant impacts on stream habitat. Plans to mitigate these impacts and prevent cattle from accessing stream banks are still ongoing. The project study area was located upstream of the assessed Highway 16 crossing (pers. comm Jenn Atkins, 2022). 
 
 <br>
 
@@ -145,7 +144,7 @@ fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = 1805507, site_photo_id
 
 `r fpr_my_survey_dist(loc = 'us')`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195943-03) - \\@ref(fig:photo-195943-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d02))."))`  
-`r fpr_my_habitat_paragraph(loc = 'us')` There was good flow volume and a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel that may be suitable for resident rainbow and coho spawning. Occasional shallow pools and traces of large water debris were sighted. The channel appeared to be constricted due to agricultural development on both sides of the stream. Water withdrawal is occurring as well. More agricultural development was encroaching on the riparian farther upstream. The
+`r fpr_my_habitat_paragraph(loc = 'us')` There was good flow volume and a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel suitable for resident rainbow as well as coho and steelhead spawning. Occasional shallow pools and traces of large water debris were sighted. The channel appeared to be constricted due to agricultural development on both sides of the stream. Water withdrawal is occurring as well. More agricultural development was encroaching on the riparian farther upstream. The
 habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value as
 an important migration corridor containing suitable spawning habitat and
 having moderate rearing potential.
@@ -154,7 +153,7 @@ having moderate rearing potential.
 
 `r fpr_my_survey_dist(loc = 'ds', sit = my_site2)`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195943-03) - \\@ref(fig:photo-195943-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d02))."))`  
-`r fpr_my_habitat_paragraph(loc = 'us')` There were many undercut banks throughout, with fish up tp 20cm long sighted throughout covered areas. There was a cattle trail next to length of creek, with some areas having obvious signs of embankment issues and an associated risk of sediment falling into stream. There were not many gravel patches suitable for spawning. The
+`r fpr_my_habitat_paragraph(loc = 'us')` There were many undercut banks throughout, with fish up tp 20cm long sighted throughout covered areas. There was a cattle trail next to length of creek, with some areas that showed obvious signs of erosion and an associated risk of sediment falling into stream. There were not many gravel patches suitable for spawning. The
 habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds', sit = my_site2)` value as
 an important migration corridor containing some suitable spawning habitat and
 having moderate rearing potential.
@@ -164,7 +163,7 @@ having moderate rearing potential.
 ## Stream Characteristics Upstream of `r as.character(my_site2)` {-}
 
 `r fpr_my_survey_dist(loc = 'us', sit = my_site2)`
-`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195944-05) - \\@ref(fig:photo-195944-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195944-d02))."))` `r fpr_my_habitat_paragraph(loc = 'us', sit = my_site2)` This section of the stream is likely an important migration corridor, however the stream is heavily impacted by cattle activity. There were significant amounts of cattle manure in the stream, which resulted in water quality levels above thresholds. There were occasional pockets of gravel suitable for resident rainbow spawning. Boulders were the significant cover however there were occasional pools with depths suitable for overwintering. Decent amount of rearing habitat for juveniles though. There was a small rock drop of 65cm located 365m upstream of the top end of the culvert. 
+`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195944-05) - \\@ref(fig:photo-195944-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195944-d02))."))` `r fpr_my_habitat_paragraph(loc = 'us', sit = my_site2)` This section of the stream is likely an important migration corridor, however the stream is heavily impacted by cattle activity. There were significant amounts of cattle manure in the stream, which likely affected water quality levels. There were occasional pockets of gravel suitable for resident rainbow spawning. Boulders were the significant cover however there were occasional pools with depths suitable for overwintering. Decent amount of rearing habitat for juveniles though. There was a small rock drop of 65cm located 365m upstream of the top end of the culvert. 
 
 
 ## Structure Remediation and Cost Estimate {-}
@@ -197,7 +196,7 @@ proceeding to design for replacement. Replacement with a new open bottom structu
 
 <br>
 
-This stream is heavily impacted by adjacent land use and cattle activity. But the habitat is still moderate to high value and suitable for rearing and overwintering. Resident fish were spotted at the time of survey. It is advised that individuals continue to work with adjacent landowners and tenure holders to carry out stream restoration activities and keep livestock out of the riparian region and streambed.  
+This stream is heavily impacted by adjacent land use and cattle activity. However, the habitat is still moderate to high value and suitable for rearing and overwintering. Resident fish were spotted at the time of survey. It is advised that individuals continue to work with adjacent landowners and tenure holders to carry out stream restoration activities and keep livestock out of the riparian region and streambed.  
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
