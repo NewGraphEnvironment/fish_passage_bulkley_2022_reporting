@@ -120,7 +120,7 @@ spawning.
 <br>
 
 ```{r tab-culvert-198117, eval = T}
-fpr::fpr_table_cv_summary_memo(site = my_site3, site_photo_id = my_site3)
+fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = 2022091003, site_photo_id = 2022091003, col_filter = my_crossing_reference)
 
 ```
 
@@ -143,7 +143,7 @@ moderate rearing potential.
 <br>
 
 ```{r tab-culvert-198115, eval = T}
-fpr::fpr_table_cv_summary_memo(site = my_site2, site_photo_id = my_site2)
+fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = 2022091001, site_photo_id = 2022091001, col_filter = my_crossing_reference)
 
 ```
 
