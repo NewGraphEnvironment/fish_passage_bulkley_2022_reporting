@@ -15,8 +15,8 @@ source('scripts/tables.R')
 
 ```{r  load-data-198116}
 my_site <- 198116
-my_site2 <- 2022091001
-my_site3 <- 2022091003
+my_site2 <- 198115
+my_site3 <- 198117
 
 ```
 
@@ -27,12 +27,10 @@ my_site3 <- 2022091003
 PSCIS crossing `r as.character(my_site)` is located on
 `r fpr::fpr_my_pscis_info()`, in the town of New Hazelton, BC. PSCIS
 crossing `r as.character(my_site)` is located on
-`r fpr_my_pscis_info(col_pull = road_name)`. Waterfall Creek does not
+`r fpr_my_pscis_info(col_pull = road_name)`, and is approximately 4km upstream from the confluence with Station Creek. Waterfall Creek does not
 have accurate modelling data in the `bcfishpass` database. Any modelling
 included in this appendix was estimated using data collected in the
-field and GIS data. Crossing `r as.character(my_site)` is located
-approximately 4km upstream from the confluence with Station Creek.
-Crossing `r as.character(my_site)` is the responsibility of the Ministry
+field along with GIS data. Three stream crossing structures are located upstream of the railway and are discussed below. These sites were prioritized after field reconnaissance indicated that Waterfall Creek was mapped incorrectly in the BC Freshwater Atlas stream network. PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(site = my_site2, col_pull = road_name)`, just downstream of 198116. PSCIS crossing `r as.character(my_site3)` is located on `r fpr_my_pscis_info(site = my_site3, col_pull = road_name)`, upstream of 198116. Crossing `r as.character(my_site)` is the responsibility of the Ministry
 of Transportation and Infrastructure.
 
 <br>
@@ -41,36 +39,29 @@ of Transportation and Infrastructure.
 
 At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 first order stream. Upstream of crossing `r as.character(my_site)`, cutthroat trout and dolly varden have previously been recorded
-[@moe2020KnownBC; @norris2020bcfishobs].
+[@moe2020KnownBC; @norris2020bcfishobs].  
 
 <br>
 
-Waterfall Creek is a primary tributary of the Station/Waterfall Creek
-system. It's located in the community of New Hazelton and is thus
-heavily impacted by urban and industrial development. A restoration
+Waterfall Creek is a primary tributary to Station Creek. Wilson and Rabnett (2007) reported that the crossing structure located on Highway 16 and Station Creek (PSCIS ID 124420) has been the subject of numerous assessments and designs with respect to the rehabilitation of fish passage. They ranked this crossing as having the highest priority for rehabilitation in the Bulkley River watershed. According to the Gitxsan Watershed Authority, Station Creek's mouth (Xsi Gwin Sagiiblax) was the location of a fishing site called Xsan Xsagiibil [@wilson_rabnett2007FishPassage]. @rabnett_williams2004Highway16 identified this area as having a high priority for additional assessments. To support rehabilitation efforts, @skrconsultantsltd_2006FishPassage carried out a thorough inspection, provided rehabilitation design options, and identified the natural limits of potential fish distribution. 
+
+<br>
+
+Habitat assessments were conducted downstream of the railway on Waterfall and Station Creek by
+@irvine2022BulkleyRiver in 2021. Waterfall Creek flows through New Hazelton and crosses the railway downstream of PSCIS crossing 198117, then flowing under the highway. The highway crossing and a crossing further downstream were
+assessed and both were deemed to be barriers at the time of survey,
+according to provincial protocols. PSCIS crossing 124420 on Station Creek was re-assessed and ranked as a high priority for proceeding to design for replacement. A detailed background and habitat
+assessment can be found in the 2021 report
+[here](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/station-creek---124420-124421-124422---appendix.html).
+
+<br>
+
+Every year the Chicago Creek Community Environmental Enhancement Society carries out a trap and truck operation where coho are moved upstream of Highway 16 on Waterfall Creek from a fence erected up near the junction with the Bulkley River. Houlden, Houlden, and Donas (2001) reported that the incorrect installation of PSCIS crossing 124420 lead to coho stocks being wiped out in the system in the late 1970s. In order to return coho to the stream, the Waterfall Creek Stream Rehabilitation Project was started in 1990. Surplus stocks were moved from Toboggan Creek near Smithers. To help with the mission, the Hazelton Elementary Streamkeepers programme was established in 1993, and the Chicago Creek Community Environmental Enhancement Society was established in 1995 to build a hatchery close by. The hatchery is now shut down [@houlden_donas2002ChicagoCreek]. A restoration
 project was carried out along Waterfall Creek in 2001 by Nortec
 Consulting. To help improve riparian vegetation, 300-400 seedlings were
 planted within 5 m of the creek. General stream enhancement work
 including the construction of walkways and bridges was also conducted
-[@nortecconsulting2000]. In 1990, the Chicago Creek Community
-Environmental Enhancement Society (CCES) developed a rehabilitation
-project that aimed to reintroduce coho salmon to Waterfall Creek using
-transplanted stocks from Toboggan Creek, near Smithers. After the
-transplant license ended, the project had to rely on salmon returning to
-the stream for brood stock to maintain population levels
-[@houlden_donas2002ChicagoCreek]. Irvine (2021) conducted an assessment
-on two crossings located on tributaries to Waterfall Creek.
-
-<br>
-
-Habitat assessments were conducted on a tributary to Waterfall Creek by
-@irvine2022BulkleyRiver in 2021. Located upstream of PSCIS Crossing
-198116, this tributary flows through New Hazelton and crosses the
-highway. The highway crossing and a crossing further downstream were
-assessed and both were deemed to be barriers at the time of survey,
-according to provincial protocols. A detailed background and habitat
-assessment can be found in the 2021 report
-[here](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/station-creek---124420-124421-124422---appendix.html).
+[@nortecconsulting2000].
 
 <br>
 
@@ -118,7 +109,7 @@ River
 approximately 100m upstream of PSCIS crossing 198116 that was also
 assessed. At the time of survey, this crossing was un-embedded,
 non-backwatered, and ranked as a barrier to upstream fish passage (Table
-\@ref(tab:tab-culvert-2022091003)).The stream flows through the town of
+\@ref(tab:tab-culvert-198117)).The stream flows through the town of
 New Hazelton. There was low flow at the time of survey and the stream
 contained a lot of waste and debris. There was a lot of cover from
 vegetation. The stream hits the railway and is drained into a tributary
@@ -128,8 +119,8 @@ spawning.
 
 <br>
 
-```{r tab-culvert-2022091003, eval = T}
-fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site3, site_photo_id = my_site3, col_filter = my_crossing_reference)
+```{r tab-culvert-198117, eval = T}
+fpr::fpr_table_cv_summary_memo(site = my_site3, site_photo_id = my_site3)
 
 ```
 
@@ -141,10 +132,9 @@ fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site3, site_photo_i
 approximately 400m upstream of PSCIS crossing 198116 that was also
 assessed. At the time of survey, this crossing was un-embedded,
 non-backwatered, and ranked as a barrier to upstream fish passage (Table
-\@ref(tab:tab-culvert-2022091001)). The habitat quality was excellent.
+\@ref(tab:tab-culvert-198115)). The habitat quality was excellent.
 The stream flow was moderate and there were fish spotted all the way up
-to the waterfall where the survey ended. There was an active minnow trap
-found with many fish inside. There was plenty of cover from vegetation
+to the waterfall where the survey ended. An adult coho was seen upstream of crossing `r as.character(my_site2)`. There was plenty of cover from vegetation
 and undercut banks. The habitat was rated as
 `r fpr::fpr_my_priority_info(loc = 'us')` value as an important
 migration corridor containing suitable spawning habitat and having
@@ -152,8 +142,8 @@ moderate rearing potential.
 
 <br>
 
-```{r tab-culvert-2022091001, eval = T}
-fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site2, site_photo_id = my_site2, col_filter = my_crossing_reference)
+```{r tab-culvert-198115, eval = T}
+fpr::fpr_table_cv_summary_memo(site = my_site2, site_photo_id = my_site2)
 
 ```
 
@@ -174,7 +164,8 @@ value for salmonid rearing and spawning. There is a large impassable waterfall a
 `r fpr::fpr_my_priority_info(col_pull = priority)` priority for
 proceeding to design for replacement.
 
-The Waterfall Creek system is located directly in the community of New Hazelton. The stream is therefore significantly influenced by industrial and urban growth. There is a long history of community restoration and rehabilitation projects within the community. This crossing is an excellent candidate and should be replaced with an open bottom structure.       
+The Waterfall Creek system is located directly in the community of New Hazelton and is thus
+heavily impacted by urban and industrial development. There is a long history of community restoration and rehabilitation projects within the community. This crossing is an excellent candidate and should be replaced with an open bottom structure.       
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
@@ -230,7 +221,7 @@ knitr::include_graphics(my_photo2)
 ```{r photo-198116-03-prep}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u1_')
 
-my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption1 = paste0('Gravel and cobble substrate immediately upstream of ', my_site, '.')
 ```
 
 ```{r photo-198116-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
@@ -264,14 +255,63 @@ knitr::include_graphics(my_photo2)
 ```{r photo-198116-05-prep}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u3_')
 
-my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption1 = paste0('Gravel and cobble substrate immediately upstream of ', my_site, '.')
 ```
 
 ```{r photo-198116-05, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
 grid::grid.raster(jpeg::readJPEG(my_photo1))
 ```
 
+<br>
+
+```{r photo-198116-06-prep}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u4_')
+
+my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+
+```
+
+```{r photo-198116-06, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo2))
+```
+
 ```{r photo-198116-d03, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
 
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
 knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+```{r photo-198116-07-prep}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u5_')
+
+my_caption1 = paste0('Gravel and cobble substrate immediately upstream of ', my_site, '.')
+```
+
+```{r photo-198116-07, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo1))
+```
+
+<br>
+
+```{r photo-198116-08-prep}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u6_')
+
+my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+
+```
+
+```{r photo-198116-08, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo2))
+```
+
+```{r photo-198116-d04, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
 ```
