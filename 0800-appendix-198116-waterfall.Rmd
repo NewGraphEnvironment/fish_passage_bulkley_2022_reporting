@@ -102,8 +102,7 @@ fpr::fpr_my_priority_info()
 
 ## Stream Characteristics Downstream {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` to the confluence with the Bulkley
-River
+`r fpr_my_survey_dist(loc = 'ds')` past PSCIS crossing 198177 to adjacent to the CN railway approximately 220m upstream of PSCIS crossing 124423.
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198116-01) - \\@ref(fig:photo-198116-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198116-d01))."))`
 `r fpr_my_habitat_paragraph(loc = 'ds')` There is a culvert
 approximately 100m upstream of PSCIS crossing 198116 that was also
