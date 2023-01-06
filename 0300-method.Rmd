@@ -279,7 +279,7 @@ Reporting was generated with `bookdown` [@bookdown2016] from `Rmarkdown` [@R-rma
      - a conservative estimate of the linear length of mainstem habitat potentially available upstream of the crossing 
      - fish species confirmed as present upstream of the crossing
 
- + [GPS tracks](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/tree/main/data/hab_con_tracks.gpx) from field surveys.  
+ + [GPS tracks](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/tree/main/data/habitat_confirmation_tracks.gpx) from field surveys.  
 
  + [Photos](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/tree/main/data/photos) and photo metadata
 
