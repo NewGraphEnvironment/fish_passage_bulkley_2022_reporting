@@ -53,7 +53,7 @@ bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
 # tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
 # rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
-xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn)
+xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>% filter(stream_crossing_id > 198108)
 wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
   mutate(aspect = as.character(aspect))
   # issues with particular sites and the aws tiles
