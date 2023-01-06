@@ -1,5 +1,7 @@
 ## Scripts directory guide
 
+*Note - there are often headers within the commenting of these scripts that can help the user navigate sections.  Use `shift-command-o` to see the outline in the source window of Rstudio.
+
 1.  `01_prep_inputs/`
 
 -   Directory with scripts used to extract data from database to input into pscis spreadsheets, process photos, and prep for pscis phase 1 submission.

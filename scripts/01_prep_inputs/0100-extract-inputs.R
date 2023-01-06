@@ -814,7 +814,7 @@ hab_priority_fish_hg <- left_join(
 # we need to summarize all our fish sizes
 
 ## fish collection data ----------------------------------------------------
-habitat_confirmations <- fpr::fpr_import_hab_con()
+habitat_confirmations <- fpr::fpr_import_hab_con(row_empty_remove = T, col_filter_na = T)
 
 
 hab_fish_indiv_prep <- habitat_confirmations %>%

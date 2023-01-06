@@ -23,28 +23,27 @@ other attached packages:
 [46] ggplot2_3.3.6          tidyverse_1.3.1        raster_3.5-21          sp_1.5-0               shiny_1.7.1           
 
 loaded via a namespace (and not attached):
-  [1] utf8_1.2.2           tidyselect_1.2.0     RSQLite_2.2.14       htmlwidgets_1.5.4    grid_4.2.1          
-  [6] maptools_1.1-4       munsell_0.5.0        jqr_1.2.3            codetools_0.2-18     units_0.8-0         
- [11] miniUI_0.1.1.1       withr_2.5.0          colorspace_2.0-3     progressr_0.10.1     highr_0.9           
- [16] uuid_1.1-0           rstudioapi_0.14      wk_0.6.0             labeling_0.4.2       RgoogleMaps_1.4.5.3 
- [21] farver_2.1.1         bit64_4.0.5          vctrs_0.5.1          generics_0.1.3       xfun_0.35           
- [26] qpdf_1.2.0           R6_2.5.1             doParallel_1.0.17    bitops_1.0-7         cachem_1.0.6        
- [31] geojson_0.3.4        assertthat_0.2.1     promises_1.2.0.1     scales_1.2.0         vroom_1.5.7         
- [36] rgeos_0.5-9          gtable_0.3.0         googleway_2.7.6      rlang_1.0.6          chk_0.8.0           
- [41] systemfonts_1.0.4    RcppRoll_0.3.0       rgdal_1.5-32         lazyeval_0.2.2       broom_1.0.0         
- [46] brew_1.0-7           s2_1.0.7             rgl_0.109.2          yaml_2.3.5           modelr_0.1.8        
- [51] crosstalk_1.2.0      backports_1.4.1      httpuv_1.6.5         tools_4.2.1          ellipsis_0.3.2      
- [56] jquerylib_0.1.4      proxy_0.4-27         Rcpp_1.0.9           plyr_1.8.7           base64enc_0.1-3     
- [61] progress_1.2.2       classInt_0.4-7       prettyunits_1.1.1    fontawesome_0.2.2    ggmap_3.0.0.903     
- [66] haven_2.5.0          fs_1.5.2             crul_1.2.0           magrittr_2.0.3       reprex_2.0.1        
- [71] hms_1.1.1            shinyjs_2.1.0        mime_0.12            evaluate_0.15        xtable_1.8-4        
- [76] compiler_4.2.1       KernSmooth_2.23-20   V8_4.2.1             crayon_1.5.1         geojsonsf_2.0.3     
- [81] htmltools_0.5.2      later_1.3.0          tzdb_0.3.0           dbplyr_2.2.1         rappdirs_0.3.3      
- [86] cli_3.4.1            parallel_4.2.1       pkgconfig_2.0.3      RefManageR_1.3.0     foreign_0.8-82      
- [91] terra_1.5-34         xml2_1.3.3           foreach_1.5.2        svglite_2.1.0        bslib_0.3.1         
- [96] webshot_0.5.3        bibtex_0.4.2.3       rvest_1.0.2          snakecase_0.11.0     digest_0.6.29       
-[101] httpcode_0.3.0       rmarkdown_2.14       cellranger_1.1.0     curl_4.3.3           lifecycle_1.0.3     
-[106] jsonlite_1.8.4       viridisLite_0.4.0    askpass_1.1          fansi_1.0.3          pillar_1.8.1        
-[111] lattice_0.20-45      poisutils_0.0.0.9010 fastmap_1.1.0        glue_1.6.2           png_0.1-7           
-[116] iterators_1.0.14     bit_4.0.4            class_7.3-20         stringi_1.7.8        sass_0.4.1          
-[121] blob_1.2.3           yesno_0.1.2          memoise_2.0.1        e1071_1.7-11        
+  [1] utf8_1.2.2           tidyselect_1.2.0     RSQLite_2.2.14       htmlwidgets_1.5.4    grid_4.2.1           maptools_1.1-4      
+  [7] munsell_0.5.0        jqr_1.2.3            codetools_0.2-18     units_0.8-0          miniUI_0.1.1.1       withr_2.5.0         
+ [13] colorspace_2.0-3     progressr_0.10.1     highr_0.9            uuid_1.1-0           rstudioapi_0.14      wk_0.6.0            
+ [19] labeling_0.4.2       RgoogleMaps_1.4.5.3  aqp_1.42             farver_2.1.1         bit64_4.0.5          vctrs_0.5.1         
+ [25] generics_0.1.3       xfun_0.35            qpdf_1.2.0           R6_2.5.1             doParallel_1.0.17    bitops_1.0-7        
+ [31] cachem_1.0.6         geojson_0.3.4        assertthat_0.2.1     promises_1.2.0.1     scales_1.2.0         vroom_1.5.7         
+ [37] rgeos_0.5-9          gtable_0.3.0         lwgeom_0.2-8         googleway_2.7.6      rlang_1.0.6          chk_0.8.0           
+ [43] systemfonts_1.0.4    RcppRoll_0.3.0       rgdal_1.5-32         lazyeval_0.2.2       broom_1.0.0          brew_1.0-7          
+ [49] abind_1.4-5          s2_1.0.7             rgl_0.109.2          yaml_2.3.5           modelr_0.1.8         crosstalk_1.2.0     
+ [55] backports_1.4.1      httpuv_1.6.5         tools_4.2.1          gstat_2.0-9          ellipsis_0.3.2       RColorBrewer_1.1-3  
+ [61] jquerylib_0.1.4      proxy_0.4-27         Rcpp_1.0.9           plyr_1.8.7           base64enc_0.1-3      progress_1.2.2      
+ [67] classInt_0.4-7       prettyunits_1.1.1    zoo_1.8-10           fontawesome_0.2.2    cluster_2.1.3        ggmap_3.0.0.903     
+ [73] haven_2.5.0          colorRamps_2.3.1     fs_1.5.2             crul_1.2.0           magrittr_2.0.3       pixmap_0.4-12       
+ [79] spacetime_1.2-8      reprex_2.0.1         hms_1.1.1            shinyjs_2.1.0        mime_0.12            evaluate_0.15       
+ [85] xtable_1.8-4         XML_3.99-0.10        compiler_4.2.1       plotKML_0.8-3        KernSmooth_2.23-20   V8_4.2.1            
+ [91] crayon_1.5.1         geojsonsf_2.0.3      htmltools_0.5.2      later_1.3.0          tzdb_0.3.0           dbplyr_2.2.1        
+ [97] rappdirs_0.3.3       cli_3.4.1            parallel_4.2.1       pkgconfig_2.0.3      RefManageR_1.3.0     foreign_0.8-82      
+[103] terra_1.5-34         xml2_1.3.3           foreach_1.5.2        svglite_2.1.0        bslib_0.3.1          webshot_0.5.3       
+[109] bibtex_0.4.2.3       rvest_1.0.2          snakecase_0.11.0     digest_0.6.29        httpcode_0.3.0       rmarkdown_2.14      
+[115] cellranger_1.1.0     intervals_0.15.2     curl_4.3.3           dismo_1.3-5          lifecycle_1.0.3      jsonlite_1.8.4      
+[121] viridisLite_0.4.0    askpass_1.1          fansi_1.0.3          pillar_1.8.1         lattice_0.20-45      poisutils_0.0.0.9010
+[127] fastmap_1.1.0        xts_0.12.1           glue_1.6.2           zip_2.2.0            FNN_1.1.3.1          png_0.1-7           
+[133] iterators_1.0.14     bit_4.0.4            class_7.3-20         stringi_1.7.8        sass_0.4.1           blob_1.2.3          
+[139] stars_0.5-5          yesno_0.1.2          memoise_2.0.1        e1071_1.7-11        
