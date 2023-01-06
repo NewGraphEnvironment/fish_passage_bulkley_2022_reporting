@@ -1217,12 +1217,15 @@ tab_hab_summary <- left_join(
 ## phase1 --------------------
 #make the cost estimates
 # HACK !!!!!!!!!!!!!!!!!!!!!!! turned off all cost estimate data for now
-# tab_cost_est_prep <- left_join(
-#   pscis_rd %>%
-#     arrange(aggregated_crossings_id) %>%
-#   select(tab_cost_rd_mult, my_road_class, my_road_surface, cost_m_1000s_bridge, cost_embed_cv),
-#   by = c('my_road_class','my_road_surface')
-# )
+
+pscis_rd <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/rd_class_surface.csv'))
+tab_cost_rd_mult <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/tab_cost_rd_mult.csv'))
+
+tab_cost_est_prep <- left_join(
+  pscis_rd,
+  select(tab_cost_rd_mult, my_road_class, my_road_surface, cost_m_1000s_bridge, cost_embed_cv),
+  by = c('my_road_class','my_road_surface')
+)
 
 
 
@@ -1378,7 +1381,6 @@ hab_loc_prep <- left_join(
          site, priority, comments),
   by = 'site'
 )
-
 
 #need to populate the coordinates before this will work
 ###please note that the photos are only in those files ecause they are referenced in other parts
