@@ -11,10 +11,10 @@ maps_location_zip <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulk
 
 
 pscis_list <- fpr::fpr_import_pscis_all()
-pscis_phase1 <- pscis_list %>% pluck('pscis_phase1')
-pscis_phase2 <- pscis_list %>% pluck('pscis_phase2') %>%
-  arrange(pscis_crossing_id)
-pscis_reassessments <- pscis_list %>% pluck('pscis_reassessments')
+# pscis_phase1 <- pscis_list %>% pluck('pscis_phase1')
+# pscis_phase2 <- pscis_list %>% pluck('pscis_phase2') %>%
+#   arrange(pscis_crossing_id)
+# pscis_reassessments <- pscis_list %>% pluck('pscis_reassessments')
 pscis_all_prep <- pscis_list %>%
   bind_rows()
 
@@ -53,7 +53,8 @@ bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
 # tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
 # rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
-xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>% filter(stream_crossing_id > 198108)
+xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>%
+  filter(stream_crossing_id > 198108)
 wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
   mutate(aspect = as.character(aspect))
   # issues with particular sites and the aws tiles
@@ -72,7 +73,7 @@ rws_disconnect(conn)
 
 
 # HACK !!!!!!!!!!!!!!!!!!!!this doesn't work till our data loads to pscis so
-pscis_all <- pscis_all_prep
+# pscis_all <- pscis_all_prep
 
 # UNHACK - unhash until next UNHACK
 pscis_all <- left_join(
@@ -92,6 +93,10 @@ pscis_all <- left_join(
   arrange(pscis_crossing_id)
 # UNHACK to here unhash
 
+pscis_phase1 <- pscis_all %>% filter(source %like% 'pscis_phase1')
+pscis_phase2 <- pscis_all %>% filter(source %like% 'pscis_phase2') %>%
+  arrange(pscis_crossing_id)
+pscis_reassessments <- pscis_all %>% filter(source %like% 'pscis_reassessments')
 
 pscis_all_sf <- pscis_all %>%
   # distinct(.keep_all = T) %>%
