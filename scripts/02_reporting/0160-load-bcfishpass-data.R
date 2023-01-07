@@ -224,7 +224,28 @@ urlfile="https://raw.githubusercontent.com/smnorris/bcfishpass/main/parameters/p
 
 bcfishpass_spawn_rear_model <- read_csv(url(urlfile))
 
+# PSCIS historic info--------------------------------------------------------------------
+#to write the background
+conn <- DBI::dbConnect(
+  RPostgres::Postgres(),
+  dbname = "bcfishpass",
+  host = "localhost",
+  port = "5432",
+  user = "postgres",
+  password = "postgres"
+)
 
+query <- "SELECT p.*, wsg.watershed_group_code FROM whse_fish.pscis_assessment_svw p INNER JOIN whse_basemapping.fwa_watershed_groups_poly wsg ON ST_Intersects(wsg.geom,p.geom)"
+pscis_ass <-  sf::st_read(conn, query = query) %>%
+  filter(watershed_group_code == 'BULK')
+
+
+query <- "SELECT p.*, wsg.watershed_group_code FROM whse_fish.pscis_habitat_confirmation_svw p INNER JOIN whse_basemapping.fwa_watershed_groups_poly wsg ON ST_Intersects(wsg.geom,p.geom)"
+pscis_con <-  sf::st_read(conn, query = query) %>%
+  filter(watershed_group_code == 'BULK')
+
+
+dbDisconnect(conn = conn)
 # put it in the db
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
@@ -232,6 +253,10 @@ rws_list_tables(conn)
 # rws_write(archive, exists = F, delete = TRUE,
 #           conn = conn, x_name = paste0("bcfishpass_spawn_rear_model_archive_", format(Sys.time(), "%Y-%m-%d-%H%m")))
 # rws_drop_table("bcfishpass_spawn_rear_model", conn = conn)
+rws_write(pscis_ass, exists = F, delete = TRUE,
+          conn = conn, x_name = "pscis_historic_phase1")
+rws_write(pscis_con, exists = F, delete = TRUE,
+          conn = conn, x_name = "pscis_historic_phase2")
 rws_write(bcfishpass_spawn_rear_model, exists = F, delete = TRUE,
           conn = conn, x_name = "bcfishpass_spawn_rear_model")
 rws_list_tables(conn)
