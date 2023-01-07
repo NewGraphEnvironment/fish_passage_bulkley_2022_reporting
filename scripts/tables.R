@@ -49,7 +49,8 @@ bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
 # bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass_archive_2022-03-02-1403", conn = conn)
 bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column_comments", conn = conn)
 
-# pscis_historic_phase1 <- readwritesqlite::rws_read_table("pscis_historic_phase1", conn = conn)
+pscis_historic_phase1 <- readwritesqlite::rws_read_table("pscis_historic_phase1", conn = conn)
+pscis_historic_phase2 <- readwritesqlite::rws_read_table("pscis_historic_phase2", conn = conn)
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
 # tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
 # rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)

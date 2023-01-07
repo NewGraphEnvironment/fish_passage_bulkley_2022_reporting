@@ -237,10 +237,10 @@ watershed area upstream of the crossing of approximately
 a maximum of 1274m to 636m at the
 crossing (Table <a href="stock-creek---195943---appendix.html#tab:tab-wshd-195943">4.1</a>). There is limited fisheries information available for the areas upstream of crossings 195943 and 195944. Harry Bell is the adjacent landowner downstream and upstream of the highway crossing. He reported historical sightings of adult coho and steelhead in Stock Creek. Approximately 2km downstream of crossing 195943, there is a railway crossing that was assessed and found to be fully passable. Coho and chinook salmon have been observed just downstream of the railway crossing in the past <span class="citation">(MoE 2020b; Norris 2020)</span>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="stock-creek---195943---appendix.html#cb33-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="stock-creek---195943---appendix.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb33-3"><a href="stock-creek---195943---appendix.html#cb33-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the upstream watershed area is above&#39;</span>,</span>
-<span id="cb33-4"><a href="stock-creek---195943---appendix.html#cb33-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="stock-creek---195943---appendix.html#cb30-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="stock-creek---195943---appendix.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb30-3"><a href="stock-creek---195943---appendix.html#cb30-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the upstream watershed area is above&#39;</span>,</span>
+<span id="cb30-4"><a href="stock-creek---195943---appendix.html#cb30-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-195943">Table 4.1: </span>Summary of derived upstream watershed statistics for PSCIS crossing 195943.
@@ -322,7 +322,7 @@ presented in Table <a href="stock-creek---195943---appendix.html#tab:tab-culvert
 watershed is provided in map attachment
 <a href="https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/FishPassage_093L.114.pdf">093L.114</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="stock-creek---195943---appendix.html#cb34-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="stock-creek---195943---appendix.html#cb31-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -653,7 +653,7 @@ non-backwatered and ranked as a
 barrier to upstream fish
 passage. The culvert length and fill depth were estimated at 167m and 35m, respectively (Table <a href="stock-creek---195943---appendix.html#tab:tab-culvert-195944">4.4</a>).</p>
 <p><br></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="stock-creek---195943---appendix.html#cb35-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="stock-creek---195943---appendix.html#cb32-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-195943">Table 4.3: </span>Summary of fish passage assessment for PSCIS crossing 195943.
@@ -917,7 +917,7 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="stock-creek---195943---appendix.html#cb36-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="stock-creek---195943---appendix.html#cb33-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
 <table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-195944">Table 4.4: </span>Summary of fish passage assessment for PSCIS crossing 195944.
@@ -1180,16 +1180,16 @@ Fix Span / Diameter
 </tfoot>
 </table></li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="stock-creek---195943---appendix.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb37-2"><a href="stock-creek---195943---appendix.html#cb37-2" aria-hidden="true" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
-<span id="cb37-3"><a href="stock-creek---195943---appendix.html#cb37-3" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_my_priority_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="stock-creek---195943---appendix.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb34-2"><a href="stock-creek---195943---appendix.html#cb34-2" aria-hidden="true" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
+<span id="cb34-3"><a href="stock-creek---195943---appendix.html#cb34-3" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_my_priority_info</span>()</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="stream-characteristics-downstream-of-195943" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of 195943<a href="stock-creek---195943---appendix.html#stream-characteristics-downstream-of-195943" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stream was surveyed downstream from crossing 195943 for 300m .
 (Figures <a href="stock-creek---195943---appendix.html#fig:photo-195943-01">4.1</a> - <a href="stock-creek---195943---appendix.html#fig:photo-195943-02">4.2</a>).
-Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as .The average channel width was 3.8m, the average wetted width was 1.8m, and the average gradient was 2.7%.The dominant substrate was gravels with cobbles sub-dominant. There was a pool approximately 180m downstream of the crossing where multiple fish up to 10cm in length were spotted. A footbridge was found 20m past this pool. Concrete slabs were located on both banks upstream of the bridge. The stream had minimal overhanging and riparian vegetation due to farmland. Some areas had built up dams that formed pools. These are likely being used as livestock waterholes. Some garbage and debris was found in and around the stream. The habitat was
+The dominant substrate was gravels with cobbles sub-dominant.Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as .The average channel width was 3.8m, the average wetted width was 1.8m, and the average gradient was 2.7%. There was a pool approximately 180m downstream of the crossing where multiple fish up to 10cm in length were spotted. A footbridge was found 20m past this pool. Concrete slabs were located on both banks upstream of the bridge. The stream had minimal overhanging and riparian vegetation due to farmland. Some areas had built up dams that formed pools. These are likely being used as livestock waterholes. Some garbage and debris was found in and around the stream. The habitat was
 rated as medium value for salmonid
 rearing and spawning. There is potential for higher value habitat but there is limited complexity due to adjacent
 agricultural activities.</p>
@@ -1197,7 +1197,7 @@ agricultural activities.</p>
 <p>Modelled crossing 1805507 located further downstream on the CN Railway was assessed and ranked as passable to all species and life stages at the time of survey. The crossing was embedded and fully backwatered (Table
 <a href="stock-creek---195943---appendix.html#tab:tab-culvert-1805507">4.5</a>).</p>
 <p><br></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="stock-creek---195943---appendix.html#cb38-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">dat =</span> pscis_phase1, <span class="at">site =</span> <span class="dv">1805507</span>, <span class="at">site_photo_id =</span> <span class="dv">1805507</span>, <span class="at">col_filter =</span> my_crossing_reference)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="stock-creek---195943---appendix.html#cb35-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">dat =</span> pscis_phase1, <span class="at">site =</span> <span class="dv">1805507</span>, <span class="at">site_photo_id =</span> <span class="dv">1805507</span>, <span class="at">col_filter =</span> my_crossing_reference)</span></code></pre></div>
 <table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-1805507">Table 4.5: </span>Summary of fish passage assessment for PSCIS crossing 1805507.
@@ -1465,7 +1465,7 @@ Fix Span / Diameter
 <h2>Stream Characteristics Upstream of 195943 and Downstream of 195944<a href="stock-creek---195943---appendix.html#stream-characteristics-upstream-of-195943-and-downstream-of-195944" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stream was surveyed upstream from crossing 195943 for 330m
 (Figures <a href="stock-creek---195943---appendix.html#fig:photo-195943-03">4.3</a> - <a href="stock-creek---195943---appendix.html#fig:photo-195943-04">4.4</a>).<br />
-The average channel width was 3.1m, the average wetted width was 1.8m, and the average gradient was 2.1%.Total cover amount was rated as abundant with boulders dominant. Cover was also present as undercut banks.The dominant substrate was cobbles with boulders sub-dominant. There was good flow volume and a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel suitable for resident rainbow as well as coho and steelhead spawning. Occasional shallow pools and traces of large water debris were sighted. The channel appeared to be constricted due to agricultural development on both sides of the stream. Water withdrawal is occurring as well. More agricultural development was encroaching on the riparian farther upstream. The
+Total cover amount was rated as abundant with boulders dominant. Cover was also present as undercut banks.The dominant substrate was cobbles with boulders sub-dominant.The average channel width was 3.1m, the average wetted width was 1.8m, and the average gradient was 2.1%. There was good flow volume and a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel suitable for resident rainbow as well as coho and steelhead spawning. Occasional shallow pools and traces of large water debris were sighted. The channel appeared to be constricted due to agricultural development on both sides of the stream. Water withdrawal is occurring as well. More agricultural development was encroaching on the riparian farther upstream. The
 habitat was rated as medium value as
 an important migration corridor containing suitable spawning habitat and
 having moderate rearing potential.</p>
@@ -1485,14 +1485,14 @@ having moderate rearing potential.</p>
 </div>
 <div id="structure-remediation-and-cost-estimate" class="section level2 unnumbered hasAnchor">
 <h2>Structure Remediation and Cost Estimate<a href="stock-creek---195943---appendix.html#structure-remediation-and-cost-estimate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="stock-creek---195943---appendix.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Should restoration/maintenance activities proceed, replacement of PSCIS</span></span>
-<span id="cb39-2"><a href="stock-creek---195943---appendix.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># crossing `r as.character(my_site)` with a bridge</span></span>
-<span id="cb39-3"><a href="stock-creek---195943---appendix.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)`m</span></span>
-<span id="cb39-4"><a href="stock-creek---195943---appendix.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># span) is recommended. The cost of the work is estimated at</span></span>
-<span id="cb39-5"><a href="stock-creek---195943---appendix.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># \$`r format(fpr::fpr_my_cost_estimate(), big.mark = &#39;,&#39;)` for a cost</span></span>
-<span id="cb39-6"><a href="stock-creek---195943---appendix.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># benefit of `r fpr::fpr_my_cost_estimate(col_pull = cost_net)` linear</span></span>
-<span id="cb39-7"><a href="stock-creek---195943---appendix.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># m/\$1000 and `r fpr::fpr_my_cost_estimate(col_pull = cost_area_net)`</span></span>
-<span id="cb39-8"><a href="stock-creek---195943---appendix.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># m^2^/\$1000.</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="stock-creek---195943---appendix.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Should restoration/maintenance activities proceed, replacement of PSCIS</span></span>
+<span id="cb36-2"><a href="stock-creek---195943---appendix.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># crossing `r as.character(my_site)` with a bridge</span></span>
+<span id="cb36-3"><a href="stock-creek---195943---appendix.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)`m</span></span>
+<span id="cb36-4"><a href="stock-creek---195943---appendix.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># span) is recommended. The cost of the work is estimated at</span></span>
+<span id="cb36-5"><a href="stock-creek---195943---appendix.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># \$`r format(fpr::fpr_my_cost_estimate(), big.mark = &#39;,&#39;)` for a cost</span></span>
+<span id="cb36-6"><a href="stock-creek---195943---appendix.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># benefit of `r fpr::fpr_my_cost_estimate(col_pull = cost_net)` linear</span></span>
+<span id="cb36-7"><a href="stock-creek---195943---appendix.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># m/\$1000 and `r fpr::fpr_my_cost_estimate(col_pull = cost_area_net)`</span></span>
+<span id="cb36-8"><a href="stock-creek---195943---appendix.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co"># m^2^/\$1000.</span></span></code></pre></div>
 <p><br></p>
 </div>
 <div id="conclusion" class="section level2 unnumbered hasAnchor">
@@ -1508,11 +1508,11 @@ proceeding to design for replacement. Replacement with a new open bottom structu
 <p><br></p>
 <p>This stream is heavily impacted by adjacent land use and cattle activity. However, the habitat is still moderate to high value and suitable for rearing and overwintering. Resident fish were spotted at the time of survey. It is advised that individuals continue to work with adjacent landowners and tenure holders to carry out stream restoration activities and keep livestock out of the riparian region and streambed.</p>
 <p><br></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="stock-creek---195943---appendix.html#cb40-1" aria-hidden="true" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
-<span id="cb40-2"><a href="stock-creek---195943---appendix.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site <span class="sc">|</span> Site <span class="sc">==</span> my_site2) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-3"><a href="stock-creek---195943---appendix.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select(-Site) %&gt;% </span></span>
-<span id="cb40-4"><a href="stock-creek---195943---appendix.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb40-5"><a href="stock-creek---195943---appendix.html#cb40-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="stock-creek---195943---appendix.html#cb37-1" aria-hidden="true" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="stock-creek---195943---appendix.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site <span class="sc">|</span> Site <span class="sc">==</span> my_site2) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="stock-creek---195943---appendix.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select(-Site) %&gt;% </span></span>
+<span id="cb37-4"><a href="stock-creek---195943---appendix.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb37-5"><a href="stock-creek---195943---appendix.html#cb37-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-195943">Table 4.6: </span>Summary of habitat details for PSCIS crossing 195943 and 195944.
@@ -1668,10 +1668,10 @@ medium
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="stock-creek---195943---appendix.html#cb41-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d1_&#39;</span>)</span>
-<span id="cb41-2"><a href="stock-creek---195943---appendix.html#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="stock-creek---195943---appendix.html#cb41-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="stock-creek---195943---appendix.html#cb42-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="stock-creek---195943---appendix.html#cb38-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d1_&#39;</span>)</span>
+<span id="cb38-2"><a href="stock-creek---195943---appendix.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="stock-creek---195943---appendix.html#cb38-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="stock-creek---195943---appendix.html#cb39-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-195943-01"></span>
 <img src="Bulkley2022_files/figure-html/photo-195943-01-1.png" alt="Habitat downstream of PSCIS crossing 195943." width="100%" />
 <p class="caption">
@@ -1679,10 +1679,10 @@ Figure 4.1: Habitat downstream of PSCIS crossing 195943.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="stock-creek---195943---appendix.html#cb43-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d2_&#39;</span>)</span>
-<span id="cb43-2"><a href="stock-creek---195943---appendix.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="stock-creek---195943---appendix.html#cb43-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="stock-creek---195943---appendix.html#cb44-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="stock-creek---195943---appendix.html#cb40-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d2_&#39;</span>)</span>
+<span id="cb40-2"><a href="stock-creek---195943---appendix.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="stock-creek---195943---appendix.html#cb40-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="stock-creek---195943---appendix.html#cb41-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-195943-02"></span>
 <img src="Bulkley2022_files/figure-html/photo-195943-02-1.png" alt="Habitat downstream of PSCIS crossing 195943." width="100%" />
 <p class="caption">
@@ -1690,15 +1690,15 @@ Figure 4.2: Habitat downstream of PSCIS crossing 195943.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="stock-creek---195943---appendix.html#cb45-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb45-2"><a href="stock-creek---195943---appendix.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="stock-creek---195943---appendix.html#cb45-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb45-4"><a href="stock-creek---195943---appendix.html#cb45-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb45-5"><a href="stock-creek---195943---appendix.html#cb45-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="stock-creek---195943---appendix.html#cb46-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
-<span id="cb46-2"><a href="stock-creek---195943---appendix.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="stock-creek---195943---appendix.html#cb46-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="stock-creek---195943---appendix.html#cb47-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="stock-creek---195943---appendix.html#cb42-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb42-2"><a href="stock-creek---195943---appendix.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="stock-creek---195943---appendix.html#cb42-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb42-4"><a href="stock-creek---195943---appendix.html#cb42-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb42-5"><a href="stock-creek---195943---appendix.html#cb42-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="stock-creek---195943---appendix.html#cb43-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
+<span id="cb43-2"><a href="stock-creek---195943---appendix.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="stock-creek---195943---appendix.html#cb43-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="stock-creek---195943---appendix.html#cb44-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-195943-03"></span>
 <img src="Bulkley2022_files/figure-html/photo-195943-03-1.png" alt="Habitat upstream of PSCIS crossing 195943." width="100%" />
 <p class="caption">
@@ -1706,25 +1706,25 @@ Figure 4.3: Habitat upstream of PSCIS crossing 195943.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="stock-creek---195943---appendix.html#cb48-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
-<span id="cb48-2"><a href="stock-creek---195943---appendix.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="stock-creek---195943---appendix.html#cb48-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="stock-creek---195943---appendix.html#cb49-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="stock-creek---195943---appendix.html#cb45-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
+<span id="cb45-2"><a href="stock-creek---195943---appendix.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="stock-creek---195943---appendix.html#cb45-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="stock-creek---195943---appendix.html#cb46-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-195943-04"></span>
 <img src="Bulkley2022_files/figure-html/photo-195943-04-1.png" alt="Habitat upstream of PSCIS crossing 195943." width="100%" />
 <p class="caption">
 Figure 4.4: Habitat upstream of PSCIS crossing 195943.
 </p>
 </div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="stock-creek---195943---appendix.html#cb50-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb50-2"><a href="stock-creek---195943---appendix.html#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="stock-creek---195943---appendix.html#cb50-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb50-4"><a href="stock-creek---195943---appendix.html#cb50-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb50-5"><a href="stock-creek---195943---appendix.html#cb50-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="stock-creek---195943---appendix.html#cb51-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
-<span id="cb51-2"><a href="stock-creek---195943---appendix.html#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="stock-creek---195943---appendix.html#cb51-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="stock-creek---195943---appendix.html#cb52-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="stock-creek---195943---appendix.html#cb47-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb47-2"><a href="stock-creek---195943---appendix.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="stock-creek---195943---appendix.html#cb47-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb47-4"><a href="stock-creek---195943---appendix.html#cb47-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb47-5"><a href="stock-creek---195943---appendix.html#cb47-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="stock-creek---195943---appendix.html#cb48-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
+<span id="cb48-2"><a href="stock-creek---195943---appendix.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="stock-creek---195943---appendix.html#cb48-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="stock-creek---195943---appendix.html#cb49-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-195944-05"></span>
 <img src="Bulkley2022_files/figure-html/photo-195944-05-1.png" alt="Habitat upstream of PSCIS crossing 195944." width="100%" />
 <p class="caption">
@@ -1732,27 +1732,27 @@ Figure 4.5: Habitat upstream of PSCIS crossing 195944.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="stock-creek---195943---appendix.html#cb53-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
-<span id="cb53-2"><a href="stock-creek---195943---appendix.html#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="stock-creek---195943---appendix.html#cb53-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="stock-creek---195943---appendix.html#cb54-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="stock-creek---195943---appendix.html#cb50-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
+<span id="cb50-2"><a href="stock-creek---195943---appendix.html#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="stock-creek---195943---appendix.html#cb50-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="stock-creek---195943---appendix.html#cb51-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-195944-06"></span>
 <img src="Bulkley2022_files/figure-html/photo-195944-06-1.png" alt="Habitat upstream of PSCIS crossing 195944." width="100%" />
 <p class="caption">
 Figure 4.6: Habitat upstream of PSCIS crossing 195944.
 </p>
 </div>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="stock-creek---195943---appendix.html#cb55-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb55-2"><a href="stock-creek---195943---appendix.html#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="stock-creek---195943---appendix.html#cb55-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb55-4"><a href="stock-creek---195943---appendix.html#cb55-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb55-5"><a href="stock-creek---195943---appendix.html#cb55-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="stock-creek---195943---appendix.html#cb52-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb52-2"><a href="stock-creek---195943---appendix.html#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="stock-creek---195943---appendix.html#cb52-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb52-4"><a href="stock-creek---195943---appendix.html#cb52-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb52-5"><a href="stock-creek---195943---appendix.html#cb52-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="stock-creek---195943---appendix.html#cb56-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb56-2"><a href="stock-creek---195943---appendix.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb56-3"><a href="stock-creek---195943---appendix.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="stock-creek---195943---appendix.html#cb57-1" aria-hidden="true" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">197653</span></span>
-<span id="cb57-2"><a href="stock-creek---195943---appendix.html#cb57-2" aria-hidden="true" tabindex="-1"></a>my_site2 <span class="ot">&lt;-</span> <span class="dv">197657</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="stock-creek---195943---appendix.html#cb53-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb53-2"><a href="stock-creek---195943---appendix.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb53-3"><a href="stock-creek---195943---appendix.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="stock-creek---195943---appendix.html#cb54-1" aria-hidden="true" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">197653</span></span>
+<span id="cb54-2"><a href="stock-creek---195943---appendix.html#cb54-2" aria-hidden="true" tabindex="-1"></a>my_site2 <span class="ot">&lt;-</span> <span class="dv">197657</span></span></code></pre></div>
 </div>
 </div>
             </section>
