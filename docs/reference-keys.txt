@@ -2,8 +2,6 @@ fig:overview-map
 fig:hydrology-plot
 fig:hydrology-stats1
 fig:hydrology-stats2
-fig:hydrology-plot2
-fig:hydrology-stats3
 tab:fiss-species-table
 fig:fish-gantt-morice
 fig:fish-plot-grad
@@ -88,15 +86,9 @@ background
 wetsuweten
 gitxsan
 project-location
-bulkley-river
-morice-river
 fisheries
-bulkley-river-1
-morice-river-1
 fish-species
 fish-passage-restoration-planning-and-implementation
-bulkley-river-2
-morice-river-2
 methods
 planning
 habitat-modelling
