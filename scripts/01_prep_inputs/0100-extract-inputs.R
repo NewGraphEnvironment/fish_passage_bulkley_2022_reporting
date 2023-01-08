@@ -478,14 +478,17 @@ str_type <- pscis_all %>%
 ##burn to a csvs so we can copy and paste into spreadsheet (could make a function to do this all at once....)
 str_type %>%
   filter(source %ilike% 'phase1') %>%
+  arrange(rowid) %>%
   readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis1.csv'),
                    na = '')
 str_type %>%
   filter(source %ilike% 'phase2') %>%
+  arrange(rowid) %>%
   readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis2.csv'),
                    na = '')
 str_type %>%
   filter(source %ilike% 'reasses') %>%
+  arrange(rowid) %>%
   readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis_reassessments.csv'),
                    na = '')
 
@@ -555,14 +558,14 @@ dat <- pscis_all %>%
 
 
 ##get the road info from the database
-conn <- DBI::dbConnect(
-  RPostgres::Postgres(),
-  dbname = dbname,
-  host = host,
-  port = port,
-  user = user,
-  password = password
-)
+# conn <- DBI::dbConnect(
+#   RPostgres::Postgres(),
+#   dbname = dbname,
+#   host = host,
+#   port = port,
+#   user = user,
+#   password = password
+# )
 #
 # ##listthe schemas in the database
 # dbGetQuery(conn,
@@ -570,47 +573,96 @@ conn <- DBI::dbConnect(
 #            FROM information_schema.schemata")
 
 ##list tables in a schema
+# dbGetQuery(conn,
+#            "SELECT table_name
+#            FROM information_schema.tables
+#            WHERE table_schema='bcfishpass'")
+#
+# ##list column names in a table
+# dbGetQuery(conn,
+#            "SELECT column_name,data_type
+#            FROM information_schema.columns
+#            WHERE table_name='modelled_stream_crossings'") #modelled_stream_crossings #modelled_crossings_closed_bottom
+#
+#
+#
+# # add a unique id - we could just use the reference number
+# dat$misc_point_id <- seq.int(nrow(dat))
+#
+# # dbSendQuery(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", "test_hack",";"))
+# # load to database
+# sf::st_write(obj = dat, dsn = conn, Id(schema= "ali", table = "misc"))
+#
+# # we are using fish_passage.modelled_crossings_closed_bottom but this table is deprecated. Should revise to pull from files raw but that's lots of work
+# # and this data should be fine so whatever
+# # sf doesn't automagically create a spatial index or a primary key
+# res <- dbSendQuery(conn, "CREATE INDEX ON ali.misc USING GIST (geometry)")
+# dbClearResult(res)
+# res <- dbSendQuery(conn, "ALTER TABLE ali.misc ADD PRIMARY KEY (misc_point_id)")
+# dbClearResult(res)
+# # swapped out fish_passage.modelled_crossings_closed_bottom
+# dat_info <- dbGetQuery(conn, "SELECT
+#   a.misc_point_id,
+#   b.*,
+#   ST_Distance(ST_Transform(a.geometry,3005), b.geom) AS distance
+# FROM
+#   ali.misc AS a
+# CROSS JOIN LATERAL
+#   (SELECT *
+#    FROM fish_passage.modelled_crossings_closed_bottom
+#    ORDER BY
+#      a.geometry <-> geom
+#    LIMIT 1) AS b")
+
+conn <- DBI::dbConnect(
+  RPostgres::Postgres(),
+  dbname = Sys.getenv('PG_DB_BCBARRIERS'),
+  host = Sys.getenv('PG_HOST_BCBARRIERS'),
+  port = 5432,
+  user = Sys.getenv('PG_USER_BCBARRIERS'),
+  password = Sys.getenv('PG_PASS_BCBARRIERS')
+)
+
 dbGetQuery(conn,
-           "SELECT table_name
-           FROM information_schema.tables
-           WHERE table_schema='bcfishpass'")
+           "select t.table_schema,
+           t.table_name
+           from information_schema.tables t
+           inner join information_schema.columns c on c.table_name = t.table_name
+           and c.table_schema = t.table_schema
+           where c.column_name = 'file_type_description'
+           and t.table_schema not in ('information_schema', 'pg_catalog')
+           and t.table_type = 'BASE TABLE'
+           order by t.table_schema;")
 
-##list column names in a table
 dbGetQuery(conn,
-           "SELECT column_name,data_type
-           FROM information_schema.columns
-           WHERE table_name='modelled_stream_crossings'") #modelled_stream_crossings #modelled_crossings_closed_bottom
+           "select t.table_schema,
+           t.table_name
+           from information_schema.tables t
+           inner join information_schema.columns c on c.table_name = t.table_name
+           and c.table_schema = t.table_schema
+           where c.column_name = 'road_class'
+           and t.table_schema not in ('information_schema', 'pg_catalog')
+           and t.table_type = 'BASE TABLE'
+           order by t.table_schema;")
+
+unique(bcfishpass$transport_line_type_description)
+
+select(transport_line_type_code, description)
+
+data1 <- pscis_phase2 %>%
+  select(pscis_crossing_id, road_name, road_tenure)
+
+data_joined <- left_join(
+  select(data1, pscis_crossing_id, road_name, road_tenure),
+  select(bcfishpass, modelled_crossing_id, transport_line_type_description), by = c('pscis_crossing_id' = 'modelled_crossing_id')
+  )
 
 
 
-# add a unique id - we could just use the reference number
-dat$misc_point_id <- seq.int(nrow(dat))
 
-# dbSendQuery(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", "test_hack",";"))
-# load to database
-sf::st_write(obj = dat, dsn = conn, Id(schema= "ali", table = "misc"))
 
-# we are using fish_passage.modelled_crossings_closed_bottom but this table is deprecated. Should revise to pull from files raw but that's lots of work
-# and this data should be fine so whatever
-# sf doesn't automagically create a spatial index or a primary key
-res <- dbSendQuery(conn, "CREATE INDEX ON ali.misc USING GIST (geometry)")
-dbClearResult(res)
-res <- dbSendQuery(conn, "ALTER TABLE ali.misc ADD PRIMARY KEY (misc_point_id)")
-dbClearResult(res)
-# swapped out fish_passage.modelled_crossings_closed_bottom
-dat_info <- dbGetQuery(conn, "SELECT
-  a.misc_point_id,
-  b.*,
-  ST_Distance(ST_Transform(a.geometry,3005), b.geom) AS distance
-FROM
-  ali.misc AS a
-CROSS JOIN LATERAL
-  (SELECT *
-   FROM fish_passage.modelled_crossings_closed_bottom
-   ORDER BY
-     a.geometry <-> geom
-   LIMIT 1) AS b")
-
+readr::write_csv(file = paste0(getwd(), '/data/inputs_raw/tab_cost_rd_mult.csv'),
+                   na = '')
 ##join the modelling data to our pscis submission info
 dat_joined <- left_join(
   select(dat, misc_point_id,
@@ -814,13 +866,14 @@ hab_priority_fish_hg <- left_join(
 # we need to summarize all our fish sizes
 
 ## fish collection data ----------------------------------------------------
-habitat_confirmations <- fpr::fpr_import_hab_con(row_empty_remove = T, col_filter_na = T)
+habitat_confirmations <- fpr::fpr_import_hab_con()
 
 
 hab_fish_indiv_prep <- habitat_confirmations %>%
   purrr::pluck("step_3_individual_fish_data") %>%
   dplyr::filter(!is.na(site_number)) %>%
   select(-gazetted_names:-site_number)
+
 
 hab_loc <- habitat_confirmations %>%
   purrr::pluck("step_1_ref_and_loc_info") %>%
@@ -979,8 +1032,8 @@ plot_fish_hist <- ggplot(hab_fish_indiv %>% filter(!species_code %in% c('LSU','S
 #                position="identity", size = 0.75)
 plot_fish_hist
 
-# ggsave(plot = plot_fish_hist, file="./fig/fish_histogram.png",
-#        h=3.4, w=5.11, units="in", dpi=300)
+ggsave(plot = plot_fish_hist, file="./fig/fish_histogram.png",
+        h=3.4, w=5.11, units="in", dpi=300)
 
 
 ####-----------summary tables for input to spreadsheet----------------------
