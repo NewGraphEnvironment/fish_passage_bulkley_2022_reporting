@@ -28,6 +28,19 @@ pscis_all %>%
            road_name,
            road_tenure,
            my_road_class,
-           my_road_surface) %>%
+           my_road_surface,
+           crossing_fix,
+           recommended_diameter_or_span_meters,
+           source,
+           downstream_channel_width_meters,
+           habitat_value,
+           barrier_result
+          ) %>%
+  #filter out crossings that aren't barriers
+  filter(!is.na(crossing_fix)) %>%
   # burn out
   readr::write_csv('data/inputs_raw/rd_class_surface.csv')
+
+## NOTE: my_road_class and my_road_surface columns were filled in after the fact, using Roads-DRA layer in Q and matching to bcbarriers
+## my_road_class was determined by matching transport_line_type_code in roads layer to code in whse_basemapping.transport_line_type_code
+# my_road_surface was determined by matching transport_line_surface_code in roads layer to code in whse_basemapping.transport_line_surface_code
