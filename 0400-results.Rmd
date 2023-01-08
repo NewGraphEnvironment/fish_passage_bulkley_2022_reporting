@@ -182,18 +182,12 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 <br>
 
 
-# ```{r cost-est-phase-1}
-# #`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
-# # if(gitbook_on){
-# #   tab_cost_est_phase1 %>% 
-# #   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments.', scroll = gitbook_on)
-# # } else tab_cost_est_phase1 %>% 
-# #   fpr::fpr_kable(scroll = F, caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments.')
-# 
-# # tab_cost_est_phase1 %>%
-# #   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments. Steelhead network model (total length stream network <20% gradient).',
-# #                  scroll = gitbook_on)
-# ```
+```{r cost-est-phase-1}
+
+ tab_cost_est_phase1 %>%
+   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments. Steelhead network model (total length stream network <20% gradient).',
+                  scroll = gitbook_on)
+```
 
 <br>
 
@@ -247,12 +241,12 @@ fpr::fpr_table_cv_summary(dat = pscis_phase2) %>%
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
 
-# ```{r cost-est-phase-2}
-# # tab_cost_est_phase2_report %>% 
-# #   fpr::fpr_kable(caption_text = 'Cost benefit analysis for Phase 2 assessments. Coho rearing model used (total length of stream segments <7.5% gradient)', 
-# #                  scroll = gitbook_on)
-# 
-# ```
+```{r cost-est-phase-2}
+tab_cost_est_phase2_report %>%
+  fpr::fpr_kable(caption_text = 'Cost benefit analysis for Phase 2 assessments. Coho rearing model used (total length of stream segments <7.5% gradient)',
+                 scroll = gitbook_on)
+
+```
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
