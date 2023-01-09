@@ -68,7 +68,7 @@ wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
   # )
 
 # won't be able to do this till you load the photo metadata
-# photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
+photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
 # fiss_sum <- readwritesqlite::rws_read_table("fiss_sum", conn = conn)
 rws_disconnect(conn)
 
