@@ -64,6 +64,11 @@ bcfishpass_spawn_rear_model %>%
   as_tibble(rownames = "row_names") %>% 
   janitor::row_to_names(row_number = 1) %>% 
   rename(Variable = Species) %>% 
+  select(-`Westslope Cutthroat Trout`, 
+         -`Arctic Grayling`, 
+         -`Kokanee`,
+         -`Bull Trout`,
+         -`Rainbow Trout`) %>% 
   fpr::fpr_kable(caption_text = 'Stream gradient and channel width thresholds used to model potentially highest value fish habitat.', scroll = F)
 
 ```
