@@ -402,12 +402,24 @@ pscis_all <- fpr::fpr_import_pscis_all() %>%
 pscis_all %>%
   distinct(site_id) %>%
   arrange(site_id) %>%
+  # put this here to work around issue 64
+  # filter(site_id != 198110) %>%
+  # filter(site_id != 123750) %>%
+  # filter(site_id != 198116) %>%
   # head() %>% #test
-  pull(site_id) %>%
+  pull(site_id)  %>%
   purrr::map(fpr_photo_amalg_cv)
 
 
+# can't build the amalgamated photos
+setdiff(  list.dirs('data/photos', full.names = F, recursive = F),
 
+          pscis_all %>%
+            distinct(site_id) %>%
+            arrange(site_id) %>%
+            # head() %>% #test
+            pull(site_id)
+)
 
 # make phase2 photo files and copy in photos ------------------------------
 
