@@ -134,20 +134,21 @@ pscis_all_sf <- pscis_all_sf %>%
 
 ####-----------report table--------------------
 #  HACK hashout for now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! becasue some columns are now missing from bcfishpass.crossings
-# tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
-#   mutate(cost_m_1000s_bridge = cost_m_1000s_bridge * 10) %>%
-#   rename(
-#     Class = my_road_class,
-#     Surface = my_road_surface,
-#     `Class Multiplier` = road_class_mult,
-#     `Surface Multiplier` = road_surface_mult,
-#     `Bridge $K/10m` = cost_m_1000s_bridge,
-#     `Streambed Simulation $K` = cost_embed_cv
-#   ) %>%
-#   filter(!is.na(Class)) %>%
-#   mutate(Class = stringr::str_to_title(Class),
-#          Surface = stringr::str_to_title(Surface)
-#   )
+
+tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
+  mutate(cost_m_1000s_bridge = cost_m_1000s_bridge * 10) %>%
+  rename(
+    Class = my_road_class,
+    Surface = my_road_surface,
+    `Class Multiplier` = road_class_mult,
+    `Surface Multiplier` = road_surface_mult,
+    `Bridge $K/10m` = cost_m_1000s_bridge,
+    `Streambed Simulation $K` = cost_embed_cv
+  ) %>%
+  filter(!is.na(Class)) %>%
+  mutate(Class = stringr::str_to_title(Class),
+         Surface = stringr::str_to_title(Surface)
+  )
 #
 # pscis_rd <- left_join(
 #   rd_class_surface,
