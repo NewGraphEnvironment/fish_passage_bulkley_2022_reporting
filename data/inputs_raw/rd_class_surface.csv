@@ -1,23 +1,14 @@
-pscis_crossing_id,my_crossing_reference,stream_name,road_name,road_tenure,my_road_class,my_road_surface
-57793,NA,Valee Creek,Walcott Road,MoTi,local,paved
-58067,NA,Tributary to Gramaphone Creek,Telkwa high road,MoTi,local,paved
-123392,NA,Lemieux Creek,Quick school road,NA,local,paved
-123393,NA,Lemieux creek,Highway 16,Moti,local,paved
-123426,NA,Robin Creek,Highway 16,Moti,local,paved
-123750,NA,Tributary to Miller Creek,McDonnell FSR,BCTS,local,paved
-195943,NA,Stock Creek,Barrett Station Road,NA,local,paved
-195944,NA,Stock Creek,Highway 16,MoTi,local,paved
-197653,NA,Perow Creek,Perow Loop Road,NA,local,paved
-197657,NA,Perow Creek,Highway 16,NA,local,paved
-197974,NA,Watson Creek,Highway 16,MoTi,local,paved
-198109,1801071,Perow Creek,Transmission Line,Hydro,local,paved
-198110,2022083050,Stock Creek,Private,Private,local,paved
-198110,NA,Stock Creek,NA,NA,local,paved
-198111,1802798,Coffin Creek,Spur,Unknown,local,paved
-198112,1805507,Stock Creek,CN Railway,CN Rail,local,paved
-198113,1802069,Johnny David Creek,Spur,Unknown,local,paved
-198114,2022083001,Stock Creek,Private,Private,local,paved
-198115,2022091001,Tributary to Waterfall Creek,13 Avenue,New Hazelton,local,paved
-198116,2022091002,Tributary to Waterfall Creek,Highway 16,MoTi,local,paved
-198116,NA,Tributary to Waterfall Creek,Highway 16,MoTi,local,paved
-198117,2022091003,Tributary to Waterfall Creek,9th Avenue,New Hazelton,local,paved
+pscis_crossing_id,my_crossing_reference,stream_name,road_name,road_tenure,my_road_class,my_road_surface,crossing_fix,recommended_diameter_or_span_meters,source,downstream_channel_width_meters,habitat_value,barrier_result
+57793,NA,Vallee Creek,Walcott Road,MoTi,local,paved,Replace with New Open Bottom Structure,10,pscis_phase2.xlsm,4.7,High,Barrier
+58067,NA,Gramophone Creek,Telkwa high road,MoTi,local,loose,Replace with New Open Bottom Structure,11.5,pscis_phase2.xlsm,6.6,High,Barrier
+123392,NA,Lemieux Creek,Quick school road,NA,local,loose,Replace with New Open Bottom Structure,10,pscis_reassessments.xlsm,3.6,Low,Potential
+123393,NA,Lemieux creek,Highway 16,Moti,highway,paved,Replace with New Open Bottom Structure,10,pscis_reassessments.xlsm,2.8,Low,Barrier
+123426,NA,Robin Creek,Highway 16,Moti,highway,paved,Replace with New Open Bottom Structure,10,pscis_reassessments.xlsm,2.3,High,Potential
+195943,NA,Stock Creek,Barrett Station Road,NA,local,paved,Replace with New Open Bottom Structure,10,pscis_phase2.xlsm,3,Medium,Barrier
+195944,NA,Stock Creek,Highway 16,MoTi,highway,paved,Replace Structure with Streambed Simulation CBS,4.5,pscis_phase2.xlsm,2.6,Medium,Barrier
+197653,NA,Perow Creek,Perow Loop Road,NA,local,paved,Replace Structure with Streambed Simulation CBS,3,pscis_phase2.xlsm,NA,Low,Barrier
+197974,NA,Watson Creek,Highway 16,MoTi,highway,paved,Replace Structure with Streambed Simulation CBS,3,pscis_phase2.xlsm,NA,Medium,Barrier
+198115,2022091001,Tributary to Waterfall Creek,13 Avenue,New Hazelton,local,paved,Replace with New Open Bottom Structure,10,pscis_phase1.xlsm,2.8,High,Barrier
+198116,2022091002,Tributary to Waterfall Creek,Highway 16,MoTi,arterial,paved,Replace with New Open Bottom Structure,10,pscis_phase1.xlsm,3.9,High,Barrier
+198116,NA,Tributary to Waterfall Creek,Highway 16,MoTi,arterial,paved,Replace with New Open Bottom Structure,10,pscis_phase2.xlsm,3.9,High,Potential
+198117,2022091003,Tributary to Waterfall Creek,9th Avenue,New Hazelton,local,paved,Replace with New Open Bottom Structure,10,pscis_phase1.xlsm,2.6,High,Barrier

@@ -18,7 +18,7 @@ pal_phase1 <-
 #https://stackoverflow.com/questions/61026700/bring-a-group-of-markers-to-front-in-leaflet
 # marker_options <- markerOptions(  
 #   zIndexOffset = 1000)
-tracks <- sf::read_sf("./data/hab_con_tracks.gpx", layer = "tracks")
+tracks <- sf::read_sf("./data/habitat_confirmation_tracks.gpx", layer = "tracks")
 
 
 wshd_study_areas <- sf::read_sf('data/fishpass_mapping/wshd_study_areas.geojson')
@@ -85,13 +85,13 @@ addCircleMarkers(data=tab_map %>%
                opacity=0.75, color = '#e216c4',
                fillOpacity = 0.75, weight=5, group = "Phase 2") %>%
 
-# addAwesomeMarkers(
-#     lng = photo_metadata$gps_longitude,
-#     lat = photo_metadata$gps_latitude,
-#     popup = leafpop::popupImage(photo_metadata$url, src = "remote"),
-#     clusterOptions = markerClusterOptions(),
-#     group = "Phase 2") %>%
-  
+addAwesomeMarkers(
+    lng = as.numeric(photo_metadata$gps_longitude),
+    lat = as.numeric(photo_metadata$gps_latitude),
+    popup = leafpop::popupImage(photo_metadata$url, src = "remote"),
+    clusterOptions = markerClusterOptions(),
+    group = "Phase 2") %>%
+
   # addCircleMarkers(
   #   data=tab_hab_map,
   #   label = tab_hab_map$pscis_crossing_id,
@@ -116,7 +116,7 @@ addCircleMarkers(data=tab_map %>%
   #   weight = 2,
   #   opacity = 1.0,
   #   group = "Phase 2"
-  #   ) %>% 
+  #   ) %>%
 
   addLayersControl(
     baseGroups = c(
@@ -152,7 +152,7 @@ map %>%
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_disconnect(conn)
 
-# Results are `r if(html_on)knitr::asis_output("presented in Figure \\@ref(fig:map-interactive) and ")`included as a zipped Google Earth kml file ([Attachment 1](https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/raw/master/data/Attachment_1_morice_planning_kml.zip)).
+# Results are `r if(html_on)knitr::asis_output("presented in Figure \\@ref(fig:map-interactive) and ")`included as a zipped Google Earth kml file ([Attachment 1](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/raw/main/data/Attachment_1_morice_planning_kml.zip)).
 
 
 # ## Planning
@@ -183,16 +183,10 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 
 
 ```{r cost-est-phase-1}
-#`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
-# if(gitbook_on){
-#   tab_cost_est_phase1 %>% 
-#   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments.', scroll = gitbook_on)
-# } else tab_cost_est_phase1 %>% 
-#   fpr::fpr_kable(scroll = F, caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments.')
 
-tab_cost_est_phase1 %>% 
-  fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments. Steelhead network model (total length stream network <20% gradient).', 
-                 scroll = gitbook_on)
+ tab_cost_est_phase1 %>%
+   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments. Steelhead network model (total length stream network <20% gradient).',
+                  scroll = gitbook_on)
 ```
 
 <br>
@@ -248,8 +242,8 @@ fpr::fpr_table_cv_summary(dat = pscis_phase2) %>%
 
 
 ```{r cost-est-phase-2}
-tab_cost_est_phase2_report %>% 
-  fpr::fpr_kable(caption_text = 'Cost benefit analysis for Phase 2 assessments. Coho rearing model used (total length of stream segments <7.5% gradient)', 
+tab_cost_est_phase2_report %>%
+  fpr::fpr_kable(caption_text = 'Cost benefit analysis for Phase 2 assessments. Coho rearing model used (total length of stream segments <7.5% gradient)',
                  scroll = gitbook_on)
 
 ```
@@ -323,7 +317,7 @@ bcfishpass_phase2_plot_prep <- bcfishpass %>%
 
 ### Fish Sampling
 
-Fish sampling was conducted at `r tab_fish_sites_sum %>% n_distinct()` sites with a total of `r hab_fish_indiv %>% filter(species_code != 'NFC') %>% nrow()` fish captured.  Of these, `r hab_fish_indiv %>% filter(species_code == 'RB') %>% nrow()` were rainbow trout,  `r hab_fish_indiv %>% filter(species_code == 'CO') %>% nrow()` coho, `r hab_fish_indiv %>% filter(species_code == 'DV') %>% nrow()` were dolly varden and `r hab_fish_indiv %>% filter(species_code == 'L') %>% nrow()` were lamprey.  Fork length data was used to delineate salmonids based on life stages: fry (0 to 65mm), parr (>65 to 110mm), juvenile (>110mm to 140mm) and adult (>140mm) by visually assessing the histograms presented in Figure \@ref(fig:fish-histogram).  A summary of sites assessed are included in Table \@ref(tab:tab-fish-site-summary) and raw data is provided in [Attachment 3](https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/raw/master/data/habitat_confirmations.xls). A summary of density results for all life stages combined of select species is also presented in Figure \@ref(fig:plot-fish-all). Results are presented in greater detail within individual habitat confirmation site appendices.
+Fish sampling was conducted at `r tab_fish_sites_sum %>% n_distinct()` sites with a total of `r hab_fish_indiv %>% filter(species_code != 'NFC') %>% nrow()` fish captured.  Of these, `r hab_fish_indiv %>% filter(species_code == 'RB') %>% nrow()` were rainbow trout,  `r hab_fish_indiv %>% filter(species_code == 'CO') %>% nrow()` coho, `r hab_fish_indiv %>% filter(species_code == 'DV') %>% nrow()` were dolly varden and `r hab_fish_indiv %>% filter(species_code == 'L') %>% nrow()` were lamprey.  Fork length data was used to delineate salmonids based on life stages: fry (0 to 65mm), parr (>65 to 110mm), juvenile (>110mm to 140mm) and adult (>140mm) by visually assessing the histograms presented in Figure \@ref(fig:fish-histogram).  A summary of sites assessed are included in Table \@ref(tab:tab-fish-site-summary) and raw data is provided in [Attachment 3](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/raw/main/data/habitat_confirmations.xls). A summary of density results for all life stages combined of select species is also presented in Figure \@ref(fig:plot-fish-all). Results are presented in greater detail within individual habitat confirmation site appendices.
 
 <br>
 
@@ -368,4 +362,3 @@ Engineering designs have been completed for replacement of PSCIS crossing 58159 
 
 ## Phase 4
 
-Ministry of Forest engineers collaborated with Canfor and Coastal Gaslink to replace crossing 197962 on Peacock Creek located on the Morice FSR within the Morice River watershed group.  As detailed in the associated attachment within this report, baseline effectiveness monitoring including multipass electrofishing at three closed sites both upstream and downstream of the FSR in the fall of 2021 before the bridge install occurred. 
