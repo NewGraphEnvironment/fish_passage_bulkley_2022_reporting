@@ -1,5 +1,4 @@
 # source('scripts/functions.R')
-source('scripts/private_info.R')
 source('scripts/packages.R')
 
 
@@ -312,7 +311,8 @@ tab_rd_tenure_xref <- tibble::tribble(
                                "WEST FRASER MILLS LTD.",    "West Fraser",
                                        "CHARLES PRIEST", "Charles Priest",
                          "SOLID GROUND CONTRACTING LTD",   "Solid Ground",
-                               "CHINOOK COMFOR LIMITED", "Chinook Comfor"
+                               "CHINOOK COMFOR LIMITED", "Chinook Comfor",
+                    "DISTRICT MGR SKEENA STIKINE (DSS)",       "FLNR DSS"
                         )
 
 ##add that to your dat file for later
