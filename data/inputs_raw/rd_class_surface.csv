@@ -6,8 +6,8 @@ pscis_crossing_id,my_crossing_reference,stream_name,road_name,road_tenure,my_roa
 123426,NA,Robin Creek,Highway 16,Moti,highway,paved,Replace with New Open Bottom Structure,10,pscis_reassessments.xlsm,2.3,High,Potential
 195943,NA,Stock Creek,Barrett Station Road,NA,local,paved,Replace with New Open Bottom Structure,10,pscis_phase2.xlsm,3,Medium,Barrier
 195944,NA,Stock Creek,Highway 16,MoTi,highway,paved,Replace Structure with Streambed Simulation CBS,4.5,pscis_phase2.xlsm,2.6,Medium,Barrier
-197653,NA,Perow Creek,Perow Loop Road,NA,local,paved,Replace Structure with Streambed Simulation CBS,3,pscis_phase2.xlsm,NA,Low,Barrier
-197974,NA,Watson Creek,Highway 16,MoTi,highway,paved,Replace Structure with Streambed Simulation CBS,3,pscis_phase2.xlsm,NA,Medium,Barrier
+197653,NA,Perow Creek,Perow Loop Road,NA,local,paved,Replace Structure with Streambed Simulation CBS,3,pscis_phase2.xlsm,4.3,Low,Barrier
+197974,NA,Watson Creek,Highway 16,MoTi,highway,paved,Replace Structure with Streambed Simulation CBS,3,pscis_phase2.xlsm,3.4,Medium,Barrier
 198115,2022091001,Tributary to Waterfall Creek,13 Avenue,New Hazelton,local,paved,Replace with New Open Bottom Structure,10,pscis_phase1.xlsm,2.8,High,Barrier
 198116,2022091002,Tributary to Waterfall Creek,Highway 16,MoTi,arterial,paved,Replace with New Open Bottom Structure,10,pscis_phase1.xlsm,3.9,High,Barrier
 198116,NA,Tributary to Waterfall Creek,Highway 16,MoTi,arterial,paved,Replace with New Open Bottom Structure,10,pscis_phase2.xlsm,3.9,High,Potential
