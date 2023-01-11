@@ -54,8 +54,16 @@ pscis_historic_phase2 <- readwritesqlite::rws_read_table("pscis_historic_phase2"
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
 # tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
 # rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
+
+#our pscis_phase1 submission went in twice so we have to filter out the dups when reading from sqlite
 xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>%
   filter(stream_crossing_id > 198108)
+#now filter and select all the dups and burn to csv so we can keep track of them
+xref_pscis_my_crossing_modelled_dups <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>%
+  filter(stream_crossing_id <= 198108) %>%
+  readr::write_csv('data/inputs_raw/pscis_phase1_dups.csv')
+
+
 wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
   mutate(aspect = as.character(aspect))
   # issues with particular sites and the aws tiles
@@ -134,6 +142,8 @@ pscis_all_sf <- pscis_all_sf %>%
 
 ####-----------report table--------------------
 #  HACK hashout for now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! becasue some columns are now missing from bcfishpass.crossings
+
+tab_cost_rd_mult <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/tab_cost_rd_mult.csv'))
 
 tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
   mutate(cost_m_1000s_bridge = cost_m_1000s_bridge * 10) %>%
@@ -1221,7 +1231,6 @@ tab_hab_summary <- left_join(
 # HACK !!!!!!!!!!!!!!!!!!!!!!! turned off all cost estimate data for now
 
 pscis_rd <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/rd_class_surface.csv'))
-tab_cost_rd_mult <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/tab_cost_rd_mult.csv'))
 
 tab_cost_est_prep <- left_join(
   pscis_rd,
@@ -1301,12 +1310,6 @@ tab_cost_est_phase1 <- tab_cost_est_phase1_prep %>%
     `Habitat Upstream (km)` = st_network_km,
     `Cost Benefit (m / $K)` = cost_gross,
     `Cost Benefit (m2 / $K)` = cost_area_gross) %>%
-  filter(!is.na(Priority)) %>%
-  filter(!source %like% 'phase2') %>%
-  select(-source)
-
-#
-tab_cost_est_phase1 <- tab_cost_est_phase1_prep %>%
   filter(!source %like% 'phase2') %>%
   select(-source)
 
