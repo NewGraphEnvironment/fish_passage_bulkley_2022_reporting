@@ -57,6 +57,7 @@ fig:photo-197974-02
 fig:photo-197974-03
 fig:photo-197974-04
 fig:photo-197974-05
+fig:photo-197974-06
 fig:fig-waterfall
 tab:tab-culvert-198116
 tab:tab-culvert-198117

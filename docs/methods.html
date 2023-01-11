@@ -274,21 +274,22 @@ div.csl-indent {
 <span id="cb20-9"><a href="methods.html#cb20-9" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Spawning Width Max (m)` = spawn_channel_width_max,</span></span>
 <span id="cb20-10"><a href="methods.html#cb20-10" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Spawning MAD Min (m3/s)` = spawn_mad_min,</span></span>
 <span id="cb20-11"><a href="methods.html#cb20-11" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Spawning MAD Max (m3/s)` = spawn_mad_max,</span></span>
-<span id="cb20-12"><a href="methods.html#cb20-12" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Rearing Gradient Max (%)</span><span class="st">`</span> <span class="ot">=</span> rear_gradient_max) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-13"><a href="methods.html#cb20-13" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing MAD Min (m3/s)` = rear_mad_min,</span></span>
-<span id="cb20-14"><a href="methods.html#cb20-14" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing MAD Max (m3/s)` = rear_mad_max,</span></span>
-<span id="cb20-15"><a href="methods.html#cb20-15" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing Wetland Multiplier` = rear_wetland_multiplier,</span></span>
-<span id="cb20-16"><a href="methods.html#cb20-16" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing Lake Multiplier` = rear_lake_multiplier) %&gt;% </span></span>
-<span id="cb20-17"><a href="methods.html#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb20-18"><a href="methods.html#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;row_names&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-19"><a href="methods.html#cb20-19" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="at">row_number =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-20"><a href="methods.html#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Variable =</span> Species) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-21"><a href="methods.html#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Westslope Cutthroat Trout</span><span class="st">`</span>, </span>
-<span id="cb20-22"><a href="methods.html#cb20-22" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Arctic Grayling</span><span class="st">`</span>, </span>
-<span id="cb20-23"><a href="methods.html#cb20-23" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Kokanee</span><span class="st">`</span>,</span>
-<span id="cb20-24"><a href="methods.html#cb20-24" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Bull Trout</span><span class="st">`</span>,</span>
-<span id="cb20-25"><a href="methods.html#cb20-25" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Rainbow Trout</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-26"><a href="methods.html#cb20-26" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Stream gradient and channel width thresholds used to model potentially highest value fish habitat.&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
+<span id="cb20-12"><a href="methods.html#cb20-12" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Rearing Gradient Max (%)</span><span class="st">`</span> <span class="ot">=</span> rear_gradient_max,</span>
+<span id="cb20-13"><a href="methods.html#cb20-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Rearing Width Min (m)</span><span class="st">`</span> <span class="ot">=</span> rear_channel_width_min) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-14"><a href="methods.html#cb20-14" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing MAD Min (m3/s)` = rear_mad_min,</span></span>
+<span id="cb20-15"><a href="methods.html#cb20-15" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing MAD Max (m3/s)` = rear_mad_max,</span></span>
+<span id="cb20-16"><a href="methods.html#cb20-16" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing Wetland Multiplier` = rear_wetland_multiplier,</span></span>
+<span id="cb20-17"><a href="methods.html#cb20-17" aria-hidden="true" tabindex="-1"></a>         <span class="co"># `Rearing Lake Multiplier` = rear_lake_multiplier) %&gt;% </span></span>
+<span id="cb20-18"><a href="methods.html#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-19"><a href="methods.html#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">&quot;row_names&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-20"><a href="methods.html#cb20-20" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="at">row_number =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-21"><a href="methods.html#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Variable =</span> Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-22"><a href="methods.html#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Westslope Cutthroat Trout</span><span class="st">`</span>, </span>
+<span id="cb20-23"><a href="methods.html#cb20-23" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Arctic Grayling</span><span class="st">`</span>, </span>
+<span id="cb20-24"><a href="methods.html#cb20-24" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Kokanee</span><span class="st">`</span>,</span>
+<span id="cb20-25"><a href="methods.html#cb20-25" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Bull Trout</span><span class="st">`</span>,</span>
+<span id="cb20-26"><a href="methods.html#cb20-26" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span><span class="st">`</span><span class="at">Rainbow Trout</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-27"><a href="methods.html#cb20-27" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Stream gradient and channel width thresholds used to model potentially highest value fish habitat.&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-spawning-rearing">Table 3.1: </span>Stream gradient and channel width thresholds used to model potentially highest value fish habitat.
@@ -362,6 +363,23 @@ Rearing Gradient Max (%)
 </td>
 <td style="text-align:left;">
 –
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rearing Width Min (m)
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+1.5
 </td>
 </tr>
 </tbody>

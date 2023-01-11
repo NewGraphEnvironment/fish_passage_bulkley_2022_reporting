@@ -262,15 +262,17 @@ responsibility of the Ministry of Transportation and Infrastructure.</p>
 fourth order stream with a
 watershed area upstream of the crossing of approximately
 33.3km<sup>2</sup>. The elevation of the watershed ranges from
-a maximum of 1480m to 375m near the
-crossing (Table <a href="gramophone-creek---58067---appendix.html#tab:tab-wshd-58067">5.25</a>). Upstream of crossing
+a maximum of 1480m to
+459m at the crossing (Table
+<a href="gramophone-creek---58067---appendix.html#tab:tab-wshd-58067">5.25</a>). Upstream of crossing
 58067, rainbow trout and steelhead have previously
 been recorded <span class="citation">(MoE 2020b; Norris 2020)</span>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="gramophone-creek---58067---appendix.html#cb162-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">%&gt;%</span> </span>
-<span id="cb162-2"><a href="gramophone-creek---58067---appendix.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb162-3"><a href="gramophone-creek---58067---appendix.html#cb162-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb162-4"><a href="gramophone-creek---58067---appendix.html#cb162-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="gramophone-creek---58067---appendix.html#cb164-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">%&gt;%</span> </span>
+<span id="cb164-2"><a href="gramophone-creek---58067---appendix.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">&#39;Elev Min&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb164-3"><a href="gramophone-creek---58067---appendix.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb164-4"><a href="gramophone-creek---58067---appendix.html#cb164-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb164-5"><a href="gramophone-creek---58067---appendix.html#cb164-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-58067">Table 5.25: </span>Summary of derived upstream watershed statistics for PSCIS crossing 58067.
@@ -285,9 +287,6 @@ Area Km
 </th>
 <th style="text-align:right;">
 Elev Site
-</th>
-<th style="text-align:right;">
-Elev Min
 </th>
 <th style="text-align:right;">
 Elev Max
@@ -315,9 +314,6 @@ Aspect
 459
 </td>
 <td style="text-align:right;">
--507
-</td>
-<td style="text-align:right;">
 1480
 </td>
 <td style="text-align:right;">
@@ -340,6 +336,25 @@ WSW
 </tfoot>
 </table>
 <p><br></p>
+<p>In a study conducted by <span class="citation">(M. Porter et al. 2015)</span>, the Gramophone Creek stream
+network was analysed using GIS methods to assess the risk status related
+to fish habitat impact. The Gramophone Creek watershed is designated as
+a Fisheries Sensitive Watershed (FSW) under British Columbia’s Forest
+and Range Practices Act Government Actions Regulation, and the Oil and
+Gas Activities Act Environmental Management and Protection Regulation.
+FSW’s have significant fish values and are sensitive to changes in
+habitat. Risk status was determined by measuring nine habitat
+indicators. These included: road density for the entire watershed, road
+density above the H<sub>60</sub> line (the elevation above which 60% of the
+watershed area lies), road density less than 100m from a stream, stream
+crossing density, proportion of stream logged, proportion of
+fish-bearing stream logged, density of stream banks logged on slopes
+greater than 60%, peak flow index, and road density on unstable slopes.
+Measured values were compared to a baseline to classify risk as low,
+moderate, or high. Of the 71 watersheds included in the analysis,
+Gramophone Creek was notable for having all nine indicators rated as
+high risk.</p>
+<p><br></p>
 <p>The Trout Creek/Moricetown watershed project was an integrated
 restoration plan designed for 14 watersheds found on either side of the
 Bulkley River. Gramophone Creek was included in the study area. A level
@@ -354,14 +369,14 @@ assessment but had some study blocks that required a level II assessment
 <span class="citation">(Sterling Wood Group Inc. 1997)</span>.</p>
 <p><br></p>
 <p>PSCIS stream crossing 58067 was ranked as a high
-priority for follow up by the Canadian Wildlife Federation, because of
-significant amounts of habitat modelled upstream of the crossing. A
-summary of habitat modelling outputs is presented in Table
-<a href="gramophone-creek---58067---appendix.html#tab:tab-culvert-bcfp-58067">5.26</a>. A map of the watershed is provided in
-map attachment
+priority for follow up by the Canadian Wildlife Federation and
+<span class="citation">Irvine (2018)</span> because of significant amounts of habitat
+modelled upstream of the crossing. A summary of habitat modelling
+outputs is presented in Table <a href="gramophone-creek---58067---appendix.html#tab:tab-culvert-bcfp-58067">5.26</a>. A map
+of the watershed is provided in map attachment
 <a href="fpr::fpr_my_mapsheet()">093L.122</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="gramophone-creek---58067---appendix.html#cb163-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="gramophone-creek---58067---appendix.html#cb165-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -688,7 +703,7 @@ pipes, with a very big outlet pool. Water temperature was
 was 8.2 and conductivity was
 93uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="gramophone-creek---58067---appendix.html#cb164-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="gramophone-creek---58067---appendix.html#cb166-1" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-58067">Table 5.27: </span>Summary of fish passage assessment for PSCIS crossing 58067.
@@ -951,27 +966,28 @@ Fix Span / Diameter
 </tfoot>
 </table></li>
 </ul>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="gramophone-creek---58067---appendix.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb165-2"><a href="gramophone-creek---58067---appendix.html#cb165-2" aria-hidden="true" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
-<span id="cb165-3"><a href="gramophone-creek---58067---appendix.html#cb165-3" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_my_priority_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="gramophone-creek---58067---appendix.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb167-2"><a href="gramophone-creek---58067---appendix.html#cb167-2" aria-hidden="true" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
+<span id="cb167-3"><a href="gramophone-creek---58067---appendix.html#cb167-3" aria-hidden="true" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_my_priority_info</span>()</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-4" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream<a href="gramophone-creek---58067---appendix.html#stream-characteristics-downstream-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stream was surveyed downstream from crossing 58067 for 300m to the confluence with the
 Bulkley River
-(Figures <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-01">5.34</a> - <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-02">5.35</a>).
-The average channel width was 5.1m, the average wetted width was 3m, and the average gradient was 3%.Total cover amount was rated as moderate with undercut banks dominant. Cover was also present as small woody debris, boulders, deep pools, and overhanging vegetation.The dominant substrate was cobbles with boulders sub-dominant. There were abundant undercut
+(Figures <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-01">5.35</a> - <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-02">5.36</a>).
+Total cover amount was rated as moderate with undercut banks dominant. Cover was also present as small woody debris, boulders, deep pools, and overhanging vegetation.The average channel width was 5.1m, the average wetted width was 3m, and the average gradient was 3%.The dominant substrate was cobbles with boulders sub-dominant. There were abundant undercut
 banks available for cover. Some patches of gravel were present that
-would be suitable for rainbow, steelhead and coho spawning. Occasional deep pools were
-present that would serve as good habitat suitable for fish rearing and
-overwintering. The riparian vegetation was an old growth mixed forest.
-The habitat was rated as high value
-for salmonid rearing and spawning.</p>
+would be suitable for rainbow, steelhead and coho spawning. Occasional
+deep pools were present that would serve as good habitat suitable for
+fish rearing and overwintering. The riparian vegetation was an old
+growth mixed forest. The habitat was rated as
+high value for salmonid rearing and
+spawning.</p>
 </div>
 <div id="stream-characteristics-upstream-4" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream<a href="gramophone-creek---58067---appendix.html#stream-characteristics-upstream-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stream was surveyed upstream from crossing 58067 for 600m
-(Figures <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-03">5.36</a> - <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-04">5.37</a>).
+(Figures <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-03">5.37</a> - <a href="gramophone-creek---58067---appendix.html#fig:photo-58067-06">5.40</a>).
 The dominant substrate was cobbles with gravels sub-dominant.The average channel width was 5.7m, the average wetted width was 4m, and the average gradient was 3%.Total cover amount was rated as moderate with boulders dominant. Cover was also present as small woody debris and undercut banks. There is a small beaver dam
 ~500m upstream from the crossing. Some areas are coupled with
 embankment issues. The stream is wide throughout with abundant cover and
@@ -986,12 +1002,19 @@ moderate rearing potential.</p>
 <h2>Fish Sampling<a href="gramophone-creek---58067---appendix.html#fish-sampling-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Electrofishing was conducted with results summarised in Tables
 <a href="gramophone-creek---58067---appendix.html#tab:tab-fish-site-58067">5.29</a> - <a href="gramophone-creek---58067---appendix.html#tab:tab-fish-dens-58067">5.30</a> and
-Figure <a href="gramophone-creek---58067---appendix.html#fig:plot-fish-box-58067">5.33</a>.</p>
+Figure <a href="gramophone-creek---58067---appendix.html#fig:plot-fish-box-58067">5.34</a>.</p>
 <p><br></p>
 </div>
 <div id="structure-remediation-and-cost-estimate-5" class="section level2 unnumbered hasAnchor">
 <h2>Structure Remediation and Cost Estimate<a href="gramophone-creek---58067---appendix.html#structure-remediation-and-cost-estimate-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Should restoration/maintenance activities proceed, replacement of PSCIS crossing 58067 with a bridge (11.5m span) is recommended. The cost of the work is estimated at $1,150,000 for a cost benefit of 12.2 linear m/$1000 and 40.2 m<sup>2</sup>/$1000.</p>
+<p>Should restoration/maintenance activities proceed, replacement of PSCIS
+crossing 58067 with a bridge
+(11.5m
+span) is recommended. The cost of the work is estimated at
+$1,150,000 for a cost
+benefit of 12.2 linear
+m/$1000 and 40.2
+m<sup>2</sup>/$1000.</p>
 <p><br></p>
 </div>
 <div id="conclusion-5" class="section level2 unnumbered hasAnchor">
@@ -1011,10 +1034,10 @@ a bridge would be a key step in eliminating an outlet drop and reducing
 flow velocities at the highway crossing.</p>
 <p><br></p>
 <p><br></p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="gramophone-creek---58067---appendix.html#cb166-1" aria-hidden="true" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
-<span id="cb166-2"><a href="gramophone-creek---58067---appendix.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site) <span class="sc">%&gt;%</span> </span>
-<span id="cb166-3"><a href="gramophone-creek---58067---appendix.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb166-4"><a href="gramophone-creek---58067---appendix.html#cb166-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="gramophone-creek---58067---appendix.html#cb168-1" aria-hidden="true" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb168-2"><a href="gramophone-creek---58067---appendix.html#cb168-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site) <span class="sc">%&gt;%</span> </span>
+<span id="cb168-3"><a href="gramophone-creek---58067---appendix.html#cb168-3" aria-hidden="true" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb168-4"><a href="gramophone-creek---58067---appendix.html#cb168-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-58067">Table 5.28: </span>Summary of habitat details for PSCIS crossing 58067.
@@ -1112,7 +1135,7 @@ high
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="gramophone-creek---58067---appendix.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="gramophone-creek---58067---appendix.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-site-58067">Table 5.29: </span>Fish sampling site summary for 58067.
@@ -1363,7 +1386,7 @@ open
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="gramophone-creek---58067---appendix.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="gramophone-creek---58067---appendix.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-dens-58067">Table 5.30: </span>Fish sampling density results summary for 58067.
@@ -1941,95 +1964,95 @@ FALSE
 </tfoot>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="gramophone-creek---58067---appendix.html#cb169-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densites of fish (fish/100m2) captured upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
-<span id="cb169-2"><a href="gramophone-creek---58067---appendix.html#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-3"><a href="gramophone-creek---58067---appendix.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fpr_plot_fish_box</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="gramophone-creek---58067---appendix.html#cb171-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densites of fish (fish/100m2) captured upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
+<span id="cb171-2"><a href="gramophone-creek---58067---appendix.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="gramophone-creek---58067---appendix.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fpr_plot_fish_box</span>() </span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:plot-fish-box-58067"></span>
 <img src="Bulkley2022_files/figure-html/plot-fish-box-58067-1.png" alt="Densites of fish (fish/100m2) captured upstream of PSCIS crossing 58067." width="100%" />
 <p class="caption">
-Figure 5.33: Densites of fish (fish/100m2) captured upstream of PSCIS crossing 58067.
+Figure 5.34: Densites of fish (fish/100m2) captured upstream of PSCIS crossing 58067.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="gramophone-creek---58067---appendix.html#cb170-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d1_&#39;</span>)</span>
-<span id="cb170-2"><a href="gramophone-creek---58067---appendix.html#cb170-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-3"><a href="gramophone-creek---58067---appendix.html#cb170-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="gramophone-creek---58067---appendix.html#cb171-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="gramophone-creek---58067---appendix.html#cb172-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d1_&#39;</span>)</span>
+<span id="cb172-2"><a href="gramophone-creek---58067---appendix.html#cb172-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-3"><a href="gramophone-creek---58067---appendix.html#cb172-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="gramophone-creek---58067---appendix.html#cb173-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-58067-01"></span>
 <img src="Bulkley2022_files/figure-html/photo-58067-01-1.png" alt="Typical habitat downstream of PSCIS crossing 58067." width="100%" />
-<p class="caption">
-Figure 5.34: Typical habitat downstream of PSCIS crossing 58067.
-</p>
-</div>
-<p><br></p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="gramophone-creek---58067---appendix.html#cb172-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d2_&#39;</span>)</span>
-<span id="cb172-2"><a href="gramophone-creek---58067---appendix.html#cb172-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb172-3"><a href="gramophone-creek---58067---appendix.html#cb172-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="gramophone-creek---58067---appendix.html#cb173-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:photo-58067-02"></span>
-<img src="Bulkley2022_files/figure-html/photo-58067-02-1.png" alt="Typical habitat downstream of PSCIS crossing 58067." width="100%" />
 <p class="caption">
 Figure 5.35: Typical habitat downstream of PSCIS crossing 58067.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="gramophone-creek---58067---appendix.html#cb174-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="gramophone-creek---58067---appendix.html#cb174-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d2_&#39;</span>)</span>
 <span id="cb174-2"><a href="gramophone-creek---58067---appendix.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-3"><a href="gramophone-creek---58067---appendix.html#cb174-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb174-4"><a href="gramophone-creek---58067---appendix.html#cb174-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb174-5"><a href="gramophone-creek---58067---appendix.html#cb174-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="gramophone-creek---58067---appendix.html#cb175-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
-<span id="cb175-2"><a href="gramophone-creek---58067---appendix.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-3"><a href="gramophone-creek---58067---appendix.html#cb175-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="gramophone-creek---58067---appendix.html#cb176-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:photo-58067-03"></span>
-<img src="Bulkley2022_files/figure-html/photo-58067-03-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
+<span id="cb174-3"><a href="gramophone-creek---58067---appendix.html#cb174-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="gramophone-creek---58067---appendix.html#cb175-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-58067-02"></span>
+<img src="Bulkley2022_files/figure-html/photo-58067-02-1.png" alt="Typical habitat downstream of PSCIS crossing 58067." width="100%" />
 <p class="caption">
-Figure 5.36: Typical habitat upstream of PSCIS crossing 58067.
+Figure 5.36: Typical habitat downstream of PSCIS crossing 58067.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="gramophone-creek---58067---appendix.html#cb177-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="gramophone-creek---58067---appendix.html#cb176-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb176-2"><a href="gramophone-creek---58067---appendix.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="gramophone-creek---58067---appendix.html#cb176-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb176-4"><a href="gramophone-creek---58067---appendix.html#cb176-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb176-5"><a href="gramophone-creek---58067---appendix.html#cb176-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="gramophone-creek---58067---appendix.html#cb177-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
 <span id="cb177-2"><a href="gramophone-creek---58067---appendix.html#cb177-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-3"><a href="gramophone-creek---58067---appendix.html#cb177-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="gramophone-creek---58067---appendix.html#cb178-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:photo-58067-04"></span>
-<img src="Bulkley2022_files/figure-html/photo-58067-04-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
+<span id="cb177-3"><a href="gramophone-creek---58067---appendix.html#cb177-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="gramophone-creek---58067---appendix.html#cb178-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-58067-03"></span>
+<img src="Bulkley2022_files/figure-html/photo-58067-03-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
 <p class="caption">
 Figure 5.37: Typical habitat upstream of PSCIS crossing 58067.
 </p>
 </div>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="gramophone-creek---58067---appendix.html#cb179-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<p><br></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="gramophone-creek---58067---appendix.html#cb179-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
 <span id="cb179-2"><a href="gramophone-creek---58067---appendix.html#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-3"><a href="gramophone-creek---58067---appendix.html#cb179-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb179-4"><a href="gramophone-creek---58067---appendix.html#cb179-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb179-5"><a href="gramophone-creek---58067---appendix.html#cb179-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="gramophone-creek---58067---appendix.html#cb180-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u3_&#39;</span>)</span>
-<span id="cb180-2"><a href="gramophone-creek---58067---appendix.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-3"><a href="gramophone-creek---58067---appendix.html#cb180-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="gramophone-creek---58067---appendix.html#cb181-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:photo-58067-05"></span>
-<img src="Bulkley2022_files/figure-html/photo-58067-05-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
+<span id="cb179-3"><a href="gramophone-creek---58067---appendix.html#cb179-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="gramophone-creek---58067---appendix.html#cb180-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-58067-04"></span>
+<img src="Bulkley2022_files/figure-html/photo-58067-04-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
 <p class="caption">
 Figure 5.38: Typical habitat upstream of PSCIS crossing 58067.
 </p>
 </div>
-<p><br></p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="gramophone-creek---58067---appendix.html#cb182-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u4_&#39;</span>)</span>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="gramophone-creek---58067---appendix.html#cb181-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb181-2"><a href="gramophone-creek---58067---appendix.html#cb181-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-3"><a href="gramophone-creek---58067---appendix.html#cb181-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb181-4"><a href="gramophone-creek---58067---appendix.html#cb181-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb181-5"><a href="gramophone-creek---58067---appendix.html#cb181-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="gramophone-creek---58067---appendix.html#cb182-1" aria-hidden="true" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u3_&#39;</span>)</span>
 <span id="cb182-2"><a href="gramophone-creek---58067---appendix.html#cb182-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-3"><a href="gramophone-creek---58067---appendix.html#cb182-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="gramophone-creek---58067---appendix.html#cb183-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:photo-58067-06"></span>
-<img src="Bulkley2022_files/figure-html/photo-58067-06-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
+<span id="cb182-3"><a href="gramophone-creek---58067---appendix.html#cb182-3" aria-hidden="true" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="gramophone-creek---58067---appendix.html#cb183-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-58067-05"></span>
+<img src="Bulkley2022_files/figure-html/photo-58067-05-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
 <p class="caption">
 Figure 5.39: Typical habitat upstream of PSCIS crossing 58067.
 </p>
 </div>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="gramophone-creek---58067---appendix.html#cb184-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<p><br></p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="gramophone-creek---58067---appendix.html#cb184-1" aria-hidden="true" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u4_&#39;</span>)</span>
 <span id="cb184-2"><a href="gramophone-creek---58067---appendix.html#cb184-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-3"><a href="gramophone-creek---58067---appendix.html#cb184-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb184-4"><a href="gramophone-creek---58067---appendix.html#cb184-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb184-5"><a href="gramophone-creek---58067---appendix.html#cb184-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<span id="cb184-3"><a href="gramophone-creek---58067---appendix.html#cb184-3" aria-hidden="true" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="gramophone-creek---58067---appendix.html#cb185-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-58067-06"></span>
+<img src="Bulkley2022_files/figure-html/photo-58067-06-1.png" alt="Typical habitat upstream of PSCIS crossing 58067." width="100%" />
+<p class="caption">
+Figure 5.40: Typical habitat upstream of PSCIS crossing 58067.
+</p>
+</div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="gramophone-creek---58067---appendix.html#cb186-1" aria-hidden="true" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb186-2"><a href="gramophone-creek---58067---appendix.html#cb186-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-3"><a href="gramophone-creek---58067---appendix.html#cb186-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb186-4"><a href="gramophone-creek---58067---appendix.html#cb186-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb186-5"><a href="gramophone-creek---58067---appendix.html#cb186-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
 </div>
 </div>
