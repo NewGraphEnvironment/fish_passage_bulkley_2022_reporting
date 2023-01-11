@@ -222,7 +222,7 @@ test <- bcfishpass %>%
 ##grab the bcfishpass spawning and rearing table and put in the database so it can be used to populate the methods and tie to the references table
 urlfile="https://raw.githubusercontent.com/smnorris/bcfishpass/main/parameters/parameters_newgraph/habitat.csv"
 
-bcfishpass_spawn_rear_model <- read_csv(url(urlfile))
+bcfishpass_spawn_rear_model <- readr::read_csv(url(urlfile))
 
 # PSCIS historic info--------------------------------------------------------------------
 #to write the background
