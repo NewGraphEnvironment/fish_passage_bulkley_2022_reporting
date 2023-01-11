@@ -47,11 +47,11 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 
 <br>
 
-Vallee Lake is `r fpr::fpr_my_bcfishpass(site = my_site, col_pull = total_lakereservoir_ha)`ha in size and modelling indicates an additional `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland upstream of the highway.  Large lakes within watersheds can control high freshet and storm flows, increasing stability downstream and creating favourable circumstances for egg incubation and juvenile rearing. 
+Vallee Lake is `r fpr::fpr_my_bcfishpass(site = my_site, col_pull = total_lakereservoir_ha)`ha in size and modelling indicates an additional `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland upstream of the highway.  Large lakes within watersheds can throttle high freshet and storm flows, increasing stability downstream for egg incubation and juvenile rearing. 
 
 <br>
 
-PSCIS stream crossing `r as.character(my_site)` was ranked as a high priority for follow up by the Canadian Wildlife Federation and a moderate priority for follow up by @irvine2018AnalysisPriority because of significant amounts of habitat modeled upstream of the crossing, all the way up to the highway. A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-culvert-bcfp-57793). A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`).  
+PSCIS stream crossing `r as.character(my_site)` was ranked as a high priority for follow up by the Canadian Wildlife Federation due to significant amounts of habitat modeled upstream. @irvine2018AnalysisPriority ranked the site as a moderate priority for follow up after review of PSCIS data/photos because the site appeared to have low flows, be partially backwatered and have no outlet drop indicating it was likely passable to most species and life stages at the time the initial fish passage assessment was conducted (2012).  A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-culvert-bcfp-57793). A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`).  
 
 
 
