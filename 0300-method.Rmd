@@ -55,7 +55,8 @@ bcfishpass_spawn_rear_model %>%
          # `Spawning Width Max (m)` = spawn_channel_width_max,
          # `Spawning MAD Min (m3/s)` = spawn_mad_min,
          # `Spawning MAD Max (m3/s)` = spawn_mad_max,
-         `Rearing Gradient Max (%)` = rear_gradient_max) %>% 
+         `Rearing Gradient Max (%)` = rear_gradient_max,
+         `Rearing Width Min (m)` = rear_channel_width_min) %>% 
          # `Rearing MAD Min (m3/s)` = rear_mad_min,
          # `Rearing MAD Max (m3/s)` = rear_mad_max,
          # `Rearing Wetland Multiplier` = rear_wetland_multiplier,
