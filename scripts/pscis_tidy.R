@@ -201,9 +201,8 @@ form <- form_names %>%
   # project specific - this is pscis sites 152 and 9999 which were fake with weird coordinates. See https://github.com/NewGraphEnvironment/fish_passage_skeena_2022_reporting/issues/27
   # filter(date != '2022-08-24' & date != '2022-08-25' & date != '2022-08-26') %>%
   sf::st_as_sf(coords = c("long", "lat"),
-               crs = 3005, remove = F)
-
-form %>%
+               crs = 3005, remove = F) %>%
   sf::st_write('data/inputs_extracted/mergin_backups/form_pscis_v225.gpkg', append=FALSE)
+
 
 
