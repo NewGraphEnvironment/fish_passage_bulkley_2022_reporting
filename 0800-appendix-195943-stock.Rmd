@@ -16,7 +16,7 @@ source('scripts/packages.R')
 ```{r  load-data-195943}
 my_site <- 195943
 my_site2 <- 195944
-my_site3 <- 1805507
+my_site3 <- 198112
 ```
 
 `r fpr::fpr_appendix_title()`
@@ -24,8 +24,7 @@ my_site3 <- 1805507
 ## Site Location {-}
 
 PSCIS crossing `r as.character(my_site)` is located approximately 12km north west of Houston, BC. The site is located on
-`r fpr_my_pscis_info(col_pull = road_name)`, approximately `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream from the confluence with the Bulkley River. PSCIS crossing `r as.character(my_site2)` is located on Highway 16, approximately 850m upstream of crossing 195943. Both crossings are the responsibility of the Ministry of
-Transportation and Infrastructure.
+`r fpr_my_pscis_info(col_pull = road_name)`, approximately `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream from the confluence with the Bulkley River. PSCIS crossing `r as.character(my_site2)` is located on Highway 16, approximately 850m upstream of crossing 195943. Both crossings are the responsibility of the Ministry of Transportation and Infrastructure.
 
 <br>
 
@@ -36,7 +35,7 @@ At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 watershed area upstream of the crossing of approximately
 `r fpr::fpr_my_wshd()`km^2^. The elevation of the watershed ranges from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to `r fpr::fpr_my_wshd(col = 'elev_site')`m at the
-crossing (Table \@ref(tab:tab-wshd-195943)). There is limited fisheries information available for the areas upstream of crossings 195943 and 195944. Harry Bell is the adjacent landowner downstream and upstream of the highway crossing. He reported historical sightings of adult coho and steelhead in Stock Creek. Approximately 2km downstream of crossing `r as.character(my_site)`, there is a railway crossing that was assessed and found to be fully passable. Coho and chinook salmon have been observed just downstream of the railway crossing in the past [@moe2020KnownBC; @norris2020bcfishobs]. 
+crossing (Table \@ref(tab:tab-wshd-195943)). Although coho and chinook salmon have been observed just downstream of the railway crossing in the past, there is no fisheries information within provincial databases for the areas upstream of crossings 195943 and 195944 [@knowledgemanagement2022KnownBC; @norris2022smnorrisbcfishobs]. At the time of reporting, Harry Bell owned the land adjacent to the creek downstream and upstream of the highway crossing. He reported historical sightings of adult coho and steelhead in Stock Creek. Approximately 2km downstream of crossing `r as.character(my_site)`, there is a railway crossing (PSCIS 198112) that was assessed and found to be fully passable.  
 
 <br>
 
@@ -52,10 +51,13 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 At the time of reporting, Dogwood Environmental Consulting (Dogwood) were working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture, and BC Cattleman’s Association. Dogwood worked with grazing lease holders and farmers to identify agricultural areas in need of enhancement. Stock Creek was included in one of these target areas, due to its clear signs of cattle use and grazing, leading to significant impacts on stream habitat. Plans to mitigate these impacts and prevent cattle from accessing stream banks are still ongoing. The project study area was located upstream of the assessed Highway 16 crossing (pers. comm Jenn Atkins, 2022). 
 
 <br>
+```{r eval = F}
+#@irvine2018AnalysisPriority ranked both crossing `r as.character(my_site)` and `r as.character(my_site2)` as a moderate prioritied for follow up with a habitat confirmations as the stream appeared to be dewatered at both locations in the PSCIS database photos and because the watershed was relatively low in elevation.
+```
 
 PSCIS stream crossing `r as.character(my_site)` was ranked as a high
 priority for follow up by Canadian Wildlife Federation because of
-significant amounts of habitat modelled as upstream of the crossing. A total of
+significant amounts of habitat modelled as upstream of the crossing. Following a review of PSCIS database and modelling outputs. A total of
 `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha of lake
 and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland
 is modelled upstream and a summary of habitat modelling outputs is
@@ -128,14 +130,13 @@ agricultural activities.
 
 <br>
 
-Modelled crossing `r as.character(my_site3)` located further downstream on the CN Railway was assessed and ranked as passable to all species and life stages at the time of survey. The crossing was embedded and fully backwatered (Table
+PSCIS crossing `r as.character(my_site3)` located further downstream on the CN Railway was assessed and ranked as passable to all species and life stages at the time of survey. The crossing was embedded and fully backwatered (Table
 \@ref(tab:tab-culvert-1805507)).
 
 <br>
 
 ```{r tab-culvert-1805507, eval = T}
-fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = 1805507, site_photo_id = 1805507, col_filter = my_crossing_reference)
-
+fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site3, site_photo_id = 1805507)
 ```
 
 
