@@ -1230,7 +1230,8 @@ tab_hab_summary <- left_join(
 #make the cost estimates
 # HACK !!!!!!!!!!!!!!!!!!!!!!! turned off all cost estimate data for now
 
-pscis_rd <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/rd_class_surface.csv'))
+pscis_rd <- readr::read_csv('data/inputs_raw/rd_class_surface.csv') %>%
+  filter(source != 'pscis_reassessments.xlsm')
 
 tab_cost_est_prep <- left_join(
   pscis_rd,
