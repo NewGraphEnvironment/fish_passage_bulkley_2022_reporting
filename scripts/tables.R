@@ -1432,9 +1432,39 @@ tab_map <- tab_map_prep %>%
   dplyr::distinct(site_id, .keep_all = T) #just for now
 
 
+# moti climate change table --------------------------------------------------------------
 
+# read in amalgamated pscis form
+form_id <- paste0(getwd(), '/data/inputs_extracted/form_pscis_v225.gpkg')
 
-
+# read in the form and select and change column names
+tab_moti <- sf::st_read(form_id) %>%
+  sf::st_drop_geometry() %>%
+  select(
+    'Erosion' = erosion_issues,
+    'Embankment' = embankment_fill_issues,
+    'Blockage' = blockage_issues,
+    'Condition Rank' = condition_rank,
+    'Condition Notes' = condition_notes,
+    'Likelihood Flood Event Affecting Culvert' = likelihood_flood_event_affecting_culvert,
+    `Consequence Flood Event Affecting Culvert` = consequence_flood_event_affecting_culvert,
+    'Climate Change Flood Risk' = climate_change_flood_risk,
+    'Vulnerability Rank' = vulnerability_rank,
+    'Climate Notes' = climate_notes,
+    'Traffic Volume' = traffic_volume,
+    'Community Access' = community_access,
+    'Cost' = cost,
+    'Constructability' = constructability,
+    'Fish Bearing' = fish_bearing,
+    'Environmental Impacts' = environmental_impacts,
+    'Priority Rank' = priority_rank,
+    'Overall Rank' = overall_rank
+  ) %>%
+  names() %>%
+  as_tibble() %>%
+  transpose() %>%
+  add_row() %>%
+  janitor::row_to_names(1)
 
 
 
