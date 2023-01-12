@@ -48,16 +48,15 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 
 <br>
 
-At the time of reporting, Dogwood Environmental Consulting (Dogwood) were working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture, and BC Cattleman’s Association. Dogwood worked with grazing lease holders and farmers to identify agricultural areas in need of enhancement. Stock Creek was included in one of these target areas, due to its clear signs of cattle use and grazing, leading to significant impacts on stream habitat. Plans to mitigate these impacts and prevent cattle from accessing stream banks are still ongoing. The project study area was located upstream of the assessed Highway 16 crossing (pers. comm Jenn Atkins, 2022). 
+At the time of reporting, Dogwood Environmental Consulting (Dogwood) were working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture and BC Cattleman’s Association.  The purpose of the work is to reduce fuel load on  crown/agricultural land interface and enhance grazing land through targeted grazing and/or through the manual removal of dead standing timber and coarse woody debris. At the time of reporting, Stock Creek, upstream of the assessed Highway 16 crossing, was included within the project area. Dogwood hopes to help range holders mitigate some of the potential impacts related to opening up access to streams by exploring opportunities to prevent cattle from accessing riparian buffers (pers. comm Jenn Atkins, 2022). 
 
 <br>
 ```{r eval = F}
-#@irvine2018AnalysisPriority ranked both crossing `r as.character(my_site)` and `r as.character(my_site2)` as a moderate prioritied for follow up with a habitat confirmations as the stream appeared to be dewatered at both locations in the PSCIS database photos and because the watershed was relatively low in elevation.
+#
 ```
 
-PSCIS stream crossing `r as.character(my_site)` was ranked as a high
-priority for follow up by Canadian Wildlife Federation because of
-significant amounts of habitat modelled as upstream of the crossing. Following a review of PSCIS database and modelling outputs. A total of
+PSCIS stream crossings `r as.character(my_site)` and `r as.character(my_site2)` were ranked as a high priority for follow up by Canadian Wildlife Federation due to
+significant amounts of habitat modelled as upstream of the crossing. Following a review of PSCIS database and modelling outputs @irvine2018AnalysisPriority ranked both crossings as moderate priorities for follow up with habitat confirmations with notes that the stream appeared to be dewatered at both locations in the PSCIS database photos and because the watershed was relatively low in elevation. A total of
 `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha of lake
 and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland
 is modelled upstream and a summary of habitat modelling outputs is
