@@ -135,37 +135,96 @@ map %>%
 
 ```
 
-
-
-
-```{r eval = F}
-## Planning
-
-# Following review of background literature, fisheries information, PSCIS and `bcfishpass` outputs, `r tab_plan_sf %>% nrow()` modelled and PSCIS crossings were reviewed to select sites for follow up with Phase 1 and 2 assessments in the Morice River watershed.   `r tab_plan_sf %>% filter(Priority == 'high') %>%  nrow()` crossings ranked as high priority for future follow up with Phase 1 and/or Phase 2 assessments, `r tab_plan_sf %>% filter(Priority == 'moderate') %>%  nrow()` crossings ranked as moderate priorities, and `r tab_plan_sf %>% filter(Priority == 'low') %>%  nrow()` crossings ranked as low priorities. Georeferenced field maps are presented in `r if(gitbook_on){knitr::asis_output("[here](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/) and available for bulk download as [Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/bulkley_2021-04-21.zip).")} else knitr::asis_output("[Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/bulkley_2021-04-21.zip).")` 
-
-
-```
-
-
-```{r eval=F}
-
-conn <- rws_connect("data/bcfishpass.sqlite")
-rws_disconnect(conn)
-
-# Results are `r if(html_on)knitr::asis_output("presented in Figure \\@ref(fig:map-interactive) and ")`included as a zipped Google Earth kml file ([Attachment 1](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/raw/main/data/Attachment_1_morice_planning_kml.zip)).
-
-
-# ## Planning
-# Review of the PSCIS database indicated that prior to 2020, `r pscis_historic %>% filter(study_area %ilike% 'elk' & assessment_date < '2020-01-01') %>% nrow()` assessments for fish passage (Phase 1) and `r pscis_historic_phase2 %>% filter(study_area %ilike% 'elk' & assmt_date < '2020-01-01') %>% nrow()` habitat confirmations (Phase 2) have been conducted at crossing structures within the Upper Elk River.  Within the Flathead River watershed `r pscis_historic %>% filter(study_area %ilike% 'flathead' & assessment_date < '2020-01-01') %>% nrow()` fish passage assessments and `r pscis_historic_phase2 %>% filter(study_area %ilike% 'flathead' & assmt_date < '2020-01-01') %>% nrow() %>% english::as.english()` habitat confirmations had been conducted.  Following review of background literature, fisheries information, PSCIS and `bcfishpass` outputs, both modelled and PSCIS sites were selected for follow up with Phase 1 and 2 assessments. Results are included as a zipped package of Google Earth kml files stored  [here](https://github.com/NewGraphEnvironment/fish_passage_elk_2020_reporting_cwf/raw/master/data/planning_kmls/elk_planning_kmls.zip).
-
-
-## Planning
-# Following review of background literature, fisheries information, PSCIS and `bcfishpass` outputs, both modelled and PSCIS sites were selected for follow up with Phase 1 and 2 assessments. Results are included as a zipped package of Google Earth kml files stored  [here](https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/raw/master/data/planning_kmls/elk_planning_kmls.zip).
-```
-
-
+## Dam Assessment
+One dam on Coffin Creek - Canadian Aquatic Barrier Database and `bcfishpass` `dam_id` 1f365462-063c-491e-9fb3-bfac004d9183 - was assessed for fish passage [@canadianwildlifefederation2023CanadianAquatic].  The Coffin Creek watershed has been selected as a focus area for Environmental Stewardship Initiative (ESI) sampling research critical flow monitoring, benthic invertebrate sampling and fisheries assessments (pers. comm Don Morgan, Ministry of Environment and Climate Change Strategy). @irvine2021BulkleyRiver assessed crossings located at the downstream end of the stream on Lawson Road and under the CN Railway in 2020 with results presented [here](https://www.newgraphenvironment.com/fish_passage_bulkley_2020_reporting/appendix-197668-124504-coffin-creek.html).  
 
 <br>
+
+Coffin Lake is a shallow lake (max depth 2m) located approximately 4.5km upstream of Lawson Road.  In the late 1980s, Ducks Unlimited raised water levels in Coffin Lake and a downstream wetland area by installing a 63m long by 2.3m high earthen dam incorporating a variable crest weir capable of a 1.0m drawdown.  Additionally excavated level ditching (1800m) within the sedge willow meadow was planned.The intent of the works was to provide a more secure and stable water regime, improve water/cover interspersion and provide territorial, loafing and nesting sites for waterfowl [@hatlevik1985ReconnaissanceSurvey; @simpson1986DucksUnlimited; @ProvincialObstaclesFish]. Documentation detailing specifics of the final design of the dam was not obtained with a search of available literature. 
+
+<br>
+
+Upstream of dam, `r fpr::fpr_my_fish_sp(site = '1f365462-063c-491e-9fb3-bfac004d9183', col_filter = dam_id)` have previously been recorded upstream [@knowledgemanagement2022KnownBC; @norris2022smnorrisbcfishobs]. A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-dam-bcfp).
+
+<br>
+
+The site was assessed on August 31, 2022 with results summarized in Table \@ref(tab:tab-dams). Photos are presented in Figures \\@ref(fig:photo-dams-01). Surveys were conducted with a remotely piloted aircraft upstream and downstream of the dam with resulting images stitched into an orthomosaic and 3-dimensional model `r if(gitbook_on){knitr::asis_output(" presented in Figures \\@ref(fig:ortho-caption-coffin) - \\@ref(fig:model-caption-coffin).")} else knitr::asis_output("presented [here](https://www.mapsmadeeasy.com/maps/public/fe773f4deef84939b04f5e941e35506a) and [here](https://www.mapsmadeeasy.com/maps/public_3D/fe773f4deef84939b04f5e941e35506a).")` Wetland habitat was present upstream and downstream of the dam with habitat rated as high value for juvenile coho and lamprey rearing.  A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(site = '1f365462-063c-491e-9fb3-bfac004d9183', col_filter = dam_id, col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`).
+
+```{r tab-dams}
+
+tab_dams_raw <- bcfishpass %>%
+  filter(aggregated_crossings_id == 	
+'1f365462-063c-491e-9fb3-bfac004d9183') %>%
+  select(id = aggregated_crossings_id, stream = gnis_stream_name,utm_zone, utm_easting, utm_northing, dbm_mof_50k_grid) %>%
+  mutate(barrier_ind = 'T',
+    Notes = 'Aerial imagery aquired. Complete barrier. 1.2m high steel structure within wetland complex downstream of Coffin Lake.  Extremely difficult access via all terrain vehicle due to muddy conditions'
+  )
+
+tab_dams_raw %>% 
+  select(-utm_zone) %>% 
+  arrange(id) %>% 
+  purrr::set_names(nm = c('Site', 'Stream', 'Easting', 'Northing', 'Mapsheet', 'Barrier', 'Notes')) %>% 
+  fpr::fpr_kable(caption_text = 'Results from fish passability assessments at dam 1f365462-063c-491e-9fb3-bfac004d9183.',
+           footnote_text = 'UTM Zone 9', scroll = F)
+```
+
+<br>
+
+```{r tab-dam-bcfp}
+fpr::fpr_table_bcfp(site = '1f365462-063c-491e-9fb3-bfac004d9183', col = dam_id, scroll = gitbook_on)
+```
+
+<br>
+
+```{r photo-dams-01-prep, fig.cap= my_caption1, out.width = photo_width, eval=T}
+
+# build amalgamated photo for dam
+# fpr::fpr_photo_amalg_cv(1493)
+my_site = 1493
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_all')
+grid::grid.raster(jpeg::readJPEG(my_photo1))
+my_caption1 = 'Photos of Dam 1f365462-063c-491e-9fb3-bfac004d9183 on Coffin Creek'
+
+```
+
+<br>
+
+
+```{r ortho-coffin, eval = F}
+#identical(gitbook_on, TRUE)
+
+model_url <- '<iframe src="https://www.mapsmadeeasy.com/maps/public/31c8631f733b41789fc2d42f2548b610" scrolling="no" title="Maps Made Easy" width="100%" height="600" frameBorder ="0"></iframe>'
+
+knitr::asis_output(model_url)
+```
+
+
+```{r ortho-caption-coffin, fig.cap= my_caption, out.width = "0.01%", eval = F}
+my_photo = 'fig/pixel.png'
+
+my_caption = paste0('Orthomosaic of Coffin Creek near Dam 1f365462-063c-491e-9fb3-bfac004d9183 To zoom press "shift" and scroll.')
+
+knitr::include_graphics(my_photo, dpi = NA)
+
+```
+
+
+```{r model-coffin, eval = F}
+model_url <- '<iframe src="https://www.mapsmadeeasy.com/maps/public_3D/31c8631f733b41789fc2d42f2548b610" scrolling="no" title="Maps Made Easy" width="100%" height="600" frameBorder ="0"></iframe>'
+
+knitr::asis_output(model_url)
+```
+
+
+```{r model-caption-coffin, fig.cap= my_caption, out.width = "0.01%", eval = F}
+my_photo = 'fig/pixel.png'
+
+my_caption = paste0('3D model of habitat on Coffin Creek near Dam 1f365462-063c-491e-9fb3-bfac004d9183. To zoom press "shift" and scroll.')
+
+knitr::include_graphics(my_photo, dpi = NA)
+
+```
+
 
 ## Phase 1
 
@@ -193,9 +252,7 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 <br>
 
 ## Phase 2
-
-
-During 2022 field assessments, habitat confirmation assessments were conducted at `r hab_site_priorities %>% nrow()` sites in the Bulkley River watershed.  A total of approximately `r habitat_confirmations_priorities %>% pull(length_surveyed) %>% sum(na.rm = T) %>% round(-3)/1000`km of stream was assessed, fish sampling utilizing electrofishing was conducted at one site, and one site was mapped using remotely piloted aircraft. Georeferenced field maps are presented in `r if(gitbook_on){knitr::asis_output("[here](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/) and available for bulk download as [Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/bulkley_2022-05-02.zip).")} else knitr::asis_output("[Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/bulkley_2022-05-02.zip).")`
+During 2022 field assessments, habitat confirmation assessments were conducted at `r hab_site_priorities %>% nrow()` sites in the Bulkley River watershed.  A total of approximately `r habitat_confirmations_priorities %>% pull(length_surveyed) %>% sum(na.rm = T) %>% round(-3)/1000`km of stream was assessed, fish sampling utilizing electrofishing surveys were conducted at one stream. Georeferenced field maps are presented in `r if(gitbook_on){knitr::asis_output("[here](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/) and available for bulk download as [Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/bulkley_2022-05-02.zip).")} else knitr::asis_output("[Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/bulkley_2022-05-02.zip).")`
 
 <br>
 
@@ -235,7 +292,7 @@ tab_overview %>%
 
 ```{r}
 fpr::fpr_table_cv_summary(dat = pscis_phase2) %>% 
-  fpr::fpr_kable(caption_text = 'Summary of Phase 2 fish passage reassessments.', scroll = gitbook_on)
+  fpr::fpr_kable(caption_text = 'Summary of Phase 2 fish passage reassessments.', scroll = F)
 ```
 
 
