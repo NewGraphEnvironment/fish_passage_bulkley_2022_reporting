@@ -365,7 +365,7 @@ pscis_phase1_for_tables <- pscis_all %>%
   filter(source %ilike% 'phase1') %>%
   # HACK
   # arrange(site_id)
-# UNHACK below
+# # UNHACK below
   arrange(pscis_crossing_id)
 
 
@@ -399,15 +399,19 @@ tab_photo_url <- list.files(path = paste0(getwd(), '/data/photos/'), full.names 
   filter(value %in% pscis_phase1_for_tables$my_crossing_reference) %>% ##we don't want all the photos - just the phase 1 photos for this use case!!!
   #  HACK but might not need to change back?
   # left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'site_id')) %>%   ##we need to add the pscis id so that we can sort the same
-  left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>% ##we need to add the pscis id so that we can sort the same
+  # UNHACK below
+    left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>% ##we need to add the pscis id so that we can sort the same
   # HACK
   # arrange(value) %>%
-  arrange(stream_crossing_id) %>%
+  # UNHACK below
+    arrange(stream_crossing_id) %>%
   # HACk
   # mutate(site_id = value) %>%
-  select(-value) %>%
+  # UNHACK below
+    select(-value) %>%
   # HACK
   # dplyr::group_split(site_id)
+# UNHACK below
   dplyr::group_split(stream_crossing_id)
 
 
