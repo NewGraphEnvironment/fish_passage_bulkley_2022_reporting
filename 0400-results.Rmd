@@ -190,16 +190,16 @@ my_caption1 = 'Photos of Dam 1f365462-063c-491e-9fb3-bfac004d9183 on Coffin Cree
 <br>
 
 
-```{r ortho-coffin, eval = F}
-#identical(gitbook_on, TRUE)
+```{r ortho-coffin, eval = identical(gitbook_on, TRUE)}
+#
 
-model_url <- '<iframe src="https://www.mapsmadeeasy.com/maps/public/31c8631f733b41789fc2d42f2548b610" scrolling="no" title="Maps Made Easy" width="100%" height="600" frameBorder ="0"></iframe>'
+model_url <- '<iframe src="https://www.mapsmadeeasy.com/maps/public/8e9c2ba6a3f845c2a3b1aa5047a4b39c" scrolling="no" title="Maps Made Easy" width="100%" height="600" frameBorder ="0"></iframe>'
 
 knitr::asis_output(model_url)
 ```
 
 
-```{r ortho-caption-coffin, fig.cap= my_caption, out.width = "0.01%", eval = F}
+```{r ortho-caption-coffin, fig.cap= my_caption, out.width = "0.01%", eval = identical(gitbook_on, TRUE)}
 my_photo = 'fig/pixel.png'
 
 my_caption = paste0('Orthomosaic of Coffin Creek near Dam 1f365462-063c-491e-9fb3-bfac004d9183 To zoom press "shift" and scroll.')
@@ -209,14 +209,14 @@ knitr::include_graphics(my_photo, dpi = NA)
 ```
 
 
-```{r model-coffin, eval = F}
-model_url <- '<iframe src="https://www.mapsmadeeasy.com/maps/public_3D/31c8631f733b41789fc2d42f2548b610" scrolling="no" title="Maps Made Easy" width="100%" height="600" frameBorder ="0"></iframe>'
+```{r model-coffin, eval = identical(gitbook_on, TRUE)}
+model_url <- '<iframe src="https://www.mapsmadeeasy.com/maps/public_3D/8e9c2ba6a3f845c2a3b1aa5047a4b39c" scrolling="no" title="Maps Made Easy" width="100%" height="600" frameBorder ="0"></iframe>'
 
 knitr::asis_output(model_url)
 ```
 
 
-```{r model-caption-coffin, fig.cap= my_caption, out.width = "0.01%", eval = F}
+```{r model-caption-coffin, fig.cap= my_caption, out.width = "0.01%", eval = identical(gitbook_on, TRUE)}
 my_photo = 'fig/pixel.png'
 
 my_caption = paste0('3D model of habitat on Coffin Creek near Dam 1f365462-063c-491e-9fb3-bfac004d9183. To zoom press "shift" and scroll.')
@@ -244,8 +244,8 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 ```{r cost-est-phase-1}
 
  tab_cost_est_phase1 %>%
-  select(`PSCIS ID`:`Habitat Upstream (km)`) %>% 
-   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments. Steelhead network model (total length stream network <20% gradient).',
+  select(`PSCIS ID`:`Cost Est ($K)`) %>% 
+   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments conducted on sites not yet inventoried in PSCIS. Steelhead network model (total length stream network <20% gradient).',
                   scroll = F)
 ```
 
@@ -314,7 +314,7 @@ tab_hab_summary %>%
   filter(Location %ilike% 'upstream') %>% 
   select(-Location) %>% 
   rename(`PSCIS ID` = Site, `Length surveyed upstream (m)` = `Length Surveyed (m)`) %>%
-  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = gitbook_on)
+  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = F)
 
 
 ```
