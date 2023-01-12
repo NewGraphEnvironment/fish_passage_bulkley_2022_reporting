@@ -602,6 +602,7 @@ hab_fish_indiv_prep3 <- left_join(
 hab_fish_collect_info <- habitat_confirmations %>%
   purrr::pluck("step_2_fish_coll_data") %>%
   dplyr::filter(!is.na(site_number)) %>%
+  mutate(ef_width_m = round(ef_width_m,1)) %>%
   # select(-gazetted_name:-site_number) %>%
   dplyr::distinct(reference_number, sampling_method, method_number, haul_number_pass_number, .keep_all = T)
 

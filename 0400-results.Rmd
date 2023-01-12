@@ -176,7 +176,7 @@ fpr::fpr_table_bcfp(site = '1f365462-063c-491e-9fb3-bfac004d9183', col = dam_id,
 
 <br>
 
-```{r photo-dams-01-prep, fig.cap= my_caption1, out.width = photo_width, eval=T}
+```{r photo-dams-01, fig.cap= my_caption1, out.width = photo_width, eval=T}
 
 # build amalgamated photo for dam
 # fpr::fpr_photo_amalg_cv(1493)
@@ -244,7 +244,7 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 ```{r cost-est-phase-1}
 
  tab_cost_est_phase1 %>%
-  select(`PSCIS ID`:`Cost Est ($K)`) %>% 
+  select(`PSCIS ID`:`Cost Est ( $K)`) %>% 
    fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments conducted on sites not yet inventoried in PSCIS. Steelhead network model (total length stream network <20% gradient).',
                   scroll = F)
 ```
