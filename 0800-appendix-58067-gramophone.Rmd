@@ -98,9 +98,10 @@ assessment but had some study blocks that required a level II assessment
 PSCIS stream crossing `r as.character(my_site)` was ranked as a high
 priority for follow up by the Canadian Wildlife Federation and
 @irvine2018AnalysisPriority because of significant amounts of habitat
-modelled upstream of the crossing. A summary of habitat modelling
-outputs is presented in Table \@ref(tab:tab-culvert-bcfp-58067). A map
-of the watershed is provided in map attachment
+modelled upstream of the crossing. @marlimecologicalconsultingltd.2013 assessed this crossing in 2012 and noted that the culvert was un-embedded, non-backwatered and determined that the stream had high habitat value.  A
+summary of habitat modelling outputs is presented in Table
+\@ref(tab:tab-culvert-bcfp-58067). A map of the watershed is provided in
+map attachment
 [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](fpr::fpr_my_mapsheet()).
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`

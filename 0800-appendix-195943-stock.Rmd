@@ -55,7 +55,7 @@ At the time of reporting, Dogwood Environmental Consulting (Dogwood) were workin
 
 PSCIS stream crossing `r as.character(my_site)` was ranked as a high
 priority for follow up by Canadian Wildlife Federation because of
-significant amounts of habitat modelled as upstream of the crossing. A total of
+significant amounts of habitat modelled as upstream of the crossing. @irvine2018AnalysisPriority ranked the site as a moderate priority for follow up because the stream was dewatered in photos. A total of
 `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha of lake
 and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland
 is modelled upstream and a summary of habitat modelling outputs is
