@@ -251,6 +251,16 @@ tab_cost_rd_mult_report %>%
 
 <br>
 
+## Ministry of Transportation Climate Change Pilot
+
+
+```{r tab-moti, eval = T}
+tab_moti %>% 
+  fpr::fpr_kable(caption_text = 'Ministry of Transportation Climate Change and Culvert Maintenance Assessment.', scroll = F)
+```
+
+<br>
+
 ## Habitat Confirmation Assessments
 
 Following fish passage assessments, habitat confirmations were completed in accordance with procedures outlined in the document “A Checklist for Fish Habitat Confirmation Prior to the Rehabilitation of a Stream Crossing” [@confirmation_checklist_2011]. The main objective of the field surveys was to document upstream habitat quantity and quality and to determine if any other obstructions exist above or below the crossing.  Habitat value was assessed based on channel morphology, flow characteristics (perennial, intermittent, ephemeral), the presence/absence of deep  pools, un-embedded  boulders, substrate, woody debris, undercut banks, aquatic vegetation and overhanging riparian vegetation. Criteria used to rank habitat value was based on guidelines in @confirmation_checklist_2011 (Table \@ref(tab:tab-hab-value)). 
