@@ -1378,28 +1378,27 @@ hab_loc_prep <- left_join(
 #need to populate the coordinates before this will work
 ###please note that the photos are only in those files ecause they are referenced in other parts
 #of the document
-# HACK - uss a cost estimate table so turned off
-# tab_hab_map <- left_join(
-#   tab_cost_est_phase2 %>% filter(source %like% 'phase2'),
-#   hab_loc_prep %>% select(site, priority, utm_easting, utm_northing, comments),
-#   by = c('pscis_crossing_id' = 'site')
-# )  %>%
-#   sf::st_as_sf(coords = c("utm_easting", "utm_northing"),
-#                crs = 26909, remove = F) %>%
-#   sf::st_transform(crs = 4326) %>%
-#   ##changed this to docs .html from fig .png
-#   # mutate(data_link = paste0('<a href =',
-#   #                           'https://github.com/NewGraphEnvironment/fish_passage_bulkley_2020_reporting/tree/master/docs/sum/', pscis_crossing_id,
-#   #                           '.html', '>', 'data link', '</a>')) %>%
-#   mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) %>%
-#   # mutate(photo_link = paste0('<a href =', 'data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
-#   #                            'target="_blank">Culvert Photos</a>')) %>%
-#   mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) %>%
-#   # mutate(photo_link = paste0('<a href =',
-#   #                            'https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/tree/master/data/photos/', pscis_crossing_id,
-#   #                            '/crossing_all.JPG', '>', 'photo link', '</a>')) %>%
-#   mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/master/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
-#                              'target="_blank">Culvert Photos</a>'))
+tab_hab_map <- left_join(
+  tab_cost_est_phase2 %>% filter(source %like% 'phase2'),
+  hab_loc_prep %>% select(site, priority, utm_easting, utm_northing, comments),
+  by = c('pscis_crossing_id' = 'site')
+)  %>%
+  sf::st_as_sf(coords = c("utm_easting", "utm_northing"),
+               crs = 26909, remove = F) %>%
+  sf::st_transform(crs = 4326) %>%
+  ##changed this to docs .html from fig .png
+  # mutate(data_link = paste0('<a href =',
+  #                           'https://github.com/NewGraphEnvironment/fish_passage_bulkley_2020_reporting/tree/master/docs/sum/', pscis_crossing_id,
+  #                           '.html', '>', 'data link', '</a>')) %>%
+  mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) %>%
+  # mutate(photo_link = paste0('<a href =', 'data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
+  #                            'target="_blank">Culvert Photos</a>')) %>%
+  mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) %>%
+  # mutate(photo_link = paste0('<a href =',
+  #                            'https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/tree/master/data/photos/', pscis_crossing_id,
+  #                            '/crossing_all.JPG', '>', 'photo link', '</a>')) %>%
+  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/master/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
+                             'target="_blank">Culvert Photos</a>'))
 
 
 #--------------need to review if this is necessary
