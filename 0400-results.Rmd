@@ -323,6 +323,7 @@ tab_hab_summary %>%
 
 ```{r tab-wshd-sum-all}
 fpr::fpr_table_wshd_sum() %>% 
+  na_if(-507) %>% 
   fpr::fpr_kable(caption_text = paste0('Summary of watershed area statistics upstream of Phase 2 crossings.'),
                                  footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above', scroll = F)
 
