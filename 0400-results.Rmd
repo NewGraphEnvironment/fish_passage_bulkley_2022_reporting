@@ -323,7 +323,6 @@ tab_hab_summary %>%
 
 ```{r tab-wshd-sum-all}
 fpr::fpr_table_wshd_sum() %>% 
-  na_if(-507) %>% 
   fpr::fpr_kable(caption_text = paste0('Summary of watershed area statistics upstream of Phase 2 crossings.'),
                                  footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above', scroll = F)
 
@@ -376,7 +375,7 @@ bcfishpass_phase2_plot_prep <- bcfishpass %>%
 
 ### Fish Sampling
 
-Fish sampling was conducted at `r tab_fish_sites_sum %>% n_distinct()` sites with a total of `r hab_fish_indiv %>% filter(species_code != 'NFC') %>% nrow()` fish captured.  Of these, `r hab_fish_indiv %>% filter(species_code == 'RB') %>% nrow()` were rainbow trout,  `r hab_fish_indiv %>% filter(species_code == 'CO') %>% nrow()` coho, `r hab_fish_indiv %>% filter(species_code == 'DV') %>% nrow()` were dolly varden and `r hab_fish_indiv %>% filter(species_code == 'L') %>% nrow()` were lamprey.  Fork length data was used to delineate salmonids based on life stages: fry (0 to 65mm), parr (>65 to 110mm), juvenile (>110mm to 140mm) and adult (>140mm) by visually assessing the histograms presented in Figure \@ref(fig:fish-histogram).  A summary of sites assessed are included in Table \@ref(tab:tab-fish-site-summary) and raw data is provided in [Attachment 3](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/raw/main/data/habitat_confirmations.xls). A summary of density results for all life stages combined of select species is also presented in Figure \@ref(fig:plot-fish-all). Results are presented in greater detail within individual habitat confirmation site appendices.
+Fish sampling was conducted at `r tab_fish_sites_sum %>% n_distinct()` sites with a total of `r hab_fish_indiv %>% filter(species_code != 'NFC') %>% nrow()` rainbow trout captured. Fork length data was used to delineate salmonids based on life stages: fry (0 to 65mm), parr (>65 to 110mm), juvenile (>110mm to 140mm) and adult (>140mm) by visually assessing the histograms presented in Figure \@ref(fig:fish-histogram).  A summary of sites assessed are included in Table \@ref(tab:tab-fish-site-summary) and raw data is provided in [Attachment 3](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/raw/main/data/habitat_confirmations.xls). A summary of density results for all life stages combined of select species is also presented in Figure \@ref(fig:plot-fish-all). Results are presented in greater detail within individual habitat confirmation site appendices.
 
 <br>
 
