@@ -39,7 +39,7 @@ filename_html <- 'Bulkley2022'
 
 {
   #move the phase 1 appendix back to main directory
-    file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+    # file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
 
   ##   then make our printable pdf
   rmarkdown::render_site(output_format = 'pagedown::html_paged',
@@ -64,6 +64,6 @@ filename_html <- 'Bulkley2022'
   file.remove(paste0(getwd(), '/', filename_html, '.html'))
 
   #move the phase 1 appendix back to main directory
-  file.rename( 'hold/0600-appendix.Rmd', '0600-appendix.Rmd')
+  # file.rename( 'hold/0600-appendix.Rmd', '0600-appendix.Rmd')
 
 }
