@@ -4,9 +4,27 @@
     <link href="http://www.garmin.com">
       <text>Garmin International</text>
     </link>
-    <time>2022-12-05T20:57:07Z</time>
+    <time>2023-01-16T22:09:54Z</time>
     <bounds maxlat="55.249188104644418" maxlon="-126.21177300810814" minlat="54.439921975135803" minlon="-127.58471751585603" />
   </metadata>
+
+  <wpt lat="54.524127496406436" lon="-126.80811390280724">
+    <time>2023-01-16T22:06:48Z</time>
+    <name>115</name>
+    <sym>Flag, Blue</sym>
+    <type>user</type>
+    <extensions>
+      <gpxx:WaypointExtension>
+        <gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
+      </gpxx:WaypointExtension>
+      <wptx1:WaypointExtension>
+        <wptx1:DisplayMode>SymbolAndName</wptx1:DisplayMode>
+      </wptx1:WaypointExtension>
+      <ctx:CreationTimeExtension>
+        <ctx:CreationTime>2023-01-16T22:06:48Z</ctx:CreationTime>
+      </ctx:CreationTimeExtension>
+    </extensions>
+  </wpt>
 
   <trk>
     <name>195943_ds</name>
@@ -48032,6 +48050,29 @@
         <ele>603.36000000000001</ele>
         <time>2022-08-31T18:22:36Z</time>
       </trkpt>
+    </trkseg>
+  </trk>
+
+  <trk>
+    <name>57793_us2</name>
+    <extensions>
+      <gpxx:TrackExtension>
+        <gpxx:DisplayColor>DarkGray</gpxx:DisplayColor>
+      </gpxx:TrackExtension>
+    </extensions>
+    <trkseg>
+      <trkpt lat="54.524328326806426" lon="-126.81410034187138" />
+      <trkpt lat="54.524256410077214" lon="-126.81347530335188" />
+      <trkpt lat="54.524341737851501" lon="-126.81247182190418" />
+      <trkpt lat="54.524108218029141" lon="-126.81154520250857" />
+      <trkpt lat="54.524117186665535" lon="-126.81060207076371" />
+      <trkpt lat="54.524175608530641" lon="-126.81002086959779" />
+      <trkpt lat="54.524247441440821" lon="-126.80946154519916" />
+      <trkpt lat="54.524045353755355" lon="-126.80864456109703" />
+      <trkpt lat="54.524081228300929" lon="-126.80814558640122" />
+      <trkpt lat="54.523762380704284" lon="-126.80796462111175" />
+      <trkpt lat="54.52330875210464" lon="-126.80748760700226" />
+      <trkpt lat="54.523124601691961" lon="-126.80695577524602" />
     </trkseg>
   </trk>
 
