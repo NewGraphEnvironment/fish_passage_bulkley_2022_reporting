@@ -19,7 +19,7 @@ my_site2 <- 195944
 my_site3 <- 198112
 ```
 
-`r fpr::fpr_appendix_title()`
+`r fpr::fpr_appendix_title(site2 = my_site2)`
 
 ## Site Location {-}
 
@@ -35,7 +35,7 @@ At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 watershed area upstream of the crossing of approximately
 `r fpr::fpr_my_wshd()`km^2^. The elevation of the watershed ranges from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to `r fpr::fpr_my_wshd(col = 'elev_site')`m at the
-crossing (Table \@ref(tab:tab-wshd-195943)). Although coho and chinook salmon have been observed just downstream of the railway crossing in the past, there is no fisheries information within provincial databases for the areas upstream of crossings 195943 and 195944 [@knowledgemanagement2022KnownBC; @norris2022smnorrisbcfishobs]. At the time of reporting, Harry Bell owned the land adjacent to the creek downstream and upstream of the highway crossing. He reported historical sightings of adult coho and steelhead in Stock Creek. Approximately 2km downstream of crossing `r as.character(my_site)`, there is a railway crossing (PSCIS 198112) that was assessed and found to be fully passable.  
+crossing (Table \@ref(tab:tab-wshd-195943)). Although coho and chinook salmon have been observed just downstream of the railway crossing in the past, there is no fisheries information within provincial databases for the areas upstream of crossings 195943 and 195944 [@knowledgemanagement2022KnownBC; @norris2022smnorrisbcfishobs]. At the time of reporting, Harry Bell owned land adjacent to the creek near the highway and `r fpr_my_pscis_info(col_pull = road_name)`. He reported historical sightings of adult coho and steelhead upstream of `r fpr_my_pscis_info(col_pull = road_name)`. A railway crossing (PSCIS 198112) is located approximately 2km downstream of crossing `r as.character(my_site)`.  
 
 <br>
 
@@ -48,14 +48,14 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 
 <br>
 
-At the time of reporting, Dogwood Environmental Consulting (Dogwood) were working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture and BC Cattleman’s Association.  The purpose of the work is to reduce fuel load on  crown/agricultural land interface and enhance grazing land through targeted grazing and/or through the manual removal of dead standing timber and coarse woody debris. At the time of reporting, Stock Creek, upstream of the assessed Highway 16 crossing, was included within the project area. Dogwood hopes to help range holders mitigate some of the potential impacts related to opening up access to streams by exploring opportunities to prevent cattle from accessing riparian buffers (pers. comm Jenn Atkins, 2022). 
+At the time of reporting, Dogwood Environmental Consulting (Dogwood) were working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture and BC Cattleman’s Association.  The purpose of the work is to reduce fuel load on  crown/agricultural land interface and enhance grazing land through targeted grazing and/or through the manual removal of dead standing timber and coarse woody debris. At the time of reporting, Stock Creek, upstream of the assessed Highway 16 crossing, was included within the project area and Dogwood noted that they hoped to help range holders mitigate some of the potential impacts related to fuel reduction opening up access to streams by exploring opportunities to prevent cattle from accessing riparian buffers (pers. comm Jenn Atkins, 2022). 
 
 <br>
 ```{r eval = F}
 #
 ```
 
-PSCIS stream crossings `r as.character(my_site)` and `r as.character(my_site2)` were ranked as a high priority for follow up by Canadian Wildlife Federation due to
+PSCIS stream crossings `r as.character(my_site)` and `r as.character(my_site2)` were ranked as high priorities for follow up by Canadian Wildlife Federation due to
 significant amounts of habitat modelled as upstream of the crossing. Following a review of PSCIS database and modelling outputs @irvine2018AnalysisPriority ranked both crossings as moderate priorities for follow up with habitat confirmations with notes that the stream appeared to be dewatered at both locations in the PSCIS database photos and because the watershed was relatively low in elevation. A total of
 `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha of lake
 and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland
@@ -142,18 +142,17 @@ fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site3, site_photo_i
 
 ## Stream Characteristics Upstream of `r as.character(my_site)` and Downstream of `r as.character(my_site2)` {-}
 
-`r fpr_my_survey_dist(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` and downstream of `r as.character(my_site2)` for an additional `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'ds', col_pull = 'length_surveyed')`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195943-03) - \\@ref(fig:photo-195943-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d02))."))`  
-`r fpr_my_habitat_paragraph(loc = 'us')` There was good flow volume and a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel suitable for resident rainbow as well as coho and steelhead spawning. Occasional shallow pools and traces of large water debris were sighted. The channel appeared to be constricted due to agricultural development on both sides of the stream. Water withdrawal is occurring as well. More agricultural development was encroaching on the riparian farther upstream. The
+Within the site immediately upstream of `r as.character(my_site)` `r fpr_my_habitat_paragraph(loc = 'us')` Good flow volumes were noted along with a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel suitable for resident rainbow as well as coho and steelhead spawning. The channel appeared to be constricted with riparian vegetation removed on both sides of the stream, likely due to agricultural development. Irrigation pipes in the channel indicated water withdrawal was occurring. The
 habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value as
 an important migration corridor containing suitable spawning habitat and
-having moderate rearing potential.
+having moderate rearing potential for juvenile coho, steelhead and other salmonids.
 
 <br>
 
-`r fpr_my_survey_dist(loc = 'ds', sit = my_site2)`
-`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195943-03) - \\@ref(fig:photo-195943-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d02))."))`  
-`r fpr_my_habitat_paragraph(loc = 'us')` There were many undercut banks throughout, with fish up tp 20cm long sighted throughout covered areas. There was a cattle trail next to length of creek, with some areas that showed obvious signs of erosion and an associated risk of sediment falling into stream. There were not many gravel patches suitable for spawning. The
+Within the site surveyed immediately downstream of the highway,  
+`fpr_my_habitat_paragraph(sit = my_site2, loc = 'ds')`  There were many undercut banks throughout, with fish up tp 20cm long sighted throughout covered areas. There was a cattle trail next to the stream, with areas of erosion and minimal quantities of gravel suitable for spawning. Although riparian vegetation in the upper portions of the area surveyed 
 habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds', sit = my_site2)` value as
 an important migration corridor containing some suitable spawning habitat and
 having moderate rearing potential.
@@ -163,7 +162,7 @@ having moderate rearing potential.
 ## Stream Characteristics Upstream of `r as.character(my_site2)` {-}
 
 `r fpr_my_survey_dist(loc = 'us', sit = my_site2)`
-`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195944-05) - \\@ref(fig:photo-195944-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195944-d02))."))` `r fpr_my_habitat_paragraph(loc = 'us', sit = my_site2)` This section of the stream is likely an important migration corridor, however the stream is heavily impacted by cattle activity. There were significant amounts of cattle manure in the stream, which likely affected water quality levels. There were occasional pockets of gravel suitable for resident rainbow spawning. Boulders were the significant cover however there were occasional pools with depths suitable for overwintering. Decent amount of rearing habitat for juveniles though. There was a small rock drop of 65cm located 365m upstream of the top end of the culvert. 
+`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195944-05) - \\@ref(fig:photo-195944-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195944-d02))."))` `r fpr_my_habitat_paragraph(loc = 'us', sit = my_site2)` Within the areas surveyed, the stream was noted heavily impacted by cattle activity with significant amounts of manure in the stream, degraded/removed riparian vegetation and extensive areas of trampled banks. There were occasional pockets of gravel suitable for resident rainbow spawning. Field notes indicate, occasional pools with depths suitable for juvenile salmon and adult resident salmonid overwintering. A rock drop of 65cm was located 365m upstream of the top end of the culvert. 
 
 
 ## Structure Remediation and Cost Estimate {-}
@@ -181,11 +180,11 @@ habitat modelled upstream of crossing `r as.character(my_site)` rated as
 value for salmonid rearing and spawning. Crossing
 `r as.character(my_site)` was ranked as a
 `r fpr::fpr_my_priority_info(col_pull = priority)` priority for
-proceeding to design for replacement. Replacement with a new open bottom structure is recommended.   
+proceeding to design for replacement with a bridge.   
 
 <br>
 
-This stream is heavily impacted by adjacent land use and cattle activity. However, the habitat is still moderate to high value and suitable for rearing and overwintering. Resident fish were spotted at the time of survey. It is advised that individuals continue to work with adjacent landowners and tenure holders to carry out stream restoration activities and keep livestock out of the riparian region and streambed.  
+At the time of assessment Stock Creek was heavily impacted by land clearing and cattle throughout the areas surveyed. However, habitat present provided habitat suitable for juvenile coho, steelhead and resident salmonids with fish observed during field assessments. Although 
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
