@@ -25,7 +25,7 @@ make_geopackage(dat = phase1_priorities)
 
 
 ##add the tracks
-sf::read_sf("./data/hab_confirmation_tracks.gpx", layer = "tracks") %>%
+sf::read_sf("./data/habitat_confirmation_tracks.gpx", layer = "tracks") %>%
   sf::st_write(paste0("./data/fishpass_mapping/", 'fishpass_mapping', ".gpkg"), 'hab_tracks', append = TRUE)
 
 ##study area watersheds
