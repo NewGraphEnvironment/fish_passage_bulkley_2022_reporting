@@ -56,19 +56,10 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 
 ```
 
-<br>
-
-Vallee Lake is
-`r fpr::fpr_my_bcfishpass(site = my_site, col_pull = total_lakereservoir_ha)`ha
-in size and modelling indicates an additional
-`r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland
-upstream of the highway. Large lakes within watersheds can throttle high
-freshet and storm flows, increasing stability downstream for egg
-incubation and juvenile rearing.
 
 <br>
 
-Further downstream, GIS modelling indicates there is one crossing (modelled crossing ID 1802482) before the confluence of the Bulkley River. However, local knowledge from a landowner revealed that the crossing was no longer present. Upstream of crossing 57793, review of GIS indicates there are three crossings located on the mainstem of Vallee Creek, along with several modelled crossings on tributaries that are likely very small. PSCIS crossing 57801 is located past Vallee Lake on Highway 16 and was listed as a barrier at the time of survey by @gollner2013 in 2012. 
+Further downstream, GIS modelling indicates there is one crossing on a transmission line (modelled crossing ID 1802482). A local landowner reported that this crossing does not exist. Review of GIS indicates there is a modelled crossing (ID 1800041) located on the mainstem approximately 5.5km upstream of `r as.character(my_site)`, on Vallee Creek Road. Additionally, there are several modelled crossings upstream of subject site 57793, located on tributaries that are likely very small. A total of `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha of lake and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland is modelled upstream. These lakes include Vallee Lake(10ha), Helen Lake(16ha) and other small unnamed lakes that are of insignificant size. Upstream of crossing 1800041, the mainstem drains into Vallee Lake before flowing through the culvert (PSCIS crossing 57801) located on Highway 16. This crossing was listed as a barrier at the time of survey by @gollner2013 in 2012. Comments indicate that fish were observed downstream, and good habitat was present upstream. Vallee Creek then flows east past the highway through PSCIS crossings 57786, followed by 57787, before draining into Helen Lake. 
 
 <br>
 
@@ -125,8 +116,7 @@ fpr::fpr_my_priority_info()
 
 ## Stream Characteristics Downstream {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` to the confluence with the Bulkley
-River
+`r fpr_my_survey_dist(loc = 'ds')`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-57793-01) - \\@ref(fig:photo-57793-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-57793-d01))."))`
 `r fpr_my_habitat_paragraph(loc = 'ds')` There were undercut banks and
 abundant riparian vegetation throughout providing good cover for fish.
@@ -169,18 +159,9 @@ There was
 habitat modelled upstream of crossing `r as.character(my_site)` with
 areas surveyed rated as
 `r fpr::fpr_my_priority_info(sit = my_site, loc = 'us', col_pull = hab_value)`
-value for salmonid rearing and spawning. Crossing
-`r as.character(my_site)` was ranked as a
-`r fpr::fpr_my_priority_info(col_pull = priority)` priority for
-proceeding to design for replacement. There was a very small outlet drop
-at the time of survey and the low elevation of the watershed results in
-very low flows in typical years. Evidence of low flows is shown
-[here](https://a100.gov.bc.ca/pub/pscismap/imageViewer.do?assessmentId=57833)
-in photos taken from the assessment done by @gollner2013 in
-2012. However, fish sampling upstream and downstream of the culvert is
-recommended in the future as it will provide insight into fish community
-composition and density. This information will be key in determining the
-biological value of remediating the site.
+value for salmonid rearing and spawning. As the culvert outlet drop was small, and because the relatively low elevation of the watershed may result in low flows in typical years (see assessment photos from @gollner2013 [here](https://a100.gov.bc.ca/pub/pscismap/imageViewer.do?assessmentId=57833)), `r as.character(my_site)` was ranked as a
+`r fpr::fpr_my_priority_info(col_pull = priority)` priority for proceeding to design for replacement. Electrofishing upstream and downstream of the culvert is recommended to provide insight into fish community
+composition and density which may justify a higher priority for site remediation.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
