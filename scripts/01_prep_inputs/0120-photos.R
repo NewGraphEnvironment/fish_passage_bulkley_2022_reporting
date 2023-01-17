@@ -66,9 +66,9 @@ photo_resize_convert_batch <- function(filename,
 ## Bulkley -------------------------------
 # this is the only thing that changes from project to project and place to place for this workflow
 name_repo <-  'fish_passage_bulkley_2022_reporting'
-# dir_stub_from <-  '/Users/airvine'
+dir_stub_from <-  '/Users/airvine'
 dir_project = '2022-059-cwf-bulkley'
-# dir_stub_target = '/Users/airvine/Projects/OneDrive'
+dir_stub_target = '/Users/airvine/Projects/OneDrive'
 
 # make a list of the directories you want to copy over
 dir_l <- list.dirs(
@@ -149,11 +149,36 @@ dir_l %>%
              dir_stub_from = dir_stub_from,
              name_repo =  name_repo)
 
+## peace--------------------------------
+# this is the only thing that changes from project to project for this workflow
+name_repo <-  'fish_passage_peace_2022_reporting'
+dir_project = '2022-050-sern-parsnip-fish-passage'
+
+# make a list of the directories you want to copy over and apply the function
+dir_l <- list.dirs(
+  paste0(
+    dir_stub_from,
+    '/Projects/current/',
+    dir_project,
+    '/data/photos/'
+  ),
+  full.names = F, recursive = F)
+
+dir_l %>%
+  purrr::map(photo_resize_convert_batch,
+             dir_project =  dir_project,
+             dir_stub_target = dir_stub_target,
+             dir_stub_from = dir_stub_from,
+             name_repo =  name_repo)
+
 # grab the files from mergin and move to project using linux cmd
 # mv -v ~/Projects/gis/mergin/bcfishpass_elkr_20220904/photos/* ~/Projects/current/2022-056-nupqu-elk-cwf/data/photos/mergin/originals
 # mv -v ~/Projects/gis/mergin/bcfishpass_skeena_20220823-v225/photos/* ~/Projects/current/2022-049-sern-skeena-fish-passage/data/photos/mergin/
 
 
+# copy gps and pit_tag data
+# cp -v -r ~/Projects/current/2022-050-sern-parsnip-fish-passage/data/gps/* ~/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2022_reporting/data/gps/
+# cp -v -r ~/Projects/current/2022-050-sern-parsnip-fish-passage/data/pit_tags/* ~/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2022_reporting/data/
 # make folders ------------------------------------------------------------
 
 pscis_all <- fpr::fpr_import_pscis_all() %>%
