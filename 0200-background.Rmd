@@ -1,22 +1,18 @@
-
-
 # Background
 
-The study area includes the Bulkley River watershed group (Figure \@ref(fig:overview-map)) and is  within the  traditional territories of the Wet'suwet'en and Gitsxan First Nations.  
+The study area includes the Bulkley River watershed group (Figure \@ref(fig:overview-map)) and is within the traditional territories of the Wet'suwet'en and Gitsxan First Nations.
 
 <br>
 
-
 ## Wet'suwet'en
 
-Wet'suwet'en hereditary territory covers an area of 22,000km^2^ including the Bulkley River watershed, Zymoetz River watershed, Morice River watershed and portions of the Nechako River watershed.  The Wet'suwet'en people are a matrilineal society organized into the Gilseyhu (Big Frog), Laksilyu (Small Frog), Tsayu (Beaver clan), Gitdumden (Wolf/Bear) and Laksamshu (Fireweed) clans. Within each of the clans there are are a number of kin-based groups known as Yikhs or House groups. The Yikh is a partnership between the people and the territory. Thirteen Yikhs with Hereditary Chiefs manage a total of 38 distinct territories upon which they have jurisdiction.  Within a clan, the head Chief is entrusted with the stewardship of the House territory to ensure the Land is managed in a sustainable manner. Inuk Nu’at’en (Wet'suwet'en law) governing the harvesting of fish within their lands are based on values founded on thousands of years of social, subsistence and environmental dynamics. The Yintahk (Land) is the centre of life as well as culture and it's management is intended to provide security for sustaining salmon, wildlife, and natural foods to ensure the health and well-being of the Wet'suwet'en [@officeofthewetsuweten2013Wetsuwet; @OfficeoftheWetsuweten2021; @flnrord2017NaturalResource].
-
+Wet'suwet'en hereditary territory covers an area of 22,000km^2^ including the Bulkley River watershed, Zymoetz River watershed, Morice River watershed and portions of the Nechako River watershed. The Wet'suwet'en people are a matrilineal society organized into the Gilseyhu (Big Frog), Laksilyu (Small Frog), Tsayu (Beaver clan), Gitdumden (Wolf/Bear) and Laksamshu (Fireweed) clans. Within each of the clans there are are a number of kin-based groups known as Yikhs or House groups. The Yikh is a partnership between the people and the territory. Thirteen Yikhs with Hereditary Chiefs manage a total of 38 distinct territories upon which they have jurisdiction. Within a clan, the head Chief is entrusted with the stewardship of the House territory to ensure the Land is managed in a sustainable manner. Inuk Nu'at'en (Wet'suwet'en law) governing the harvesting of fish within their lands are based on values founded on thousands of years of social, subsistence and environmental dynamics. The Yintahk (Land) is the centre of life as well as culture and it's management is intended to provide security for sustaining salmon, wildlife, and natural foods to ensure the health and well-being of the Wet'suwet'en [@officeofthewetsuweten2013Wetsuwet; @OfficeoftheWetsuweten2021; @flnrord2017NaturalResource]. Witset is a federally recognized First Nations band of the Wet'suwet'en people and is located between Smithers and Hazelton, on the west side of the Bulkley River. Previously known as Moricetown, this nation is home to approximately 1790 people. This small community was built in the early 1900s but has served as the Wet'suwet'en fishing grounds for thousands of years [@witsetf2019].
 
 <br>
 
 ## Gitxsan
 
-The Gitxsan Laxyip (traditional territories) covers an area of 33,000km^2^ within the Skeena River and Nass River watersheds.  The Laxyip is governed by 60 Simgiigyet (Hereditary Chiefs), within the traditional hereditary system made up of Wilps (House groups). Anaat are fisheries tenures found throughout the Laxyip. Traditional governance within a matrilineal society operates under the principles of Ayookw (Gitxsan law) [@GitxsanHuwilpGovernment2021]. 
+The Gitxsan Laxyip (traditional territories) covers an area of 33,000km^2^ within the Skeena River and Nass River watersheds. The Laxyip is governed by 60 Simgiigyet (Hereditary Chiefs), within the traditional hereditary system made up of Wilps (House groups). Anaat are fisheries tenures found throughout the Laxyip. Traditional governance within a matrilineal society operates under the principles of Ayookw (Gitxsan law) [@GitxsanHuwilpGovernment2021].
 
 ```{r}
 # Salmon is considered the source of life and always treated with high regard.  It was brought by the Raven who also taught people how to fish and hunt.
@@ -25,29 +21,23 @@ The Gitxsan Laxyip (traditional territories) covers an area of 33,000km^2^ withi
 
 <br>
 
-
-
 ## Project Location
 
 ```{r overview-map, fig.cap = 'Overview map of Study Areas',eval=T}
 knitr::include_graphics("fig/fishpassage_skeena_2022_bulk.png")
 ```
 
-
-The Bukley River is an 8th  order stream that drains an area of 7,762 km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Skeena River at Hazleton. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE004")$LTMAD,1)` m^3^/s at station 08EE004 located near Quick (~27km south of Telkwa) and `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located upstream near Houston.  Flow patterns at Quick are heavily influenced by inflows from the Morice River (enters just downstream of Houston) resulting in flow patterns typical of high elevation watersheds which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figures \@ref(fig:hydrology-plot) - \@ref(fig:hydrology-stats1)). The hydrograph peaks faster and generally earlier (May - June) for the Bulkley River upstream of Houston where the topography is of lower lower elevation (Figures \@ref(fig:hydrology-plot) and \@ref(fig:hydrology-stats2)).  
-
-<br>
-
-
-Changes  to  the  climate  systems  are  causing  impacts  to  natural  and  human systems  on  all  continents  with  alterations  to  hydrological  systems  caused  by  changing  precipitation  or melting  snow  and  ice  increasing  the  frequency  and  magnitude  of  extreme  events  such  as  floods  and droughts [@ipcc2014Climatechange; @eccc2016Climatedata].  These changes are resulting in modifications to the quantity and quality of water resources throughout British Columbia and are likely to compound issues related to drought and flooding in the Bulkley River watershed where numerous water licenses are held with a potential over-allocation of flows identified during low flow  periods  [@ilmb2007MoriceLand]. 
+The Bukley River is an 8th order stream that drains an area of 7,762 km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Skeena River at Hazleton. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE004")$LTMAD,1)` m^3^/s at station 08EE004 located near Quick (\~27km south of Telkwa) and `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located upstream near Houston. Flow patterns at Quick are heavily influenced by inflows from the Morice River (enters just downstream of Houston) resulting in flow patterns typical of high elevation watersheds which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figures \@ref(fig:hydrology-plot) - \@ref(fig:hydrology-stats1)). The hydrograph peaks faster and generally earlier (May - June) for the Bulkley River upstream of Houston where the topography is of lower lower elevation (Figures \@ref(fig:hydrology-plot) and \@ref(fig:hydrology-stats2)).
 
 <br>
 
-The valley  bottom has  seen  extensive  settlement  over  the  past hundred years with major population centers including the Village of Hazelton, the Town of Smithers, the Village of Telkwa and the District Municipality of Houston.  As  a  major  access  corridor  to  northwestern  British  Columbia,  Highway  16  and  the  Canadian  National Railway  are  major  linear  developments  that  run  along  the  Bulkley  River  within  and  adjacent  to  the floodplain with numerous crossing structures impeding fish access into and potentially out from important fish habitats.  Additionally, as the valley bottom  contains some of the most productive land in the area, there has been extensive conversion  of  riparian  ecosystems  to  hayfields  and  pastures  leading  to  alterations  in  flow  regimes, increases  in  water  temperatures,  reduced  streambank  stability,  loss  of  overstream  cover  and channelization [@ilmb2007MoriceLand; @wilson_rabnett2007FishPassage]. 
-
+Changes to the climate systems are causing impacts to natural and human systems on all continents with alterations to hydrological systems caused by changing precipitation or melting snow and ice increasing the frequency and magnitude of extreme events such as floods and droughts [@ipcc2014Climatechange; @eccc2016Climatedata]. These changes are resulting in modifications to the quantity and quality of water resources throughout British Columbia and are likely to compound issues related to drought and flooding in the Bulkley River watershed where numerous water licenses are held with a potential over-allocation of flows identified during low flow periods [@ilmb2007MoriceLand].
 
 <br>
 
+The valley bottom has seen extensive settlement over the past hundred years with major population centers including the Village of Hazelton, the Town of Smithers, the Village of Telkwa and the District Municipality of Houston. As a major access corridor to northwestern British Columbia, Highway 16 and the Canadian National Railway are major linear developments that run along the Bulkley River within and adjacent to the floodplain with numerous crossing structures impeding fish access into and potentially out from important fish habitats. Additionally, as the valley bottom contains some of the most productive land in the area, there has been extensive conversion of riparian ecosystems to hayfields and pastures leading to alterations in flow regimes, increases in water temperatures, reduced streambank stability, loss of overstream cover and channelization [@ilmb2007MoriceLand; @wilson_rabnett2007FishPassage].
+
+<br>
 
 ```{r hydrology-plot, fig.cap = 'Hydrograph for Bulkley River at Quick (Station #08EE004) and near Houston (Station #08EE003).', fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=T}
 knitr::include_graphics("fig/hydrograph_08EE004.png")
@@ -79,33 +69,29 @@ knitr::include_graphics("fig/hydrology_stats_08EE003.png")
 
 ```
 
-
 ## Fisheries
 
-In 2004, @ibmbusinessconsultingservices2006ValuationWild estimated the value of Skeena Fisheries at an annual average of $110 million dollars.  The Bulkley-Morice watershed is an integral part of the salmon production in the Skeena drainage and supports an internationally renown steelhead, chinook and coho sport fishery [@tamblyn2005PlanConserve].  
+In 2004, @ibmbusinessconsultingservices2006ValuationWild estimated the value of Skeena Fisheries at an annual average of \$110 million dollars. The Bulkley-Morice watershed is an integral part of the salmon production in the Skeena drainage and supports an internationally renown steelhead, chinook and coho sport fishery [@tamblyn2005PlanConserve].
 
-
-Traditionally, the salmon stocks passing through and spawning in Bulkley River were the principal food source for the Gitxsan and Wet’suwet’en people living there [@wilson_rabnett2007FishPassage]. @wilson_rabnett2007FishPassage detail numerous fishing  areas located within the lower Bulkley  drainage (from  the confluence of the Skeena to the confluence with the Telkwa River) and the upper Bulkley drainage which includes the mainstem Bulkley River and tributaries upstream of the Telkwa River confluence. Anadromous lamprey passing through and spawning in the upper Bulkley River were traditionally also an important food source for the Wet'suwet'en  (Wilson and Rabnett 2007; pers comm. Mike Ridsdale, Environmental Assessment Coordinator, Office of the Wet'suwet'en).
-
-<br>
-
- 
-Approximately 11.3 km downstream of the Bulkley Lake outlet and just upstream of Watson Creek, the upper Bulkley falls is an approximately 4m high narrow rock sill that crosses the Bulkley River, producing a steep cascade section.  This obstacle to fish passage is recorded as an almost complete barrier to fish passage for salmon during low water flows.  Coho have not been observed beyond the falls since 1972 [@wilson_rabnett2007FishPassage].
+Traditionally, the salmon stocks passing through and spawning in Bulkley River were the principal food source for the Gitxsan and Wet'suwet'en people living there [@wilson_rabnett2007FishPassage]. @wilson_rabnett2007FishPassage detail numerous fishing areas located within the lower Bulkley drainage (from the confluence of the Skeena to the confluence with the Telkwa River) and the upper Bulkley drainage which includes the mainstem Bulkley River and tributaries upstream of the Telkwa River confluence. Anadromous lamprey passing through and spawning in the upper Bulkley River were traditionally also an important food source for the Wet'suwet'en (Wilson and Rabnett 2007; pers comm. Mike Ridsdale, Environmental Assessment Coordinator, Office of the Wet'suwet'en).
 
 <br>
 
-Renowned as a world class recreational steelhead and coho fishery, the Bulkley River receives some of the heaviest angling pressure in the province.  In response to longstanding angler concerns with respect to overcrowding, quality of experience and conflict amongst anglers, an Angling Management Plan was drafted for the river following the initiation of the Skeena Quality Waters Strategy process in 2006 and an extensive multi-year consultation process.   The plan  introduces a number of  regulatory measures with the intent to provide Canadian resident anglers with quality steelhead fishing opportunities.  Regulatory measures introduced with the Angling Management Plan include prohibited angling for non-guided non-resident aliens on Saturdays and Sundays, Sept 1 - Oct 31 within the Bulkley River, angling prohibited for non-guided non-resident aliens on Saturdays and Sundays, all year within the Suskwa River and angling prohibited for non-guided non-resident aliens Sept 1 - Oct 31 in the Telkwa River.  The Bukley River is considered Class II waterand there is no fshing permitted upstream of the Morice/Bulkley River Confluence [@flnro2013BulkleyRiver; @flnro2013OverviewAngling; @flnrord2019FreshwaterFishing].
+Approximately 11.3 km downstream of the Bulkley Lake outlet and just upstream of Watson Creek, the upper Bulkley falls is an approximately 4m high narrow rock sill that crosses the Bulkley River, producing a steep cascade section. This obstacle to fish passage is recorded as an almost complete barrier to fish passage for salmon during low water flows. Coho have not been observed beyond the falls since 1972 [@wilson_rabnett2007FishPassage].
+
+<br>
+
+Renowned as a world class recreational steelhead and coho fishery, the Bulkley River receives some of the heaviest angling pressure in the province. In response to longstanding angler concerns with respect to overcrowding, quality of experience and conflict amongst anglers, an Angling Management Plan was drafted for the river following the initiation of the Skeena Quality Waters Strategy process in 2006 and an extensive multi-year consultation process. The plan introduces a number of regulatory measures with the intent to provide Canadian resident anglers with quality steelhead fishing opportunities. Regulatory measures introduced with the Angling Management Plan include prohibited angling for non-guided non-resident aliens on Saturdays and Sundays, Sept 1 - Oct 31 within the Bulkley River, angling prohibited for non-guided non-resident aliens on Saturdays and Sundays, all year within the Suskwa River and angling prohibited for non-guided non-resident aliens Sept 1 - Oct 31 in the Telkwa River. The Bukley River is considered Class II waterand there is no fshing permitted upstream of the Morice/Bulkley River Confluence [@flnro2013BulkleyRiver; @flnro2013OverviewAngling; @flnrord2019FreshwaterFishing].
 
 <br>
 
 #### Fish Species
 
-Fish species recorded in the Bulkley River watershed group are detailed in Table \@ref(tab:fiss-species-table) [@data_fish_obs].  Coastal cutthrout trout and bull trout are considered of special concern (blue-listed) provincially. Summaries of some of the Skeena and Bulkley River fish species life history, biology, stock status, and traditional use are documented in  @schell2003BriefOverview,  @wilson_rabnett2007FishPassage,   @gottesfeld_etal2002ConservingSkeena and @officeofthewetsuweten2013Wetsuwet.  @wilson_rabnett2007FishPassage discuss chinook, pink, sockeye, coho, steelhead and indigenous freshwater Bulkley River fish stocks within the context of key lower and upper Bulkley River habitats such as the Suskwa River, Station  Creek,  Harold  Price  Creek,  Telkwa  River  and  Buck  Creek.    Key  areas  within  the  upper  Bulkley River  watershed  with  high  fishery  values,   documented  in  @schell2003BriefOverview,  are  the  upper  Bulkley mainstem, Buck Creek,  Dungate Creek, Barren Creek, McQuarrie Creek, Byman Creek, Richfield Creek, Johnny David Creek, Aitken Creek and Emerson Creek. 
+Fish species recorded in the Bulkley River watershed group are detailed in Table \@ref(tab:fiss-species-table) [@data_fish_obs]. Coastal cutthrout trout and bull trout are considered of special concern (blue-listed) provincially. Summaries of some of the Skeena and Bulkley River fish species life history, biology, stock status, and traditional use are documented in @schell2003BriefOverview, @wilson_rabnett2007FishPassage, @gottesfeld_etal2002ConservingSkeena and @officeofthewetsuweten2013Wetsuwet. @wilson_rabnett2007FishPassage discuss chinook, pink, sockeye, coho, steelhead and indigenous freshwater Bulkley River fish stocks within the context of key lower and upper Bulkley River habitats such as the Suskwa River, Station Creek, Harold Price Creek, Telkwa River and Buck Creek. Key areas within the upper Bulkley River watershed with high fishery values, documented in @schell2003BriefOverview, are the upper Bulkley mainstem, Buck Creek, Dungate Creek, Barren Creek, McQuarrie Creek, Byman Creek, Richfield Creek, Johnny David Creek, Aitken Creek and Emerson Creek.
 
 <br>
 
-A draft gantt chart for select species in the Bulkley River watershed was derived from reviews of the aforementioned references and is included as Figure \@ref(fig:fish-gantt-morice).  The data is considered in draft form and will be refined over the spring and summer of 2021 with local fisheries technicians and knowledge holders during the collaboratory assessment planning and fieldwork activities planned.
-
+A draft gantt chart for select species in the Bulkley River watershed was derived from reviews of the aforementioned references and is included as Figure \@ref(fig:fish-gantt-morice). The data is considered in draft form and will be refined over the spring and summer of 2021 with local fisheries technicians and knowledge holders during the collaboratory assessment planning and fieldwork activities planned.
 
 ```{r}
 ##### Chinook
@@ -117,15 +103,11 @@ A draft gantt chart for select species in the Bulkley River watershed was derive
 #It is estimated that Morice River coho comprise approximatley 4% of the Skeena escapement with a declining trend noted since the 1950 in @gottesfeld_rabnett2007SkeenaFish.  Coho spawn in major tributaries and small streams ideally at locations where downstream dispersal can result in seeding of prime off channel habitats including warm productive sloughs and side channels.  Of all the salmon species, coho rely on small tributaries the most [@bustard_schell2002ConservingMorice]. @bustard_schell2002ConservingMorice report that much of the distribution of coho into non-natal tributaries occurs during high flow periods of May - early July with road culverts blocking migration into these habitats.
 ```
 
-
-
 <br>
 
-
-Summaries of historical fish observations in the Bulkley River and Morice River watershed groups (n=4033), graphed by remotely sensed average gradient as well as measured or modelled channel width categories for their associated stream segments where calculated with `bcfishpass` and `bcfishobs` and are provided in Figures \@ref(fig:fish-plot-grad) - \@ref(fig:fish-plot-width). 
+Summaries of historical fish observations in the Bulkley River and Morice River watershed groups (n=4033), graphed by remotely sensed average gradient as well as measured or modelled channel width categories for their associated stream segments where calculated with `bcfishpass` and `bcfishobs` and are provided in Figures \@ref(fig:fish-plot-grad) - \@ref(fig:fish-plot-width).
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("<br><br><br><br>")`
-
 
 ```{r fiss-species-table}
 fiss_species_table <- readr::read_csv(paste0(getwd(), '/data/inputs_extracted/fiss_species_table.csv'))
@@ -152,7 +134,6 @@ fiss_species_table %>%
 
 <br>
 
- 
 ```{r fish-gantt-morice, fig.cap = 'Gantt chart for select species in the Bulkley River watersheds.  To be updated in consultation with local fisheries techicians and knowledge holders.', eval=T}
 gantt_raw <- read_csv("data/inputs_raw/fish_species_life_history_gantt.csv")
 
@@ -195,7 +176,6 @@ ggplot(gantt, aes(xmin = morice_start2,
   facet_wrap(~Species, ncol = 1)
 ```
 
-
 <br>
 
 ```{r fish-fiss-summary, eval=T}
@@ -221,7 +201,6 @@ plot_grad
 ```
 
 <br>
-
 
 ```{r fish-plot-width, out.width = photo_width, fig.cap= 'Summary of historic salmonid observations vs. channel width category for the Bulkley River watershed group.', eval=T}
 ##bar graph
@@ -267,33 +246,24 @@ plot_wshed_hist <- ggplot(fiss_sum_wshed_filter, aes(x=upstream_area_km
 plot_wshed_hist
 ```
 
-
-
 <br>
-
-
-
 
 ## Fish Passage Restoration Planning and Implementation
 
+As a result of high-level direction from the provincial government, a Fish Passage Strategic Approach protocol has been developed for British Columbia to ensure that the greatest opportunities for restoration of fish passage are pursued. A Fish Passage Technical Working Group has been formed to coordinate the protocol and data is continuously amalgamated within the Provincial Steam Crossing Inventory System (PSCIS). The strategic approach protocol involves a four-phase process as described in @fishpassagetechnicalworkinggroupFishPassageStrategic2014 :
 
-As a result of high-level direction from the provincial government, a Fish Passage Strategic Approach protocol has been developed for British Columbia to ensure that the greatest opportunities for restoration of fish passage are pursued.  A Fish Passage Technical Working Group has been formed to coordinate the protocol and data is continuously amalgamated within the Provincial Steam Crossing Inventory System (PSCIS).  The strategic approach protocol involves a four-phase process as described in @fishpassagetechnicalworkinggroupFishPassageStrategic2014 :
+-   Phase 1: Fish Passage Assessment -- Fish stream crossings within watersheds with high fish values are assessed to determine barrier status of structures and document a general assessment of adjacent habitat quality and quantity.
+-   Phase 2: Habitat Confirmation -- Assessments of crossings prioritized for follow up in Phase 1 studies are conducted to confirm quality and quantity of habitat upstream and down as well as to scope for other potential nearby barriers that could affect the practicality of remediation.
+-   Phase 3: Design -- Site plans and designs are drawn for priority crossings where high value fish habitat has been confirmed.
+-   Phase 4: Remediation -- Re-connection of isolated habitats through replacement, rehabilitation or removal of prioritized crossing structure barriers.
 
- * Phase 1: Fish Passage Assessment – Fish stream crossings within watersheds with high fish values are assessed to determine barrier status of structures and document a general assessment of adjacent habitat quality and quantity.
- * Phase 2: Habitat Confirmation – Assessments of crossings prioritized for follow up in Phase 1 studies are conducted to confirm quality and quantity of habitat upstream and down as well as to scope for other potential nearby barriers that could affect the practicality of remediation.
- * Phase 3: Design – Site plans and designs are drawn for priority crossings where high value fish habitat has been confirmed. 
- * Phase 4: Remediation – Re-connection of isolated habitats through replacement, rehabilitation or removal of prioritized crossing structure barriers. 
- 
-
-
-There is a rich history of fish passage restoration planning in the Bulkley River watershed group with not all the work documented in the PSCIS system.  A non-exhaustive list of historic fish passage reports for the watershed includes @wilson_rabnett2007FishPassage, @mccarthy_fernando20152015Inventory,@smith2018AssessingBarriers @casselman_stanley2010BulkleyFulton,  @irvine2018AnalysisPriority, @irvine2021BulkleyRiver, @mazany-wright_etal2021BulkleyRiver and  @irvine2022BulkleyRiver.
+There is a rich history of fish passage restoration planning in the Bulkley River watershed group with not all the work documented in the PSCIS system. A non-exhaustive list of historic fish passage reports for the watershed includes @wilson_rabnett2007FishPassage, @mccarthy_fernando20152015Inventory,@smith2018AssessingBarriers @casselman_stanley2010BulkleyFulton, @irvine2018AnalysisPriority, @irvine2021BulkleyRiver, @mazany-wright_etal2021BulkleyRiver and @irvine2022BulkleyRiver.
 
 <br>
 
-Review of the PSCIS database indicated that prior to 2022, `r as.character( pscis_historic_phase1 %>% filter(assessment_date < '2022-01-01') %>% nrow())` assessments for fish passage (Phase 1) and `r as.character( pscis_historic_phase2 %>% filter(assmt_date < '2022-01-01') %>% nrow())` habitat confirmations were recorded at crossing structures within the Bulkley River watershed [@moe2023PSCISAssessments and @moe2023PSCISHabitat]. Within the Bulkley River watershed group, a number of remediation projects have been completed over the years with backwatering works conducted on Toboggan Creek, Coffin Creek, Moan Creek, Johnny David Creek and potentially others. Three culvert replacements (with open bottom structures) in the watershed group have been tracked in PSCIS and include works on Barren Creek as well as two tributaries to Harold Prince Creek [@moe2021PSCISRemediation].  McDowell Creek at Highway 16 was replaced with a horizontally drilled baffled structure in 2017 and the Highway 16 crossing over Taman Creek was replaced in 2022.  Canadian Wildlife Federation led the removal of a collapsed bridge located on Robert Hatch Creek following assessment work completed by @irvine2022BulkleyRiver.
+Review of the PSCIS database indicated that prior to 2022, `r as.character( pscis_historic_phase1 %>% filter(assessment_date < '2022-01-01') %>% nrow())` assessments for fish passage (Phase 1) and `r as.character( pscis_historic_phase2 %>% filter(assmt_date < '2022-01-01') %>% nrow())` habitat confirmations were recorded at crossing structures within the Bulkley River watershed [@moe2023PSCISAssessments and @moe2023PSCISHabitat]. Within the Bulkley River watershed group, a number of remediation projects have been completed over the years with backwatering works conducted on Toboggan Creek, Coffin Creek, Moan Creek, Johnny David Creek and potentially others. Three culvert replacements (with open bottom structures) in the watershed group have been tracked in PSCIS and include works on Barren Creek as well as two tributaries to Harold Prince Creek [@moe2021PSCISRemediation]. McDowell Creek at Highway 16 was replaced with a horizontally drilled baffled structure in 2017 and the Highway 16 crossing over Taman Creek was replaced in 2022. Canadian Wildlife Federation led the removal of a collapsed bridge located on Robert Hatch Creek following assessment work completed by @irvine2022BulkleyRiver.
 
 ```{r}
 ##`r pscis_historic_phase1 %>% filter(watershed_group_code %ilike% 'BULK' & assessment_date < '2020-01-01') %>% nrow()`
 
 ```
-
