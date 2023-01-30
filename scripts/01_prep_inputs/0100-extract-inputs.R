@@ -866,7 +866,7 @@ hab_priority_fish_hg <- left_join(
 # we need to summarize all our fish sizes
 
 ## fish collection data ----------------------------------------------------
-habitat_confirmations <- fpr::fpr_import_hab_con()
+habitat_confirmations <- fpr::fpr_import_hab_con(row_empty_remove = T)
 
 
 hab_fish_indiv_prep <- habitat_confirmations %>%
@@ -977,20 +977,21 @@ hab_fish_indiv <- full_join(
   mutate(species_code = as.factor(species_code)) %>%
   mutate(life_stage = case_when(  ##this section comes from the histogram below - we include here so we don't need to remake the df
     length_mm <= 65 ~ 'fry',
-    length_mm > 65 & length_mm <= 110 ~ 'parr',
-    length_mm > 110 & length_mm <= 140 ~ 'juvenile',
-    length_mm > 140 ~ 'adult',
+    length_mm > 65 & length_mm <= 115 ~ 'parr',
+    length_mm > 115 & length_mm <= 145 ~ 'juvenile',
+    length_mm > 145 ~ 'adult',
     T ~ NA_character_
-  ),
-  life_stage = case_when(
-    species_code %in% c('L', 'SU', 'LSU') ~ NA_character_,
-    T ~ life_stage),
-  comments = case_when(
-    species_code %in% c('L', 'SU', 'LSU') & !is.na(comments) ~
-      paste0(comments, 'Not salmonids so no life stage specified.'),
-    species_code %in% c('L', 'SU', 'LSU') & is.na(comments) ~
-      'Not salmonids so no life stage specified.',
-    T ~ comments)
+  )#,
+# only rainbow were caught so this section is not necessary
+  # life_stage = case_when(
+  #   species_code %in% c('L', 'SU', 'LSU') ~ NA_character_,
+  #   T ~ life_stage),
+  # comments = case_when(
+  #   species_code %in% c('L', 'SU', 'LSU') & !is.na(comments) ~
+  #     paste0(comments, 'Not salmonids so no life stage specified.'),
+  #   species_code %in% c('L', 'SU', 'LSU') & is.na(comments) ~
+  #     'Not salmonids so no life stage specified.',
+  #   T ~ comments)
   )%>%
   mutate(life_stage = fct_relevel(life_stage,
                                   'fry',
