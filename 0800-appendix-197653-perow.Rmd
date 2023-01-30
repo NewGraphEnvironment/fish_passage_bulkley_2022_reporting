@@ -90,10 +90,7 @@ passage according to the provincial protocol [@moe2011Fieldassessment]
 (Table \@ref(tab:tab-culvert-197653)). The culvert outlet drop measured at
 `r fpr::fpr_my_pscis_info(col_pull = outlet_drop_meters)`m high. There were large chunks of
 concrete just downstream of the outlet armouring the
-banks. There was no water at the time of survey. Water temperature was
-`r fpr::fpr_my_habitat_info(col_pull = 'temperature_c')`$^\circ$C, pH
-was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` and conductivity was
-`r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm.
+banks. There was no water at the time of survey.
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
@@ -117,7 +114,7 @@ fpr::fpr_my_priority_info()
 located on Highway 16, then an additional 25m downstream from the
 highway.  The entire area assessed downstream of the crossing was dry at the time of the survey 
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-197653-01) - \\@ref(fig:photo-197653-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-197653-d01))."))`
-`r fpr_my_habitat_paragraph(loc = 'ds')` PSCIS crossing 197657 on the highway, approximately 50m
+`r fpr_my_cover_sentence(loc = 'ds')` The average channel width was `r fpr_my_habitat_info(loc = 'ds', col_pull = 'avg_channel_width_m')`m, and the average gradient was `r fpr_my_habitat_info(loc = 'ds', col_pull = 'average_gradient_percent')`%. `r fpr_my_substrate_sentence(loc = 'ds')` PSCIS crossing 197657 on the highway, approximately 50m
 downstream from crossing 197653 was reassessed and ranked as passable as it was low gradient, fully embedded and with no outlet drop. It appeared passable to all species and life stages at the time of
 assessment (Table \@ref(tab:tab-culvert-197657)). This crossing was previously assessed in 2020 by @irvine2021BulkleyRiver, but it was mistakenly input as modelled crossing ID 1800064, when it should have been 1800067. The stream from
 `r fpr_my_pscis_info(col_pull = road_name)` to the highway flowed through private property and appeared to be
@@ -141,7 +138,10 @@ survey. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
 
-Habitat quality improved significantly within the second section of stream surveyed where flows were significant. `r fpr_my_habitat_paragraph(loc = 'us2')` There were gravels present throughout the area surveyed that were suitable for resident and anadromous salmonid spawning.
+Habitat quality improved significantly within the second section of stream surveyed where flows were significant. Water temperature was
+`r fpr::fpr_my_habitat_info(col_pull = 'temperature_c')`$^\circ$C, pH
+was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` and conductivity was
+`r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm. `r fpr_my_habitat_paragraph(loc = 'us2')` There were gravels present throughout the area surveyed that were suitable for resident and anadromous salmonid spawning.
 Infrequent deep pools for salmonids rearing and overwintering were also present. Overall, the
 habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value as
 an important migration corridor containing pockets of habitat suitable for spawning with moderate potential for juvenile salmonid rearing.
