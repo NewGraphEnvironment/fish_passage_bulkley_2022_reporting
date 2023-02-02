@@ -1,3 +1,8 @@
+# fish_passage_bulkley_2022_reporting 0.1.2
+
+-   20220130
+-   minor changes to habitat paragraphs in Stock and Perow, added background on Witset, updated Stock conclusion and added photo of rock drop, 198116 - added waterfall photo
+
 # fish_passage_bulkley_2022_reporting 0.1.1
 
 -   20220117
