@@ -65,7 +65,7 @@ There is a rich history of past assessment and restoration work in the watershed
 
 <br>
 
-At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a second order stream. Upstream of crossing `r as.character(my_site)`, coho, cutthroat trout, rainbow trout and dolly varden have previously been recorded [@donas2022MissionCreek; @moe2020KnownBC; @norris2020bcfishobs]. A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet()`). 
+At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a second order stream. Upstream of crossing `r as.character(my_site)`, coho, cutthroat trout, rainbow trout and dolly varden have previously been recorded [@donas2022MissionCreek; @moe2020KnownBC; @norris2020bcfishobs]. A map of the watershed is provided in map attachment [here](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/FishPassage_093M.107.pdf). 
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
