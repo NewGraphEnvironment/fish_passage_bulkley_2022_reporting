@@ -1431,8 +1431,12 @@ tab_map <- tab_map_prep %>%
   mutate(priority_phase1 = case_when(priority_phase1 == 'mod' ~ 'moderate',
                                      T ~ priority_phase1)) %>%
   mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) %>%
-  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/master/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
-                             'target="_blank">Culvert Photos</a>')) %>%
+  mutate(photo_link = case_when(!is.na(my_crossing_reference) ~ paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/master/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
+                             'target="_blank">Culvert Photos</a>'),
+                             is.na(my_crossing_reference) ~ paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/master/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
+                                                                   'target="_blank">Culvert Photos</a>'),
+                             T ~ NA_character_)
+                             ) %>%
   mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) %>%
   dplyr::distinct(site_id, .keep_all = T) #just for now
 
