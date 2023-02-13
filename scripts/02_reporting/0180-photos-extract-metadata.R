@@ -8,7 +8,7 @@ repo_name <- 'fish_passage_bulkley_2022_reporting'
 photo_metadata_prep <- exifr::read_exif('data/photos',recursive=T)  %>%
   janitor::clean_names() %>%
   select(file_name, source_file, gps_latitude, gps_longitude) %>%
-  mutate(url  = paste0('https://github.com/NewGraphEnvironment/', repo_name, '/raw/master/',
+  mutate(url  = paste0('https://github.com/NewGraphEnvironment/', repo_name, '/raw/main/',
                        source_file)) %>%
   # base = tools::file_path_sans_ext(filename)) %>%
   filter(
