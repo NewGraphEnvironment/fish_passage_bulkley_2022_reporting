@@ -686,54 +686,91 @@ dat_joined <- left_join(
 
 dbDisconnect(conn = conn)
 
-pscis_rd <- dat_joined %>%
-  sf::st_drop_geometry() %>%
-  dplyr::mutate(my_road_class = case_when(is.na(road_class) & !is.na(file_type_description) ~
-                                            file_type_description,
-                                          T ~ road_class)) %>%
-  dplyr::mutate(my_road_class = case_when(is.na(my_road_class) & !is.na(owner_name) ~
+# pscis_rd <- dat_joined %>%
+#   sf::st_drop_geometry() %>%
+#   dplyr::mutate(my_road_class = case_when(is.na(road_class) & !is.na(file_type_description) ~
+#                                             file_type_description,
+#                                           T ~ road_class)) %>%
+#   dplyr::mutate(my_road_class = case_when(is.na(my_road_class) & !is.na(owner_name) ~
+#                                             'rail',
+#                                           T ~ my_road_class)) %>%
+#   dplyr::mutate(my_road_surface = case_when(is.na(road_surface) & !is.na(file_type_description) ~
+#                                               'loose',
+#                                             T ~ road_surface)) %>%
+#   dplyr::mutate(my_road_surface = case_when(is.na(my_road_surface) & !is.na(owner_name) ~
+#                                               'rail',
+#                                             T ~ my_road_surface)) %>%
+#   select(-geom)
+
+# extract rd cost multiplier ----------------------------------------------
+
+# rebuild using bcfishpass object from the tables.R script.
+# see older repos if we need to go back to a system that can run these before we have pscis IDs simplifying for now on
+rd_class_surface <- bcfishpass %>%
+  select(stream_crossing_id, transport_line_structured_name_1:dam_operating_status) %>%
+  filter(stream_crossing_id %in% (
+    pscis_all %>% pull(pscis_crossing_id))
+  )
+  dplyr::mutate(my_road_class = ften_file_type_description) %>%
+  dplyr::mutate(my_road_class = case_when(is.na(my_road_class) & !is.na(transport_line_type_description) ~
+                                            transport_line_type_description,
+                                          T ~ my_road_class)) %>%
+
+  dplyr::mutate(my_road_class = case_when(is.na(my_road_class) & !is.na(rail_owner_name) ~
                                             'rail',
                                           T ~ my_road_class)) %>%
-  dplyr::mutate(my_road_surface = case_when(is.na(road_surface) & !is.na(file_type_description) ~
+  dplyr::mutate(my_road_surface = case_when(is.na(transport_line_surface_description) & !is.na(ften_file_type_description) ~
                                               'loose',
-                                            T ~ road_surface)) %>%
-  dplyr::mutate(my_road_surface = case_when(is.na(my_road_surface) & !is.na(owner_name) ~
+                                            T ~ transport_line_surface_description)) %>%
+  dplyr::mutate(my_road_surface = case_when(is.na(my_road_surface) & !is.na(rail_owner_name) ~
                                               'rail',
                                             T ~ my_road_surface)) %>%
-  select(-geom)
+  mutate(my_road_class = stringr::str_replace_all(my_road_class, 'Forest Service Road', 'fsr'),
+         my_road_class = stringr::str_replace_all(my_road_class, 'Road ', ''),
+         my_road_class = stringr::str_replace_all(my_road_class, 'Special Use Permit, ', 'Permit-Special-'),
+         my_road_class = case_when(
+           stringr::str_detect(my_road_class, 'driveway') ~ 'driveway',
+         T ~ my_road_class),
+         my_road_class = stringr::word(my_road_class, 1),
+         my_road_class = stringr::str_to_lower(my_road_class)) %>%
+  filter(stream_crossing_id %in% (
+    pscis_all %>% pull(pscis_crossing_id))
+  )
+
 
 
 
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
-rws_write(pscis_rd, exists = F, delete = TRUE,
+rws_write(rd_class_surface, exists = F, delete = T,
           conn = conn, x_name = "rd_class_surface")
 
 ####----tab cost multipliers for road surface-----
-rd_cost_mult <- pscis_rd %>%
-  select(my_road_class, my_road_surface) %>%
-  # mutate(road_surface_mult = NA_real_, road_class_mult = NA_real_) %>%
-  mutate(road_class_mult = case_when(my_road_class == 'local' ~ 4,
-                                     my_road_class == 'collector' ~ 4,
-                                     my_road_class == 'arterial' ~ 15,
-                                     my_road_class == 'highway' ~ 15,
-                                     my_road_class == 'rail' ~ 15,
-                                     T ~ 1))  %>%
-  mutate(road_surface_mult = case_when(my_road_surface == 'loose' |
-                                         my_road_surface == 'rough' ~
-                                         1,
-                                       T ~ 2)) %>%
-  # mutate(road_type_mult = road_class_mult * road_surface_mult) %>%
-  mutate(cost_m_1000s_bridge = road_surface_mult * road_class_mult * 20,  #changed from 12.5 due to inflation
-         cost_embed_cv = road_surface_mult * road_class_mult * 40) %>%
-  # mutate(cost_1000s_for_10m_bridge = 10 * cost_m_1000s_bridge) %>%
-  distinct( .keep_all = T) %>%
-  tidyr::drop_na() %>%
-  arrange(cost_m_1000s_bridge, my_road_class)
-
-rws_write(rd_cost_mult, exists = F, delete = TRUE,
-          conn = conn, x_name = "rd_cost_mult")
-rws_list_tables(conn)
+# moving this to a csv to simplify setup. We just alter the csv when we need more categories and want to change the price
+# rd_cost_mult <- pscis_rd %>%
+#   select(my_road_class, my_road_surface) %>%
+#   # mutate(road_surface_mult = NA_real_, road_class_mult = NA_real_) %>%
+#   mutate(road_class_mult = case_when(my_road_class == 'local' ~ 4,
+#                                      my_road_class == 'collector' ~ 4,
+#                                      my_road_class == 'arterial' ~ 15,
+#                                      my_road_class == 'highway' ~ 15,
+#                                      my_road_class == 'rail' ~ 15,
+#                                      T ~ 1))  %>%
+#   mutate(road_surface_mult = case_when(my_road_surface == 'loose' |
+#                                          my_road_surface == 'rough' ~
+#                                          1,
+#                                        T ~ 2)) %>%
+#   # mutate(road_type_mult = road_class_mult * road_surface_mult) %>%
+#   mutate(cost_m_1000s_bridge = road_surface_mult * road_class_mult * 20,  #changed from 12.5 due to inflation
+#          cost_embed_cv = road_surface_mult * road_class_mult * 40) %>%
+#   # mutate(cost_1000s_for_10m_bridge = 10 * cost_m_1000s_bridge) %>%
+#   distinct( .keep_all = T) %>%
+#   tidyr::drop_na() %>%
+#   arrange(cost_m_1000s_bridge, my_road_class)
+#
+# rws_write(rd_cost_mult, exists = F, delete = TRUE,
+#           conn = conn, x_name = "rd_cost_mult")
+# rws_list_tables(conn)
 rws_disconnect(conn)
 
 

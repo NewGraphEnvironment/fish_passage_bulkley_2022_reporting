@@ -53,15 +53,15 @@ pscis_historic_phase1 <- readwritesqlite::rws_read_table("pscis_historic_phase1"
 pscis_historic_phase2 <- readwritesqlite::rws_read_table("pscis_historic_phase2", conn = conn)
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
 # tab_cost_rd_mult <- readwritesqlite::rws_read_table("rd_cost_mult", conn = conn)
-# rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
+# rd_class_surface_prep <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
 
 #our pscis_phase1 submission went in twice so we have to filter out the dups when reading from sqlite
 xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>%
   filter(stream_crossing_id > 198108)
 #now filter and select all the dups and burn to csv so we can keep track of them
 xref_pscis_my_crossing_modelled_dups <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>%
-  filter(stream_crossing_id <= 198108) %>%
-  readr::write_csv('data/inputs_raw/pscis_phase1_dups.csv')
+  filter(stream_crossing_id <= 198108)
+  # readr::write_csv('data/inputs_raw/pscis_phase1_dups.csv')
 
 
 wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
@@ -80,6 +80,7 @@ photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
 # fiss_sum <- readwritesqlite::rws_read_table("fiss_sum", conn = conn)
 rws_disconnect(conn)
 
+tab_cost_rd_mult <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/tab_cost_rd_mult.csv'))
 
 # HACK !!!!!!!!!!!!!!!!!!!!this doesn't work till our data loads to pscis so
 # pscis_all <- pscis_all_prep
@@ -143,8 +144,6 @@ pscis_all_sf <- pscis_all_sf %>%
 ####-----------report table--------------------
 #  HACK hashout for now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! becasue some columns are now missing from bcfishpass.crossings
 
-tab_cost_rd_mult <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/tab_cost_rd_mult.csv'))
-
 tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
   mutate(cost_m_1000s_bridge = cost_m_1000s_bridge * 10) %>%
   rename(
@@ -156,10 +155,14 @@ tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
     `Streambed Simulation $K` = cost_embed_cv
   ) %>%
   filter(!is.na(Class)) %>%
-  mutate(Class = stringr::str_to_title(Class),
+  mutate(Class =case_when(
+    Class == 'fsr' ~ str_to_upper(Class),
+                          T ~ stringr::str_to_title(Class)),
          Surface = stringr::str_to_title(Surface)
   )
-#
+
+
+# we are not doing this right now becasue we have PSCIS Ids for everything
 # pscis_rd <- left_join(
 #   rd_class_surface,
 #   xref_pscis_my_crossing_modelled,
@@ -171,11 +174,6 @@ tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
 #   select(-stream_crossing_id)
 #   # filter(distance < 100)
 #  HACK bottom hashout for now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
-
 
 
 
@@ -1235,11 +1233,36 @@ tab_hab_summary <- left_join(
 #make the cost estimates
 # HACK !!!!!!!!!!!!!!!!!!!!!!! turned off all cost estimate data for now
 
-pscis_rd <- readr::read_csv('data/inputs_raw/rd_class_surface.csv') %>%
+rd_class_surface <- readr::read_csv('data/inputs_raw/rd_class_surface.csv') %>%
   filter(source != 'pscis_reassessments.xlsm')
 
+# # need to add the crossing fix, filter for our sites and customize for the waterfall sites
+# rd_class_surface <-  left_join(
+#
+#   pscis_all %>%
+#     select(
+#       pscis_crossing_id,
+#       my_crossing_reference,
+#       aggregated_crossings_id,
+#       stream_name,
+#       road_name,
+#       downstream_channel_width_meters,
+#       barrier_result,
+#       fill_depth_meters,
+#       crossing_fix,
+#       habitat_value,
+#       recommended_diameter_or_span_meters,
+#       source),
+#
+#   rd_class_surface_prep,
+#
+#   by = c('pscis_crossing_id' = 'stream_crossing_id')
+# )
+#   # here are the custom changes
+#
+
 tab_cost_est_prep <- left_join(
-  pscis_rd,
+  rd_class_surface,
   select(tab_cost_rd_mult, my_road_class, my_road_surface, cost_m_1000s_bridge, cost_embed_cv),
   by = c('my_road_class','my_road_surface')
 )
@@ -1291,10 +1314,18 @@ tab_cost_est_phase1_prep <- left_join(
   by = 'pscis_crossing_id'
 ) %>%
   arrange(pscis_crossing_id) %>%
-  select(pscis_crossing_id, my_crossing_reference, my_crossing_reference, stream_name, road_name,
-         barrier_result, habitat_value, downstream_channel_width_meters,
+  select(pscis_crossing_id,
+         my_crossing_reference,
+         my_crossing_reference,
+         stream_name,
+         road_name,
+         barrier_result,
+         habitat_value,
+         downstream_channel_width_meters,
          priority_phase1,
-         crossing_fix_code, cost_est_1000s, st_network_km,
+         crossing_fix_code,
+         cost_est_1000s,
+         st_network_km,
          cost_gross, cost_area_gross, source) %>%
   filter(barrier_result != 'Unknown' & barrier_result != 'Passable')
 
@@ -1326,7 +1357,9 @@ tab_cost_est_prep4 <- left_join(
     filter(habitat_confirmations_priorities, location == 'us'),
     site, upstream_habitat_length_m),
   by = c('pscis_crossing_id' = 'site')
-)
+) %>%
+  mutate(cost_net = round(upstream_habitat_length_m * 1000/cost_est_1000s, 1),
+         cost_area_net = round((upstream_habitat_length_m * 1000 * downstream_channel_width_meters * 0.5)/cost_est_1000s, 1)) ##this is a triangle area!
 
 tab_cost_est_prep5 <- left_join(
   tab_cost_est_prep4,
@@ -1342,9 +1375,18 @@ tab_cost_est_prep5 <- left_join(
 ##add the priority info
 tab_cost_est_phase2 <- tab_cost_est_prep5 %>%
   filter(source %like% 'phase2') %>%
-  select(pscis_crossing_id, stream_name, road_name, barrier_result, habitat_value, avg_channel_width_m,
-         crossing_fix_code, cost_est_1000s, upstream_habitat_length_m,
-         cost_net, cost_area_net, source) %>%
+  select(pscis_crossing_id,
+         stream_name,
+         road_name,
+         barrier_result,
+         habitat_value,
+         avg_channel_width_m,
+         crossing_fix_code,
+         cost_est_1000s,
+         upstream_habitat_length_m,
+         cost_net,
+         cost_area_net,
+         source) %>%
   mutate(upstream_habitat_length_m = round(upstream_habitat_length_m,0))
 
 tab_cost_est_phase2_report <- tab_cost_est_phase2 %>%
