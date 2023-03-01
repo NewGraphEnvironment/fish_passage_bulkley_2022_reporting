@@ -360,7 +360,8 @@ phase1_priorities <- pscis_all %>%
 ##turn spreadsheet into list of data frames
 #  HACK !!!!we don't yet have pscis_crossing_id s
 pscis_phase1_for_tables <- pscis_all %>%
-  filter(source %ilike% 'phase1') %>%
+  filter(source %ilike% 'phase1' |
+           source %ilike% 'reassessments' ) %>%
   # HACK
   # arrange(site_id)
 # # UNHACK below
@@ -382,6 +383,7 @@ pscis_split <- pscis_phase1_for_tables  %>% #pscis_phase1_reassessments
 
 ##make result summary tables for each of the crossings
 tab_summary <- pscis_split %>%
+  # should probably case_when here to populate the my_crossing_reference column
   purrr::map(fpr::fpr_table_cv_detailed)
 
 tab_summary_comments <- pscis_split %>%
@@ -392,24 +394,31 @@ tab_photo_url <- list.files(path = paste0(getwd(), '/data/photos/'), full.names 
   basename() %>%
   as_tibble() %>%
   mutate(value = as.integer(value)) %>%  ##need this to sort
+  # because we have the admin directory and the photo_sort_tracking_phase1.csv we get NAs when converting to intgers
+  # for now we filter out but in future perhaps we pull
+  filter(!is.na(value)) %>%
   dplyr::arrange(value)  %>%
   mutate(photo = paste0('![](data/photos/', value, '/crossing_all.JPG)')) %>%
-  filter(value %in% pscis_phase1_for_tables$my_crossing_reference) %>% ##we don't want all the photos - just the phase 1 photos for this use case!!!
+  filter(value %in% pscis_phase1_for_tables$my_crossing_reference |
+           #hand work to deal with reassessemnts
+           value %in% c('123392', '123393', '123426', '123750', '197657')) %>% ##we don't want all the photos - just the phase 1 photos for this use case!!!
   #  HACK but might not need to change back?
   # left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'site_id')) %>%   ##we need to add the pscis id so that we can sort the same
   # UNHACK below
-    left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>% ##we need to add the pscis id so that we can sort the same
-  # HACK
-  # arrange(value) %>%
-  # UNHACK below
-    arrange(stream_crossing_id) %>%
-  # HACk
-  # mutate(site_id = value) %>%
-  # UNHACK below
-    select(-value) %>%
+  left_join(., xref_pscis_my_crossing_modelled, by = c('value' = 'external_crossing_reference'))  %>%  ##we need to add the pscis id so that we can sort the same
+  mutate(stream_crossing_id = case_when(is.na(stream_crossing_id) ~ value,
+                                        T ~ stream_crossing_id)) %>%
+  # # HACK
+  # # arrange(value) %>%
+  # # UNHACK below
+  #   arrange(stream_crossing_id) %>%
+  # # HACk
+  # # mutate(site_id = value) %>%
+  # # UNHACK below
+  select(-value) %>%
   # HACK
   # dplyr::group_split(site_id)
-# UNHACK below
+  # UNHACK below
   dplyr::group_split(stream_crossing_id)
 
 
