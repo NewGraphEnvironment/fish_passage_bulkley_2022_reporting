@@ -1,3 +1,6 @@
+# fish_passage_bulkley_2022_reporting 0.1.3
+- add reassessments
+
 # fish_passage_bulkley_2022_reporting 0.1.2
 
 -   20220130
