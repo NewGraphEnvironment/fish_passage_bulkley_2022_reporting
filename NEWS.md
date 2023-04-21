@@ -1,5 +1,11 @@
+# 20230421 fish_passage_bulkley_2022_reporting 0.1.4
+
+- add appendix links to toc
+
+
 # fish_passage_bulkley_2022_reporting 0.1.3
 - add reassessments
+
 
 # fish_passage_bulkley_2022_reporting 0.1.2
 
