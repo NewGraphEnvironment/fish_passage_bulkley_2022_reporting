@@ -5,14 +5,15 @@ bookdown::preview_chapter('0800-appendix-197974-watson.Rmd')
 ##go to the index.Rmd and change gitbook_on <- TRUE
 #################################################################################################
 
-rmarkdown::render_site(output_format = 'bookdown::gitbook',
-                       encoding = 'UTF-8')
+# rmarkdown::render_site(output_format = 'bookdown::gitbook',
+#                        encoding = 'UTF-8')
 
+# we run with code below so that the appendix numbering makes sense
 
 {
   # These files are included in the gitbook version already so we move them out of the build
   files_to_move <- list.files(pattern = ".Rmd$") %>%
-    stringr::str_subset(., '2200|2300|2400', negate = F) #move the attachments out
+    stringr::str_subset(., '2300', negate = F) #move the attachments out
   files_destination <- paste0('hold/', files_to_move)
 
   ##move the files
