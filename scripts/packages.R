@@ -39,7 +39,8 @@ package_list <- c(
   'chron',
   'leafpop',
   'exifr',
-  'fpr'  #personal package available on github - see below
+  'fpr',  #personal package available on github - see below
+  'readODS'
   # rgl,
   # geojsonsf,
   # bit64 ##to make integer column type for pg
