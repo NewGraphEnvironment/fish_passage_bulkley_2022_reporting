@@ -1,7 +1,7 @@
 # extract moti climate change data from mergin field form and make table to insert into reporting
 
-source('scripts/packages.R')
-source('scripts/tables.R')
+# source('scripts/packages.R')
+# source('scripts/tables.R')
 
 # read csv that has column names we want
 xref_moti_climate <- read_csv(file = 'data/inputs_raw/xref_moti_climate.csv')
@@ -11,6 +11,7 @@ moti_site_data <- read_csv(file = 'data/dff/form_pscis_moti_20230511.csv') %>%
   rename(moti_chris_culvert_id = chris_culvert_id) %>%
   select(any_of(xref_moti_climate %>% pull(spdsht))) %>%
   # pull out sites that match pscis ids or my crossing references from bulk repo object
+  # this seems a bit strange.. first section said keep if the pscis id is there or there is not a my_crossing_ref... why? works to remove Cullen but maybe coudl just remove cullen explicitly?
   filter(pscis_crossing_id %in% (pscis_all %>% pull(pscis_crossing_id))|
         !is.na(my_crossing_reference) &
         my_crossing_reference %in% (pscis_all %>% pull(my_crossing_reference))) %>%
@@ -25,6 +26,7 @@ moti_site_data <- read_csv(file = 'data/dff/form_pscis_moti_20230511.csv') %>%
 
 # filter out sites that don't have overall climate ranks, filter out duplicate sites that were not done by Mateo or AI (keep Tieasha's Perow site)
 moti_data_cleaned <- moti_site_data %>%
+  # some have climate data but no rank....
   filter(!is.na(overall_rank)) %>%
   filter(str_detect(crew_members, "newgraph_airvine|MateoW|tieasha.pierre|AI")) %>%
   # filter out Stock Creek 195943 sites, keep Al's row that has the most info in it
