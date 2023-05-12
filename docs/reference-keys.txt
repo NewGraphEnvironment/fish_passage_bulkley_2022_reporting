@@ -14,6 +14,7 @@ tab:tab-barrier-scoring
 tab:tab-barrier-result
 tab:tab-cost-mult
 fig:map-interactive
+tab:tab-moti-climate
 tab:tab-dams
 tab:tab-dam-bcfp
 fig:photo-dams-01
@@ -118,6 +119,7 @@ habitat-confirmation-assessments
 reporting
 mapping
 results-and-discussion
+climate-change-risk-assessment
 dam-assessment
 phase-1
 phase-2

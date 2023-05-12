@@ -274,10 +274,10 @@ been observed downstream in Byman Creek within ~100m of the crossing,
 at the time of reporting, there was no fisheries information available
 for the area upstream of crossing 197653 <span class="citation">(MoE 2020b; Norris 2020)</span>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="perow-creek---197653---appendix.html#cb74-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">%&gt;%</span> </span>
-<span id="cb74-2"><a href="perow-creek---197653---appendix.html#cb74-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb74-3"><a href="perow-creek---197653---appendix.html#cb74-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the upstream watershed area is above&#39;</span>,</span>
-<span id="cb74-4"><a href="perow-creek---197653---appendix.html#cb74-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="perow-creek---197653---appendix.html#cb75-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="perow-creek---197653---appendix.html#cb75-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb75-3"><a href="perow-creek---197653---appendix.html#cb75-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the upstream watershed area is above&#39;</span>,</span>
+<span id="cb75-4"><a href="perow-creek---197653---appendix.html#cb75-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-197653">Table 5.7: </span>Summary of derived upstream watershed statistics for PSCIS crossing 197653.
@@ -357,7 +357,7 @@ is presented in Table <a href="perow-creek---197653---appendix.html#tab:tab-culv
 watershed is provided in map attachment
 <a href="https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/archive/2022-05-02/FishPassage_093L.114.pdf">093L.114</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="perow-creek---197653---appendix.html#cb75-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="perow-creek---197653---appendix.html#cb76-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -683,7 +683,7 @@ passage according to the provincial protocol <span class="citation">(MoE 2011b)<
 concrete just downstream of the outlet armouring the
 banks. There was no water at the time of survey.</p>
 <p><br></p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="perow-creek---197653---appendix.html#cb76-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="perow-creek---197653---appendix.html#cb77-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-197653">Table 5.9: </span>Summary of fish passage assessment for PSCIS crossing 197653.
@@ -946,9 +946,9 @@ Fix Span / Diameter
 </tfoot>
 </table></li>
 </ul>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="perow-creek---197653---appendix.html#cb77-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb77-2"><a href="perow-creek---197653---appendix.html#cb77-2" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
-<span id="cb77-3"><a href="perow-creek---197653---appendix.html#cb77-3" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_my_priority_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="perow-creek---197653---appendix.html#cb78-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb78-2"><a href="perow-creek---197653---appendix.html#cb78-2" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
+<span id="cb78-3"><a href="perow-creek---197653---appendix.html#cb78-3" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_my_priority_info</span>()</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream<a href="perow-creek---197653---appendix.html#stream-characteristics-downstream" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -962,7 +962,7 @@ assessment (Table <a href="perow-creek---197653---appendix.html#tab:tab-culvert-
 Perow Loop Road to the highway flowed through private property and appeared to be
 channelized and confined with concrete slabs used as stream bank armoring just downstream of the outlet. Downstream of the highway crossing two bridges are documented in the PSCIS database (197660 and 197659). Although habitat downstream had limited complexity resulting from impacts related to the adjacent road infrastructure and residential properties, the habitat was rated as medium value as it was considered an important migration corridor.</p>
 <p><br></p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="perow-creek---197653---appendix.html#cb78-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">dat =</span> pscis_reassessments, <span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="perow-creek---197653---appendix.html#cb79-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">dat =</span> pscis_reassessments, <span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
 <table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-197657">Table 5.10: </span>Summary of fish passage assessment for PSCIS crossing 197657.
@@ -1232,17 +1232,17 @@ Fix Span / Diameter
 (Figures <a href="perow-creek---197653---appendix.html#fig:photo-197653-03">5.9</a> - <a href="perow-creek---197653---appendix.html#fig:photo-197653-06">5.12</a>). Two sections of stream upstream of the crossing were assessed. As residential buildings and yards were situated immediately adjacent to the stream upstream of the crossing, the stream was accessed from a ford
 located on the transmission line ~325m upstream of Perow Loop Road. The first section surveyed included
 ~350m of channel upstream of the ford and was dewatered at the time of
-survey. The dominant substrate was cobbles with gravels sub-dominant.Total cover amount was rated as moderate with overhanging vegetation dominant. Cover was also present as small woody debris.The average channel width was 3.2m, the average wetted width was 1.9m, and the average gradient was 3%.</p>
+survey. Total cover amount was rated as moderate with overhanging vegetation dominant. Cover was also present as small woody debris.The average channel width was 3.2m, the average wetted width was 1.9m, and the average gradient was 3%.The dominant substrate was cobbles with gravels sub-dominant.</p>
 <p><br></p>
 <p>Habitat quality improved significantly within the second section of stream surveyed where flows were significant. Water temperature was
 13<span class="math inline">\(^\circ\)</span>C, pH
 was 8.1 and conductivity was
-230uS/cm. The average channel width was 4.7m, the average wetted width was 2.4m, and the average gradient was 3.7%.The dominant substrate was cobbles with gravels sub-dominant.Total cover amount was rated as moderate with boulders dominant. Cover was also present as small woody debris, large woody debris, undercut banks, deep pools, and overhanging vegetation. There were gravels present throughout the area surveyed that were suitable for resident and anadromous salmonid spawning.
+230uS/cm. Total cover amount was rated as moderate with boulders dominant. Cover was also present as small woody debris, large woody debris, undercut banks, deep pools, and overhanging vegetation.The average channel width was 4.7m, the average wetted width was 2.4m, and the average gradient was 3.7%.The dominant substrate was cobbles with gravels sub-dominant. There were gravels present throughout the area surveyed that were suitable for resident and anadromous salmonid spawning.
 Infrequent deep pools for salmonids rearing and overwintering were also present. Overall, the
 habitat was rated as medium value as
 an important migration corridor containing pockets of habitat suitable for spawning with moderate potential for juvenile salmonid rearing.</p>
 <p><br></p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="perow-creek---197653---appendix.html#cb79-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">dat =</span> pscis_phase1, <span class="at">site =</span> <span class="dv">1801071</span>, <span class="at">site_photo_id =</span> <span class="dv">1801071</span>, <span class="at">col_filter =</span> my_crossing_reference)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="perow-creek---197653---appendix.html#cb80-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">dat =</span> pscis_phase1, <span class="at">site =</span> <span class="dv">1801071</span>, <span class="at">site_photo_id =</span> <span class="dv">1801071</span>, <span class="at">col_filter =</span> my_crossing_reference)</span></code></pre></div>
 <table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-1801071">Table 5.11: </span>Summary of fish passage assessment for PSCIS crossing 1801071.
@@ -1524,11 +1524,11 @@ proceeding to design for replacement. Perow Creek near
 crossing 197653 has been negatively impacted by adjacent land use related to landscaping of private
 residences. Impacts include riparian vegetation removal, channelization, and streambank armouring. As there is no historic information on fish presence upstream of the highway fish sampling is recommended. Regardless of whether structure replacement proceeds, local residents should be engaged to explore options for riparian and channel rehabilitation on private lands within the lower reaches.</p>
 <p><br></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="perow-creek---197653---appendix.html#cb80-1" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
-<span id="cb80-2"><a href="perow-creek---197653---appendix.html#cb80-2" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site) <span class="sc">%&gt;%</span> </span>
-<span id="cb80-3"><a href="perow-creek---197653---appendix.html#cb80-3" tabindex="-1"></a>  <span class="co"># select(-Site) %&gt;% </span></span>
-<span id="cb80-4"><a href="perow-creek---197653---appendix.html#cb80-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb80-5"><a href="perow-creek---197653---appendix.html#cb80-5" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="perow-creek---197653---appendix.html#cb81-1" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb81-2"><a href="perow-creek---197653---appendix.html#cb81-2" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site) <span class="sc">%&gt;%</span> </span>
+<span id="cb81-3"><a href="perow-creek---197653---appendix.html#cb81-3" tabindex="-1"></a>  <span class="co"># select(-Site) %&gt;% </span></span>
+<span id="cb81-4"><a href="perow-creek---197653---appendix.html#cb81-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb81-5"><a href="perow-creek---197653---appendix.html#cb81-5" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-197653">Table 5.12: </span>Summary of habitat details for PSCIS crossing 197653.
@@ -1655,13 +1655,13 @@ medium
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="perow-creek---197653---appendix.html#cb81-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d1_&#39;</span>)</span>
-<span id="cb81-2"><a href="perow-creek---197653---appendix.html#cb81-2" tabindex="-1"></a></span>
-<span id="cb81-3"><a href="perow-creek---197653---appendix.html#cb81-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
-<span id="cb81-4"><a href="perow-creek---197653---appendix.html#cb81-4" tabindex="-1"></a></span>
-<span id="cb81-5"><a href="perow-creek---197653---appendix.html#cb81-5" tabindex="-1"></a></span>
-<span id="cb81-6"><a href="perow-creek---197653---appendix.html#cb81-6" tabindex="-1"></a><span class="co"># fpr::fpr_photo_flip(site_id = 1802488, str_to_pull = &#39;6257&#39;)</span></span></code></pre></div>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="perow-creek---197653---appendix.html#cb82-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="perow-creek---197653---appendix.html#cb82-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d1_&#39;</span>)</span>
+<span id="cb82-2"><a href="perow-creek---197653---appendix.html#cb82-2" tabindex="-1"></a></span>
+<span id="cb82-3"><a href="perow-creek---197653---appendix.html#cb82-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
+<span id="cb82-4"><a href="perow-creek---197653---appendix.html#cb82-4" tabindex="-1"></a></span>
+<span id="cb82-5"><a href="perow-creek---197653---appendix.html#cb82-5" tabindex="-1"></a></span>
+<span id="cb82-6"><a href="perow-creek---197653---appendix.html#cb82-6" tabindex="-1"></a><span class="co"># fpr::fpr_photo_flip(site_id = 1802488, str_to_pull = &#39;6257&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="perow-creek---197653---appendix.html#cb83-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-197653-01"></span>
 <img src="Bulkley2022_files/figure-html/photo-197653-01-1.png" alt="Habitat downstream of PSCIS crossing 197653." width="100%" />
 <p class="caption">
@@ -1669,10 +1669,10 @@ Figure 5.7: Habitat downstream of PSCIS crossing 197653.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="perow-creek---197653---appendix.html#cb83-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d2_&#39;</span>)</span>
-<span id="cb83-2"><a href="perow-creek---197653---appendix.html#cb83-2" tabindex="-1"></a></span>
-<span id="cb83-3"><a href="perow-creek---197653---appendix.html#cb83-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="perow-creek---197653---appendix.html#cb84-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="perow-creek---197653---appendix.html#cb84-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_d2_&#39;</span>)</span>
+<span id="cb84-2"><a href="perow-creek---197653---appendix.html#cb84-2" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="perow-creek---197653---appendix.html#cb84-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="perow-creek---197653---appendix.html#cb85-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-197653-02"></span>
 <img src="Bulkley2022_files/figure-html/photo-197653-02-1.png" alt="Habitat downstream of PSCIS crossing 197653." width="100%" />
 <p class="caption">
@@ -1680,15 +1680,15 @@ Figure 5.8: Habitat downstream of PSCIS crossing 197653.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="perow-creek---197653---appendix.html#cb85-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb85-2"><a href="perow-creek---197653---appendix.html#cb85-2" tabindex="-1"></a></span>
-<span id="cb85-3"><a href="perow-creek---197653---appendix.html#cb85-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb85-4"><a href="perow-creek---197653---appendix.html#cb85-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb85-5"><a href="perow-creek---197653---appendix.html#cb85-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="perow-creek---197653---appendix.html#cb86-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="perow-creek---197653---appendix.html#cb86-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
 <span id="cb86-2"><a href="perow-creek---197653---appendix.html#cb86-2" tabindex="-1"></a></span>
-<span id="cb86-3"><a href="perow-creek---197653---appendix.html#cb86-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="perow-creek---197653---appendix.html#cb87-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<span id="cb86-3"><a href="perow-creek---197653---appendix.html#cb86-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb86-4"><a href="perow-creek---197653---appendix.html#cb86-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb86-5"><a href="perow-creek---197653---appendix.html#cb86-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="perow-creek---197653---appendix.html#cb87-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u1_&#39;</span>)</span>
+<span id="cb87-2"><a href="perow-creek---197653---appendix.html#cb87-2" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="perow-creek---197653---appendix.html#cb87-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="perow-creek---197653---appendix.html#cb88-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-197653-03"></span>
 <img src="Bulkley2022_files/figure-html/photo-197653-03-1.png" alt="Habitat upstream of PSCIS crossing 197653." width="100%" />
 <p class="caption">
@@ -1696,25 +1696,25 @@ Figure 5.9: Habitat upstream of PSCIS crossing 197653.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="perow-creek---197653---appendix.html#cb88-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
-<span id="cb88-2"><a href="perow-creek---197653---appendix.html#cb88-2" tabindex="-1"></a></span>
-<span id="cb88-3"><a href="perow-creek---197653---appendix.html#cb88-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="perow-creek---197653---appendix.html#cb89-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="perow-creek---197653---appendix.html#cb89-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u2_&#39;</span>)</span>
+<span id="cb89-2"><a href="perow-creek---197653---appendix.html#cb89-2" tabindex="-1"></a></span>
+<span id="cb89-3"><a href="perow-creek---197653---appendix.html#cb89-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="perow-creek---197653---appendix.html#cb90-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-197653-04"></span>
 <img src="Bulkley2022_files/figure-html/photo-197653-04-1.png" alt="Habitat upstream of PSCIS crossing 197653." width="100%" />
 <p class="caption">
 Figure 5.10: Habitat upstream of PSCIS crossing 197653.
 </p>
 </div>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="perow-creek---197653---appendix.html#cb90-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb90-2"><a href="perow-creek---197653---appendix.html#cb90-2" tabindex="-1"></a></span>
-<span id="cb90-3"><a href="perow-creek---197653---appendix.html#cb90-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb90-4"><a href="perow-creek---197653---appendix.html#cb90-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb90-5"><a href="perow-creek---197653---appendix.html#cb90-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="perow-creek---197653---appendix.html#cb91-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u3_&#39;</span>)</span>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="perow-creek---197653---appendix.html#cb91-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
 <span id="cb91-2"><a href="perow-creek---197653---appendix.html#cb91-2" tabindex="-1"></a></span>
-<span id="cb91-3"><a href="perow-creek---197653---appendix.html#cb91-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="perow-creek---197653---appendix.html#cb92-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<span id="cb91-3"><a href="perow-creek---197653---appendix.html#cb91-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb91-4"><a href="perow-creek---197653---appendix.html#cb91-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb91-5"><a href="perow-creek---197653---appendix.html#cb91-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="perow-creek---197653---appendix.html#cb92-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u3_&#39;</span>)</span>
+<span id="cb92-2"><a href="perow-creek---197653---appendix.html#cb92-2" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="perow-creek---197653---appendix.html#cb92-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="perow-creek---197653---appendix.html#cb93-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-197653-05"></span>
 <img src="Bulkley2022_files/figure-html/photo-197653-05-1.png" alt="Habitat upstream of PSCIS crossing 197653." width="100%" />
 <p class="caption">
@@ -1722,26 +1722,26 @@ Figure 5.11: Habitat upstream of PSCIS crossing 197653.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="perow-creek---197653---appendix.html#cb93-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u4_&#39;</span>)</span>
-<span id="cb93-2"><a href="perow-creek---197653---appendix.html#cb93-2" tabindex="-1"></a></span>
-<span id="cb93-3"><a href="perow-creek---197653---appendix.html#cb93-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="perow-creek---197653---appendix.html#cb94-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="perow-creek---197653---appendix.html#cb94-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u4_&#39;</span>)</span>
+<span id="cb94-2"><a href="perow-creek---197653---appendix.html#cb94-2" tabindex="-1"></a></span>
+<span id="cb94-3"><a href="perow-creek---197653---appendix.html#cb94-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="perow-creek---197653---appendix.html#cb95-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-197653-06"></span>
 <img src="Bulkley2022_files/figure-html/photo-197653-06-1.png" alt="Habitat upstream of PSCIS crossing 197653." width="100%" />
 <p class="caption">
 Figure 5.12: Habitat upstream of PSCIS crossing 197653.
 </p>
 </div>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="perow-creek---197653---appendix.html#cb95-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb95-2"><a href="perow-creek---197653---appendix.html#cb95-2" tabindex="-1"></a></span>
-<span id="cb95-3"><a href="perow-creek---197653---appendix.html#cb95-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb95-4"><a href="perow-creek---197653---appendix.html#cb95-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb95-5"><a href="perow-creek---197653---appendix.html#cb95-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="perow-creek---197653---appendix.html#cb96-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb96-2"><a href="perow-creek---197653---appendix.html#cb96-2" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="perow-creek---197653---appendix.html#cb96-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb96-4"><a href="perow-creek---197653---appendix.html#cb96-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb96-5"><a href="perow-creek---197653---appendix.html#cb96-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="perow-creek---197653---appendix.html#cb96-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb96-2"><a href="perow-creek---197653---appendix.html#cb96-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb96-3"><a href="perow-creek---197653---appendix.html#cb96-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="perow-creek---197653---appendix.html#cb97-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">197974</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="perow-creek---197653---appendix.html#cb97-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb97-2"><a href="perow-creek---197653---appendix.html#cb97-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb97-3"><a href="perow-creek---197653---appendix.html#cb97-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="perow-creek---197653---appendix.html#cb98-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">197974</span></span></code></pre></div>
 </div>
 </div>
             </section>
