@@ -71,6 +71,12 @@ At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a second 
 
 <br>
 
+```{r lidar-waterfall, fig.cap = 'Lidar generated digital elevation model of tributary to Waterfall Creek (data collected in 2019, taken from BC Open LiDAR data portal).',eval=T}
+knitr::include_graphics("fig/lidar_waterfall_creek_198116.png")
+```
+
+<br>
+
 ## Stream Characteristics at Crossing {.unnumbered}
 
 At the time of the survey, PSCIS crossing `r as.character(my_site)` was
