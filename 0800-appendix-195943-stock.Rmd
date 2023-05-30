@@ -51,9 +51,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 At the time of reporting, Dogwood Environmental Consulting were working on a grazing/fuel reduction pilot project in collaboration with BC Wildfire, the Ministry of Agriculture and BC Cattleman’s Association.  The purpose of the work is to reduce fuel load on  crown/agricultural land interface and enhance grazing land through targeted grazing and/or through the manual removal of dead standing timber and coarse woody debris. At the time of reporting, Stock Creek, upstream of the assessed Highway 16 crossing, was included within the project area and Dogwood Environmental Consulting noted that they hoped to help range holders mitigate some of the potential impacts related to fuel reduction opening up access to streams by exploring opportunities to prevent cattle from accessing riparian buffers (pers. comm Jenn Atkins, 2022). 
 
 <br>
-```{r eval = F}
-#
-```
 
 PSCIS stream crossings `r as.character(my_site)` and `r as.character(my_site2)` were ranked as high priorities for follow up by Canadian Wildlife Federation due to
 significant amounts of habitat modelled as upstream of the crossing. Following a review of PSCIS database and modelling outputs @irvine2018AnalysisPriority ranked both crossings as moderate priorities for follow up with habitat confirmations with notes that the stream appeared to be dewatered at both locations in the PSCIS database photos and because the watershed was relatively low in elevation. A total of
@@ -70,6 +67,12 @@ watershed is provided in map attachment
 
 ```{r tab-culvert-bcfp-195943, eval = T}
 fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```
+
+<br>
+
+```{r lidar-stock, fig.cap = 'Lidar generated digital elevation model of Stock Creek (data collected in 2019, taken from BC Open LiDAR data portal).',eval=T}
+knitr::include_graphics("fig/lidar_stock_creek_195943.png")
 ```
 
 <br>

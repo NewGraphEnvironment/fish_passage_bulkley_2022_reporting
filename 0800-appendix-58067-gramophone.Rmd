@@ -117,6 +117,12 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 <br>
 
+```{r lidar-gramophone, fig.cap = 'Lidar generated digital elevation model of Gramophone Creek at Telkwa High Rd (data collected in 2019, taken from BC Open LiDAR data portal).',eval=T}
+knitr::include_graphics("fig/lidar_gramophone_creek_58067.png")
+```
+
+<br>
+
 ## Stream Characteristics at Crossing {.unnumbered}
 
 At the time of the survey, PSCIS crossing `r as.character(my_site)` was
