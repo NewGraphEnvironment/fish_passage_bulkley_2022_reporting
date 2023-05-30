@@ -1,3 +1,7 @@
+# 20230530 fish_passage_bulkley_2022_reporting 0.1.6
+
+- lidar figures added to Stock, Gramaphone and Waterfall memos
+
 # 20230512 fish_passage_bulkley_2022_reporting 0.1.5
 
 - add rough table of climate changd info
