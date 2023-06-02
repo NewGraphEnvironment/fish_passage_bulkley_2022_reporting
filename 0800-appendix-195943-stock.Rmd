@@ -77,6 +77,32 @@ knitr::include_graphics("fig/lidar_stock_creek_195943.png")
 
 <br>
 
+## Climate Change Risk Assessment
+
+Preliminary climate change risk assessment data for crossing 195943 is presented in Tables \@ref(tab:tab-moti-195943) - \@ref(tab:tab-moti-195943-comments). Data for highway crossing 195944 is presented in Tables \@ref(tab:tab-moti-195944) - \@ref(tab:tab-moti-195944-comments).
+
+```{r tab-moti-195943, eval = T}
+fpr_table_moti()
+```
+
+<br>
+
+```{r tab-moti-195943-comments, eval = T}
+fpr_table_moti_comments()
+```
+
+<br>
+
+```{r tab-moti-195944, eval = T}
+fpr_table_moti(site = 195944)
+```
+
+<br>
+
+```{r tab-moti-195944-comments, eval = T}
+fpr_table_moti_comments(site = 195944)
+```
+
 ## Stream Characteristics at Crossings {.unnumbered}
 
 At the time of the survey, PSCIS crossing `r as.character(my_site)` was un-embedded, 

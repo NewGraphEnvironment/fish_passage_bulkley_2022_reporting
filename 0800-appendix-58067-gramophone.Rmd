@@ -123,6 +123,20 @@ knitr::include_graphics("fig/lidar_gramophone_creek_58067.png")
 
 <br>
 
+## Climate Change Risk Assessment
+
+Preliminary climate change risk assessment data is presented in Tables \@ref(tab:tab-moti-58067) - \@ref(tab:tab-moti-58067-comments).
+
+```{r tab-moti-58067, eval = T}
+fpr_table_moti()
+```
+
+<br>
+
+```{r tab-moti-58067-comments, eval = T}
+fpr_table_moti_comments()
+```
+
 ## Stream Characteristics at Crossing {.unnumbered}
 
 At the time of the survey, PSCIS crossing `r as.character(my_site)` was

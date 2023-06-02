@@ -83,6 +83,20 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 <br>
 
+## Climate Change Risk Assessment
+
+Preliminary climate change risk assessment data is presented in Tables \@ref(tab:tab-moti-197974) - \@ref(tab:tab-moti-197974-comments).
+
+```{r tab-moti-197974, eval = T}
+fpr_table_moti()
+```
+
+<br>
+
+```{r tab-moti-197974-comments, eval = T}
+fpr_table_moti_comments()
+```
+
 ## Stream Characteristics at Crossing {.unnumbered}
 
 At the time of the survey, PSCIS crossing `r as.character(my_site)` was
