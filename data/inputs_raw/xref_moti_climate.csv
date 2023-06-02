@@ -10,7 +10,7 @@ embankment_fill_issues,"Embankment fill issues 1 (low)
 2 (medium)
 3 (high)",NA,NA,NA
 blockage_issues,Blockage Issues 1 (0-30%) 2 (>30-75%) 3 (>75%),NA,NA,NA
-condition_rank,Condition Rank = embankment + blockage,NA,NA,NA
+condition_rank,Condition Rank = embankment + blockage + erosion,NA,NA,NA
 condition_notes,Describe details and rational for condition rankings,NA,NA,NA
 likelihood_flood_event_affecting_culvert,Likelihood Flood Event Affecting Culvert (scale 1 low - 5 high),NA,NA,NA
 consequence_flood_event_affecting_culvert,Consequence Flood Event Affecting Culvert (scale 1 low - 5 high),NA,NA,NA
