@@ -47,7 +47,7 @@ description: "Bulkley Fish Passage Planning 2022"
 
 ```{r switch-gitbook-html, echo=FALSE}
 gitbook_on <- TRUE
-gitbook_on <- FALSE  ##we just need turn  this on and off to switch between gitbook and pdf via paged.js
+#gitbook_on <- FALSE  ##we just need turn  this on and off to switch between gitbook and pdf via paged.js
 
 ```
 
@@ -74,6 +74,8 @@ font_set <- 9
 ```{r}
 source('scripts/packages.R')
 source('scripts/tables.R')
+source('scripts/moti_climate.R')
+source('scripts/functions.R')
 ```
 
 
