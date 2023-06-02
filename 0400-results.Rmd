@@ -160,11 +160,7 @@ tab_moti %>%
   mutate(across(everything(), as.character)) %>% 
   tibble::rownames_to_column() %>% 
   df_transpose() %>% 
-  # stock is here twice
-  select(-5) %>% 
   janitor::row_to_names(row_number = 1) %>% 
-  # this waterfall crossing is not an moti site
-  select(-`198115`) %>% 
   fpr::fpr_kable(scroll = gitbook_on,
                  caption_text = 'Preliminary climate change risk assessment data for Mnistry of Transportation and Infrastructure sites.')
 ```
