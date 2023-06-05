@@ -137,7 +137,7 @@ map %>%
 
 
 ## Climate Change Risk Assessment
-Preliminary climate change risk assessment data for Mnistry of Transportation and Infrastructure sites is presented in Table \@ref(tab:tab-moti-climate).
+Preliminary climate change risk assessment data for Mnistry of Transportation and Infrastructure sites is presented in Table \@ref(tab:tab-moti-climate). Raw data is provided [here](https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/tree/main/data/moti_climate_tidied_hand.csv). 
 
 
 ```{r tab-moti-climate}
