@@ -62,6 +62,15 @@ xref_moti_climate %>% pull(report)
 
 # all good
 
+
+# burn to a csv to make changes in a reasonably quick manner.  Copy file and use it to read in
+moti_data_cleaned %>%
+  write_csv('data/inputs_extracted/tab_moti_prep_20230605.csv')
+
+# read it back in cleaned up
+moti_data_cleaned <- read_csv(file = 'data/inputs_raw/moti_climate_tidied_hand.csv')
+
+
 # make table to insert into report
 tab_moti <- moti_data_cleaned %>%
   purrr::set_names(nm = xref_moti_climate %>% pull(report)) %>%

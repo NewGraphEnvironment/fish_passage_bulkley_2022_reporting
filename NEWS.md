@@ -1,3 +1,9 @@
+# 20230605 fish_passage_bulkley_2022_reporting 0.1.7
+- add some climate change methods
+- add indivual climate data to memos
+- add raw climate data
+
+
 # 20230530 fish_passage_bulkley_2022_reporting 0.1.6
 
 - lidar figures added to Stock, Gramaphone and Waterfall memos
