@@ -36,11 +36,20 @@ moti_site_data <- read_csv(file = 'data/dff/form_pscis_moti_20230511.csv') %>%
 
 # filter out sites that don't have overall climate ranks, filter out duplicate sites that were not done by Mateo or AI (keep Tieasha's Perow site)
 moti_data_cleaned <- moti_site_data %>%
-  # some have climate data but no rank....
+  # filter out waterfall site that has no climate data
   filter(!is.na(overall_rank)) %>%
-  filter(str_detect(crew_members, "newgraph_airvine|MateoW|tieasha.pierre|AI")) %>%
-  # filter out Stock Creek 195943 sites, keep Al's row that has the most info in it
-  filter(!(pscis_crossing_id == 195943 & !str_detect(crew_members, "newgraph_airvine")))
+  filter(str_detect(crew_members, "newgraph_airvine|MateoW|tieasha.pierre")) %>%
+  # filter out Stock Creek 195943 sites and duplicate 195944, keep Al's row that has the most info in it
+  filter(!(pscis_crossing_id == 195943 & !str_detect(crew_members, "newgraph_airvine"))) %>%
+  # filter out crossings that are not moti sites
+  filter(!is.na(moti_chris_culvert_id)) %>%
+  mutate(stream_name = case_when(pscis_crossing_id == 58067 ~ "Gramophone Creek", T ~ stream_name),
+         stream_name = case_when(pscis_crossing_id == 123393 ~ "Lemieux Creek", T ~ stream_name)) %>%
+  # have to add erosion to the condition rank, have to update every added rank field unfortunately (except priority rank)
+  # can remove this chunk in future when math is updated in mergin form template
+  mutate(condition_rank = erosion_issues + embankment_fill_issues + blockage_issues) %>%
+  mutate(vulnerability_rank = condition_rank + climate_change_flood_risk) %>%
+  mutate(overall_rank = vulnerability_rank + priority_rank)
 
 names(moti_data_cleaned)
 xref_moti_climate %>% pull(report)
@@ -56,6 +65,8 @@ xref_moti_climate %>% pull(report)
 # make table to insert into report
 tab_moti <- moti_data_cleaned %>%
   purrr::set_names(nm = xref_moti_climate %>% pull(report)) %>%
-  mutate(pscis_crossing_id = case_when(my_crossing_reference == 2022091001 ~ 198115, T ~ pscis_crossing_id)) %>%
   select(-my_crossing_reference)
+
+tab_moti_phase2 <- moti_data_cleaned %>%
+  filter(pscis_crossing_id %in% (pscis_phase2 %>% pull(pscis_crossing_id)))
 
