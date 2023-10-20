@@ -65,15 +65,8 @@ xref_pscis_my_crossing_modelled_dups <- readwritesqlite::rws_read_table("xref_ps
 
 
 wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
-  mutate(aspect = as.character(aspect))
-  # issues with particular sites and the aws tiles
-  # mutate(elev_min = case_when(
-  #   stream_crossing_id == 123770 ~ 375,
-  #   T ~ elev_min),
-  #   aspect = case_when(
-  #     stream_crossing_id == 124420 ~ 'NNE',
-  #     T ~ aspect)
-  # )
+  mutate(aspect = as.character(aspect)) %>%
+  mutate(across(contains('elev'), ~ replace(., . < 0, NA))) # remove negative watershed stats (ex: gramophone creek)
 
 # won't be able to do this till you load the photo metadata
 photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
@@ -488,7 +481,8 @@ hab_site <- left_join(
 ) %>%
   tidyr::separate(alias_local_name, into = c('site', 'location'), remove = F) %>%
   mutate(site = as.numeric(site)) %>%
-  dplyr::filter(!alias_local_name %like% '_ef') ##get rid of the ef sites
+  dplyr::filter(!alias_local_name %like% '_ef') %>%  ##get rid of the ef sites
+  filter(site != 198066) ## get rid of thompson creek site because it's in skeena 2021 report
 
 hab_fish_collect_map_prep <- habitat_confirmations %>%
   purrr::pluck("step_2_fish_coll_data") %>%
@@ -856,7 +850,8 @@ habitat_confirmations_priorities <- readr::read_csv(
   filter(!alias_local_name %like% 'ef') %>%
   # tidyr::separate(local_name, into = c('site', 'location'), remove = F) %>%
   mutate(upstream_habitat_length_km = round(upstream_habitat_length_m/1000,1)) %>%
-  rename(local_name = alias_local_name) #did this to stay consistent for later
+  rename(local_name = alias_local_name) %>%  #did this to stay consistent for later
+  filter(site != 198066) ## get rid of thompson creek site because it's in skeena 2021 report
 
 
 

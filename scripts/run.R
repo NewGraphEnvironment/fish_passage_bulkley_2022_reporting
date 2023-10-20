@@ -10,6 +10,9 @@ bookdown::preview_chapter('0800-appendix-197974-watson.Rmd')
 
 # we run with code below so that the appendix numbering makes sense
 
+# if you need to update after renaming photos to keep and add to map, or if you added new photos....
+source('scripts/02_reporting/0180-photos-extract-metadata.R')
+
 {
   # These files are included in the gitbook version already so we move them out of the build
   files_to_move <- list.files(pattern = ".Rmd$") %>%
