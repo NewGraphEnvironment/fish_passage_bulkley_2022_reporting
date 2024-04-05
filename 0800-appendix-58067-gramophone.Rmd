@@ -1,7 +1,7 @@
 ---
 output: html_document
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
   markdown: 
     wrap: 72
 ---
@@ -32,6 +32,7 @@ Witset, BC on
 upstream from the confluence with the Bulkley River and is the
 responsibility of the Ministry of Transportation and Infrastructure.
 
+
 <br>
 
 ## Background {.unnumbered}
@@ -44,7 +45,7 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 `r fpr::fpr_my_wshd(col = 'elev_site')`m at the crossing (Table
 \@ref(tab:tab-wshd-58067)). Upstream of crossing
 `r as.character(my_site)`, `r fpr::fpr_my_fish_sp()` have previously
-been recorded [@moe2020KnownBC; @norris2020bcfishobs].
+been recorded [@moe2020KnownBC; @norris2020bcfishobs]. The site was revisited in 2023 to better understand fish presence by scoping for barriers, fish sampling to inform prioritization, and to serve as baseline monitoring if the crossing gets fixed. During the 2023 site visit, crews walked from the crossing down to the Bulkley River to assess barriers to fish passage. Approximately 500m upstream from the confluence with the Bulkley River, crews observed a canyon with two falls at ~1.7m and a 25m rock chute. It is presumed that these falls are a barrier to Coho which explains the lack of Coho caught at crossing `r as.character(my_site)` during the 2022 electrofishing survey. Crews also noted that the bottom few hundred meters of stream were de-watered, indicating that timing is an important factor for ocean run fish access to the stream. We believe that some of the fish we caught in 2022 could have been Steelhead due to the historic FISS Steelhead spawning point documented upstream of road, but the falls and de-watering likely explains the lack of coho in 2022. 
 
 <br>
 
@@ -144,7 +145,7 @@ un-embedded, non-backwatered, had an outlet drop of `r fpr::fpr_my_pscis_info(co
 `r fpr::fpr_my_pscis_info(col_pull = barrier_result)` to upstream fish
 passage according to the provincial protocol [@moe2011Fieldassessment]
 (Table \@ref(tab:tab-culvert-58067)). The crossing consisted of two
-pipes, with a very big outlet pool indicating the crossing was undersized. The pipes were notes as in poor condition due to corrosion and the road prism at the site had indications of significant erosion adjacent to the crossing. Water temperature was
+pipes, with a very big outlet pool indicating the crossing was undersized. The pipes were noted as in poor condition due to corrosion and the road prism at the site had indications of significant erosion adjacent to the crossing. Water temperature was
 `r fpr::fpr_my_habitat_info(col_pull = 'temperature_c')`$^\circ$C, pH
 was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` and conductivity was
 `r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm.
@@ -174,7 +175,19 @@ deep pools were present that would serve as good habitat suitable for
 fish rearing and overwintering. Riparian vegetation was mixed decidous and conifer old
 growth forest. The habitat was rated as
 `r fpr::fpr_my_priority_info(loc = 'ds')` value for salmonid rearing and
-spawning.
+spawning. In 2023 the site was revisited and crews walked from the crossing down to the Bulkley River. Crews observed a canyon with two falls at ~1.7m and a 25m rock chute approximately 500m upstream from the confluence with the Bulkley River (Figures \@ref(fig:canyon) - \@ref(fig:chute) - \@ref(fig:falls)). At the time of assessment, the bottom few hundred meters of stream were de-watered. 
+
+```{r canyon, fig.cap = "Canyon with falls located ~500m upstream from the confluence with the Bulkley River."}
+knitr::include_graphics("data/photos/58067/2023/20230924_141057_58067_k_ds2_canyon.JPG")
+```
+
+```{r chute, fig.cap = "25 meter rock chute located in the canyon"}
+knitr::include_graphics("data/photos/58067/2023/20230924_141113_58067_k_ds2_chute.JPG")
+```
+
+```{r falls, fig.cap = "1.7 meter falls located in the canyon."}
+knitr::include_graphics("data/photos/58067/2023/TimePhoto_20230924_130517_k_falls.JPG")
+```
 
 ## Stream Characteristics Upstream {.unnumbered}
 
@@ -192,9 +205,19 @@ moderate rearing potential.
 
 ## Fish Sampling {.unnumbered}
 
-Electrofishing was conducted with results summarised in Tables
+Electrofishing was conducted in 2022 with results summarised in Tables
 \@ref(tab:tab-fish-site-58067) - \@ref(tab:tab-fish-dens-58067) and
 Figure \@ref(fig:plot-fish-box-58067).
+
+In 2023 fish sampling was conducted below the observed falls using dip nets. Six Coho were caught, 2 fry (FL ranging from 65-67mm), and 4 par (FL ranging from 70-90mm), see photos \@ref(fig:fish). Since Coho were captured below the falls but none at crossing `r as.character(my_site)` (during the 2022 sampling), it is presumed that the falls are a barrier to Coho passage. 
+
+
+```{r fish, fig.cap = "Coho fry and par captured below the falls with dip nets during 2023 sampling."}
+knitr::include_graphics("data/photos/58067/2023/IMG_2843_k_fish.JPG")
+knitr::include_graphics("data/photos/58067/2023/IMG_2857_k_fish.JPG")
+knitr::include_graphics("data/photos/58067/2023/IMG_2876_k_fish.JPG")
+
+```
 
 <br>
 
