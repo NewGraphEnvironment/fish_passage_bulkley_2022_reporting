@@ -26,19 +26,16 @@ pkgs_cran <- c(
   'bookdown',
   'fasstr',
   'tidyhydat',
-  'elevatr',
-  'rayshader',
   'geojsonio',
   'english',
   'leaflet.extras',
   'ggdark',
-  'citr',
   'pdftools',
   'chron',
   'leafpop',
   'exifr',
-  'readODS'
-  # rgl,
+  'pagedown',
+  'devtools'
   # geojsonsf,
   # bit64 ##to make integer column type for pg
   # gert  ##to track git moves

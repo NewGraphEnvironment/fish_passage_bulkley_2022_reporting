@@ -7,8 +7,7 @@ Workflows for putting the data in one place to build the report and figures (ex.
   
 # 0170-load-wshd_stats.R
 
-  * Derive watershed areas upstream of Phase 2 sites using fwapg.
-  * Derive watershed statistics for watershed areas using `elevatr` to download rasters and `raster` to process. 
+  * Derive watershed areas and statistics upstream of Phase 2 sites using fwapgr.
   * Use poisspatial to derive elevation for stream crossing site locations and joint to watershed stats. Save to sqlite db.
   
 
