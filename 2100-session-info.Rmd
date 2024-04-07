@@ -3,7 +3,7 @@
 
 
 ```{r session info, comment="", class.source = 'fold-show'}
-xfun::session_info()
+ devtools::session_info()
 
 sessionInfo() %>% capture.output(file="data/backup/session_info.txt")
 ```
