@@ -1,0 +1,11 @@
+rowid,aggregated_crossings_id,pscis_crossing_id,my_crossing_reference,source,barrier_result,downstream_channel_width_meters,fill_depth_meters,fill_dpth_over,crossing_fix,span_input
+5,1001801071,,1801071,pscis_phase1.xlsm,Unknown,,,,,
+6,2022083050,,2022083050,pscis_phase1.xlsm,Passable,,,,,
+7,1001802798,,1802798,pscis_phase1.xlsm,Unknown,,,,,
+8,1001805507,,1805507,pscis_phase1.xlsm,Passable,2.5,0.5,-2.5,,
+9,1001802069,,1802069,pscis_phase1.xlsm,Unknown,,,,,
+10,2022083001,,2022083001,pscis_phase1.xlsm,Passable,,,,,
+11,1000001493,,1493,pscis_phase1.xlsm,Unknown,,,,,
+12,2022091001,,2022091001,pscis_phase1.xlsm,Barrier,2.8,1.5,-1.5,Replace with New Open Bottom Structure,10
+13,2022091002,,2022091002,pscis_phase1.xlsm,Potential,3.9,1,-2,Replace with New Open Bottom Structure,10
+14,2022091003,,2022091003,pscis_phase1.xlsm,Passable,,,,,
