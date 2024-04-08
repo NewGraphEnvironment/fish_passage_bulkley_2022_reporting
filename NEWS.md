@@ -1,6 +1,11 @@
+# Development
+
+- un-ignore inputs_extracted directory
+- close #139 get Waterfall Creek name correct. fix #139,fix #140,fix #141,fix #142,fix #143,fix #144
+
 # 20230605 fish_passage_bulkley_2022_reporting 0.1.7
 - add some climate change methods
-- add indivual climate data to memos
+- add individual climate data to memos
 - add raw climate data
 
 
