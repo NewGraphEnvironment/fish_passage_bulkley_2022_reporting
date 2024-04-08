@@ -25,7 +25,7 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   rmarkdown::render_site(output_format = 'bookdown::gitbook',
                          encoding = 'UTF-8')
 
-  ##move the files from the hold file back to the main file
+    ##move the files from the hold file back to the main file
   mapply(file.rename, from = files_destination, to = files_to_move)
 }
 
@@ -51,8 +51,8 @@ filename_html <- 'Bulkley2022'
 
   # print to pdf
   pagedown::chrome_print(
-    paste0(getwd(), '/', filename_html, '.html'),
-    output = paste0(getwd(),'/docs/', filename_html, '.pdf'),
+    paste0(filename_html, '.html'),
+    output = paste0('docs/', filename_html, '.pdf'),
     timeout = 180
   )
 
