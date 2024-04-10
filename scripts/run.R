@@ -57,7 +57,7 @@ filename_html <- 'Bulkley2022'
   )
 
   # reduce the size
-  tools::compactPDF(paste0(getwd(), "/docs/", filename_html, ".pdf"),
+  tools::compactPDF(paste0("docs/", filename_html, ".pdf"),
                     gs_quality = 'screen',
                     ##this was on the windows machine
                     # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
@@ -65,7 +65,7 @@ filename_html <- 'Bulkley2022'
   )
 
   # get rid of the html as its too big and not needed
-  file.remove(paste0(getwd(), '/', filename_html, '.html'))
+  file.remove(paste0(filename_html, '.html'))
 
   #move the phase 1 appendix back to main directory
   # file.rename( 'hold/0600-appendix.Rmd', '0600-appendix.Rmd')
