@@ -14,6 +14,9 @@ bookdown::preview_chapter('0800-appendix-197974-watson.Rmd')
 source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
 {
+
+  news_to_appendix()
+
   # These files are included in the gitbook version already so we move them out of the build
   files_to_move <- list.files(pattern = ".Rmd$") %>%
     stringr::str_subset(., '2300', negate = F) #move the attachments out

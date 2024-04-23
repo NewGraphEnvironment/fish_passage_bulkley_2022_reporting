@@ -1,5 +1,9 @@
 # Development
 
+
+# fish_passage_bulkley_2022_reporting 0.1.6 (20240423)
+
+- update Gramaphone with info about canyon,chute, rock outcrops and dipnet sampling of coho
 - un-ignore inputs_extracted directory
 - close #139 get Waterfall Creek name correct. fix #139,fix #140,fix #141,fix #142,fix #143,fix #144
 
