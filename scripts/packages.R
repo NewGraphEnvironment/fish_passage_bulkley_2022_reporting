@@ -7,10 +7,8 @@ pkgs_cran <- c(
   'janitor',
   'leafem',
   'leaflet',
-  'kableExtra',
   'httr',
   'RPostgres',
-  'RPostgreSQL',
   'DBI',
   'magick',
   'bcdata',
@@ -33,7 +31,8 @@ pkgs_cran <- c(
   'exifr',
   'pagedown',
   'devtools',
-  'tidyverse'
+  'tidyverse',
+  'fishbc'
 
 )
 
@@ -42,7 +41,7 @@ pkgs_gh <- c(
   "newgraphenvironment/fpr",
   "poissonconsulting/fwapgr",
   'poissonconsulting/poisspatial',
-  "poissonconsulting/fishbc"
+  "haozhu233/kableExtra"
 )
 
 pkgs_all <- c(pkgs_cran,
