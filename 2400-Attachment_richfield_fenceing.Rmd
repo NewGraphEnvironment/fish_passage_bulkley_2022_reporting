@@ -2,6 +2,6 @@
 
 # `r if(gitbook_on){knitr::asis_output("**Attachment 3 - Richfield Riparian Restoration and Fencing Report**")} else knitr::asis_output("**Attachment 4 - Richfield Riparian Restoration and Fencing Report**")` {-}
 
-Details of fencing installed along Richfield Creek riparian area is documented in @wrench2023RichfieldCreek and included as [Attachment 4](https://github.com/NewGraphEnvironment/fish_passage_skeena_2022_reporting/raw/master/docs/SERN_Richfield_Fencing_2022_Final Report.pdf)
+Details of fencing installed along Richfield Creek riparian area is documented in @wrench2023RichfieldCreek and included as [Attachment 4](`r paste0(params$repo_url, "raw/master/docs/SERN_Richfield_Fencing_2022_Final Report.pdf")`
 
 
