@@ -23,34 +23,31 @@ my_site <- 58067
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on
-`r fpr::fpr_my_pscis_info()` approximately 9km south of the community of
-Witset, BC on
-`r fpr_my_pscis_info(col_pull = road_name)`. Crossing
-`r as.character(my_site)` was located
-`r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km
-upstream from the confluence with the Bulkley River and is the
-responsibility of the Ministry of Transportation and Infrastructure.
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()` approximately 9km south of the
+community of Witset, BC on `r fpr_my_pscis_info(col_pull = road_name)`. Crossing `r as.character(my_site)` was located
+`r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream from the confluence with the
+Bulkley River and is the responsibility of the Ministry of Transportation and Infrastructure.
 
-
-<br>
 
 ## Background {.unnumbered}
 
-At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
-`r fpr::fpr_my_bcfishpass() %>% english::ordinal()` order stream with a
-watershed area upstream of the crossing of approximately
-`r fpr::fpr_my_wshd()`km^2^. The elevation of the watershed ranges from
-a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
-`r fpr::fpr_my_wshd(col = 'elev_site')`m at the crossing (Table
-\@ref(tab:tab-wshd-58067)). Upstream of crossing
-`r as.character(my_site)`, `r fpr::fpr_my_fish_sp()` have previously
-been recorded [@moe2020KnownBC; @norris2020bcfishobs]. 
-
-
-The site was revisited in 2023 to better understand fish presence by scoping for barriers, fish sampling to inform prioritization, and to serve as baseline monitoring if the crossing gets fixed. During the 2023 site visit, crews walked from the crossing down to the Bulkley River to assess barriers to fish passage. Approximately 500m upstream from the confluence with the Bulkley River, crews observed a canyon with two falls at ~1.7m and a 25m rock chute. Coho were captured below the falls, therefore the falls are likely a barrier to Coho which explains the lack of Coho caught at crossing `r as.character(my_site)` upstream during the 2022 electrofishing survey. Crews also noted that the bottom few hundred meters of stream were de-watered, indicating that timing is an important factor for ocean run fish access to the stream. We believe that some of the fish we caught in 2022 could have been Steelhead due to the historic FISS Steelhead spawning point documented upstream of road, but the falls and de-watering likely explains the lack of coho in 2022. 
+At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a `r fpr::fpr_my_bcfishpass() %>% english::ordinal()` 
+order stream with a watershed area upstream of the crossing of approximately `r fpr::fpr_my_wshd()`km^2^. The elevation 
+of the watershed ranges from a maximum of `r fpr::fpr_my_wshd(col ='elev_max')`m to `r fpr::fpr_my_wshd(col = 'elev_site')`m 
+at the crossing (Table \@ref(tab:tab-wshd-58067)). Upstream of `r fpr_my_pscis_info(col_pull = road_name)`, `r fpr::fpr_my_fish_sp()` 
+have previously been recorded [@moe2020KnownBC;
+@norris2020bcfishobs]. Of note, FISS records indicate that a steelhead spawning location is located approximatley 60m upstream 
+of `r fpr_my_pscis_info(col_pull = road_name)` with the source reference noted as a personal communication with M. O'Neill 
+from the Toboggan Creek Hatchery.
 
 <br>
+
+
+The stream was initially assessed on September 1st and 2nd, 2022, with much of this memo drafted then. However, as no 
+coho were captured during extensive electrofishing in 2022, the site was revisited on September 24,2023 to scope for barriers downstream of 
+`r fpr_my_pscis_info(col_pull = road_name)` and the confluence with the Bulkley River. Results from that assessment and
+subsequent dip netting conducted are included in this report.
+
 
 ```{r tab-wshd-58067, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) %>% 
@@ -61,54 +58,40 @@ fpr::fpr_table_wshd_sum(site_id = my_site) %>%
 
 ```
 
-The Gramophone Creek watershed is designated as
-a Fisheries Sensitive Watershed under British Columbia's Forest
-and Range Practices Act Government Actions Regulation, and the Oil and
-Gas Activities Act Environmental Management and Protection Regulation.
-Fisheries Sensitive Watersheds have significant fish values and are sensitive to changes in
+<br>
+
+The Gramophone Creek watershed is designated as a Fisheries Sensitive Watershed under British Columbia's Forest and
+Range Practices Act Government Actions Regulation, and the Oil and Gas Activities Act Environmental Management and
+Protection Regulation. Fisheries Sensitive Watersheds have significant fish values and are sensitive to changes in
 habitat [@porter2015].
 
 <br>
 
-
-The Trout Creek/Moricetown watershed project was an integrated
-restoration plan designed for 14 watersheds found on either side of the
-Bulkley River. Gramophone Creek was included in the study area. A level
-I sediment source assessment was conducted on the watershed. This
-provided an overview and a risk assessment of sedimentation in pre
-defined study blocks, which was then used to recommend further
-restoration strategies. The risk assessment was used to determine if the
-roads were on low, moderate, or high-risk terrain; and the consequence
-that sedimentation could have on the road's associated fisheries stream.
-Gramophone Creek scored lower than average overall on the risk
-assessment but had some study blocks that required a level II assessment
-[@sterlingwoodgroupinc_1997TroutCreek].
+@sterlingwoodgroupinc_1997TroutCreek report that the Trout Creek/Moricetown watershed project was an integrated
+restoration plan designed for 14 watersheds found on either side of the Bulkley River with Gramophone Creek included
+as one of the watersheds. A level I sediment source assessment was conducted in the watershed providing a risk
+assessment of sedimentation by classifying road placement as on low, moderate, or
+high-risk terrain.  Additionally, the lvel of consequence that sedimentation could have on fisheries values was also
+assessed. Gramophone Creek scored lower than average overall with study blocks present that required level II assessment.
 
 <br>
 
-In a study conducted by [@porter2015], the Gramophone Creek stream
-network was analysed using GIS methods to assess the risk status related
-to fish habitat impact.  Risk status was determined by measuring nine habitat
-indicators. These included: road density for the entire watershed, road
-density above the H~60~ line (the elevation above which 60% of the
-watershed area lies), road density less than 100m from a stream, stream
-crossing density, proportion of stream logged, proportion of
-fish-bearing stream logged, density of stream banks logged on slopes
-greater than 60%, peak flow index, and road density on unstable slopes.
-Measured values were compared to a baseline to classify risk as low,
-moderate, or high. Of the 71 watersheds included in the analysis,
-Gramophone Creek was notable for having all nine indicators rated as
-high risk.
+In a study conducted by @porter2015, the Gramophone Creek stream network was analysed using GIS methods to assess the
+risk status related to fish habitat impact.  Risk status was determined by measuring nine habitat indicators including: 
+road density, road density above the H60 line (the elevation above which 60% of the
+watershed area lies), road density less than 100m from a stream, stream crossing density, proportion of stream logged,
+proportion of fish-bearing stream logged, density of stream banks logged on slopes greater than 60%, peak flow index,
+and road density on unstable slopes. Measured values were compared to a baseline to classify risk as low, moderate, or
+high. Of the 71 watersheds included in the analysis, Gramophone Creek was notable for having all nine indicators rated
+as high risk.
 
 <br>
 
-PSCIS stream crossing `r as.character(my_site)` was ranked as a high
-priority for follow up by the Canadian Wildlife Federation because of
-significant amounts of habitat modelled upstream of the crossing. Upon
-review of an assessment done on this crossing in 2012 by @gollner2013, @irvine2018AnalysisPriority ranked it as a high priority for follow up due to its high habitat value. A summary of
-habitat modelling outputs is presented in Table
-\@ref(tab:tab-culvert-bcfp-58067). A map of the watershed is provided in
-map attachment
+PSCIS stream crossing `r as.character(my_site)` was ranked as a high priority for follow up by the Canadian Wildlife
+Federation because of significant amounts of habitat modelled upstream of the crossing. Upon review of an assessment
+done on this crossing in 2012 by @gollner2013, @irvine2018AnalysisPriority also ranked it as a high priority for follow
+up due to its high habitat value. A summary of habitat modelling outputs is presented in Table
+\@ref(tab:tab-culvert-bcfp-58067). A map of the watershed is provided in map attachment 
 [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](fpr::fpr_my_mapsheet()).
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
@@ -143,15 +126,14 @@ fpr_table_moti_comments()
 
 ## Stream Characteristics at Crossing {.unnumbered}
 
-At the time of the survey, PSCIS crossing `r as.character(my_site)` was
-un-embedded, non-backwatered, had an outlet drop of `r fpr::fpr_my_pscis_info(col_pull = outlet_drop_meters)`m and ranked as a
-`r fpr::fpr_my_pscis_info(col_pull = barrier_result)` to upstream fish
-passage according to the provincial protocol [@moe2011Fieldassessment]
-(Table \@ref(tab:tab-culvert-58067)). The crossing consisted of two
-pipes, with a very big outlet pool indicating the crossing was undersized. The pipes were noted as in poor condition due to corrosion and the road prism at the site had indications of significant erosion adjacent to the crossing. Water temperature was
-`r fpr::fpr_my_habitat_info(col_pull = 'temperature_c')`$^\circ$C, pH
-was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` and conductivity was
-`r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm.
+At the time of the survey in 2022, PSCIS crossing `r as.character(my_site)` was un-embedded, non-backwatered, had an outlet drop
+of `r fpr::fpr_my_pscis_info(col_pull = outlet_drop_meters)`m and ranked as a `r fpr::fpr_my_pscis_info(col_pull =
+barrier_result)` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table
+\@ref(tab:tab-culvert-58067)). The crossing consisted of two pipes, with a very big outlet pool indicating the crossing
+was undersized. The pipes were noted as in poor condition due to corrosion and the road prism at the site had
+indications of significant erosion adjacent to the crossing. Water temperature was 
+`r fpr::fpr_my_habitat_info(col_pull= 'temperature_c')`$^\circ$C, pH was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` 
+and conductivity was `r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm.
 
 <br>
 
@@ -169,37 +151,44 @@ fpr::fpr_my_priority_info()
 
 ## Stream Characteristics Downstream {.unnumbered}
 
-`r fpr::fpr_my_survey_dist(loc = 'ds')`
-`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-58067-01) - \\@ref(fig:photo-58067-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-58067-d01))."))`
-`r fpr_my_habitat_paragraph(loc = 'ds')` There were abundant undercut
-banks available for cover. Some patches of gravel were present that
-would be suitable for rainbow, steelhead and coho spawning. Occasional
-deep pools were present that would serve as good habitat suitable for
-fish rearing and overwintering. Riparian vegetation was mixed decidous and conifer old
-growth forest. The habitat was rated as
-`r fpr::fpr_my_priority_info(loc = 'ds')` value for salmonid rearing and
-spawning. 
+`r fpr::fpr_my_survey_dist(loc = 'ds')` in 2022 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-58067-01) -
+\\@ref(fig:photo-58067-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-58067-d01))."))` 
+`r fpr_my_habitat_paragraph(loc = 'ds')` There were abundant undercut banks available for cover. Some patches of gravel
+were present suitable for rainbow, steelhead and coho spawning. Occasional deep pools were present suitable for juvenile
+rearing and overwintering. Riparian vegetation was mixed deciduous and conifer old growth forest. The habitat was rated 
+as `r fpr::fpr_my_priority_info(loc = 'ds')` value for salmonid rearing and spawning.
 
-In 2023 the site was revisited and crews walked from crossing `r as.character(my_site)` down to the Bulkley River and noted it was high value habitat. From crossing `r as.character(my_site)` to the confluence with Wiggs Creek, crews observed low water levels with sections of the stream de-watered, particularly in the first 300 m. There were isolated pools scattered approximately 30 to 50 m apart with pools up to 0.6 m deep. There was abundant algae in places of slow, moving water. Failing banks were encountered with barbwire fence swapped into the stream at multiple spots. There was occasional pockets of gravel present suitable for resident and anadromous salmonids. There was extensive cattle trampling within the channel at some locations. 
+<br>
 
-From the confluence of Wiggs Creek down to the Bulkley River there was high value habitat. Crews observed a canyon with two falls at ~1.7m and a 25m rock chute approximately 500m upstream from the confluence with the Bulkley River (Figures \@ref(fig:canyon), \@ref(fig:chute), \@ref(fig:falls)). At the time of assessment, the bottom few hundred meters of stream were de-watered. 
+In 2023, the entire 2.6km between `r fpr_my_pscis_info(col_pull = road_name)` and the confluence with the Bulkley River was
+surveyed with the stream delineated into two distinct sections.  The first was the ~800m long section from `r fpr_my_pscis_info(col_pull = road_name)` 
+to the confluence with Wiggs Creek.  The second was 1.8km long and spanned from the Wiggs Creek confluence to the Bulkley River.  
 
-```{r canyon, fig.cap = "Canyon with falls located ~500m upstream from the confluence with the Bulkley River."}
-knitr::include_graphics("data/photos/58067/2023/20230924_141057_58067_k_ds2_canyon.JPG")
-```
+<br>
 
-```{r chute, fig.cap = "25 meter rock chute located in the canyon"}
-knitr::include_graphics("data/photos/58067/2023/20230924_141113_58067_k_ds2_chute.JPG")
-```
+The first section (from the road to Wiggs Creek) was noted as containing low water levels with sections of the stream completely
+de-watered (particularly the first 300m below `r fpr_my_pscis_info(col_pull =road_name)`). There were isolated pools
+to 0.6m deep scattered approximately 30 - 50m apart throughout the area surveyed and abundant algae present within areas of slow
+and stagnant water. Failing banks were encountered with barbwire fence falling into the stream channel at multiple locations
+along with sections of channel where extensive cattle trampling and manure deposition was evident. Surveyors also noted 
+occasional pockets of gravel present suitable for resident and anadromous salmonid spawning. Overall, habitat was rated as high value.
 
-```{r falls, fig.cap = "1.7 meter falls located in the canyon."}
-knitr::include_graphics("data/photos/58067/2023/TimePhoto_20230924_130517_k_falls.JPG")
-```
+<br>
+
+In the second section surveyed - between the confluence of Wiggs Creek and the Bulkley River - at a location approximately
+600m upstream from the confluence with the Bulkley, crews observed a 40m long canyon 
+containing two rock outcrops located at the downstream and upstream ends of a 25m long rock chute (~25% gradient). 
+The rock outcrops at both the bottom and the top of the chute were estimated at 1.7m high `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-58067-07) - \\@ref(fig:photo-58067-08)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-58067-d04))."))`. 
+The approximate UTM coordinates of the bottom end of the chute was noted as 9U.607989.6093242. Additionally, at the time 
+of assessment, the ~300m upstream of the Bulkley River confluence the stream was de-watered almost entirely. Overall, the habitat was rated 
+as high value.
+
+<br>
 
 ## Stream Characteristics Upstream {.unnumbered}
 
 `r fpr_my_survey_dist(loc = 'us')`
-`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-58067-03) - \\@ref(fig:photo-58067-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-58067-d02))."))`
+`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-58067-03) - \\@ref(fig:photo-58067-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-58067-d02) - \\@ref(fig:photo-58067-d03))."))`
 `r fpr_my_habitat_paragraph(loc = 'us')` There is a small beaver dam
 \~500m upstream from the crossing. The stream is wide throughout with abundant cover and
 some areas with gravels suitable for spawning. There is approximately
@@ -212,26 +201,15 @@ moderate rearing potential.
 
 ## Fish Sampling {.unnumbered}
 
-Electrofishing was conducted in 2022 with results summarised in Tables
+Electrofishing was conducted at 12 sites in 2022 with results summarised in Tables
 \@ref(tab:tab-fish-site-58067) - \@ref(tab:tab-fish-dens-58067) and
 Figure \@ref(fig:plot-fish-box-58067).
 
-In 2023 fish sampling was conducted below the observed falls using dip nets. Six Coho parr were captured and had a wide range of sizes (FL ranging from 65-90 mm) which suggests that spawning may have occurred at different times or rearing environments were more favourable (more food, warmer) for some, see figures \@ref(fig:fish1), \@ref(fig:fish2), \@ref(fig:fish3). Since Coho were captured below the falls but none at crossing `r as.character(my_site)` during the 2022 sampling, it is presumed that the falls are a barrier to Coho passage. 
-
-
-```{r fish1, fig.cap = "Coho parr captured below the falls with dip nets during 2023 sampling."}
-knitr::include_graphics("data/photos/58067/2023/IMG_2843_k_fish.JPG")
-```
-
-```{r fish2, fig.cap = "Coho parr captured below the falls with dip nets during 2023 sampling."}
-knitr::include_graphics("data/photos/58067/2023/IMG_2857_k_fish.JPG")
-```
-
-```{r fish3, fig.cap = "Coho parr captured below the falls with dip nets during 2023 sampling."}
-knitr::include_graphics("data/photos/58067/2023/IMG_2876_k_fish.JPG")
-```
-
 <br>
+
+During the 2023 site visit, dip netting within the canyon, in the large pool immediately below the rock chute and rock
+outcrops was conducted.  Six coho were captured ranging in size from 65 - 90mm `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-58067-09) - \\@ref(fig:photo-58067-10)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-58067-d05))."))` 
+
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
@@ -248,18 +226,33 @@ m^2^/\$1000.
 
 ## Conclusion {.unnumbered}
 
-There was
-`r fpr::fpr_my_priority_info(col_pull= upstream_habitat_length_km)`km of
-habitat modelled upstream of crossing `r as.character(my_site)` with
-areas surveyed rated as
-`r fpr::fpr_my_priority_info(sit = my_site, loc = 'us', col_pull = hab_value)`
-value for salmonid rearing and spawning.  `r fpr::fpr_my_pscis_info()` is a
-large system with habitat suitable for numerous species including coho salmon
-and steelhead.   The crossings location adjacent to the community of
-Witset, BC is ideal for community involvement in the project.  Additionally, because `r fpr::fpr_my_pscis_info(col_pull = road_name)` is a non-paved road with a crossing location that can be accessed from either side, the costs of the work are low when compared to paved road and highway options. Crossing
-`r as.character(my_site)` was ranked as a
-`r fpr::fpr_my_priority_info(col_pull = priority)` priority for
-proceeding to design for replacement.  Electrofishing results at the site indicated that the stream is productive in terms of rainbow trout however after the 2023 re-assessment, it is presumed the falls and de-watering located downstream are likely a barrier to Coho.
+Electrofishing in 2022 demonstrated that Gramophone Creek supports a healthy population of rainbow trout. However, the 
+migration of anadromous fish such as coho and steelhead — up to the chute, canyon, and rock outcrops located ~600 meters 
+upstream of the confluence with the Bulkley River depends on both migration timing and stream water levels. Water conditions, 
+influenced by timing and quantity of precipitation are important, as evidenced by the dewatering observed in the first 300 meters 
+of stream in late September 2023. Historical data, including the documented personal communication of a steelhead spawning location upstream 
+of `r fpr_my_pscis_info(col_pull = road_name)`, indicates that steelhead are able to overcome the obstacles to fish passage
+located at the canyon during higher flow periods. In contrast, no coho have ever been documented as captured upstream of 
+the canyon features and their confirmed presence downstream of the canyon in 2023 suggests that these obstacles have consistently hindered 
+their migration. Interestingly, the varied fork lengths of coho parr captured below the chute (65 - 90mm) in 2023 indicate likely
+differing spawning times in 2022. This varied spawning timing, the relatively low height of the rock outcrops (~1.7 meters) and 
+the gentle gradient of the 25-meter long chute (~25%) offer hope that high flow events coinciding with any period of
+steelhead and coho migration timing may facilitate upstream passage to habitat upstream of these obstacles for both 
+anadromous species.
+
+<br>
+
+There was `r fpr::fpr_my_priority_info(col_pull= upstream_habitat_length_km)`km of habitat modelled upstream of crossing
+`r as.character(my_site)` with areas surveyed rated as  `r fpr::fpr_my_priority_info(sit = my_site, loc = 'us', col_pull = hab_value)` 
+value for salmonid rearing and spawning. `r fpr::fpr_my_pscis_info()` is a large system with habitat suitable for numerous 
+species including coho salmon and steelhead provided they can access above the canyon features at ~600m upstream from the
+confluence with the Bulkley River. Nevertheless, the large outlet drop on the culverts, their poor condition and the 
+crossing's location adjacent to the community of Witset, BC provides significant justification for proceeding with replacement
+of the structures with with significant hope for community involvement in the project.  Also, as 
+`r fpr::fpr_my_pscis_info(col_pull = road_name)` is a non-paved road with a crossing location that can be accessed from 
+either side, the costs of the work are low when compared to paved road and highway options. Crossing `r as.character(my_site)` 
+was ranked as a `r fpr::fpr_my_priority_info(col_pull = priority)` priority for proceeding to design for replacement.  
+
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
@@ -299,9 +292,9 @@ fpr_plot_fish_box()
 <br>
 
 ```{r photo-58067-01-prep, eval=T}
-my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_d1_')
+my_photo1 <- fpr::fpr_photo_pull_by_str(str_to_pull = '_d1_')
 
-my_caption1 = paste0('Typical habitat downstream of PSCIS crossing ', my_site, '.')
+my_caption1 <- paste0('Typical habitat downstream of PSCIS crossing ', my_site, '.')
 
 
 ```
@@ -313,9 +306,9 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 <br>
 
 ```{r photo-58067-02-prep}
-my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_d2_')
+my_photo2 <- fpr::fpr_photo_pull_by_str(str_to_pull = '_d2_')
 
-my_caption2 = paste0('Typical habitat downstream of PSCIS crossing ', my_site, '.')
+my_caption2 <- paste0('Typical habitat downstream of PSCIS crossing ', my_site, '.')
 ```
 
 ```{r photo-58067-02, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
@@ -335,9 +328,9 @@ knitr::include_graphics(my_photo2)
 ```
 
 ```{r photo-58067-03-prep}
-my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u1_')
+my_photo1 <- fpr::fpr_photo_pull_by_str(str_to_pull = '_u1_')
 
-my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption1 <- paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
 ```
 
 ```{r photo-58067-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
@@ -347,9 +340,9 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 <br>
 
 ```{r photo-58067-04-prep}
-my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u2_')
+my_photo2 <- fpr::fpr_photo_pull_by_str(str_to_pull = '_u2_')
 
-my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption2 <- paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
 
 ```
 
@@ -367,9 +360,9 @@ knitr::include_graphics(my_photo2)
 ```
 
 ```{r photo-58067-05-prep}
-my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u3_')
+my_photo1 <- fpr::fpr_photo_pull_by_str(str_to_pull = '_u3_')
 
-my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption1 <- paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
 ```
 
 ```{r photo-58067-05, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
@@ -379,9 +372,9 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 <br>
 
 ```{r photo-58067-06-prep}
-my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u4_')
+my_photo2 <- fpr::fpr_photo_pull_by_str(str_to_pull = '_u4_')
 
-my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption2 <- paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.')
 
 ```
 
@@ -390,6 +383,65 @@ grid::grid.raster(jpeg::readJPEG(my_photo2))
 ```
 
 ```{r photo-58067-d03, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+
+```{r photo-58067-07-prep}
+my_caption1 <- "Canyon with 1.5m high rock outcrop located ~600m upstream from the confluence with the Bulkley River."
+my_photo2 <- "data/photos/58067/2023/20230924_141057_58067_k_ds2_canyon.JPG"
+```
+
+
+```{r photo-58067-07, fig.cap=my_caption1}
+knitr::include_graphics(my_photo1)
+```
+
+```{r photo-58067-08-prep}
+my_caption2 <- "25 meter rock chute located in the canyon"
+my_photo2 <- "data/photos/58067/2023/20230924_141113_58067_k_ds2_chute.JPG"
+```
+
+```{r photo-58067-08, fig.cap = my_caption2}
+knitr::include_graphics(my_photo2)
+```
+
+```{r photo-58067-d04, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+
+```{r photo-58067-09-prep}
+my_caption1 <- "Coho parr captured below the lower rock outcrop and rock chute with dip nets during 2023 sampling."
+my_photo1 <- "data/photos/58067/2023/IMG_2843_k_f1.JPG"
+```
+
+```{r photo-58067-09, fig.cap=my_caption1}
+knitr::include_graphics(my_photo1)
+```
+
+
+```{r photo-58067-10-prep, fig.cap = "Coho parr captured below the falls with dip nets during 2023 sampling."}
+my_caption2 <- "Coho parr captured below the lower rock outcrop and rock chute with dip nets during 2023 sampling."
+my_photo2 <- "data/photos/58067/2023/IMG_2876_k_f3.JPG"
+```
+
+
+```{r photo-58067-10, fig.cap = my_caption2}
+knitr::include_graphics(my_photo2)
+```
+
+```{r photo-58067-d05, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
 
 my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
 

@@ -15,6 +15,7 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
 {
 
+  source('scripts/functions.R')
   news_to_appendix()
 
   # These files are included in the gitbook version already so we move them out of the build
@@ -46,7 +47,7 @@ filename_html <- 'Bulkley2022'
 
 {
   #move the phase 1 appendix back to main directory
-    # file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+    file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
 
   ##   then make our printable pdf
   rmarkdown::render_site(output_format = 'pagedown::html_paged',
@@ -62,16 +63,16 @@ filename_html <- 'Bulkley2022'
   # reduce the size
   tools::compactPDF(paste0("docs/", filename_html, ".pdf"),
                     gs_quality = 'screen',
+                    gs_cmd = "opt/homebrew/bin/gs"
                     ##this was on the windows machine
                     # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
-                    gs_cmd = "opt/homebrew/bin/gs"
   )
 
   # get rid of the html as its too big and not needed
   file.remove(paste0(filename_html, '.html'))
 
   #move the phase 1 appendix back to main directory
-  # file.rename( 'hold/0600-appendix.Rmd', '0600-appendix.Rmd')
+  file.rename( 'hold/0600-appendix.Rmd', '0600-appendix.Rmd')
 
 }
 

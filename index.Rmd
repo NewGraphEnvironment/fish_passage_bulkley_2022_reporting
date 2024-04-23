@@ -17,7 +17,7 @@ author: |
 
 date: |
  |
- | Version 0.1.7 `r format(Sys.Date(), "%Y-%m-%d")`
+ | Version 0.1.8 `r format(Sys.Date(), "%Y-%m-%d")`
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 
@@ -75,7 +75,7 @@ font_set <- 9
 ```
 
 
-```{r}
+```{r source}
 source('scripts/packages.R')
 source('scripts/tables.R')
 source('scripts/moti_climate.R')
@@ -83,7 +83,7 @@ source('scripts/functions.R')
 ```
 
 
-```{r include=FALSE}
+```{r bib-pkgs, include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
