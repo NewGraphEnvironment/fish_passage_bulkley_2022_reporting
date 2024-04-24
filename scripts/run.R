@@ -14,7 +14,8 @@ bookdown::preview_chapter('0800-appendix-197974-watson.Rmd')
 source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
 {
-
+  # we need old pipe to str_subset in first line below
+  library("tidyverse")
   source('scripts/functions.R')
   news_to_appendix()
 
