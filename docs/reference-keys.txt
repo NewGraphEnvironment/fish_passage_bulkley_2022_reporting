@@ -92,11 +92,7 @@ fig:plot-fish-box-58067
 fig:photo-58067-d01
 fig:photo-58067-d02
 fig:photo-58067-d03
-fig:photo-58067-07
-fig:photo-58067-08
 fig:photo-58067-d04
-fig:photo-58067-09
-fig:photo-58067-10
 fig:photo-58067-d05
 intro
 background
