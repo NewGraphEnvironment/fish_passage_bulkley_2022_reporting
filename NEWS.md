@@ -1,4 +1,6 @@
 # Development
+- fix link to Richfield report
+- fix black captions in tables
 
 
 # fish_passage_bulkley_2022_reporting 0.1.8 (20240423)
