@@ -28,6 +28,7 @@ output:
 params:
   repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/'
   report_url: 'https://newgraphenvironment.github.io/fish_passage_bulkley_2022_reporting'
+  update_packages: FALSE
 nocite: |
   @busch_etal2013LandscapeLevelModel, 
   @woll_etal2017SalmonEcological,
