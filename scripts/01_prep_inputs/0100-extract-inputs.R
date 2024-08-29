@@ -903,7 +903,9 @@ hab_priority_fish_hg <- left_join(
 # we need to summarize all our fish sizes
 
 ## fish collection data ----------------------------------------------------
-habitat_confirmations <- fpr::fpr_import_hab_con(row_empty_remove = T)
+habitat_confirmations <- fpr::fpr_import_hab_con(path = '/Users/airvine/Projects/repo/fish_passage_skeena_2023_reporting/data/habitat_confirmations.xls',
+                                                 row_empty_remove = T,
+                                                 backup = FALSE)
 
 
 hab_fish_indiv_prep <- habitat_confirmations %>%
@@ -981,7 +983,7 @@ hab_fish_collect_prep <- habitat_confirmations %>%
 
 # test to see if there are any missing lengths
 hab_fish_indiv_prep3 %>%
-  filter(is.na(length_mm))
+  dplyr::filter(is.na(length_mm))
 
 # join the indiv fish data to existing site info
 hab_fish_indiv <- full_join(
