@@ -1,7 +1,7 @@
 # install.packages('pak')
 
 pkgs_cran <- c(
-  'readwritesqlite',
+  # 'readwritesqlite',
   'sf',
   'readxl',
   'janitor',
@@ -32,7 +32,8 @@ pkgs_cran <- c(
   'pagedown',
   'devtools',
   'tidyverse',
-  'fishbc'
+  # 'fishbc',
+  'kableExtra'
 
 )
 
@@ -42,9 +43,8 @@ pkgs_gh <- c(
   # "NewGraphEnvironment/fpr",
   "poissonconsulting/fwapgr",
   'poissonconsulting/poisspatial',
-  # watch for issues in the future with this particular pin to deal with black captions
-  # https://github.com/NewGraphEnvironment/mybookdown-template/issues/50
-  "haozhu233/kableExtra@a9c509a"
+  "lucy-schick/fishbc@updated_data",
+  "poissonconsulting/readwritesqlite" #https://github.com/poissonconsulting/readwritesqlite/issues/47
 )
 
 pkgs_all <- c(pkgs_cran,

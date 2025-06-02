@@ -110,7 +110,7 @@ knitr::include_graphics("fig/lidar_gramophone_creek_58067.png")
 
 <br>
 
-## Climate Change Risk Assessment
+## Climate Change Risk Assessment {.unnumbered}
 
 Preliminary climate change risk assessment data is presented in Tables \@ref(tab:tab-moti-58067) - \@ref(tab:tab-moti-58067-comments).
 

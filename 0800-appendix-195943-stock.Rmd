@@ -52,8 +52,15 @@ At the time of reporting, Dogwood Environmental Consulting were working on a gra
 
 <br>
 
-PSCIS stream crossings `r as.character(my_site)` and `r as.character(my_site2)` were ranked as high priorities for follow up by Canadian Wildlife Federation due to
-significant amounts of habitat modelled as upstream of the crossing. Following a review of PSCIS database and modelling outputs @irvine2018AnalysisPriority ranked both crossings as moderate priorities for follow up with habitat confirmations with notes that the stream appeared to be dewatered at both locations in the PSCIS database photos and because the watershed was relatively low in elevation. A total of
+PSCIS stream crossings `r as.character(my_site)` and `r as.character(my_site2)` were initially ranked as high priorities for follow-up by the Canadian Wildlife Federation due to the significant amount of upstream habitat modelled at each site. Following a review of the PSCIS database and modelling outputs, @irvine2018AnalysisPriority ranked both crossings as moderate priorities for habitat confirmation assessments. This prioritization was based on PSCIS database photos in which the stream appeared to be dewatered at both locations, as well as the relatively low elevation of the watershed. In 2022, the crossings were reassessed and habitat confirmation assessments were completed, forming the basis of this memo.
+
+<br>
+
+In 2024, crews revisited PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name)` to conduct baseline monitoring, including fish sampling and aerial surveys. During the same visit, two additional crossings on Dunalter Creek (PSCIS 195934 and 195935), a tributary to `r fpr::fpr_my_pscis_info()` located approximately 600m downstream of the `r fpr_my_pscis_info(col_pull = road_name)` crossing, were also reassessed. This memo has been updated to incorporate the 2024 field work.
+
+<br>
+
+A total of
 `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha of lake
 and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland
 is modelled upstream and a summary of habitat modelling outputs is
@@ -77,7 +84,7 @@ knitr::include_graphics("fig/lidar_stock_creek_195943.png")
 
 <br>
 
-## Climate Change Risk Assessment
+## Climate Change Risk Assessment {-}
 
 Preliminary climate change risk assessment data for crossing 195943 is presented in Tables \@ref(tab:tab-moti-195943) - \@ref(tab:tab-moti-195943-comments). Data for highway crossing 195944 is presented in Tables \@ref(tab:tab-moti-195944) - \@ref(tab:tab-moti-195944-comments).
 
@@ -105,14 +112,14 @@ fpr_table_moti_comments(site = 195944)
 
 ## Stream Characteristics at Crossings {.unnumbered}
 
-At the time of the survey, PSCIS crossing `r as.character(my_site)` was un-embedded, 
+At the time of the survey in 2022, PSCIS crossing `r as.character(my_site)` was un-embedded, 
 non-backwatered, had a culvert outlet drop of `r fpr::fpr_my_pscis_info(col_pull = outlet_drop_meters)`m and ranked as a
 `r fpr::fpr_my_pscis_info(col_pull = barrier_result)` to upstream fish
 passage according to the provincial protocol [@moe2011Fieldassessment]
 (Table \@ref(tab:tab-culvert-195943)).  Water temperature was
 `r fpr::fpr_my_habitat_info(col_pull = 'temperature_c')`$^\circ$C, pH
 was `r fpr::fpr_my_habitat_info(col_pull = 'p_h')` and conductivity was
-`r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm.
+`r fpr::fpr_my_habitat_info(col_pull = 'conductivity_m_s_cm')`uS/cm. The crossing was reassessed in 2024 with results presented in Appendix - Phase 1 Fish Passage Assessment Data and Photos of the [2024 report](https://www.newgraphenvironment.com/fish_passage_skeena_2024_reporting/).
 
 <br>
 
@@ -121,7 +128,9 @@ non-backwatered and ranked as a
 `r fpr::fpr_my_pscis_info(col_pull = barrier_result)` to upstream fish
 passage. The culvert length was 167m, the fill depth was estimated at 35m and the outlet drop was measured at `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = outlet_drop_meters)`m (Table \@ref(tab:tab-culvert-195944)).
 
+<br>
 
+In 2024, reassessments were completed for two additional stream crossings in the `r fpr::fpr_my_pscis_info()` system. PSCIS crossings 195934 and 195935 are located on Dunalter Creek, just upstream of where the tributary enters `r fpr::fpr_my_pscis_info()`, approximately 600m downstream of the `r fpr_my_pscis_info(col_pull = road_name)` crossing. The crossings occur in close succession along the stream, and were both ranked as barriers to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment]. Upstream of the upper most crossing (PSCIS 195935), high-quality habitat was observed, including undercut banks, functional large woody debris, healthy riparian vegetation, and a fish approximately 100mm in length was observed in one of the upstream pools. Full assessment details are available in Appendix - Phase 1 Fish Passage Assessment Data and Photos of the [2024 report](https://www.newgraphenvironment.com/fish_passage_skeena_2024_reporting/).
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
@@ -169,8 +178,7 @@ fpr::fpr_table_cv_summary_memo(dat = pscis_phase1, site = my_site3, site_photo_i
 ## Stream Characteristics Upstream of `r as.character(my_site)` and Downstream of `r as.character(my_site2)` {-}
 
 `r fpr_my_survey_dist(loc = 'us')`
-`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195943-03) - \\@ref(fig:photo-195943-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d02))."))`  
-`r fpr_my_habitat_paragraph(loc = 'us')` Good flow volumes were noted along with a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel suitable for resident rainbow as well as coho and steelhead spawning. The channel appeared to be constricted with riparian vegetation removed on both sides of the stream, likely due to agricultural development. Irrigation pipes in the channel indicated water withdrawal was occurring. The
+`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-195943-03) - \\@ref(fig:photo-195943-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d02))."))` `r fpr_my_habitat_paragraph(loc = 'us')` Good flow volumes were noted along with a decent amount of complexity due to boulders and undercut banks. There were small pockets of gravel suitable for resident rainbow as well as coho and steelhead spawning. The channel appeared to be constricted with riparian vegetation removed on both sides of the stream, likely due to agricultural development. Irrigation pipes in the channel indicated water withdrawal was occurring. The
 habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value as
 an important migration corridor containing suitable spawning habitat and
 having moderate rearing potential for juvenile coho, steelhead and other salmonids.
@@ -189,6 +197,54 @@ moderate rearing potential for juvenile salmonids.
 `r fpr_my_survey_dist(loc = 'us', sit = my_site2)`
 `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-195944-05)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195944-d03))."))` `r fpr_my_habitat_paragraph(loc = 'us', sit = my_site2)` Within the areas surveyed, the stream was noted as heavily impacted by cattle activity with significant amounts of manure in the stream, degraded/removed riparian vegetation and extensive areas of trampled banks. There were occasional pockets of gravel suitable for resident rainbow spawning. Field notes indicate, occasional pools with depths suitable for juvenile salmon and adult resident salmonid overwintering. A rock drop of 65cm was located 365m upstream of the top end of the culvert `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-195944-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195944-d03))."))` This drop would likely be passable for adult salmonids but dependent on flow conditions, could prevent upstream migration for for younger life stages of anadromous fish as well as non-adult resident species.
 
+<br>
+
+## Fish Sampling {-}
+
+In 2024, electrofishing was conducted at one site downstream and one site upstream of PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name)`, with results summarised in Tables \@ref(tab:tab-fish-site-195943-2024) – \@ref(tab:tab-fish-dens-195943-2024) and Figure \@ref(fig:plot-fish-box-195943-2024). The stream appeared to contain quality habitat; however, water levels were very low at the time of assessment—reportedly the lowest observed by local landowners. Conductivity was extremely high (535uS/cm), potentially due to nearby cattle activity. A total of `r tab_fish_summary_2024 %>% filter(site_id == paste0(my_site, '_ds')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` fish were captured downstream, including rainbow trout and cutthroat trout, although fewer than expected given the size and depth of the outlet pool `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-195943-07))")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d04))"))`. No fish were captured upstream despite the presence of suitable habitat at higher flows, however, the large outlet drop at the culvert on `r fpr_my_pscis_info(col_pull = road_name)` is likely acting as a barrier to upstream fish passage under low flow conditions `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-195943-08))")}else(knitr::asis_output("(Figure \\@ref(fig:photo-195943-d04))"))`.
+
+
+```{r eval=F}
+# species captured downstream
+tab_fish_summary_2024 |> 
+  dplyr::filter(site_id == paste0(my_site, '_ds')) |> 
+  dplyr::group_by(site_id) |> 
+  dplyr::distinct(species) |> 
+  dplyr::pull(species)
+
+# species captured upstream
+tab_fish_summary_2024 |> 
+  dplyr::filter(site_id == paste0(my_site, '_us')) |> 
+  dplyr::group_by(site_id) |> 
+  dplyr::distinct(species) |> 
+  dplyr::pull(species)
+
+```
+
+<br>
+
+## Aerial Imagery {.unnumbered}
+
+In 2024, an aerial survey was conducted at PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name)` with a remotely piloted aircraft and the resulting imagery was processed into an orthomosaic available to view and download `r if(gitbook_on){knitr::asis_output("in Figure \\@ref(fig:uav-ortho-195943)")}else(knitr::asis_output("[here](https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/skeena/bulkley/2024/195943_stock_barren_station/odm_orthophoto/odm_orthophoto.tif)"))`.
+
+<br>
+
+```{r uav-ortho-195943-prep, eval = gitbook_on}
+viewer_url <- '<iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/skeena/bulkley/2024/195943_stock_barren_station/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0"></iframe>'
+
+knitr::asis_output(viewer_url)
+```
+
+```{r uav-ortho-195943, out.width = "0.01%", eval = gitbook_on, fig.cap= my_caption}
+my_photo = 'fig/pixel.png'
+
+my_caption = paste0('Orthomosaic of PSCIS crossing ', my_site, ' in 2024.')
+
+knitr::include_graphics(my_photo, dpi = NA)
+```
+
+`r if(gitbook_on){knitr::asis_output("<br>")}`
+
 
 ## Structure Remediation and Cost Estimate {-}
 
@@ -206,7 +262,11 @@ proceeding to design for replacement with a bridge with `r fpr::fpr_my_priority_
 
 <br>
 
-At the time of assessment, Stock Creek was heavily impacted by land clearing and cattle throughout all areas surveyed due to trampled banks and grazed or removed riparian vegetation. It is encouraging that range holders, the province and consultants (ie. Dogwood Environmental Consulting) hope to mitigate some of the potential impacts related to fuel reduction work ongoing at the time of reporting by exploring opportunities to prevent cattle from accessing riparian buffers. It is recommended that an overall plan also be developed to restore the riparian areas and further mitigate range use impacts on stream health. Historic information from the site indicate that flows can be minimal during dry periods. An analysis of land cover and water withdrawal for the greater watershed could provide valuable information as to inform restoration planning such as potentially reversible land use impacts that may exacerbate drought (ex. historic wetland drainage, multiple points of water diversion, vegetation removal, etc).  Historical sightings of adult coho and steelhead upstream of Barrett Station Road by the landowner adjacent to crossing `r as.character(my_site)` indicate that the stream was historically suitable for these species and the lower reaches' location near the Bulkley River mainsten position it for likely utilization by numerous fish species when flows are adequate.  These insights and the large size of the outlet drop from the pipe under `r fpr_my_pscis_info(col_pull = road_name)` position this site as A good candidate for fish passage restoration.
+At the time of assessment, Stock Creek was heavily impacted by land clearing and cattle throughout all areas surveyed due to trampled banks and grazed or removed riparian vegetation. It is encouraging that range holders, the province and consultants (ie. Dogwood Environmental Consulting) hope to mitigate some of the potential impacts related to fuel reduction work ongoing at the time of reporting by exploring opportunities to prevent cattle from accessing riparian buffers. It is recommended that an overall plan also be developed to restore the riparian areas and further mitigate range use impacts on stream health. Historic information from the site indicate that flows can be minimal during dry periods. An analysis of land cover and water withdrawal for the greater watershed could provide valuable information as to inform restoration planning such as potentially reversible land use impacts that may exacerbate drought (ex. historic wetland drainage, multiple points of water diversion, vegetation removal, etc).  Historical sightings of adult coho and steelhead upstream of Barrett Station Road by the landowner adjacent to crossing `r as.character(my_site)` indicate that the stream was historically suitable for these species and the lower reaches' location near the Bulkley River mainstem position it for likely utilization by numerous fish species when flows are adequate.  These insights and the large size of the outlet drop from the pipe under `r fpr_my_pscis_info(col_pull = road_name)` position this site as a good candidate for fish passage restoration.
+
+<br>
+
+Fish sampling at PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name)` in 2024 resulted in few captured fish. Water levels were reportedly low at the time of assessment, conductivity was elevated—likely due to adjacent agricultural and cattle land use—and the culvert exhibited a significant outlet drop that likely impeded upstream fish passage under low flow conditions. The stream likely contains quality habitat for salmonids, such as pools, during periods of higher discharge. Further investigation of fish presence is recommended, including additional sampling methods such as eDNA analysis. Aerial imagery collected at the site can also support future tracking of channel morphology and evaluation of site rehabilitation and environmental management effectiveness should the crossing be replaced.
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
@@ -222,11 +282,49 @@ tab_hab_summary %>%
 ```
 
 <br>
+```{r tab-fish-site-195943-2024, eval=T}
+
+tab_fish_sites_sum_2024 %>% 
+  tidyr::separate(site, into = c("site_id", "location", 
+        "ef"), remove = F) |>
+  dplyr::filter(site_id == my_site) |>
+  dplyr::select(site, passes, ef_length_m, ef_width_m, 
+            area_m2, enclosure) |>
+  fpr::fpr_kable(caption_text = paste0("Fish sampling site summary for ", 
+        my_site, " in 2024."), scroll = F)
+
+```
+
+<br>
+
+```{r tab-fish-dens-195943-2024, eval=T}
+
+fish_abund_2024|>
+  dplyr::filter(site == my_site) |>
+  dplyr::select(local_name, species_code, life_stage, catch, density_100m2, nfc_pass) |>
+  fpr::fpr_kable(caption_text = paste0("Fish sampling density results summary for ", 
+            my_site, " in 2024."), 
+            footnote_text = "nfc_pass FALSE means fish were captured in final pass indicating more fish of this species/lifestage may have remained in site.\n              Mark-recaptured required to reduce uncertainties.", 
+            scroll = F)
+
+```
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+
+```{r plot-fish-box-195943-2024, fig.cap= my_caption, eval=T}
+
+my_caption <- paste0('Densites of fish (fish/100m2) captured upstream and downstream of PSCIS crossing ', my_site, ' in 2024.')
+
+fpr::fpr_plot_fish_box(dat = fish_abund_2024) 
+```
+
+<br>
+
 
 ```{r photo-195943-01-prep, eval=T}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_d1_')
 
-my_caption1 = paste0('Habitat downstream of PSCIS crossing ', my_site, '.')
+my_caption1 = paste0('Habitat downstream of PSCIS crossing ', my_site, ' in 2022.')
 
 
 ```
@@ -240,7 +338,7 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 ```{r photo-195943-02-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_d2_')
 
-my_caption2 = paste0('Habitat downstream of PSCIS crossing ', my_site, '.')
+my_caption2 = paste0('Habitat downstream of PSCIS crossing ', my_site, ' in 2022.')
 ```
 
 ```{r photo-195943-02, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
@@ -262,7 +360,7 @@ knitr::include_graphics(my_photo2)
 ```{r photo-195943-03-prep}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u1_')
 
-my_caption1 = paste0('Habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption1 = paste0('Habitat upstream of PSCIS crossing ', my_site, ' in 2022.')
 ```
 
 ```{r photo-195943-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
@@ -274,13 +372,15 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 ```{r photo-195943-04-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_u2_')
 
-my_caption2 = paste0('Habitat upstream of PSCIS crossing ', my_site, '.')
+my_caption2 = paste0('Habitat upstream of PSCIS crossing ', my_site, ' in 2022.')
 
 ```
 
 ```{r photo-195943-04, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
 grid::grid.raster(jpeg::readJPEG(my_photo2))
 ```
+
+<br>
 
 ```{r photo-195943-d02, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
 
@@ -294,7 +394,7 @@ knitr::include_graphics(my_photo2)
 ```{r photo-195944-05-prep}
 my_photo1 = fpr::fpr_photo_pull_by_str(site = my_site2, str_to_pull = '_u1_')
 
-my_caption1 = paste0('Habitat upstream of PSCIS crossing ', my_site2, '.')
+my_caption1 = paste0('Habitat upstream of PSCIS crossing ', my_site2, ' in 2022.')
 ```
 
 ```{r photo-195944-05, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
@@ -306,7 +406,7 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 ```{r photo-195944-06-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(site = my_site2, str_to_pull = '_u2_')
 
-my_caption2 = paste0('A 0.65m high rock drop located 365m upstream of PSCIS crossing ', my_site2, '.')
+my_caption2 = paste0('A 0.65m high rock drop located 365m upstream of PSCIS crossing ', my_site2, ' in 2022.')
 
 ```
 
@@ -314,7 +414,44 @@ my_caption2 = paste0('A 0.65m high rock drop located 365m upstream of PSCIS cros
 grid::grid.raster(jpeg::readJPEG(my_photo2))
 ```
 
+<br>
+
 ```{r photo-195944-d03, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+
+```{r photo-195943-07-prep}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_ds_ef1_typical_2_2024')
+
+my_caption1 = paste0('Typical habitat electrofished downstream of PSCIS crossing ', my_site, ' in 2024.')
+```
+
+```{r photo-195943-07, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo1))
+```
+
+<br>
+
+```{r photo-195943-08-prep}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_us_ef1_typical_1_2024')
+
+my_caption2 = paste0('Typical habitat electrofished upstream of PSCIS crossing ', my_site, ' in 2024.')
+
+```
+
+<br>
+
+```{r photo-195943-08, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+grid::grid.raster(jpeg::readJPEG(my_photo2))
+```
+
+```{r photo-195943-d04, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
 
 my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
 

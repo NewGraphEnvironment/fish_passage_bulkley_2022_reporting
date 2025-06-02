@@ -63,8 +63,8 @@ filename_html <- 'Bulkley2022'
 
   # reduce the size
   tools::compactPDF(paste0("docs/", filename_html, ".pdf"),
-                    gs_quality = 'screen',
-                    gs_cmd = "opt/homebrew/bin/gs"
+                    gs_quality = 'ebook',
+                    gs_cmd = "/opt/homebrew/bin/gs"
                     ##this was on the windows machine
                     # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
   )

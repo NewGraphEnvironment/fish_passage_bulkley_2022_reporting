@@ -24,36 +24,24 @@ my_site3 <- 198115
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, in the town of New Hazelton, BC. on
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, in the town of New Hazelton, BC. The crossing is situation on
 `r fpr_my_pscis_info(col_pull = road_name)`.  `r fpr::fpr_my_pscis_info()` is a tributary to Station Creek (a.k.a Mission Creek) with the Waterfall/Station confluence located approximately 4km downstream of the 10th avenue/Highway 16 crossing. The stream has been labelled in @donas2022WaterfallCR as North Waterfall Creek however this name has not been assigned in the freshwater atlas.  The subject stream is mapped incorrectly in the BC freshwater atlas which documents it as a small drainage originating on the north side of Highway 16. In reality, the stream flows from an area south of town, through New Hazelton in a northern direction crossing under numerous road crossings and two CN railway crossings before joining with Station Creek (Figure \@ref(fig:fig-waterfall)). Due to the large size of the stream in the areas surveyed and the small stream size of Waterfall Creek documented in PSCIS at crossing 124456 the subject stream should be labelled Waterfall Creek in the freshwater atlas. 
-
-<br>
-
-During 2022 field surveys, three previously un-assessed stream crossings located upstream of the upper most railway culverts (PSCIS 124423) were surveyed for fish passage (PSCIS 198117 on 9th avenue, 198116 on Highway 16/10th avenue and 198115 on 13th avenue). Downstream of these three crossings the stream flows through six more road/rail crossings before it's confluence with Station Creek. A small bridge (modelled crossing 24704553 - a.k.a Mile 48) is located under the CN Railway approximately 875m upstream of the highway and at the time of reporting, there was an un-assessed crossing (1803294) on the subject tributary just upstream of it's confluence with Waterfall Creek. Site surveys downstream in Waterfall Creek in 2021 along with review of aerial imagery indicate that modelled crossing 1803294 likely does not exist as the stream appears to run adjacent to the railway at this location and not cross the road.  The location of modeled crossing 1803294 would need to be accessed from the west by crossing the CN Railway or from the east via a private road located behind gates to the New Hazelton sewage treatment facility.
-
-<br>
-
-Although the habitat confirmation assessment in this memo is detailed as for crossing 198116, the assessment conducted also covered areas downstream of 198117 and upstream of crossing 198115 so has significance for informing remediation of those culverts as well. The crossing locations were prioritized for follow up after field reconnaissance indicated that `r fpr::fpr_my_pscis_info()` was mapped incorrectly in the BC Freshwater Atlas stream network and likely contained significant quantities of high value habitat for coho spawning and rearing.
-
-<br>
-
-As the subject tributary to Waterfall Creek was not mapped in the freshwater atlas at the location of these crossings at the time of reporting, there were no road stream crossings modeled as present in `bcfishpass`.  As there were no crossings modeled, the software generated no estimates of fish habitat quantity.  Crossing `r as.character(my_site)` on Highway 16/10th avenue is the responsibility of the Ministry of Transportation and Infrastructure while crossings  `r as.character(my_site2)` on 9th avenue and  `r as.character(my_site3)` on 13th avenue are the responsibility of the District of New Hazelton.
 
 <br>
 
 ```{r fig-waterfall, fig.cap = my_caption}
 
-my_caption = 'Map of Station Creek and Watershed Creek watersheds. Pink line indicates sections of tributary to Waterfall Creek that were surveyed and that at the time of reporting were not mapped correctly in the freshwater atlas.'
+my_caption = 'Map of Station Creek and Waterfall Creek watersheds. Pink line indicates the sections of Waterfall Creek that were surveyed and that at the time of reporting were not mapped correctly in the freshwater atlas.'
 
 knitr::include_graphics('fig/waterfall.png')
 
 ```
 
+<br>
 
 ## Background {.unnumbered}
 
-
-In 2021, fish passage and habitat confirmation assessments were conducted on Waterfall Creek downstream of the upper railway crossing (PSCIS 124423) as well as on Station Creek at Highway 16 (PSCIS 124420).  Details of these assessments can be referenced in @irvine2022BulkleyRiver located [here](https://newgraphenvironment.github.io/fish_passage_skeena_2021_reporting/).   @wilson_rabnett2007FishPassage report that the crossing structure located on Highway 16 and Station Creek (PSCIS 124420) has been the subject of numerous assessments  and  designs  with  respect  to  the rehabilitation of fish passage, and they rated this crossing as the highest priority for rehabilitation in the Bulkley River watershed.  Gitxsan Watershed Authority reports that Xsan Xsagiibil was a fishing site located at the mouth of Station Creek (Xsi Gwin Sagiiblax) [@wilson_rabnett2007FishPassage].  Identified as a high priority for additional assessments by @rabnett_williams2004Highway16, @skrconsultantsltd_2006FishPassage conducted a detailed inspection, offered rehabilitation design options and  identified the natural limits of potential fish distribution to support rehabilitation efforts.  At the time of reporting, a design for remediation utilizing a retrofit of the existing structure to backwater the pipe was being drafted (Sean Wong, Environmental Programs Manager - Ministry of Transportation and Infrastructure pers. comm.).
+In 2021, fish passage and habitat confirmation assessments were conducted at three crossings in the Waterfall/Station Creek system by @irvine2022BulkleyRiver. These included PSCIS crossing 124420, where Station Creek crosses Highway 16; PSCIS crossing 124421, where Waterfall Creek crosses 11th Avenue; and PSCIS crossing 124422, where Waterfall Creek crosses Highway 16 at its western crossing location  (Figure \@ref(fig:fig-waterfall)). Detailed assessments of these structures, along with further information on the Waterfall/Station system, are provided in the [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/) report. @wilson_rabnett2007FishPassage report that the crossing structure located on Highway 16 and Station Creek (PSCIS 124420) has been the subject of numerous assessments  and  designs  with  respect  to  the rehabilitation of fish passage, and they rated this crossing as the highest priority for rehabilitation in the Bulkley River watershed.  Gitxsan Watershed Authority reports that Xsan Xsagiibil was a fishing site located at the mouth of Station Creek (Xsi Gwin Sagiiblax) [@wilson_rabnett2007FishPassage].  Identified as a high priority for additional assessments by @rabnett_williams2004Highway16, @skrconsultantsltd_2006FishPassage conducted a detailed inspection, offered rehabilitation design options and  identified the natural limits of potential fish distribution to support rehabilitation efforts.  At the time of reporting, a design for remediation utilizing a retrofit of the existing structure to backwater the pipe was being drafted (Sean Wong, Environmental Programs Manager - Ministry of Transportation and Infrastructure pers. comm.).
 
 <br>
 
@@ -65,7 +53,19 @@ There is a rich history of past assessment and restoration work in the watershed
 
 <br>
 
-At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a second order stream. Upstream of crossing `r as.character(my_site)`, coho, cutthroat trout, rainbow trout and dolly varden have previously been recorded [@donas2022MissionCreek; @moe2020KnownBC; @norris2020bcfishobs]. A map of the watershed is provided in map attachment [093M.107](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/FishPassage_093M.107.pdf). 
+In 2022, three previously un-assessed stream crossings located upstream of the upper most railway culverts (PSCIS 124423) were surveyed for fish passage (PSCIS 198117 on 9th avenue, 198116 on Highway 16/10th avenue and 198115 on 13th avenue). The crossing locations were prioritized for follow up after field reconnaissance indicated that `r fpr::fpr_my_pscis_info()` was mapped incorrectly in the BC Freshwater Atlas stream network and likely contained significant quantities of high value habitat for coho spawning and rearing. At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a second order stream. Upstream of crossing `r as.character(my_site)`, coho, cutthroat trout, rainbow trout and dolly varden have previously been recorded [@donas2022MissionCreek; @moe2020KnownBC; @norris2020bcfishobs]. Although the habitat confirmation assessment in this memo is detailed as for crossing 198116, the assessment conducted also covered areas downstream of 198117 and upstream of crossing 198115 so has significance for informing remediation of those culverts as well. Downstream of these three crossings the stream flows through six more road/rail crossings, with some previously discussed, before it's confluence with Station Creek.
+
+<br>
+
+A small bridge is located under the CN Railway (modelled crossing 24704553 - a.k.a Mile 48) approximately 875m upstream of where Station Creek crosses Highway 16. Additionally, at the time of reporting, there was an un-assessed crossing on Waterfall Creek approximately 370m upstream of the streams confluence with Station Creek (modelled crossing 1803294). Site surveys downstream in Station Creek in 2021 along with review of aerial imagery indicate that modelled crossing 1803294 likely does not exist as the stream appears to run adjacent to the railway at this location and not cross the road.  The location of modeled crossing 1803294 would need to be accessed from the west by crossing the CN Railway or from the east via a private road located behind gates to the New Hazelton sewage treatment facility.
+
+<br>
+
+In 2024, crews walked from the easternmost Waterfall Creek/Highway 16 crossing (PSCIS `r as.character(my_site)`) upstream to the waterfall that blocks upstream migration for all life stages and species, located approximately 1200m upstream. This section of stream was previously surveyed in 2022 and is already included in this memo. The memo has been updated to incorporate a brief summary of observations from the 2024 walk. Also during the 2024 survey, aerial imagery was collected downstream at the CN railway crossing (PSCIS 124423) and the westernmost Highway 16 crossing of Waterfall Creek (PSCIS 124422). The imagery is available in the [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/) report.
+
+<br>
+
+Waterfall Creek was not mapped in the freshwater atlas at the location of these crossings at the time of reporting, there were no road stream crossings modeled as present in `bcfishpass`.  As there were no crossings modeled, the software generated no estimates of fish habitat quantity.  Crossing `r as.character(my_site)` on Highway 16/10th avenue is the responsibility of the Ministry of Transportation and Infrastructure while crossings  `r as.character(my_site2)` on 9th avenue and  `r as.character(my_site3)` on 13th avenue are the responsibility of the District of New Hazelton. A map of the watershed is provided in map attachment [093M.107](https://hillcrestgeo.ca/outgoing/fishpassage/projects/bulkley/FishPassage_093M.107.pdf). 
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
 
@@ -105,13 +105,13 @@ fpr::fpr_my_priority_info()
 
 ```
 
-## Stream Characteristics Downstream {.unnumbered}
+## Stream Characteristics Downstream of `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` past PSCIS crossing 198177 (9th avenue) to approximately 220m upstream of PSCIS crossing 124423 on the CN railway `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198116-01) - \\@ref(fig:photo-198116-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198116-d01))."))`
+`r fpr_my_survey_dist(loc = 'ds')` past the 9th avenue crossing (PSCIS `r as.character(my_site2)`) to approximately 220m upstream of the CN railway crossing (PSCIS 124423) `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198116-01) - \\@ref(fig:photo-198116-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198116-d01))."))`
 `r fpr_my_habitat_paragraph(loc = 'ds')` PSCIS crossing 198117 on 9th avenue was also
 assessed for fish passage and at the time of survey, the crossing was un-embedded,
 non-backwatered, and ranked as a barrier to upstream fish passage (Table
-\@ref(tab:tab-culvert-198117)).The stream flows through the town of
+\@ref(tab:tab-culvert-198117)). The stream flows through the town of
 New Hazelton. There was low flow at the time of survey and the stream
 contained a lot of waste and debris. There was a lot of cover from
 vegetation. The stream hits the railway and is drained into a tributary
@@ -121,6 +121,7 @@ spawning.
 
 <br>
 
+
 ```{r tab-culvert-198117, eval = T}
 fpr::fpr_table_cv_summary_memo(dat = pscis_phase1,
                                site = my_site2, 
@@ -128,21 +129,17 @@ fpr::fpr_table_cv_summary_memo(dat = pscis_phase1,
 
 ```
 
-## Stream Characteristics Upstream {.unnumbered}
+## Stream Characteristics Upstream of `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` to the location of a waterfall that blocks upstream migration for all life stages and species.
-`r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198116-03) - \\@ref(fig:photo-198116-08)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198116-d02))."))`
-The waterfall was estimated to be approximately 7m in height. `r fpr_my_habitat_paragraph(loc = 'us')` There was a culvert
-approximately 400m upstream of PSCIS crossing 198116 that was also
-assessed. At the time of survey, this crossing was un-embedded,
-non-backwatered, and ranked as a barrier to upstream fish passage (Table
-\@ref(tab:tab-culvert-198115)). The habitat quality was excellent.
-The stream flow was moderate and there were fish spotted all the way up
-to the waterfall where the survey ended. An adult coho was seen upstream of crossing `r as.character(my_site3)`. Cover from vegetation
-and undercut banks was noted as abundant. The habitat was rated as
-`r fpr::fpr_my_priority_info(loc = 'us')` value as an important
-migration corridor containing suitable spawning habitat and having
-high rearing potential for juvenile coho, rainbow trout, cuthtout trout and dolly varden.
+`r fpr_my_survey_dist(loc = 'us')` to the location of a waterfall that blocks upstream migration for all life stages and species. `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198116-03) - \\@ref(fig:photo-198116-08)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198116-d02))."))` The waterfall was estimated to be approximately 7m in height. `r fpr_my_habitat_paragraph(sit = my_site, loc = 'us')`  
+
+<br>
+
+Approximately 400m upstream of the Highway 16 crossing (PSCIS `r as.character(my_site)`), a second culvert (PSCIS `r as.character(my_site3)`) was assessed. At the time of survey, the structure was un-embedded, non-backwatered, and ranked as a barrier to upstream fish passage (Table \@ref(tab:tab-culvert-198115)). Habitat quality upstream of this crossing was excellent. Streamflow was moderate, and fish were observed throughout the stream up to the waterfall, where the survey ended. An adult coho was observed upstream of crossing `r as.character(my_site3)`. Cover from vegetation and undercut banks was abundant, and habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us')` value, functioning as an important migration corridor with suitable spawning habitat and high rearing potential for juvenile coho, rainbow trout, cutthroat trout, and dolly varden.
+
+<br>
+
+In 2024, the stream was revisited and surveyed from the Waterfall Creek/Highway 16 crossing (PSCIS `r as.character(my_site)`) upstream to the waterfall. The lower ~200m of channel flows through residential properties and was slightly constricted, but transitioned into a more natural channel with healthy shrub and cottonwood riparian vegetation upstream. Gravels suitable for dolly varden and rainbow trout spawning were abundant, and intermittent pools up to 50cm deep were observed throughout. The average channel width was 4.3m, the average wetted width was 3.3m, and the average gradient was 1.9%. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as undercut banks, deep pools, and overhanging vegetation. The dominant substrate was gravels with fines sub-dominant. At the time of assessment, coho had not yet been transferred into the stream by the annual trap and truck operation led by the Chicago Creek Society. 
 
 <br>
 
@@ -161,7 +158,7 @@ Should restoration/maintenance activities proceed, replacement of PSCIS crossing
 
 ## Conclusion {.unnumbered}
 
-The Waterfall Creek system is part of the greater Station/Mission Creek watershed and located directly in the community of New Hazelton.  Although heavily impacted by urban and industrial development, this watershed provides valuable opportunities for public interaction with aquatic values and high potential for meaningful ecosystem function improvements. There is a long history of community led research, restoration and rehabilitation projects within the community which is likley to continue into the future through initiatives described in @donas2022MissionCreek. Although, at the time of assessment, it appeared that upstream migration of adult coho was unlikely to be hindered by the three crossings surveyed, conditions could degrade over time and passage through the structures by younger lifestages salmonids was likely already prevented at some flows. Ongoing research, monitoring and advocacy efforts by groups such as the Chicago Creek Society, Skeena Watershed Conservation Coalition and the Gitksan Watershed Authorities indicate that biological conditions in the stream have been worsening overtime.  There was 1.2km of habitat upstream of crossing `r as.character(my_site)` rated as`r fpr::fpr_my_priority_info(sit = my_site, loc = 'us', col_pull = hab_value)`value for salmonid rearing and spawning with all three crossings assessed (9th avenue, 10th avenue and 13th avenue) considered
+The Waterfall Creek system is part of the greater Station/Mission Creek watershed and located directly in the community of New Hazelton.  Although heavily impacted by urban and industrial development, this watershed provides valuable opportunities for public interaction with aquatic values and high potential for meaningful ecosystem function improvements. There is a long history of community led research, restoration and rehabilitation projects within the community which is likely to continue into the future through initiatives described in @donas2022MissionCreek. Although, at the time of assessment, it appeared that upstream migration of adult coho was unlikely to be hindered by the three crossings surveyed, conditions could degrade over time and passage through the structures by younger life stage salmonids was likely already prevented at some flows. Ongoing research, monitoring and advocacy efforts by groups such as the Chicago Creek Society, Skeena Watershed Conservation Coalition and the Gitksan Watershed Authorities indicate that biological conditions in the stream have been worsening overtime.  There was 1.2km of habitat upstream of crossing `r as.character(my_site)` rated as `r fpr::fpr_my_priority_info(sit = my_site, loc = 'us', col_pull = hab_value)` value for salmonid rearing and spawning with all three crossings assessed (9th avenue, 10th avenue and 13th avenue) considered
 `r fpr::fpr_my_priority_info(col_pull = priority)` priorities for proceeding to design for replacement. It could be considered that infrastructure upgrade dollars for the efforts also include funding for alternative restoration activities such as riparian enhancement, public education and research as this stream can be considered a valuable asset to the community providing extensive opportunities for restoration.     
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
@@ -304,7 +301,7 @@ grid::grid.raster(jpeg::readJPEG(my_photo1))
 
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = 'rotated')
 
-my_caption2 = paste0('Waterfall at the end of survey, upstream of PSCIS crossing ', my_site3, '.')
+my_caption2 = paste0('Waterfall located approximately 1200m upstream of PSCIS crossing ', my_site, ', that blocks upstream migration for all life stages and species.')
 
 ```
 
