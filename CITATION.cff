@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: If you cite this report, please cite it as below.
+title: Bulkley Watershed Fish Passage Restoration Planning 2022
+authors:
+- family-names: Irvine
+  given-names: Allan
+  orcid: https://orcid.org/0000-0002-3495-2128
+- family-names: Winterscheidt
+  given-names: Mateo
+- family-names: Schick
+  given-names: Lucy
+date-released: '2024-08-29'
+url: https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/
+repository-code: https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting
+preferred-citation:
+  type: report
+  title: Bulkley Watershed Fish Passage Restoration Planning 2022
+  authors:
+  - family-names: Irvine
+    given-names: Allan
+    orcid: https://orcid.org/0000-0002-3495-2128
+  - family-names: Winterscheidt
+    given-names: Mateo
+  - family-names: Schick
+    given-names: Lucy
+  institution:
+    name: New Graph Environment Ltd.
+  year: 2024
+  date-published: '2024-08-29'
+  url: https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/
+  repository-code: https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting
+
